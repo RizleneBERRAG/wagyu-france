@@ -1,4 +1,4 @@
-﻿.professionnels-page {
+.professionnels-page {
     background:
         radial-gradient(circle at 84% 4%, rgba(111, 23, 18, 0.24), transparent 34%),
         radial-gradient(circle at 16% 18%, rgba(201, 164, 92, 0.13), transparent 30%),
@@ -805,4 +805,3 @@ body.theme-light .pro-panel-list strong {
         margin-right: 0;
     }
 }
-

@@ -1,4 +1,4 @@
-﻿.tracabilite-page {
+.tracabilite-page {
     background:
         radial-gradient(circle at 82% 4%, rgba(111, 23, 18, 0.22), transparent 34%),
         radial-gradient(circle at 18% 16%, rgba(201, 164, 92, 0.14), transparent 30%),
@@ -813,4 +813,3 @@ body.theme-light .trace-proof-panel {
         margin-right: 0;
     }
 }
-

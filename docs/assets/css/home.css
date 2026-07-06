@@ -1,9 +1,9 @@
-﻿.home-page {
+.home-page {
     overflow-x: hidden;
 }
 
 /* =========================================================
-   SWITCH DES UNIVERS SUR Lâ€™ACCUEIL
+   SWITCH DES UNIVERS SUR L’ACCUEIL
 ========================================================= */
 
 .home-universe {
@@ -1015,7 +1015,7 @@ body.theme-light .home-pro-cuts article {
 }
 
 /* =========================================================
-   MOBILE PREMIUM â€” ACCUEIL
+   MOBILE PREMIUM — ACCUEIL
 ========================================================= */
 
 .mobile-carousel-dots {
@@ -1363,7 +1363,7 @@ body.theme-light .home-pro-cuts article {
 }
 
 /* =========================================================
-   FIX MODE CLAIR â€” HERO ACCUEIL RESTE PREMIUM SOMBRE
+   FIX MODE CLAIR — HERO ACCUEIL RESTE PREMIUM SOMBRE
 ========================================================= */
 
 body.theme-light .home-private-hero h1,
@@ -1439,4 +1439,3 @@ body.theme-light .home-private-hero,
 body.theme-light .home-pro-hero {
     color: var(--wf-cream);
 }
-

@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const STORAGE_KEY = "wf-universe";
     const HOME_URL = "/wagyu-france/index.html";
     const body = document.body;
@@ -23,30 +23,30 @@
 
     const universeConfig = {
         particulier: {
-            subtitle: "Maison dâ€™exception",
+            subtitle: "Maison d’exception",
             ctaText: "Commander",
             ctaHref: "/wagyu-france/boutique.html",
             homeHref: "/wagyu-france/index.html?univers=particulier",
             menuTitle: "Univers particulier",
             wipeLabel: "Particulier",
             cardEyebrow: "Univers particulier",
-            cardTitle: "Une expÃ©rience pensÃ©e pour dÃ©couvrir, choisir et savourer.",
-            cardText: "Un parcours plus chaleureux, plus sensoriel, orientÃ© dÃ©gustation, boutique et dÃ©couverte de la maison.",
-            cardLinkText: "DÃ©couvrir la boutique",
+            cardTitle: "Une expérience pensée pour découvrir, choisir et savourer.",
+            cardText: "Un parcours plus chaleureux, plus sensoriel, orienté dégustation, boutique et découverte de la maison.",
+            cardLinkText: "Découvrir la boutique",
             cardLinkHref: "/wagyu-france/boutique.html",
         },
 
         pro: {
             subtitle: "Univers professionnel",
-            ctaText: "RÃ©server pro",
+            ctaText: "Réserver pro",
             ctaHref: "/wagyu-france/reserve-professionnelle.html",
             homeHref: "/wagyu-france/index.html?univers=pro",
             menuTitle: "Univers professionnel",
             wipeLabel: "Professionnel",
             cardEyebrow: "Univers professionnel",
-            cardTitle: "Un espace pensÃ© pour rÃ©server, anticiper et organiser les volumes.",
-            cardText: "Un parcours plus technique, orientÃ© chefs, restaurants, boucheries, dÃ©coupe, volumes et prÃ©-rÃ©servation.",
-            cardLinkText: "AccÃ©der Ã  la rÃ©serve pro",
+            cardTitle: "Un espace pensé pour réserver, anticiper et organiser les volumes.",
+            cardText: "Un parcours plus technique, orienté chefs, restaurants, boucheries, découpe, volumes et pré-réservation.",
+            cardLinkText: "Accéder à la réserve pro",
             cardLinkHref: "/wagyu-france/reserve-professionnelle.html",
         },
     };
@@ -175,4 +175,3 @@
         });
     });
 });
-

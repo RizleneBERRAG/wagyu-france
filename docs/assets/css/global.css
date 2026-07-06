@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --wf-black: #070605;
     --wf-black-soft: #11100d;
     --wf-charcoal: #191715;
@@ -231,4 +231,3 @@ body.theme-light .cart-empty {
 body.theme-light .cart-empty p {
     color: #5f5140;
 }
-

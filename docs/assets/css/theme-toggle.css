@@ -1,4 +1,4 @@
-﻿.theme-floating-toggle {
+.theme-floating-toggle {
     position: fixed;
     right: 24px;
     bottom: 24px;
@@ -98,4 +98,3 @@ body.theme-light .theme-sun {
         transform: translateX(33px);
     }
 }
-

@@ -1,5 +1,5 @@
-﻿/* =========================================================
-   WAGYU FRANCE â€” HEADER + SWITCH UNIVERS
+/* =========================================================
+   WAGYU FRANCE — HEADER + SWITCH UNIVERS
 ========================================================= */
 
 .wf-site-header {
@@ -475,7 +475,7 @@ body.universe-pro .wf-header-cta {
     font-weight: 950;
 }
 
-/* MODE CLAIR â€” seulement adaptation visuelle, pas la logique du thÃ¨me */
+/* MODE CLAIR — seulement adaptation visuelle, pas la logique du thème */
 
 body.theme-light .wf-header-shell {
     background:
@@ -613,7 +613,7 @@ body.theme-light .wf-menu-universe-card p:not(.eyebrow) {
 
 
 /* =========================================================
-   CORRECTION MENU MOBILE + ACCÃˆS UNIVERS PRO
+   CORRECTION MENU MOBILE + ACCÈS UNIVERS PRO
 ========================================================= */
 
 .wf-mobile-universe-tabs {
@@ -799,7 +799,7 @@ body.theme-light .wf-menu-universe-card p:not(.eyebrow) {
 }
 
 /* =========================================================
-   FIX HEADER PRO â€” LIENS SUR UNE SEULE LIGNE
+   FIX HEADER PRO — LIENS SUR UNE SEULE LIGNE
 ========================================================= */
 
 .wf-header-shell {
@@ -851,4 +851,3 @@ body.universe-pro .wf-header-cta {
         justify-content: space-between;
     }
 }
-

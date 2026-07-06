@@ -1,4 +1,4 @@
-﻿.admin-login-page {
+.admin-login-page {
     background:
         radial-gradient(circle at 50% 0%, rgba(201, 164, 92, 0.18), transparent 34%),
         radial-gradient(circle at 84% 20%, rgba(111, 23, 18, 0.18), transparent 34%),
@@ -136,4 +136,3 @@ body.theme-light .admin-login-card input {
     color: #17120c;
     background: rgba(255, 255, 255, 0.72);
 }
-

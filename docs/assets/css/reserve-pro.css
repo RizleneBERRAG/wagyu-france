@@ -1,4 +1,4 @@
-﻿.reserve-pro-page {
+.reserve-pro-page {
     background:
         radial-gradient(circle at 50% -10%, rgba(201, 164, 92, 0.14), transparent 34%),
         radial-gradient(circle at 84% 30%, rgba(111, 23, 18, 0.12), transparent 28%),
@@ -1534,7 +1534,7 @@ body.theme-light .confirmation-summary {
 }
 
 /* =========================================================
-   Ã‰TAT CONFIRMATION PANIER
+   ÉTAT CONFIRMATION PANIER
 ========================================================= */
 
 .pro-cart-drawer.is-confirmed {
@@ -1564,4 +1564,3 @@ body.theme-light .pro-cart-drawer.is-confirmed .pro-cart-confirmation {
         radial-gradient(circle at 50% 0%, rgba(201, 164, 92, 0.16), transparent 55%),
         rgba(255, 255, 255, 0.68);
 }
-
