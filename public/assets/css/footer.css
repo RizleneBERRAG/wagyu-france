@@ -1,0 +1,340 @@
+/* =========================================================
+   FOOTER PREMIUM — WAGYU FRANCE
+========================================================= */
+
+.site-footer {
+    position: relative;
+    padding: 72px 5vw 42px;
+    border-top: 1px solid rgba(229, 201, 130, 0.14);
+    background:
+        radial-gradient(circle at 14% 0%, rgba(229, 201, 130, 0.08), transparent 34%),
+        radial-gradient(circle at 86% 18%, rgba(111, 23, 18, 0.11), transparent 34%),
+        linear-gradient(180deg, rgba(18, 14, 10, 0.92), rgba(3, 3, 3, 0.98));
+    color: var(--wf-cream);
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 42%),
+        linear-gradient(90deg, rgba(229, 201, 130, 0.035), transparent 22%, transparent 78%, rgba(229, 201, 130, 0.035));
+}
+
+.site-footer::after {
+    content: "";
+    position: absolute;
+    left: 5vw;
+    right: 5vw;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229, 201, 130, 0.34), transparent);
+}
+
+/* BRAND */
+
+.footer-brand {
+    position: relative;
+    z-index: 2;
+    width: min(1440px, 100%);
+    margin: 0 auto 52px;
+    padding: 26px;
+    border-radius: 30px;
+    border: 1px solid rgba(229, 201, 130, 0.14);
+    background:
+        linear-gradient(135deg, rgba(229, 201, 130, 0.075), transparent 44%),
+        rgba(255, 255, 255, 0.035);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.footer-logo-wrap {
+    width: 68px;
+    height: 68px;
+    flex: 0 0 68px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 35%, rgba(229, 201, 130, 0.18), transparent 58%),
+        rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(229, 201, 130, 0.18);
+    box-shadow:
+        0 16px 34px rgba(201, 164, 92, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.footer-logo-wrap img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 8px 14px rgba(201, 164, 92, 0.18));
+}
+
+.footer-brand strong {
+    display: block;
+    margin: 0;
+    color: var(--wf-cream);
+    font-size: 1.24rem;
+    font-weight: 950;
+    letter-spacing: -0.025em;
+}
+
+.footer-brand p {
+    margin: 7px 0 0;
+    color: var(--wf-muted);
+    line-height: 1.6;
+    font-size: 0.98rem;
+}
+
+/* GRID */
+
+.footer-grid {
+    position: relative;
+    z-index: 2;
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: clamp(28px, 5vw, 88px);
+}
+
+.footer-grid > div {
+    min-width: 0;
+}
+
+.footer-grid h3 {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 22px;
+    color: var(--wf-gold-light);
+    font-size: 1.12rem;
+    font-weight: 950;
+    letter-spacing: -0.02em;
+}
+
+.footer-grid h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+    width: 34px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--wf-gold-light), transparent);
+}
+
+.footer-grid a,
+.footer-grid p {
+    display: block;
+    width: fit-content;
+    margin: 0 0 13px;
+    color: var(--wf-cream-soft);
+    line-height: 1.55;
+    text-decoration: none;
+    transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+}
+
+.footer-grid p {
+    width: auto;
+}
+
+.footer-grid a:hover {
+    color: var(--wf-gold-light);
+    transform: translateX(4px);
+}
+
+/* BOTTOM */
+
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+    width: min(1440px, 100%);
+    margin: 58px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(229, 201, 130, 0.12);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 247, 232, 0.52);
+    font-size: 0.9rem;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 18px;
+}
+
+.footer-legal-links a {
+    color: rgba(255, 247, 232, 0.58);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.22s ease;
+}
+
+.footer-legal-links a:hover {
+    color: var(--wf-gold-light);
+}
+
+/* =========================================================
+   FOOTER — MODE CLAIR
+========================================================= */
+
+body.theme-light .site-footer {
+    border-top-color: rgba(177, 132, 54, 0.18);
+    background:
+        radial-gradient(circle at 14% 0%, rgba(201, 164, 92, 0.16), transparent 34%),
+        radial-gradient(circle at 86% 18%, rgba(111, 23, 18, 0.055), transparent 34%),
+        linear-gradient(180deg, #fbf7ef 0%, #f4ecdf 100%);
+    color: #17120c;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75),
+        0 -18px 50px rgba(95, 70, 31, 0.04);
+}
+
+body.theme-light .site-footer::before {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.55), transparent 46%),
+        linear-gradient(90deg, rgba(201, 164, 92, 0.05), transparent 22%, transparent 78%, rgba(201, 164, 92, 0.05));
+}
+
+body.theme-light .footer-brand {
+    background:
+        linear-gradient(135deg, rgba(201, 164, 92, 0.12), transparent 44%),
+        rgba(255, 255, 255, 0.5);
+    border-color: rgba(177, 132, 54, 0.16);
+}
+
+body.theme-light .footer-logo-wrap {
+    background:
+        radial-gradient(circle at 50% 35%, rgba(201, 164, 92, 0.18), transparent 58%),
+        rgba(255, 255, 255, 0.62);
+    border-color: rgba(177, 132, 54, 0.18);
+    box-shadow:
+        0 16px 34px rgba(177, 132, 54, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+body.theme-light .footer-brand strong {
+    color: #17120c;
+}
+
+body.theme-light .footer-brand p {
+    color: #7a6b57;
+}
+
+body.theme-light .footer-grid h3 {
+    color: #bd9338;
+}
+
+body.theme-light .footer-grid a,
+body.theme-light .footer-grid p {
+    color: #5f5141;
+}
+
+body.theme-light .footer-grid a:hover {
+    color: #17120c;
+}
+
+body.theme-light .footer-bottom {
+    border-top-color: rgba(177, 132, 54, 0.16);
+}
+
+body.theme-light .footer-bottom p,
+body.theme-light .footer-legal-links a {
+    color: rgba(23, 18, 12, 0.58);
+}
+
+body.theme-light .footer-legal-links a:hover {
+    color: #bd9338;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1100px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 42px 70px;
+    }
+}
+
+@media (max-width: 760px) {
+    .site-footer {
+        padding: 54px 18px 36px;
+    }
+
+    .site-footer::after {
+        left: 18px;
+        right: 18px;
+    }
+
+    .footer-brand {
+        margin-bottom: 38px;
+        padding: 22px;
+        border-radius: 26px;
+        align-items: flex-start;
+    }
+
+    .footer-logo-wrap {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+    }
+
+    .footer-logo-wrap img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .footer-brand strong {
+        font-size: 1.08rem;
+    }
+
+    .footer-brand p {
+        font-size: 0.92rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-grid > div {
+        padding-bottom: 22px;
+        border-bottom: 1px solid rgba(229, 201, 130, 0.1);
+    }
+
+    .footer-grid > div:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .footer-bottom {
+        margin-top: 36px;
+        display: grid;
+        gap: 16px;
+    }
+
+    .footer-legal-links {
+        justify-content: flex-start;
+        display: grid;
+        gap: 10px;
+    }
+}

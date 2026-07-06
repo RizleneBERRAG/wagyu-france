@@ -1,0 +1,100 @@
+.theme-floating-toggle {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 120;
+    width: 78px;
+    height: 40px;
+    border: 1px solid rgba(229, 201, 130, 0.28);
+    border-radius: 999px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+        rgba(7, 6, 5, 0.78);
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    color: var(--wf-cream);
+    transition: 0.25s ease;
+}
+
+.theme-floating-toggle:hover {
+    transform: translateY(-2px);
+    border-color: rgba(229, 201, 130, 0.5);
+}
+
+.theme-icon {
+    position: relative;
+    z-index: 2;
+    width: 22px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+    transition: 0.25s ease;
+}
+
+.theme-moon {
+    color: var(--wf-gold-light);
+}
+
+.theme-sun {
+    color: rgba(247, 239, 226, 0.58);
+}
+
+.theme-toggle-dot {
+    position: absolute;
+    left: 6px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 28%, #fff7d8, var(--wf-gold-light) 48%, var(--wf-gold));
+    box-shadow: 0 8px 22px rgba(201, 164, 92, 0.35);
+    transition: 0.28s cubic-bezier(.2,.8,.2,1);
+}
+
+body.theme-light .theme-floating-toggle {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(234, 222, 198, 0.72));
+    border-color: rgba(122, 91, 38, 0.2);
+    box-shadow: 0 16px 42px rgba(84, 64, 32, 0.18);
+}
+
+body.theme-light .theme-toggle-dot {
+    transform: translateX(36px);
+    background:
+        radial-gradient(circle at 34% 28%, #ffffff, #f3ead8 48%, #22201d);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+body.theme-light .theme-moon {
+    color: rgba(55, 45, 28, 0.45);
+}
+
+body.theme-light .theme-sun {
+    color: #1d1a15;
+}
+
+@media (max-width: 640px) {
+    .theme-floating-toggle {
+        right: 16px;
+        bottom: 16px;
+        width: 70px;
+        height: 36px;
+    }
+
+    .theme-toggle-dot {
+        width: 27px;
+        height: 27px;
+        top: 4px;
+        left: 5px;
+    }
+
+    body.theme-light .theme-toggle-dot {
+        transform: translateX(33px);
+    }
+}
