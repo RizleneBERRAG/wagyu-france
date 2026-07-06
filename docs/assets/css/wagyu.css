@@ -1,0 +1,884 @@
+﻿.wagyu-page {
+    background:
+        radial-gradient(circle at 50% -8%, rgba(201, 164, 92, 0.18), transparent 34%),
+        radial-gradient(circle at 86% 20%, rgba(111, 23, 18, 0.1), transparent 30%),
+        #080605;
+    color: var(--wf-cream);
+    overflow-x: hidden;
+}
+
+/* HERO */
+
+.wagyu-hero {
+    position: relative;
+    min-height: 92vh;
+    padding: 96px 5vw 72px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wagyu-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.02);
+    filter: saturate(1.08) contrast(1.06);
+    pointer-events: none;
+}
+
+.wagyu-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.76)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.84)),
+        radial-gradient(circle at 52% 28%, rgba(229, 201, 130, 0.12), transparent 44%);
+    pointer-events: none;
+}
+
+.wagyu-hero-glow {
+    position: absolute;
+    z-index: 2;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    filter: blur(64px);
+    opacity: 0.42;
+    pointer-events: none;
+}
+
+.wagyu-glow-left {
+    left: -180px;
+    bottom: 8%;
+    background: rgba(201, 164, 92, 0.16);
+}
+
+.wagyu-glow-right {
+    right: -180px;
+    top: 12%;
+    background: rgba(111, 23, 18, 0.14);
+}
+
+.wagyu-hero-inner {
+    position: relative;
+    z-index: 3;
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 430px;
+    gap: 48px;
+    align-items: center;
+}
+
+.wagyu-deco {
+    width: min(330px, 100%);
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 1fr 58px 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.wagyu-deco span {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229, 201, 130, 0.58), transparent);
+}
+
+.wagyu-deco img {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(201, 164, 92, 0.25));
+}
+
+.wagyu-hero-content h1 {
+    margin-top: 14px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(3.4rem, 7.6vw, 8rem);
+    line-height: 0.88;
+    letter-spacing: -0.078em;
+    font-weight: 400;
+    color: var(--wf-cream);
+    text-shadow: 0 18px 55px rgba(0, 0, 0, 0.52);
+}
+
+.wagyu-hero-content h1 span {
+    display: block;
+    color: var(--wf-gold-light);
+}
+
+.wagyu-hero-content p {
+    max-width: 790px;
+    margin-top: 28px;
+    color: rgba(255, 247, 232, 0.86);
+    font-size: 1.06rem;
+    line-height: 1.85;
+    text-shadow: 0 12px 34px rgba(0, 0, 0, 0.48);
+}
+
+.wagyu-hero-actions,
+.wagyu-private-pro-actions,
+.wagyu-cta-card > div {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.wagyu-primary-button,
+.wagyu-secondary-button {
+    min-height: 56px;
+    padding: 0 28px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 950;
+    transition: 0.24s ease;
+}
+
+.wagyu-primary-button {
+    color: #130f08;
+    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
+    box-shadow: 0 18px 42px rgba(201, 164, 92, 0.18);
+}
+
+.wagyu-secondary-button {
+    color: var(--wf-cream);
+    border: 1px solid rgba(229, 201, 130, 0.24);
+    background: rgba(255, 255, 255, 0.055);
+    backdrop-filter: blur(12px);
+}
+
+.wagyu-primary-button:hover,
+.wagyu-secondary-button:hover {
+    transform: translateY(-3px);
+}
+
+/* HERO PANEL */
+
+.wagyu-hero-panel {
+    position: relative;
+    min-height: 470px;
+    border-radius: 36px;
+    border: 1px solid rgba(229, 201, 130, 0.22);
+    background: #080605;
+    box-shadow: 0 34px 96px rgba(0, 0, 0, 0.34);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.wagyu-hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.78)),
+        radial-gradient(circle at 50% 24%, rgba(229, 201, 130, 0.12), transparent 46%);
+    pointer-events: none;
+}
+
+.wagyu-hero-panel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.02);
+    filter: saturate(1.08) contrast(1.06);
+}
+
+.wagyu-hero-panel-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.wagyu-hero-panel-content > span {
+    color: rgba(255, 247, 232, 0.74);
+    font-size: 0.82rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.wagyu-hero-panel-content h2 {
+    margin-top: 10px;
+    color: var(--wf-gold-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 4rem;
+    line-height: 0.9;
+    letter-spacing: -0.065em;
+    font-weight: 400;
+    text-shadow: 0 16px 42px rgba(0, 0, 0, 0.5);
+}
+
+.wagyu-hero-panel-content p {
+    margin-top: 18px;
+    color: rgba(255, 247, 232, 0.84);
+    line-height: 1.7;
+}
+
+.wagyu-panel-tags {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.wagyu-panel-tags strong {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(229, 201, 130, 0.22);
+    color: var(--wf-cream);
+    background: rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(12px);
+    font-size: 0.82rem;
+}
+
+/* SECTIONS */
+
+.wagyu-intro-section,
+.wagyu-sensations-section,
+.wagyu-marbling-section,
+.wagyu-cuts-section,
+.wagyu-cooking-section,
+.wagyu-private-pro-section,
+.wagyu-cta-section {
+    padding: 58px 5vw;
+}
+
+.wagyu-intro-card,
+.wagyu-marbling-card,
+.wagyu-cooking-card,
+.wagyu-private-pro-card,
+.wagyu-cta-card {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    border-radius: 38px;
+    border: 1px solid rgba(229, 201, 130, 0.18);
+    background:
+        linear-gradient(135deg, rgba(201, 164, 92, 0.08), transparent 42%),
+        rgba(255, 255, 255, 0.04);
+    box-shadow: 0 26px 78px rgba(0, 0, 0, 0.24);
+}
+
+.wagyu-intro-card,
+.wagyu-cooking-card,
+.wagyu-private-pro-card {
+    padding: 42px;
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 44px;
+    align-items: center;
+}
+
+.wagyu-intro-card h2,
+.wagyu-section-heading h2,
+.wagyu-marbling-content h2,
+.wagyu-cooking-card h2,
+.wagyu-private-pro-card h2,
+.wagyu-cta-card h2 {
+    margin-top: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.35rem, 5vw, 5rem);
+    line-height: 0.96;
+    letter-spacing: -0.065em;
+    font-weight: 400;
+    color: var(--wf-cream);
+}
+
+.wagyu-intro-card p,
+.wagyu-section-heading p,
+.wagyu-marbling-content p,
+.wagyu-cooking-card p,
+.wagyu-private-pro-card p,
+.wagyu-cta-card p {
+    color: var(--wf-cream-soft);
+    line-height: 1.85;
+    font-size: 1.03rem;
+}
+
+.wagyu-intro-card p + p,
+.wagyu-marbling-content p + p {
+    margin-top: 18px;
+}
+
+.wagyu-section-heading {
+    width: min(920px, 100%);
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+/* SENSATIONS / CUTS */
+
+.wagyu-sensations-grid,
+.wagyu-cuts-grid {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
+}
+
+.wagyu-sensations-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.wagyu-cuts-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.wagyu-sensations-grid article,
+.wagyu-cuts-grid article,
+.wagyu-cooking-steps article {
+    padding: 28px;
+    border-radius: 28px;
+    border: 1px solid rgba(229, 201, 130, 0.15);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015)),
+        rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.wagyu-cuts-grid article {
+    padding: 18px 18px 28px;
+}
+
+.wagyu-cut-visual {
+    position: relative;
+    height: 170px;
+    margin-bottom: 22px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid rgba(229, 201, 130, 0.13);
+    background: #080605;
+}
+
+.wagyu-cut-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.34)),
+        radial-gradient(circle at 50% 20%, rgba(229, 201, 130, 0.08), transparent 44%);
+    pointer-events: none;
+}
+
+.wagyu-cut-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    filter: saturate(1.06) contrast(1.04);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.wagyu-cuts-grid article:hover .wagyu-cut-visual img {
+    transform: scale(1.08);
+    filter: saturate(1.12) contrast(1.08);
+}
+
+.wagyu-sensations-grid span,
+.wagyu-cuts-grid span,
+.wagyu-cooking-steps span {
+    color: var(--wf-gold-light);
+    font-weight: 950;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
+
+.wagyu-sensations-grid h3,
+.wagyu-cuts-grid h3 {
+    margin-top: 18px;
+    color: var(--wf-cream);
+    font-size: 1.36rem;
+}
+
+.wagyu-cuts-grid h3 {
+    margin-top: 12px;
+}
+
+.wagyu-sensations-grid p,
+.wagyu-cuts-grid p {
+    margin-top: 12px;
+    color: var(--wf-cream-soft);
+    line-height: 1.7;
+}
+
+/* MARBLING */
+
+.wagyu-marbling-card {
+    padding: 42px;
+    display: grid;
+    grid-template-columns: 430px 1fr;
+    gap: 44px;
+    align-items: center;
+}
+
+.wagyu-marbling-visual {
+    position: relative;
+    min-height: 430px;
+    border-radius: 34px;
+    border: 1px solid rgba(229, 201, 130, 0.18);
+    background: #080605;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.wagyu-marbling-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.76)),
+        radial-gradient(circle at 42% 22%, rgba(229, 201, 130, 0.12), transparent 46%);
+    pointer-events: none;
+}
+
+.wagyu-marbling-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: scale(1.02);
+    filter: saturate(1.08) contrast(1.06);
+}
+
+.wagyu-marbling-visual div {
+    position: relative;
+    z-index: 2;
+    padding: 28px;
+}
+
+.wagyu-marbling-visual span {
+    color: rgba(255, 247, 232, 0.72);
+    font-size: 0.78rem;
+    font-weight: 950;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.wagyu-marbling-visual strong {
+    display: block;
+    margin-top: 8px;
+    color: var(--wf-gold-light);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3.2rem;
+    line-height: 0.92;
+    letter-spacing: -0.065em;
+    font-weight: 400;
+    text-shadow: 0 14px 34px rgba(0, 0, 0, 0.48);
+}
+
+.wagyu-marbling-visual small {
+    display: block;
+    margin-top: 12px;
+    color: rgba(255, 247, 232, 0.82);
+}
+
+.wagyu-marbling-content a {
+    min-height: 54px;
+    margin-top: 24px;
+    padding: 0 24px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #130f08;
+    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
+    text-decoration: none;
+    font-weight: 950;
+}
+
+/* COOKING */
+
+.wagyu-cooking-card {
+    grid-template-columns: 1fr 480px;
+}
+
+.wagyu-cooking-side {
+    display: grid;
+    gap: 14px;
+}
+
+.wagyu-cooking-visual {
+    position: relative;
+    height: 230px;
+    border-radius: 28px;
+    border: 1px solid rgba(229, 201, 130, 0.16);
+    background: #080605;
+    overflow: hidden;
+}
+
+.wagyu-cooking-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.38)),
+        radial-gradient(circle at 50% 20%, rgba(229, 201, 130, 0.08), transparent 44%);
+    pointer-events: none;
+}
+
+.wagyu-cooking-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.07) contrast(1.05);
+}
+
+.wagyu-cooking-steps {
+    display: grid;
+    gap: 12px;
+}
+
+.wagyu-cooking-steps article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 18px;
+    align-items: center;
+}
+
+.wagyu-cooking-steps strong {
+    color: var(--wf-cream);
+    font-size: 1.12rem;
+}
+
+.wagyu-cooking-steps small {
+    grid-column: 2;
+    color: var(--wf-cream-soft);
+    line-height: 1.5;
+}
+
+/* PRIVATE PRO */
+
+.wagyu-private-pro-card {
+    grid-template-columns: 1fr 360px;
+    background:
+        radial-gradient(circle at 84% 18%, rgba(111, 23, 18, 0.2), transparent 38%),
+        rgba(255, 255, 255, 0.04);
+}
+
+.wagyu-private-pro-actions {
+    display: grid;
+}
+
+/* CTA */
+
+.wagyu-cta-card {
+    padding: 54px;
+    text-align: center;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(201, 164, 92, 0.16), transparent 50%),
+        rgba(255, 255, 255, 0.04);
+}
+
+.wagyu-cta-card p {
+    max-width: 720px;
+    margin: 18px auto 0;
+}
+
+.wagyu-cta-card > div {
+    justify-content: center;
+}
+
+/* LIGHT MODE */
+
+body.theme-light.wagyu-page {
+    background:
+        radial-gradient(circle at 50% -8%, rgba(201, 164, 92, 0.2), transparent 34%),
+        radial-gradient(circle at 86% 20%, rgba(111, 23, 18, 0.055), transparent 30%),
+        #f8f0e4;
+}
+
+body.theme-light .wagyu-intro-card h2,
+body.theme-light .wagyu-section-heading h2,
+body.theme-light .wagyu-marbling-content h2,
+body.theme-light .wagyu-cooking-card h2,
+body.theme-light .wagyu-private-pro-card h2,
+body.theme-light .wagyu-cta-card h2,
+body.theme-light .wagyu-sensations-grid h3,
+body.theme-light .wagyu-cuts-grid h3,
+body.theme-light .wagyu-cooking-steps strong {
+    color: #17120c;
+}
+
+body.theme-light .wagyu-intro-card p,
+body.theme-light .wagyu-section-heading p,
+body.theme-light .wagyu-marbling-content p,
+body.theme-light .wagyu-cooking-card p,
+body.theme-light .wagyu-private-pro-card p,
+body.theme-light .wagyu-cta-card p,
+body.theme-light .wagyu-sensations-grid p,
+body.theme-light .wagyu-cuts-grid p,
+body.theme-light .wagyu-cooking-steps small {
+    color: #665744;
+}
+
+body.theme-light .wagyu-hero-content h1,
+body.theme-light .wagyu-hero-content h1 span {
+    color: var(--wf-cream);
+}
+
+body.theme-light .wagyu-hero-content p {
+    color: rgba(255, 247, 232, 0.88);
+}
+
+body.theme-light .wagyu-secondary-button {
+    color: #17120c;
+    border-color: rgba(177, 132, 54, 0.24);
+    background: rgba(255, 255, 255, 0.52);
+}
+
+body.theme-light .wagyu-hero .wagyu-secondary-button {
+    color: var(--wf-cream);
+    border-color: rgba(229, 201, 130, 0.28);
+    background: rgba(0, 0, 0, 0.26);
+}
+
+body.theme-light .wagyu-intro-card,
+body.theme-light .wagyu-marbling-card,
+body.theme-light .wagyu-cooking-card,
+body.theme-light .wagyu-private-pro-card,
+body.theme-light .wagyu-cta-card,
+body.theme-light .wagyu-sensations-grid article,
+body.theme-light .wagyu-cuts-grid article,
+body.theme-light .wagyu-cooking-steps article {
+    background: rgba(255, 255, 255, 0.56);
+    border-color: rgba(177, 132, 54, 0.18);
+    box-shadow: 0 24px 70px rgba(95, 70, 31, 0.1);
+}
+
+body.theme-light .wagyu-hero-panel-content h2,
+body.theme-light .wagyu-marbling-visual strong {
+    color: var(--wf-gold-light);
+}
+
+body.theme-light .wagyu-hero-panel-content p,
+body.theme-light .wagyu-marbling-visual small {
+    color: rgba(255, 247, 232, 0.84);
+}
+
+body.theme-light .wagyu-panel-tags strong {
+    color: var(--wf-cream);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1120px) {
+    .wagyu-hero-inner,
+    .wagyu-intro-card,
+    .wagyu-marbling-card,
+    .wagyu-cooking-card,
+    .wagyu-private-pro-card {
+        grid-template-columns: 1fr;
+    }
+
+    .wagyu-sensations-grid,
+    .wagyu-cuts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wagyu-hero-panel,
+    .wagyu-marbling-visual {
+        min-height: 360px;
+    }
+
+    .wagyu-cooking-side {
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) {
+    .wagyu-hero {
+        min-height: auto;
+        padding: 92px 18px 48px;
+    }
+
+    .wagyu-hero-overlay {
+        background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.9)),
+            radial-gradient(circle at 50% 22%, rgba(229, 201, 130, 0.08), transparent 48%);
+    }
+
+    .wagyu-deco {
+        display: none;
+    }
+
+    .wagyu-hero-inner {
+        gap: 30px;
+    }
+
+    .wagyu-hero-content h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+        line-height: 0.9;
+        letter-spacing: -0.065em;
+    }
+
+    .wagyu-hero-content p {
+        max-width: 100%;
+        font-size: 0.98rem;
+        line-height: 1.75;
+    }
+
+    .wagyu-hero-actions,
+    .wagyu-private-pro-actions,
+    .wagyu-cta-card > div {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .wagyu-primary-button,
+    .wagyu-secondary-button {
+        width: 100%;
+        min-height: 54px;
+    }
+
+    .wagyu-hero-panel,
+    .wagyu-intro-card,
+    .wagyu-marbling-card,
+    .wagyu-cooking-card,
+    .wagyu-private-pro-card,
+    .wagyu-cta-card {
+        border-radius: 28px;
+    }
+
+    .wagyu-intro-card,
+    .wagyu-marbling-card,
+    .wagyu-cooking-card,
+    .wagyu-private-pro-card,
+    .wagyu-cta-card {
+        padding: 24px;
+    }
+
+    .wagyu-hero-panel {
+        min-height: 310px;
+    }
+
+    .wagyu-hero-panel-content {
+        padding: 24px;
+    }
+
+    .wagyu-hero-panel-content h2 {
+        font-size: 3rem;
+    }
+
+    .wagyu-intro-section,
+    .wagyu-sensations-section,
+    .wagyu-marbling-section,
+    .wagyu-cuts-section,
+    .wagyu-cooking-section,
+    .wagyu-private-pro-section,
+    .wagyu-cta-section {
+        padding: 38px 18px;
+        overflow: hidden;
+    }
+
+    .wagyu-section-heading {
+        text-align: left;
+        margin-bottom: 24px;
+    }
+
+    .wagyu-intro-card h2,
+    .wagyu-section-heading h2,
+    .wagyu-marbling-content h2,
+    .wagyu-cooking-card h2,
+    .wagyu-private-pro-card h2,
+    .wagyu-cta-card h2 {
+        font-size: clamp(2.25rem, 11vw, 3.4rem);
+        line-height: 0.96;
+    }
+
+    .wagyu-sensations-grid,
+    .wagyu-cuts-grid,
+    .wagyu-cooking-steps {
+        width: 100%;
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 16px;
+    }
+
+    .wagyu-sensations-grid::-webkit-scrollbar,
+    .wagyu-cuts-grid::-webkit-scrollbar,
+    .wagyu-cooking-steps::-webkit-scrollbar {
+        display: none;
+    }
+
+    .wagyu-sensations-grid article,
+    .wagyu-cuts-grid article,
+    .wagyu-cooking-steps article {
+        flex: 0 0 calc(100vw - 72px);
+        max-width: calc(100vw - 72px);
+        scroll-snap-align: start;
+    }
+
+    .wagyu-cut-visual {
+        height: 165px;
+        border-radius: 20px;
+    }
+
+    .wagyu-marbling-visual {
+        min-height: 280px;
+        border-radius: 24px;
+    }
+
+    .wagyu-marbling-visual div {
+        padding: 24px;
+    }
+
+    .wagyu-marbling-visual strong {
+        font-size: 2.45rem;
+    }
+
+    .wagyu-cooking-visual {
+        height: 230px;
+        border-radius: 24px;
+    }
+
+    .wagyu-cooking-steps article {
+        display: block;
+    }
+
+    .wagyu-cooking-steps strong {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .wagyu-cooking-steps small {
+        display: block;
+        margin-top: 8px;
+    }
+
+    .wagyu-cta-card {
+        text-align: left;
+    }
+
+    .wagyu-cta-card p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
