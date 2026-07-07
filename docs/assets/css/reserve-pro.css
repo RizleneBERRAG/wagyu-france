@@ -5,7 +5,9 @@
         #070605;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .reserve-luxury-hero {
     position: relative;
@@ -71,7 +73,9 @@
     background: var(--wf-red-soft);
 }
 
-/* MAIN CARD */
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .reserve-main-card {
     position: relative;
@@ -208,7 +212,9 @@
     border-color: rgba(229, 201, 130, 0.64);
 }
 
-/* ANIMAL */
+/* =========================================================
+   ANIMAL
+========================================================= */
 
 .luxury-animal-area {
     position: relative;
@@ -249,7 +255,9 @@
     display: none;
 }
 
-/* CARD INFO */
+/* =========================================================
+   CARD INFO
+========================================================= */
 
 .exception-card {
     position: absolute;
@@ -294,7 +302,9 @@
     font-size: 0.95rem;
 }
 
-/* OVERLAY INTERACTIF */
+/* =========================================================
+   OVERLAY INTERACTIF
+========================================================= */
 
 .cut-hit {
     position: absolute;
@@ -470,7 +480,9 @@
     border-color: rgba(22, 16, 7, 0.42);
 }
 
-/* DETAIL SECTION */
+/* =========================================================
+   DETAIL SECTION
+========================================================= */
 
 .cut-reservation-section,
 .pro-flow-section {
@@ -646,7 +658,9 @@
     margin-top: 14px;
 }
 
-/* FLOW */
+/* =========================================================
+   FLOW
+========================================================= */
 
 .section-heading {
     width: min(900px, 100%);
@@ -700,7 +714,9 @@
     line-height: 1.7;
 }
 
-/* PANIER PRO */
+/* =========================================================
+   PANIER PRO
+========================================================= */
 
 .pro-cart-floating {
     position: fixed;
@@ -995,7 +1011,217 @@
     transform: translateY(-2px);
 }
 
-/* LIGHT MODE */
+/* =========================================================
+   FORMULAIRE DE FINALISATION PANIER PRO
+========================================================= */
+
+.pro-checkout-form {
+    margin-top: 18px;
+    padding: 22px;
+    border-radius: 28px;
+    border: 1px solid rgba(229, 201, 130, 0.16);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+        rgba(0, 0, 0, 0.16);
+}
+
+.pro-checkout-form.is-hidden,
+.pro-cart-confirmation.is-hidden {
+    display: none;
+}
+
+.checkout-intro h3 {
+    margin-top: 8px;
+    color: var(--wf-cream);
+    font-size: 1.3rem;
+}
+
+.checkout-intro p:not(.eyebrow) {
+    margin-top: 10px;
+    color: var(--wf-cream-soft);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.checkout-grid {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+.checkout-grid label {
+    display: grid;
+    gap: 8px;
+}
+
+.checkout-grid label span {
+    color: var(--wf-muted);
+    font-size: 0.82rem;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.checkout-grid input,
+.checkout-grid select,
+.checkout-grid textarea {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 16px;
+    border: 1px solid rgba(229, 201, 130, 0.18);
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--wf-cream);
+    padding: 0 14px;
+    outline: none;
+    font: inherit;
+    transition: 0.22s ease;
+}
+
+.checkout-grid textarea {
+    min-height: 110px;
+    padding-top: 14px;
+    resize: vertical;
+}
+
+.checkout-grid input::placeholder,
+.checkout-grid textarea::placeholder {
+    color: rgba(255, 247, 232, 0.38);
+}
+
+.checkout-grid input:focus,
+.checkout-grid select:focus,
+.checkout-grid textarea:focus {
+    border-color: rgba(229, 201, 130, 0.52);
+    box-shadow: 0 0 0 4px rgba(229, 201, 130, 0.08);
+}
+
+.checkout-actions {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.checkout-back-button,
+.checkout-submit-button {
+    min-height: 50px;
+    border-radius: 999px;
+    font-weight: 950;
+    cursor: pointer;
+    transition: 0.24s ease;
+}
+
+.checkout-submit-button {
+    border: 0;
+    color: #130f08;
+    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
+}
+
+.checkout-back-button {
+    border: 1px solid rgba(229, 201, 130, 0.22);
+    color: var(--wf-cream);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.checkout-back-button:hover,
+.checkout-submit-button:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   CONFIRMATION
+========================================================= */
+
+.pro-cart-confirmation {
+    margin-top: 18px;
+    padding: 26px;
+    border-radius: 28px;
+    border: 1px solid rgba(229, 201, 130, 0.18);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(229, 201, 130, 0.13), transparent 52%),
+        rgba(255, 255, 255, 0.04);
+    text-align: center;
+}
+
+.pro-cart-confirmation > span {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #130f08;
+    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
+    font-weight: 950;
+    font-size: 1.3rem;
+}
+
+.pro-cart-confirmation h3 {
+    color: var(--wf-cream);
+    font-size: 1.4rem;
+}
+
+.pro-cart-confirmation p {
+    margin-top: 12px;
+    color: var(--wf-cream-soft);
+    line-height: 1.65;
+}
+
+.confirmation-summary {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(229, 201, 130, 0.14);
+    background: rgba(0, 0, 0, 0.16);
+    text-align: left;
+    color: var(--wf-cream-soft);
+    line-height: 1.6;
+    font-size: 0.92rem;
+}
+
+.pro-cart-confirmation button {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 18px;
+    border-radius: 999px;
+    border: 0;
+    color: #130f08;
+    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
+    font-weight: 950;
+    cursor: pointer;
+}
+
+/* =========================================================
+   ÉTAT CONFIRMATION PANIER
+========================================================= */
+
+.pro-cart-drawer.is-confirmed {
+    grid-template-rows: auto 1fr;
+}
+
+.pro-cart-drawer.is-confirmed .pro-cart-summary {
+    display: none;
+}
+
+.pro-cart-drawer.is-confirmed .pro-cart-empty,
+.pro-cart-drawer.is-confirmed .pro-cart-items,
+.pro-cart-drawer.is-confirmed .pro-checkout-form {
+    display: none !important;
+}
+
+.pro-cart-drawer.is-confirmed .pro-cart-body {
+    padding-bottom: 24px;
+}
+
+.pro-cart-drawer.is-confirmed .pro-cart-confirmation {
+    margin-top: 0;
+}
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
 
 body.theme-light.reserve-pro-page {
     background:
@@ -1179,314 +1405,6 @@ body.theme-light .cart-qty span {
     color: #17120c;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 1180px) {
-    .reserve-card-top {
-        grid-template-columns: 1fr;
-    }
-
-    .reserve-progress-mini {
-        width: 100%;
-    }
-
-    .luxury-animal-area {
-        min-height: 720px;
-    }
-
-    .animal-stage {
-        width: 1080px;
-        max-width: none;
-        left: 52%;
-        top: 52%;
-    }
-
-    .exception-card {
-        left: 24px;
-        bottom: 24px;
-    }
-
-    .cut-detail-luxury {
-        grid-template-columns: 1fr;
-    }
-
-    .cut-stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .pro-flow-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 760px) {
-    .reserve-luxury-hero {
-        padding: 44px 18px 28px;
-    }
-
-    .reserve-main-card {
-        padding: 18px;
-        border-radius: 26px;
-    }
-
-    .reserve-title-block h1 {
-        letter-spacing: 0.04em;
-    }
-
-    .luxury-animal-area {
-        min-height: 860px;
-    }
-
-    .animal-stage {
-        width: 720px;
-        left: 50%;
-        top: 45%;
-        opacity: 0.55;
-    }
-
-    .exception-card {
-        position: relative;
-        width: 100%;
-        left: auto;
-        bottom: auto;
-        margin: 20px 0;
-    }
-
-    .cut-frame,
-    .cut-line,
-    .cut-dot {
-        display: none;
-    }
-
-    .cut-tag {
-        left: 50% !important;
-        right: auto !important;
-        width: min(280px, calc(100% - 32px));
-        justify-content: space-between;
-    }
-
-    .cut-reservation-section,
-    .pro-flow-section {
-        padding: 34px 18px;
-    }
-
-    .cut-detail-luxury {
-        padding: 22px;
-        border-radius: 26px;
-    }
-
-    .cut-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .pro-flow-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .pro-cart-floating {
-        right: 18px;
-        bottom: 88px;
-    }
-
-    .pro-cart-floating span {
-        display: none;
-    }
-
-    .pro-cart-drawer {
-        width: calc(100vw - 12px);
-        padding: 22px;
-    }
-}
-
-.animal-stage:not(.is-positioned) .cut-tag,
-.animal-stage:not(.is-positioned) .cut-dot,
-.animal-stage:not(.is-positioned) .cut-line,
-.animal-stage:not(.is-positioned) .cut-frame {
-    opacity: 0;
-}
-
-/* =========================================================
-   FORMULAIRE DE FINALISATION PANIER PRO
-========================================================= */
-
-.pro-checkout-form {
-    margin-top: 18px;
-    padding: 22px;
-    border-radius: 28px;
-    border: 1px solid rgba(229, 201, 130, 0.16);
-    background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
-        rgba(0, 0, 0, 0.16);
-}
-
-.pro-checkout-form.is-hidden,
-.pro-cart-confirmation.is-hidden {
-    display: none;
-}
-
-.checkout-intro h3 {
-    margin-top: 8px;
-    color: var(--wf-cream);
-    font-size: 1.3rem;
-}
-
-.checkout-intro p:not(.eyebrow) {
-    margin-top: 10px;
-    color: var(--wf-cream-soft);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.checkout-grid {
-    margin-top: 22px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-}
-
-.checkout-grid label {
-    display: grid;
-    gap: 8px;
-}
-
-.checkout-grid label span {
-    color: var(--wf-muted);
-    font-size: 0.82rem;
-    font-weight: 950;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.checkout-grid input,
-.checkout-grid select,
-.checkout-grid textarea {
-    width: 100%;
-    min-height: 48px;
-    border-radius: 16px;
-    border: 1px solid rgba(229, 201, 130, 0.18);
-    background: rgba(255, 255, 255, 0.045);
-    color: var(--wf-cream);
-    padding: 0 14px;
-    outline: none;
-    font: inherit;
-    transition: 0.22s ease;
-}
-
-.checkout-grid textarea {
-    min-height: 110px;
-    padding-top: 14px;
-    resize: vertical;
-}
-
-.checkout-grid input::placeholder,
-.checkout-grid textarea::placeholder {
-    color: rgba(255, 247, 232, 0.38);
-}
-
-.checkout-grid input:focus,
-.checkout-grid select:focus,
-.checkout-grid textarea:focus {
-    border-color: rgba(229, 201, 130, 0.52);
-    box-shadow: 0 0 0 4px rgba(229, 201, 130, 0.08);
-}
-
-.checkout-actions {
-    margin-top: 18px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.checkout-back-button,
-.checkout-submit-button {
-    min-height: 50px;
-    border-radius: 999px;
-    font-weight: 950;
-    cursor: pointer;
-    transition: 0.24s ease;
-}
-
-.checkout-submit-button {
-    border: 0;
-    color: #130f08;
-    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
-}
-
-.checkout-back-button {
-    border: 1px solid rgba(229, 201, 130, 0.22);
-    color: var(--wf-cream);
-    background: rgba(255, 255, 255, 0.035);
-}
-
-.checkout-back-button:hover,
-.checkout-submit-button:hover {
-    transform: translateY(-2px);
-}
-
-/* Confirmation */
-
-.pro-cart-confirmation {
-    margin-top: 18px;
-    padding: 26px;
-    border-radius: 28px;
-    border: 1px solid rgba(229, 201, 130, 0.18);
-    background:
-        radial-gradient(circle at 50% 0%, rgba(229, 201, 130, 0.13), transparent 52%),
-        rgba(255, 255, 255, 0.04);
-    text-align: center;
-}
-
-.pro-cart-confirmation > span {
-    width: 54px;
-    height: 54px;
-    margin: 0 auto 18px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #130f08;
-    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
-    font-weight: 950;
-    font-size: 1.3rem;
-}
-
-.pro-cart-confirmation h3 {
-    color: var(--wf-cream);
-    font-size: 1.4rem;
-}
-
-.pro-cart-confirmation p {
-    margin-top: 12px;
-    color: var(--wf-cream-soft);
-    line-height: 1.65;
-}
-
-.confirmation-summary {
-    margin-top: 18px;
-    padding: 16px;
-    border-radius: 20px;
-    border: 1px solid rgba(229, 201, 130, 0.14);
-    background: rgba(0, 0, 0, 0.16);
-    text-align: left;
-    color: var(--wf-cream-soft);
-    line-height: 1.6;
-    font-size: 0.92rem;
-}
-
-.pro-cart-confirmation button {
-    width: 100%;
-    min-height: 50px;
-    margin-top: 18px;
-    border-radius: 999px;
-    border: 0;
-    color: #130f08;
-    background: linear-gradient(135deg, var(--wf-gold-light), var(--wf-gold));
-    font-weight: 950;
-    cursor: pointer;
-}
-
-/* Mode clair */
-
 body.theme-light .pro-checkout-form,
 body.theme-light .pro-cart-confirmation {
     background: rgba(255, 255, 255, 0.58);
@@ -1533,34 +1451,526 @@ body.theme-light .confirmation-summary {
     color: #5f5141;
 }
 
-/* =========================================================
-   ÉTAT CONFIRMATION PANIER
-========================================================= */
-
-.pro-cart-drawer.is-confirmed {
-    grid-template-rows: auto 1fr;
-}
-
-.pro-cart-drawer.is-confirmed .pro-cart-summary {
-    display: none;
-}
-
-.pro-cart-drawer.is-confirmed .pro-cart-empty,
-.pro-cart-drawer.is-confirmed .pro-cart-items,
-.pro-cart-drawer.is-confirmed .pro-checkout-form {
-    display: none !important;
-}
-
-.pro-cart-drawer.is-confirmed .pro-cart-body {
-    padding-bottom: 24px;
-}
-
-.pro-cart-drawer.is-confirmed .pro-cart-confirmation {
-    margin-top: 0;
-}
-
 body.theme-light .pro-cart-drawer.is-confirmed .pro-cart-confirmation {
     background:
         radial-gradient(circle at 50% 0%, rgba(201, 164, 92, 0.16), transparent 55%),
         rgba(255, 255, 255, 0.68);
+}
+
+/* =========================================================
+   RESPONSIVE TABLETTE
+========================================================= */
+
+@media (max-width: 1180px) {
+    .reserve-card-top {
+        grid-template-columns: 1fr;
+    }
+
+    .reserve-progress-mini {
+        width: 100%;
+    }
+
+    .luxury-animal-area {
+        min-height: 720px;
+    }
+
+    .animal-stage {
+        width: 1080px;
+        max-width: none;
+        left: 52%;
+        top: 52%;
+    }
+
+    .exception-card {
+        left: 24px;
+        bottom: 24px;
+    }
+
+    .cut-detail-luxury {
+        grid-template-columns: 1fr;
+    }
+
+    .cut-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pro-flow-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================================
+   MOBILE — ANIMAL PROPRE ET LISIBLE
+========================================================= */
+
+@media (max-width: 760px) {
+    .reserve-luxury-hero {
+        padding: 34px 14px 26px;
+    }
+
+    .reserve-deco {
+        width: min(260px, 100%);
+        grid-template-columns: 1fr 42px 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+    }
+
+    .reserve-deco img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .reserve-title-block {
+        margin-bottom: 28px;
+    }
+
+    .reserve-title-block h1 {
+        font-size: clamp(2.2rem, 13vw, 3.8rem);
+        letter-spacing: 0.04em;
+    }
+
+    .reserve-title-block p:not(.eyebrow) {
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+
+    .reserve-main-card {
+        padding: 14px;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+
+    .reserve-card-top {
+        z-index: 20;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .reserve-card-top h2 {
+        font-size: 1.35rem;
+    }
+
+    .reserve-progress-mini {
+        padding: 14px;
+        border-radius: 18px;
+    }
+
+    .reserve-progress-mini strong {
+        font-size: 1.35rem;
+    }
+
+    .pro-access-button,
+    .pro-cart-top-button {
+        min-height: 46px;
+        padding: 0 14px;
+        border-radius: 14px;
+        font-size: 0.78rem;
+    }
+
+    .luxury-animal-area {
+        min-height: 0 !important;
+        height: auto !important;
+        padding: 14px;
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        overflow: hidden;
+        background:
+            radial-gradient(circle at 50% 38%, rgba(229, 201, 130, 0.14), transparent 42%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    }
+
+    .exception-card {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        width: 100%;
+        margin: 0;
+        padding: 18px 16px;
+        border-radius: 20px;
+        order: 1;
+        z-index: 5;
+    }
+
+    .exception-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 14px;
+        font-size: 1rem;
+    }
+
+    .exception-card h3 {
+        font-size: 0.74rem;
+        letter-spacing: 0.12em;
+    }
+
+    .exception-card p {
+        margin-top: 10px;
+        font-size: 0.82rem;
+        line-height: 1.55;
+    }
+
+    .animal-stage {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 340px;
+        height: auto !important;
+        min-height: 0 !important;
+        aspect-ratio: auto !important;
+        margin: 4px auto 0;
+        opacity: 1 !important;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .animal-image {
+        position: relative !important;
+        inset: auto !important;
+        display: block;
+        width: 100%;
+        height: auto !important;
+        max-height: 210px;
+        object-fit: contain;
+        object-position: center;
+        margin: 0 auto 8px;
+        order: 1;
+        opacity: 1 !important;
+        filter:
+            drop-shadow(0 18px 28px rgba(0, 0, 0, 0.46))
+            drop-shadow(0 0 16px rgba(201, 164, 92, 0.12));
+    }
+
+    .cut-hit,
+    .cut-frame,
+    .cut-line,
+    .cut-dot {
+        display: none !important;
+    }
+
+    .cut-tag {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        min-height: 44px;
+        padding: 0 10px 0 15px;
+        border-radius: 15px;
+        justify-content: space-between;
+        font-size: 0.92rem;
+        gap: 10px;
+        order: 2;
+    }
+
+    .cut-tag:hover,
+    .cut-tag.active,
+    .cut-tag.is-hovered {
+        transform: none !important;
+    }
+
+    .cut-tag i {
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        font-size: 0.9rem;
+    }
+
+    .cut-reservation-section,
+    .pro-flow-section {
+        padding: 34px 14px;
+    }
+
+    .cut-detail-luxury {
+        padding: 20px;
+        border-radius: 24px;
+    }
+
+    .cut-detail-left h2,
+    .section-heading h2 {
+        font-size: clamp(2rem, 11vw, 3.2rem);
+    }
+
+    .cut-detail-left p:not(.eyebrow),
+    .section-heading p:not(.eyebrow) {
+        font-size: 0.94rem;
+        line-height: 1.7;
+    }
+
+    .cut-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-flow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-flow-grid article {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .pro-cart-floating {
+        right: 14px !important;
+        bottom: 76px !important;
+        min-height: 46px;
+        padding: 0 8px;
+        z-index: 170;
+    }
+
+    .pro-cart-floating strong {
+        min-width: 30px;
+        height: 30px;
+    }
+
+    .pro-cart-floating span {
+        display: none;
+    }
+
+    .pro-cart-drawer {
+        width: calc(100vw - 10px);
+        padding: 20px;
+    }
+
+    .pro-cart-head h2 {
+        font-size: 1.7rem;
+    }
+
+    .pro-cart-empty {
+        min-height: 240px;
+        padding: 22px;
+    }
+}
+
+@media (max-width: 430px) {
+    .reserve-luxury-hero {
+        padding: 30px 12px 24px;
+    }
+
+    .reserve-main-card {
+        padding: 12px;
+    }
+
+    .luxury-animal-area {
+        padding: 12px;
+        border-radius: 20px;
+    }
+
+    .animal-stage {
+        max-width: 300px;
+    }
+
+    .animal-image {
+        max-height: 185px;
+    }
+
+    .cut-tag {
+        min-height: 42px;
+        font-size: 0.86rem;
+    }
+
+    .exception-card {
+        padding: 16px 14px;
+    }
+
+    .pro-cart-drawer {
+        padding: 18px;
+    }
+}
+
+/* =========================================================
+   ÉTAT INITIAL JS
+========================================================= */
+
+.animal-stage:not(.is-positioned) .cut-tag,
+.animal-stage:not(.is-positioned) .cut-dot,
+.animal-stage:not(.is-positioned) .cut-line,
+.animal-stage:not(.is-positioned) .cut-frame {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   FIX FINAL MOBILE — UNE SEULE IMAGE ANIMAL
+========================================================= */
+
+@media (max-width: 760px) {
+    .animal-stage {
+        max-width: 330px;
+        gap: 9px;
+    }
+
+    .animal-image {
+        max-height: 230px;
+        object-fit: contain;
+        object-position: center;
+        margin-bottom: 10px;
+    }
+
+    /* Par défaut : mode sombre = animal noir uniquement */
+    .animal-dark {
+        display: block !important;
+    }
+
+    .animal-light {
+        display: none !important;
+    }
+
+    /* Mode clair = animal clair uniquement */
+    body.theme-light .animal-dark {
+        display: none !important;
+    }
+
+    body.theme-light .animal-light {
+        display: block !important;
+    }
+
+    .cut-tag {
+        min-height: 42px;
+        font-size: 0.84rem;
+        padding: 0 10px 0 14px;
+    }
+
+    .cut-tag i {
+        width: 21px;
+        height: 21px;
+        font-size: 0.82rem;
+    }
+
+    .pro-cart-floating {
+        right: 12px !important;
+        bottom: 72px !important;
+        min-height: 42px;
+        padding: 0 7px !important;
+    }
+
+    .pro-cart-floating strong {
+        min-width: 28px;
+        height: 28px;
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .animal-stage {
+        max-width: 300px;
+    }
+
+    .animal-image {
+        max-height: 205px;
+    }
+
+    .cut-tag {
+        min-height: 40px;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* =========================================================
+   FIX URGENT MOBILE — PLUS DE DÉBORDEMENT HORIZONTAL
+========================================================= */
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.reserve-pro-page {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 760px) {
+    .reserve-luxury-hero {
+        width: 100%;
+        max-width: 100%;
+        padding: 28px 12px 24px;
+        overflow: hidden;
+    }
+
+    .reserve-title-block {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 24px;
+        overflow: hidden;
+    }
+
+    .reserve-title-block h1 {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(1.95rem, 11vw, 3rem);
+        line-height: 0.96;
+        letter-spacing: 0.015em;
+        text-align: center;
+        overflow-wrap: break-word;
+        word-break: normal;
+        hyphens: auto;
+    }
+
+    .reserve-title-block h1 span {
+        display: inline;
+    }
+
+    .reserve-title-block p:not(.eyebrow) {
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.9rem;
+        line-height: 1.55;
+    }
+
+    .reserve-main-card {
+        width: 100%;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px;
+        overflow: hidden;
+    }
+
+    .luxury-animal-area {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .animal-stage {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+
+    .animal-image {
+        max-width: 100%;
+    }
+
+    .cut-tag {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+    .reserve-title-block h1 {
+        font-size: clamp(1.75rem, 10vw, 2.55rem);
+        letter-spacing: 0;
+    }
+
+    .reserve-title-block p:not(.eyebrow) {
+        max-width: 250px;
+    }
 }
