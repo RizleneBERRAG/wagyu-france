@@ -851,3 +851,64 @@ body.universe-pro .wf-header-cta {
         justify-content: space-between;
     }
 }
+
+/* =========================================================
+   FIX MENU MOBILE — OUVERTURE BURGER
+========================================================= */
+
+body.wf-menu-open {
+    overflow: hidden;
+}
+
+@media (max-width: 1320px) {
+    .wf-menu-drawer,
+    .wf-menu-modal,
+    .wf-header-drawer,
+    .wf-mobile-menu,
+    [data-menu-drawer] {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px) scale(0.98);
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    body.wf-menu-open .wf-menu-drawer,
+    body.wf-menu-open .wf-menu-modal,
+    body.wf-menu-open .wf-header-drawer,
+    body.wf-menu-open .wf-mobile-menu,
+    body.wf-menu-open [data-menu-drawer],
+    .wf-menu-drawer.is-open,
+    .wf-menu-modal.is-open,
+    .wf-header-drawer.is-open,
+    .wf-mobile-menu.is-open,
+    [data-menu-drawer].is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
+
+    .wf-menu-backdrop,
+    .wf-menu-overlay,
+    [data-menu-backdrop] {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    body.wf-menu-open .wf-menu-backdrop,
+    body.wf-menu-open .wf-menu-overlay,
+    body.wf-menu-open [data-menu-backdrop],
+    .wf-menu-backdrop.is-open,
+    .wf-menu-overlay.is-open,
+    [data-menu-backdrop].is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
