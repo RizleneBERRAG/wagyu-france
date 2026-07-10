@@ -40,7 +40,7 @@ class AdminAnimalController extends Controller
     {
         $data = $this->validatedData($request);
         $data['is_active'] = $request->boolean('is_active');
-        $data['opens_at'] = $data['status'] === 'open' && empty($data['opens_at']) ? now() : ($data['opens_at'] ?? null);
+        $data = $this->normalizePublicationState($data);
 
         $animal = DB::transaction(function () use ($data) {
             if ($data['is_active']) {
@@ -91,19 +91,11 @@ class AdminAnimalController extends Controller
     {
         $data = $this->validatedData($request, $animal);
         $data['is_active'] = $request->boolean('is_active');
+        $data = $this->normalizePublicationState($data, $animal);
 
         DB::transaction(function () use ($animal, $data) {
             if ($data['is_active']) {
                 AnimalBatch::where('id', '!=', $animal->getKey())->update(['is_active' => false]);
-            }
-
-            if ($data['status'] === 'open' && ! $animal->opens_at && empty($data['opens_at'])) {
-                $data['opens_at'] = now();
-            }
-
-            if ($data['status'] === 'closed' && ! $animal->closed_at) {
-                $data['closed_at'] = now();
-                $data['is_active'] = false;
             }
 
             $animal->update($data);
@@ -149,6 +141,26 @@ class AdminAnimalController extends Controller
             'cutting_planned_at' => ['nullable', 'date'],
             'notes' => ['nullable', 'string', 'max:3000'],
         ]);
+    }
+
+    private function normalizePublicationState(array $data, ?AnimalBatch $animal = null): array
+    {
+        if ($data['is_active'] && in_array($data['status'], ['draft', 'closed'], true)) {
+            $data['status'] = 'open';
+        }
+
+        if ($data['is_active'] && empty($data['opens_at'])) {
+            $data['opens_at'] = $animal?->opens_at ?: now();
+        }
+
+        if ($data['status'] === 'closed') {
+            $data['closed_at'] = $animal?->closed_at ?: now();
+            $data['is_active'] = false;
+        } else {
+            $data['closed_at'] = null;
+        }
+
+        return $data;
     }
 
     private function copyDefaultCuts(AnimalBatch $animal): void
