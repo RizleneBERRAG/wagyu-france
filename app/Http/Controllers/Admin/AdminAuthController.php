@@ -8,7 +8,9 @@ use App\Services\AdminActivityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class AdminAuthController extends Controller
@@ -19,9 +21,11 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return view('admin.login', [
-            'accountReady' => User::query()->where('is_active', true)->exists(),
-        ]);
+        $accountReady = Schema::hasTable('users')
+            && Schema::hasColumn('users', 'is_active')
+            && User::query()->where('is_active', true)->exists();
+
+        return view('admin.login', compact('accountReady'));
     }
 
     public function authenticate(Request $request, AdminActivityService $activity): RedirectResponse
@@ -40,11 +44,9 @@ class AdminAuthController extends Controller
             ]);
         }
 
-        if (! Auth::attempt([
-            'email' => $email,
-            'password' => $validated['password'],
-            'is_active' => true,
-        ])) {
+        $user = User::query()->whereRaw('LOWER(email) = ?', [$email])->first();
+
+        if (! $user || ! $user->is_active || ! Hash::check($validated['password'], $user->password)) {
             RateLimiter::hit($key, 60);
 
             return back()
@@ -53,9 +55,9 @@ class AdminAuthController extends Controller
         }
 
         RateLimiter::clear($key);
+        Auth::login($user);
         $request->session()->regenerate();
 
-        $user = $request->user();
         $user->forceFill(['last_login_at' => now()])->saveQuietly();
 
         $activity->record(
