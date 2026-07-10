@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Validation\ValidationException;
 
 class ProReservationRequest extends Model
@@ -30,7 +31,17 @@ class ProReservationRequest extends Model
         'document_notes',
         'invoice_number',
         'invoice_issued_at',
+        'invoice_sent_at',
         'invoice_snapshot',
+        'preparation_status',
+        'delivery_method',
+        'scheduled_at',
+        'carrier',
+        'tracking_number',
+        'logistics_notes',
+        'prepared_at',
+        'dispatched_at',
+        'delivered_at',
     ];
 
     protected $casts = [
@@ -43,7 +54,17 @@ class ProReservationRequest extends Model
         'vat_rate' => 'decimal:2',
         'paid_at' => 'datetime',
         'invoice_issued_at' => 'datetime',
+        'invoice_sent_at' => 'datetime',
+        'scheduled_at' => 'datetime',
+        'prepared_at' => 'datetime',
+        'dispatched_at' => 'datetime',
+        'delivered_at' => 'datetime',
     ];
+
+    public function creditNotes(): MorphMany
+    {
+        return $this->morphMany(CreditNote::class, 'documentable');
+    }
 
     protected static function booted(): void
     {
