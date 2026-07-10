@@ -7,6 +7,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-exports.css') }}">
 @endpush
 
 @section('content')
@@ -18,6 +19,11 @@
                 Recherchez un client, filtrez par statut et faites avancer chaque dossier
                 de « nouvelle » à « traitée » sans perdre la référence ni le détail des pièces.
             </p>
+        </div>
+        <div class="admin-export-global">
+            <a href="{{ route('admin.demandes.export', 'shop') }}" class="admin-secondary-button">Exporter boutique</a>
+            <a href="{{ route('admin.demandes.export', 'pro') }}" class="admin-secondary-button">Exporter pro</a>
+            <a href="{{ route('admin.demandes.export', 'contacts') }}" class="admin-secondary-button">Exporter messages</a>
         </div>
     </header>
 
@@ -69,7 +75,10 @@
         <section class="admin-request-section" id="boutique">
             <div class="admin-request-section-heading">
                 <div><p class="admin-kicker">Particuliers</p><h3>Demandes boutique</h3></div>
-                <span>{{ $shopOrders->count() }} résultat(s)</span>
+                <div class="admin-request-section-tools">
+                    <span>{{ $shopOrders->count() }} résultat(s)</span>
+                    <a href="{{ route('admin.demandes.export', 'shop') }}">CSV</a>
+                </div>
             </div>
 
             <div class="admin-request-card-grid">
@@ -90,6 +99,15 @@
                             <div><dt>Ville</dt><dd>{{ $order->city }}</dd></div>
                             <div><dt>Estimation</dt><dd>{{ number_format((float) $order->total, 2, ',', ' ') }} €</dd></div>
                         </dl>
+
+                        <div @class(['admin-stock-state', 'is-applied' => $order->stock_applied_at, 'is-free' => ! $order->stock_applied_at])>
+                            <span>{{ $order->stock_applied_at ? 'Stock réservé' : 'Stock non engagé' }}</span>
+                            <p>
+                                {{ $order->stock_applied_at
+                                    ? 'Déduit automatiquement le ' . $order->stock_applied_at->format('d/m/Y à H:i') . '. Une annulation le restaurera.'
+                                    : 'Le stock sera déduit lorsque la demande passera à « Confirmée » ou « Traitée ».' }}
+                            </p>
+                        </div>
 
                         @if ($order->message)
                             <div class="admin-request-message"><strong>Message du client</strong><p>{{ $order->message }}</p></div>
@@ -130,7 +148,10 @@
         <section class="admin-request-section" id="professionnels">
             <div class="admin-request-section-heading">
                 <div><p class="admin-kicker">Réserve</p><h3>Demandes professionnelles</h3></div>
-                <span>{{ $proRequests->count() }} résultat(s)</span>
+                <div class="admin-request-section-tools">
+                    <span>{{ $proRequests->count() }} résultat(s)</span>
+                    <a href="{{ route('admin.demandes.export', 'pro') }}">CSV</a>
+                </div>
             </div>
 
             <div class="admin-request-card-grid">
@@ -191,7 +212,10 @@
         <section class="admin-request-section" id="contacts">
             <div class="admin-request-section-heading">
                 <div><p class="admin-kicker">Contact</p><h3>Messages reçus</h3></div>
-                <span>{{ $contactMessages->count() }} résultat(s)</span>
+                <div class="admin-request-section-tools">
+                    <span>{{ $contactMessages->count() }} résultat(s)</span>
+                    <a href="{{ route('admin.demandes.export', 'contacts') }}">CSV</a>
+                </div>
             </div>
 
             <div class="admin-request-card-grid">
