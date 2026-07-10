@@ -8,6 +8,7 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-customers.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-customer-create.css') }}">
 @endpush
 
 @section('content')
