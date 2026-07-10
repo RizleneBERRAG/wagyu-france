@@ -17,11 +17,17 @@
     <section class="shop-hero">
         <div class="shop-shell shop-hero-grid">
             <div class="shop-hero-copy">
+                <div class="shop-hero-edition" aria-hidden="true">
+                    <span>Collection particulière</span>
+                    <i></i>
+                    <strong>01</strong>
+                </div>
+
                 <p class="shop-kicker">La boutique Wagyu France</p>
 
                 <h1>
                     Des pièces choisies pour
-                    <span>une dégustation juste.</span>
+                    <em>une dégustation juste.</em>
                 </h1>
 
                 <p class="shop-hero-text">
@@ -30,8 +36,8 @@
                 </p>
 
                 <div class="shop-hero-actions">
-                    <a href="#selection" class="shop-button shop-button-primary">Découvrir les pièces</a>
-                    <a href="{{ route('wagyu') }}" class="shop-button shop-button-secondary">Bien choisir son Wagyu</a>
+                    <a href="#selection" class="shop-button shop-button-primary"><span>Découvrir les pièces</span></a>
+                    <a href="{{ route('wagyu') }}" class="shop-button shop-button-secondary"><span>Bien choisir son Wagyu</span></a>
                 </div>
 
                 <dl class="shop-hero-facts">
@@ -51,10 +57,17 @@
             </div>
 
             <figure class="shop-hero-visual">
+                <span class="shop-visual-index">Sélection de la maison · 2026</span>
+
                 <img
                     src="{{ asset('assets/images/wagyu/marbrage-showcase.jpg') }}"
                     alt="Pièce de Wagyu français finement persillée"
                 >
+
+                <div class="shop-hero-seal" aria-hidden="true">
+                    <span>WF</span>
+                    <small>Sélection</small>
+                </div>
 
                 <figcaption>
                     <span>Le persillage Wagyu</span>
@@ -103,15 +116,21 @@
     <section class="shop-products-section" id="selection">
         <div class="shop-shell">
             <header class="shop-products-heading">
-                <div>
-                    <p class="shop-kicker">Notre sélection</p>
-                    <h2>Choisissez votre pièce.</h2>
+                <div class="shop-heading-title">
+                    <span class="shop-section-number">02</span>
+                    <div>
+                        <p class="shop-kicker">Notre sélection</p>
+                        <h2>Choisissez votre <em>pièce.</em></h2>
+                    </div>
                 </div>
 
-                <p>
-                    Les prix sont indiqués au kilogramme. La disponibilité et le poids exact
-                    sont confirmés après votre demande.
-                </p>
+                <div class="shop-products-intro">
+                    <span>Collection du domaine</span>
+                    <p>
+                        Les prix sont indiqués au kilogramme. La disponibilité et le poids exact
+                        sont confirmés après votre demande.
+                    </p>
+                </div>
             </header>
 
             <div class="shop-toolbar">
@@ -141,6 +160,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 01 · Collection signature</small>
                         <p class="shop-product-category">Pièce noble · À saisir</p>
                         <h3>Entrecôte Wagyu</h3>
                         <p class="shop-product-description">
@@ -177,6 +197,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 02 · Collection délicate</small>
                         <p class="shop-product-category">Pièce premium · Délicate</p>
                         <h3>Filet Wagyu</h3>
                         <p class="shop-product-description">
@@ -213,6 +234,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 03 · Collection équilibre</small>
                         <p class="shop-product-category">Persillé · À partager</p>
                         <h3>Faux-filet Wagyu</h3>
                         <p class="shop-product-description">
@@ -249,6 +271,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 04 · Collection caractère</small>
                         <p class="shop-product-category">Goût franc · Belle mâche</p>
                         <h3>Rumsteak Wagyu</h3>
                         <p class="shop-product-description">
@@ -285,6 +308,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 05 · Collection bistronomie</small>
                         <p class="shop-product-category">Cuisson lente · Savoureux</p>
                         <h3>Paleron Wagyu</h3>
                         <p class="shop-product-description">
@@ -321,6 +345,7 @@
                     </div>
 
                     <div class="shop-product-content">
+                        <small class="shop-product-reference">Pièce 06 · Collection tradition</small>
                         <p class="shop-product-category">Préparation longue · Jus</p>
                         <h3>Jarret Wagyu</h3>
                         <p class="shop-product-description">
@@ -357,8 +382,9 @@
     <section class="shop-guide-section">
         <div class="shop-shell shop-guide-grid">
             <div class="shop-guide-heading">
+                <span class="shop-guide-label">Le conseil de la maison</span>
                 <p class="shop-kicker">Bien choisir</p>
-                <h2>Quelle quantité prévoir&nbsp;?</h2>
+                <h2>Quelle quantité <em>prévoir&nbsp;?</em></h2>
                 <p>
                     Le Wagyu se déguste en portions mesurées. Son persillage et sa richesse permettent
                     de proposer une expérience généreuse sans servir une quantité excessive.
@@ -367,20 +393,23 @@
 
             <div class="shop-guide-values">
                 <article>
+                    <span>01</span>
                     <strong>120 à 150 g</strong>
-                    <span>par personne</span>
+                    <small>par personne</small>
                     <p>Pour une dégustation ou un menu en plusieurs services.</p>
                 </article>
 
                 <article>
+                    <span>02</span>
                     <strong>180 à 220 g</strong>
-                    <span>par personne</span>
+                    <small>par personne</small>
                     <p>Pour faire de la pièce le cœur du repas.</p>
                 </article>
 
                 <article>
+                    <span>03</span>
                     <strong>2 à 4 min</strong>
-                    <span>de repos</span>
+                    <small>de repos</small>
                     <p>Après cuisson, pour laisser les jus se répartir.</p>
                 </article>
             </div>
@@ -390,8 +419,13 @@
     <section class="shop-reassurance-section">
         <div class="shop-shell">
             <header class="shop-reassurance-heading">
-                <p class="shop-kicker">Votre commande</p>
-                <h2>Simple à choisir, soignée jusqu’à votre table.</h2>
+                <div class="shop-heading-title">
+                    <span class="shop-section-number">03</span>
+                    <div>
+                        <p class="shop-kicker">Votre commande</p>
+                        <h2>Soignée jusqu’à <em>votre table.</em></h2>
+                    </div>
+                </div>
             </header>
 
             <div class="shop-reassurance-grid">
@@ -421,16 +455,18 @@
 
     <section class="shop-contact-cta">
         <div class="shop-shell shop-contact-card">
+            <span class="shop-contact-monogram" aria-hidden="true">WF</span>
+
             <div>
                 <p class="shop-kicker">Une question sur une pièce&nbsp;?</p>
-                <h2>Nous vous aidons à choisir.</h2>
+                <h2>Nous vous aidons <em>à choisir.</em></h2>
                 <p>
                     Nombre de convives, cuisson souhaitée ou morceau à privilégier : échangez avec
                     Wagyu France avant de finaliser votre demande.
                 </p>
             </div>
 
-            <a href="{{ route('contact') }}" class="shop-button shop-button-light">Nous contacter</a>
+            <a href="{{ route('contact') }}" class="shop-button shop-button-light"><span>Nous contacter</span></a>
         </div>
     </section>
 
