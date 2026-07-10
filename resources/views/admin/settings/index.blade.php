@@ -36,12 +36,12 @@
         <article class="admin-card is-ready">
             <span>Documents commerciaux</span>
             <strong>PDF générés en interne</strong>
-            <p>Aucune bibliothèque externe n’est nécessaire pour les bons de commande, de préparation et les factures.</p>
+            <p>Aucune bibliothèque externe n’est nécessaire pour les bons de commande, de préparation, les factures et les avoirs.</p>
         </article>
         <article class="admin-card">
             <span>Sécurité</span>
             <strong>Numérotation définitive</strong>
-            <p>Une facture émise conserve son numéro et son instantané même si les paramètres changent ensuite.</p>
+            <p>Une facture ou un avoir émis conserve son numéro et son instantané même si les paramètres changent ensuite.</p>
         </article>
     </section>
 
@@ -147,6 +147,11 @@
                     <small>Exemple : WF-2026-0001. Ne change pas les factures déjà émises.</small>
                 </label>
                 <label>
+                    <span>Préfixe des avoirs *</span>
+                    <input type="text" name="credit_prefix" required value="{{ old('credit_prefix', $settings['credit_prefix'] ?? 'AV-WF') }}" placeholder="AV-WF">
+                    <small>Exemple : AV-WF-2026-0001. Les avoirs possèdent leur propre séquence.</small>
+                </label>
+                <label>
                     <span>Taux de TVA proposé par défaut</span>
                     <input type="number" name="default_vat_rate" min="0" max="100" step="0.01" value="{{ old('default_vat_rate', $settings['default_vat_rate'] ?? '') }}" placeholder="À confirmer">
                     <small>Le taux reste modifiable dossier par dossier avant émission.</small>
@@ -231,7 +236,7 @@
         <div class="admin-settings-submit">
             <div>
                 <strong>Enregistrer les paramètres</strong>
-                <p>Les nouvelles valeurs seront utilisées dès la requête suivante. Les factures déjà émises restent inchangées.</p>
+                <p>Les nouvelles valeurs seront utilisées dès la requête suivante. Les documents déjà émis restent inchangés.</p>
             </div>
             <button type="submit" class="admin-primary-button">Enregistrer les modifications</button>
         </div>
