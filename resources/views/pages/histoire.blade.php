@@ -1,5 +1,6 @@
 @extends('layouts.app', [
     'title' => 'Notre histoire — Wagyu France',
+    'description' => 'Découvrez l’histoire de Wagyu France et du Domaine du Tilleul : une maison française guidée par le temps, l’élevage, la sélection et le respect du produit.',
     'bodyClass' => 'histoire-page'
 ])
 
@@ -10,345 +11,321 @@
 @section('content')
 
     <section class="story-hero">
-        <img
-            class="story-hero-bg"
-            src="{{ asset('assets/images/histoire/domaine-wagyu-france.jpg') }}"
-            alt="Domaine Wagyu France au crépuscule"
-        >
-
-        <div class="story-hero-overlay"></div>
-
-        <div class="story-glow story-glow-left"></div>
-        <div class="story-glow story-glow-right"></div>
-
-        <div class="story-hero-inner">
-            <div class="story-hero-content">
-                <div class="story-logo-line">
+        <div class="story-shell story-hero-grid">
+            <div class="story-hero-copy">
+                <div class="story-kicker-line">
                     <span></span>
-                    <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="Wagyu France">
-                    <span></span>
+                    <p class="story-kicker">Maison française · Domaine du Tilleul</p>
                 </div>
 
-                <p class="eyebrow">Maison Wagyu France</p>
+                <div class="story-hero-edition" aria-hidden="true">
+                    <span>Édition</span>
+                    <strong>01</strong>
+                </div>
 
                 <h1>
-                    Une maison française,
-                    <span>portée par le temps et l’exigence.</span>
+                    Le temps comme
+                    <em>premier savoir-faire.</em>
                 </h1>
 
-                <p>
-                    Wagyu France défend une vision rare de la viande : prendre le temps,
-                    respecter l’origine, comprendre chaque pièce et proposer une expérience
-                    à la hauteur d’un produit d’exception.
+                <p class="story-hero-lead">
+                    Wagyu France est née d’une conviction simple&nbsp;: une viande remarquable ne se
+                    fabrique pas dans l’urgence. Elle se construit lentement, par l’attention portée
+                    au vivant, par la précision des choix et par le respect de chaque étape.
                 </p>
 
                 <div class="story-hero-actions">
-                    <a href="{{ route('boutique') }}" class="story-primary-button">
-                        Découvrir la boutique
-                    </a>
-
-                    <a href="{{ route('wagyu') }}" class="story-secondary-button">
-                        Comprendre le Wagyu
-                    </a>
+                    <a href="#le-domaine" class="story-button story-button-primary">Découvrir le domaine</a>
+                    <a href="{{ route('wagyu') }}" class="story-button story-button-secondary">Comprendre le Wagyu</a>
                 </div>
-            </div>
 
-            <div class="story-hero-card">
-                <img
-                    src="{{ asset('assets/images/histoire/maison-wagyu-france.jpg') }}"
-                    alt="Maison Wagyu France"
-                >
-
-                <div class="story-hero-card-content">
-                    <span>Signature</span>
-
-                    <h2>Patience</h2>
-
-                    <p>
-                        Une viande d’exception ne se construit pas dans la précipitation.
-                        Elle demande du temps, de l’attention et une vraie cohérence.
-                    </p>
-
-                    <div class="story-card-tags">
-                        <strong>Origine</strong>
-                        <strong>Sélection</strong>
-                        <strong>Respect</strong>
+                <div class="story-hero-signature">
+                    <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="">
+                    <div>
+                        <span>Wagyu France</span>
+                        <strong>Élever, sélectionner, transmettre.</strong>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="story-intro-section">
-        <div class="story-intro-card">
-            <div>
-                <p class="eyebrow">Notre vision</p>
+            <div class="story-hero-media">
+                <figure class="story-hero-main-image">
+                    <img
+                        src="{{ asset('assets/images/histoire/domaine-wagyu-france.jpg') }}"
+                        alt="Le Domaine du Tilleul, maison de Wagyu France"
+                    >
+                    <figcaption>
+                        <span>Le lieu</span>
+                        <strong>Domaine du Tilleul</strong>
+                    </figcaption>
+                </figure>
 
-                <h2>
-                    Remettre de la valeur dans chaque morceau.
-                </h2>
-            </div>
+                <figure class="story-hero-detail-image">
+                    <img
+                        src="{{ asset('assets/images/histoire/maison-wagyu-france.jpg') }}"
+                        alt="La maison Wagyu France"
+                    >
+                    <figcaption>Une maison pensée autour du produit.</figcaption>
+                </figure>
 
-            <div>
-                <p>
-                    Derrière une pièce de Wagyu, il y a plus qu’un prix ou qu’un morceau.
-                    Il y a une origine, un choix d’élevage, une sélection, une découpe
-                    et une manière de transmettre le produit.
-                </p>
-
-                <p>
-                    L’ambition de Wagyu France est de rendre cette expérience plus lisible :
-                    pour les particuliers qui veulent déguster une viande rare, comme pour
-                    les professionnels qui veulent construire une demande précise.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="story-values-section">
-        <div class="story-section-heading">
-            <p class="eyebrow">Ce qui nous guide</p>
-
-            <h2>
-                Une maison construite sur des principes simples.
-            </h2>
-        </div>
-
-        <div class="story-values-grid">
-            <article>
-                <span>01</span>
-                <h3>Le temps</h3>
-                <p>
-                    Le Wagyu exige une approche lente, réfléchie et respectueuse.
-                    La qualité ne se force pas, elle se construit.
-                </p>
-            </article>
-
-            <article>
-                <span>02</span>
-                <h3>L’origine</h3>
-                <p>
-                    Le produit doit rester compréhensible. Une viande premium doit pouvoir
-                    raconter d’où elle vient et pourquoi elle mérite sa place.
-                </p>
-            </article>
-
-            <article>
-                <span>03</span>
-                <h3>La justesse</h3>
-                <p>
-                    Chaque pièce a son rôle, son usage et sa valeur. La maison cherche
-                    à présenter le bon morceau au bon public.
-                </p>
-            </article>
-
-            <article>
-                <span>04</span>
-                <h3>La confiance</h3>
-                <p>
-                    La clarté du parcours, des pièces et des demandes renforce la relation
-                    entre Wagyu France, ses clients et ses partenaires.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="story-origin-section">
-        <div class="story-origin-card">
-            <div class="story-origin-visual">
-                <img
-                    src="{{ asset('assets/images/histoire/elevage-wagyu.jpg') }}"
-                    alt="Élevage Wagyu France"
-                >
-
-                <div>
-                    <span>Maison</span>
-                    <strong>Wagyu France</strong>
-                    <small>Origine · Patience · Exigence</small>
+                <div class="story-hero-seal" aria-hidden="true">
+                    <span>W</span>
+                    <small>Maison française</small>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="story-origin-content">
-                <p class="eyebrow">L’esprit maison</p>
+    <nav class="story-chapters" aria-label="Sommaire de notre histoire">
+        <div class="story-shell story-chapters-grid">
+            <a href="#vision"><span>01</span>Notre vision</a>
+            <a href="#le-domaine"><span>02</span>Le domaine</a>
+            <a href="#notre-methode"><span>03</span>Notre méthode</a>
+            <a href="#transmission"><span>04</span>La transmission</a>
+        </div>
+    </nav>
 
-                <h2>
-                    Une expérience française autour d’une viande rare.
-                </h2>
+    <section class="story-manifesto" id="vision">
+        <div class="story-shell story-manifesto-grid">
+            <div class="story-section-index" aria-hidden="true">01</div>
 
-                <p>
-                    Wagyu France ne cherche pas à banaliser le Wagyu. Au contraire,
-                    la maison veut préserver son caractère exceptionnel en proposant
-                    un parcours clair, premium et cohérent.
+            <div class="story-manifesto-title">
+                <p class="story-kicker">Notre vision</p>
+                <h2>Remettre de la valeur dans chaque morceau.</h2>
+            </div>
+
+            <div class="story-manifesto-copy">
+                <p class="story-dropcap">
+                    Derrière une pièce de Wagyu, il y a une origine, un élevage, du temps, une sélection
+                    et un geste de découpe. Notre rôle est de rendre cette histoire visible, pour que la
+                    valeur du produit ne soit jamais réduite à son seul persillage.
                 </p>
-
                 <p>
-                    Côté particulier, l’expérience se concentre sur la dégustation :
-                    comprendre le persillage, choisir une pièce, préparer simplement
-                    et savourer avec attention.
+                    Nous voulons proposer une expérience claire et sincère&nbsp;: comprendre ce que l’on
+                    choisit, savoir comment le préparer et savourer une viande rare sans la dénaturer.
                 </p>
-
-                <p>
-                    Côté professionnel, l’expérience devient plus technique :
-                    réserver avant découpe, suivre les volumes, comprendre les morceaux
-                    et construire une demande plus précise.
-                </p>
-
-                <a href="{{ route('professionnels') }}">
-                    Découvrir l’univers professionnel
-                </a>
             </div>
         </div>
     </section>
 
-    <section class="story-timeline-section">
-        <div class="story-section-heading">
-            <p class="eyebrow">Le parcours</p>
+    <section class="story-values">
+        <div class="story-shell">
+            <header class="story-heading story-heading-centered">
+                <p class="story-kicker">Ce qui nous guide</p>
+                <h2>Quatre principes. Une même exigence.</h2>
+            </header>
 
-            <h2>
-                De l’origine à la dégustation.
-            </h2>
-
-            <p>
-                L’histoire d’une pièce ne commence pas dans l’assiette.
-                Elle se construit étape après étape.
-            </p>
-        </div>
-
-        <div class="story-timeline">
-            <article>
-                <span>01</span>
-                <h3>Élever</h3>
-                <p>
-                    Respecter le temps nécessaire au développement d’une viande singulière.
-                </p>
-            </article>
-
-            <article>
-                <span>02</span>
-                <h3>Sélectionner</h3>
-                <p>
-                    Identifier les pièces, leur potentiel, leur usage et leur valeur.
-                </p>
-            </article>
-
-            <article>
-                <span>03</span>
-                <h3>Découper</h3>
-                <p>
-                    Penser chaque morceau comme une partie essentielle de l’animal.
-                </p>
-            </article>
-
-            <article>
-                <span>04</span>
-                <h3>Transmettre</h3>
-                <p>
-                    Donner au client les clés pour comprendre, cuisiner et apprécier.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="story-dual-section">
-        <div class="story-dual-card">
-            <div>
-                <p class="eyebrow">Deux univers</p>
-
-                <h2>
-                    Le même produit, deux expériences différentes.
-                </h2>
-
-                <p>
-                    Un particulier ne cherche pas la même chose qu’un chef ou qu’un boucher.
-                    C’est pour cela que Wagyu France sépare clairement les parcours.
-                </p>
-            </div>
-
-            <div class="story-dual-grid">
+            <div class="story-values-grid">
                 <article>
-                    <span>Particulier</span>
+                    <span class="story-value-number">01</span>
+                    <div class="story-value-mark" aria-hidden="true">T</div>
+                    <h3>Le temps</h3>
+                    <p>Ne jamais précipiter ce qui doit mûrir. La qualité se construit dans la durée.</p>
+                </article>
+
+                <article>
+                    <span class="story-value-number">02</span>
+                    <div class="story-value-mark" aria-hidden="true">O</div>
+                    <h3>L’origine</h3>
+                    <p>Connaître le lieu, l’histoire et le parcours qui donnent sa singularité au produit.</p>
+                </article>
+
+                <article>
+                    <span class="story-value-number">03</span>
+                    <div class="story-value-mark" aria-hidden="true">J</div>
+                    <h3>La justesse</h3>
+                    <p>Présenter chaque morceau selon son véritable caractère, son usage et sa cuisson.</p>
+                </article>
+
+                <article>
+                    <span class="story-value-number">04</span>
+                    <div class="story-value-mark" aria-hidden="true">C</div>
+                    <h3>La confiance</h3>
+                    <p>Expliquer avec clarté, conseiller avec précision et construire une relation durable.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-domain" id="le-domaine">
+        <div class="story-shell story-domain-grid">
+            <div class="story-domain-media">
+                <figure>
+                    <img
+                        src="{{ asset('assets/images/histoire/elevage-wagyu.jpg') }}"
+                        alt="Élevage Wagyu au Domaine du Tilleul"
+                    >
+                    <figcaption>
+                        <span>Domaine du Tilleul</span>
+                        <strong>Le vivant avant le produit</strong>
+                    </figcaption>
+                </figure>
+                <div class="story-domain-frame" aria-hidden="true"></div>
+                <div class="story-domain-reference">WF · 02</div>
+            </div>
+
+            <div class="story-domain-copy">
+                <p class="story-kicker">Le domaine</p>
+                <h2>Tout commence bien avant la découpe.</h2>
+
+                <p class="story-domain-intro">
+                    La qualité d’une viande se prépare dès l’élevage. Le rythme, l’attention quotidienne
+                    et la régularité du travail façonnent progressivement ce que l’on retrouvera ensuite
+                    dans l’assiette.
+                </p>
+
+                <div class="story-domain-points">
+                    <article>
+                        <span>01</span>
+                        <div>
+                            <strong>Observer</strong>
+                            <p>Comprendre le vivant et adapter les gestes plutôt que d’imposer un rythme.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <div>
+                            <strong>Accompagner</strong>
+                            <p>Créer les conditions d’un développement régulier et respectueux.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <div>
+                            <strong>Patienter</strong>
+                            <p>Laisser le temps révéler la texture, le persillage et le caractère.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <a href="{{ route('contact') }}" class="story-text-link">Échanger avec la maison <span>→</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-method" id="notre-methode">
+        <div class="story-shell">
+            <header class="story-heading story-heading-split">
+                <div>
+                    <p class="story-kicker">Notre méthode</p>
+                    <h2>De l’élevage à votre table.</h2>
+                </div>
+                <p>
+                    Une pièce remarquable est le résultat d’une succession de décisions précises.
+                    Chacune doit préserver ce qui a été construit auparavant.
+                </p>
+            </header>
+
+            <div class="story-method-track">
+                <article>
+                    <span class="story-method-number">01</span>
+                    <div class="story-method-line"></div>
+                    <p class="story-method-label">Le vivant</p>
+                    <h3>Élever</h3>
+                    <p>Accompagner le développement avec constance, calme et attention.</p>
+                </article>
+
+                <article>
+                    <span class="story-method-number">02</span>
+                    <div class="story-method-line"></div>
+                    <p class="story-method-label">Le regard</p>
+                    <h3>Sélectionner</h3>
+                    <p>Lire la matière, reconnaître le potentiel et attribuer le bon usage.</p>
+                </article>
+
+                <article>
+                    <span class="story-method-number">03</span>
+                    <div class="story-method-line"></div>
+                    <p class="story-method-label">Le geste</p>
+                    <h3>Découper</h3>
+                    <p>Valoriser chaque partie avec une découpe adaptée et une préparation précise.</p>
+                </article>
+
+                <article>
+                    <span class="story-method-number">04</span>
+                    <div class="story-method-line"></div>
+                    <p class="story-method-label">Le partage</p>
+                    <h3>Transmettre</h3>
+                    <p>Donner les clés pour choisir, cuire et apprécier sans masquer le produit.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-quote">
+        <div class="story-shell story-quote-inner">
+            <div class="story-quote-monogram" aria-hidden="true">WF</div>
+            <blockquote>
+                «&nbsp;Le luxe n’est pas d’en faire trop. C’est de ne rien laisser au hasard.&nbsp;»
+            </blockquote>
+            <p>La philosophie Wagyu France</p>
+        </div>
+    </section>
+
+    <section class="story-transmission" id="transmission">
+        <div class="story-shell story-transmission-grid">
+            <div class="story-transmission-copy">
+                <p class="story-kicker">La transmission</p>
+                <h2>Une maison, deux façons de partager le produit.</h2>
+                <p>
+                    Le particulier recherche une dégustation juste et bien accompagnée. Le professionnel
+                    a besoin d’anticiper ses volumes, ses découpes et son organisation. Nous avons donc
+                    créé deux parcours distincts, guidés par la même exigence.
+                </p>
+            </div>
+
+            <div class="story-paths">
+                <article class="story-path story-path-private">
+                    <div class="story-path-top">
+                        <span>01</span>
+                        <small>Pour les particuliers</small>
+                    </div>
                     <h3>Déguster</h3>
-                    <p>
-                        Boutique, conseils, choix des pièces et expérience sensorielle.
-                    </p>
-
-                    <a href="{{ route('boutique') }}">
-                        Voir la boutique
-                    </a>
+                    <p>Découvrir les pièces, comprendre leurs caractères et préparer un moment qui compte.</p>
+                    <ul>
+                        <li>Sélection de pièces</li>
+                        <li>Conseils de quantité</li>
+                        <li>Recommandations de cuisson</li>
+                    </ul>
+                    <a href="{{ route('boutique') }}">Accéder à la boutique <span>→</span></a>
                 </article>
 
-                <article>
-                    <span>Professionnel</span>
-                    <h3>Réserver</h3>
-                    <p>
-                        Pré-réservation, volumes, découpe, suivi et demandes qualifiées.
-                    </p>
-
-                    <a href="{{ route('reserve.pro') }}">
-                        Voir la réserve pro
-                    </a>
+                <article class="story-path story-path-pro">
+                    <div class="story-path-top">
+                        <span>02</span>
+                        <small>Pour les professionnels</small>
+                    </div>
+                    <h3>Anticiper</h3>
+                    <p>Pré-réserver les pièces, préciser les volumes et construire une demande sur mesure.</p>
+                    <ul>
+                        <li>Réserve avant découpe</li>
+                        <li>Choix des volumes</li>
+                        <li>Suivi des demandes</li>
+                    </ul>
+                    <a href="{{ route('reserve.pro') }}">Accéder à la réserve <span>→</span></a>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="story-proof-section">
-        <div class="story-proof-card">
-            <div>
-                <p class="eyebrow">Pourquoi cette approche ?</p>
+    <section class="story-final">
+        <div class="story-shell story-final-card">
+            <div class="story-final-mark" aria-hidden="true">
+                <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="">
+            </div>
 
-                <h2>
-                    Parce qu’une viande rare mérite mieux qu’un simple catalogue.
-                </h2>
-
+            <div class="story-final-copy">
+                <p class="story-kicker">La suite de l’histoire</p>
+                <h2>Choisissez la pièce qui écrira votre prochain repas.</h2>
                 <p>
-                    La valeur du Wagyu vient autant de sa qualité que de la manière dont il est
-                    présenté. La maison doit permettre de comprendre le produit, d’en respecter
-                    la cuisson, de choisir la bonne pièce et de créer une vraie expérience.
+                    Découvrez notre sélection de Wagyu français ou approfondissez les particularités
+                    de cette viande avant de faire votre choix.
                 </p>
             </div>
 
-            <div class="story-proof-panel">
-                <span>✦</span>
-
-                <h3>Une maison, pas seulement une boutique.</h3>
-
-                <p>
-                    Wagyu France construit un univers complet : histoire, pédagogie, boutique,
-                    réserve pro et suivi des demandes.
-                </p>
-
-                <ul>
-                    <li>Parcours particulier clair</li>
-                    <li>Réserve professionnelle dédiée</li>
-                    <li>Pièces mieux valorisées</li>
-                    <li>Demandes suivies en interne</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="story-cta-section">
-        <div class="story-cta-card">
-            <p class="eyebrow">Wagyu France</p>
-
-            <h2>
-                Entrez dans l’univers d’une viande d’exception.
-            </h2>
-
-            <p>
-                Découvrez la boutique, comprenez le Wagyu ou explorez l’espace professionnel
-                selon votre besoin.
-            </p>
-
-            <div>
-                <a href="{{ route('boutique') }}" class="story-primary-button">
-                    Boutique particulier
-                </a>
-
-                <a href="{{ route('professionnels') }}" class="story-secondary-button">
-                    Univers professionnel
-                </a>
+            <div class="story-final-actions">
+                <a href="{{ route('boutique') }}" class="story-button story-button-light">Découvrir la boutique</a>
+                <a href="{{ route('wagyu') }}" class="story-final-link">Le Wagyu en détail <span>→</span></a>
             </div>
         </div>
     </section>
