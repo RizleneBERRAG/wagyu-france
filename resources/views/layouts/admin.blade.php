@@ -56,6 +56,20 @@
                     <b>{{ $adminNavigationCounts['orders'] }}</b>
                 @endif
             </a>
+            <a href="{{ route('admin.billing.index') }}" @class(['is-active' => request()->routeIs('admin.billing.*')])>
+                <span class="wf-admin-nav-icon">€</span>
+                <strong>Facturation & avoirs</strong>
+                @if (($adminNavigationCounts['billing_unsent'] ?? 0) > 0)
+                    <b class="is-warning">{{ $adminNavigationCounts['billing_unsent'] }}</b>
+                @endif
+            </a>
+            <a href="{{ route('admin.logistics.index') }}" @class(['is-active' => request()->routeIs('admin.logistics.*')])>
+                <span class="wf-admin-nav-icon">⇢</span>
+                <strong>Préparation & livraison</strong>
+                @if (($adminNavigationCounts['logistics'] ?? 0) > 0)
+                    <b>{{ $adminNavigationCounts['logistics'] }}</b>
+                @endif
+            </a>
             <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') === 'contacts'])>
                 <span class="wf-admin-nav-icon">✉</span>
                 <strong>Messages</strong>
@@ -106,8 +120,14 @@
 
             <div class="wf-admin-topbar-actions">
                 <a href="{{ route('home') }}" target="_blank" rel="noopener">Voir le site</a>
-                <span class="wf-admin-alert-dot" title="{{ ($adminNavigationCounts['orders'] ?? 0) + ($adminNavigationCounts['contacts'] ?? 0) }} élément(s) nouveau(x)">
-                    {{ ($adminNavigationCounts['orders'] ?? 0) + ($adminNavigationCounts['contacts'] ?? 0) }}
+                @php
+                    $topbarAlerts = ($adminNavigationCounts['orders'] ?? 0)
+                        + ($adminNavigationCounts['contacts'] ?? 0)
+                        + ($adminNavigationCounts['billing_unsent'] ?? 0)
+                        + ($adminNavigationCounts['logistics'] ?? 0);
+                @endphp
+                <span class="wf-admin-alert-dot" title="{{ $topbarAlerts }} élément(s) à surveiller">
+                    {{ $topbarAlerts }}
                 </span>
             </div>
         </header>
