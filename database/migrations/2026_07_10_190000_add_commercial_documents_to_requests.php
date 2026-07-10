@@ -10,7 +10,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('shop_order_requests', function (Blueprint $table) {
-            $table->decimal('final_total_ttc', 10, 2)->nullable()->after('total');
+            $table->json('final_cart')->nullable()->after('cart');
+            $table->string('additional_label')->nullable()->after('final_cart');
+            $table->decimal('additional_amount', 10, 2)->default(0)->after('additional_label');
+            $table->decimal('final_total_ttc', 10, 2)->nullable()->after('additional_amount');
             $table->decimal('vat_rate', 5, 2)->nullable()->after('final_total_ttc');
             $table->string('payment_status')->default('pending')->after('status');
             $table->timestamp('paid_at')->nullable()->after('payment_status');
@@ -21,7 +24,10 @@ return new class extends Migration
         });
 
         Schema::table('pro_reservation_requests', function (Blueprint $table) {
-            $table->decimal('final_total_ht', 10, 2)->nullable()->after('total_ht');
+            $table->json('final_cart')->nullable()->after('cart');
+            $table->string('additional_label')->nullable()->after('final_cart');
+            $table->decimal('additional_amount', 10, 2)->default(0)->after('additional_label');
+            $table->decimal('final_total_ht', 10, 2)->nullable()->after('additional_amount');
             $table->decimal('vat_rate', 5, 2)->nullable()->after('final_total_ht');
             $table->string('payment_status')->default('pending')->after('status');
             $table->timestamp('paid_at')->nullable()->after('payment_status');
@@ -62,6 +68,9 @@ return new class extends Migration
 
         Schema::table('shop_order_requests', function (Blueprint $table) {
             $table->dropColumn([
+                'final_cart',
+                'additional_label',
+                'additional_amount',
                 'final_total_ttc',
                 'vat_rate',
                 'payment_status',
@@ -75,6 +84,9 @@ return new class extends Migration
 
         Schema::table('pro_reservation_requests', function (Blueprint $table) {
             $table->dropColumn([
+                'final_cart',
+                'additional_label',
+                'additional_amount',
                 'final_total_ht',
                 'vat_rate',
                 'payment_status',
