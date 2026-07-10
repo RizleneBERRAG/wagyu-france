@@ -1,5 +1,6 @@
 @extends('layouts.app', [
-    'title' => 'Professionnels — Wagyu France',
+    'title' => 'Wagyu français pour professionnels — Wagyu France',
+    'description' => 'Wagyu France accompagne chefs, restaurateurs, bouchers et traiteurs avec une sélection professionnelle, une pré-réservation par pièce et un suivi précis des volumes.',
     'bodyClass' => 'professionnels-page is-pro'
 ])
 
@@ -10,361 +11,356 @@
 @section('content')
 
     <section class="pro-hero">
-        <img
-            class="pro-hero-bg"
-            src="{{ asset('assets/images/pro/pro-hero.jpg') }}"
-            alt="Préparation professionnelle de pièces Wagyu"
-        >
-
-        <div class="pro-hero-overlay"></div>
-        <div class="pro-hero-grid"></div>
-        <div class="pro-red-glow"></div>
-        <div class="pro-gold-glow"></div>
-
-        <div class="pro-hero-inner">
-            <div class="pro-hero-content">
-                <p class="eyebrow">Univers professionnel</p>
+        <div class="pro-shell pro-hero-grid">
+            <div class="pro-hero-copy">
+                <p class="pro-kicker">Wagyu France · Espace professionnel</p>
 
                 <h1>
-                    Une viande d’exception,
-                    <span>pensée pour vos volumes.</span>
+                    Le Wagyu français,
+                    <em>pensé pour les maisons exigeantes.</em>
                 </h1>
 
-                <p>
-                    Wagyu France accompagne les chefs, restaurateurs, bouchers et partenaires
-                    professionnels dans une approche plus claire, plus précise et plus maîtrisée
-                    de la viande Wagyu française.
+                <p class="pro-hero-lead">
+                    Chefs, restaurateurs, bouchers et traiteurs accèdent à une sélection dédiée,
+                    pensée pour anticiper les volumes, comprendre les pièces et construire une
+                    demande cohérente avant la découpe.
                 </p>
 
                 <div class="pro-hero-actions">
-                    <a href="{{ route('reserve.pro') }}" class="pro-primary-button">
-                        Accéder à la réserve pro
+                    <a href="{{ route('reserve.pro') }}" class="pro-button pro-button-primary">
+                        Accéder à la réserve
                     </a>
+                    <a href="{{ route('contact') }}" class="pro-button pro-button-secondary">
+                        Échanger avec la maison
+                    </a>
+                </div>
 
-                    <a href="{{ route('contact') }}" class="pro-secondary-button">
-                        Demander un accès
-                    </a>
+                <dl class="pro-hero-facts">
+                    <div>
+                        <dt>Sélection</dt>
+                        <dd>Pièces et usages professionnels</dd>
+                    </div>
+                    <div>
+                        <dt>Volumes</dt>
+                        <dd>Demandes anticipées avant découpe</dd>
+                    </div>
+                    <div>
+                        <dt>Suivi</dt>
+                        <dd>Réponse adaptée aux disponibilités</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <figure class="pro-hero-visual">
+                <img
+                    src="{{ asset('assets/images/pro/pro-hero.jpg') }}"
+                    alt="Préparation professionnelle d’une pièce de Wagyu"
+                >
+
+                <figcaption class="pro-hero-caption">
+                    <span>Sélection professionnelle</span>
+                    <strong>Une lecture précise de la pièce, de son usage et de son potentiel.</strong>
+                </figcaption>
+
+                <div class="pro-hero-seal" aria-hidden="true">
+                    <span>WF</span>
+                    <small>Professionnels</small>
+                </div>
+            </figure>
+        </div>
+    </section>
+
+    <nav class="pro-chapters" aria-label="Parcours professionnel">
+        <div class="pro-shell pro-chapters-grid">
+            <a href="#approche"><span>01</span> Notre approche</a>
+            <a href="#services"><span>02</span> Les services</a>
+            <a href="#metiers"><span>03</span> Les métiers</a>
+            <a href="#methode"><span>04</span> La méthode</a>
+        </div>
+    </nav>
+
+    <section class="pro-section pro-approach" id="approche">
+        <div class="pro-shell pro-approach-grid">
+            <div class="pro-approach-visual">
+                <img
+                    src="{{ asset('assets/images/pro/reserve-professionnelle.jpg') }}"
+                    alt="Réserve professionnelle Wagyu France"
+                >
+                <div class="pro-image-index">
+                    <span>Maison professionnelle</span>
+                    <strong>Réserve · Découpe · Traçabilité</strong>
                 </div>
             </div>
 
-            <div class="pro-hero-panel">
-                <div class="pro-panel-image">
-                    <img
-                        src="{{ asset('assets/images/pro/reserve-professionnelle.jpg') }}"
-                        alt="Réserve professionnelle Wagyu France"
-                    >
-                </div>
+            <div class="pro-approach-copy">
+                <p class="pro-kicker">Une relation avant une commande</p>
+                <h2>
+                    Comprendre votre besoin,
+                    <em>puis sélectionner juste.</em>
+                </h2>
 
-                <div class="pro-panel-top">
-                    <span>Réserve active</span>
-                    <strong>WF-2026-01</strong>
-                </div>
+                <p class="pro-dropcap">
+                    Une pièce de Wagyu ne se choisit pas uniquement selon un prix ou un poids.
+                    Elle se choisit selon une carte, un nombre de couverts, un mode de cuisson,
+                    une régularité de service et l’expérience que vous souhaitez proposer.
+                </p>
 
-                <div class="pro-panel-main">
-                    <p>Animal en pré-réservation</p>
+                <p>
+                    L’espace professionnel permet de formuler cette demande plus précisément.
+                    Vous identifiez les morceaux adaptés, indiquez vos quantités et transmettez
+                    une pré-réservation qui sera ensuite confirmée par Wagyu France.
+                </p>
 
-                    <div>
-                        <strong>68%</strong>
-                        <span>réservé</span>
-                    </div>
-
-                    <i>
-                        <b style="width: 68%"></b>
-                    </i>
-                </div>
-
-                <div class="pro-panel-list">
-                    <article>
-                        <span>Entrecôte</span>
-                        <strong>174 €/kg</strong>
-                    </article>
-
-                    <article>
-                        <span>Filet</span>
-                        <strong>198 €/kg</strong>
-                    </article>
-
-                    <article>
-                        <span>Rumsteak</span>
-                        <strong>137 €/kg</strong>
-                    </article>
-                </div>
-
-                <a href="{{ route('reserve.pro') }}">
-                    Sélectionner sur l’animal
+                <a href="{{ route('reserve.pro') }}" class="pro-text-link">
+                    Découvrir la réserve professionnelle <span>→</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="pro-intro-section">
-        <div class="pro-intro-card">
-            <div>
-                <p class="eyebrow">Approche pro</p>
-
-                <h2>
-                    Commander autrement :
-                    avant la découpe, avec plus de visibilité.
-                </h2>
-            </div>
-
-            <div>
-                <p>
-                    Le marché professionnel a besoin de précision : connaître les pièces,
-                    anticiper les quantités, sécuriser les volumes et comprendre la disponibilité
-                    avant de construire une carte, une offre ou une sélection en boutique.
-                </p>
-
-                <p>
-                    L’espace professionnel de Wagyu France répond à cette logique avec une
-                    expérience distincte de la boutique particulier : plus technique, plus directe
-                    et pensée pour la pré-réservation.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="pro-audience-section">
-        <div class="pro-section-heading">
-            <p class="eyebrow">Pour qui ?</p>
-
-            <h2>
-                Un espace conçu pour les métiers qui valorisent le produit.
-            </h2>
-        </div>
-
-        <div class="pro-audience-grid">
-            <article>
-                <span>01</span>
-                <h3>Chefs & restaurants</h3>
-                <p>
-                    Sélectionner les pièces adaptées à une carte, une dégustation,
-                    un menu signature ou une expérience gastronomique.
-                </p>
-            </article>
-
-            <article>
-                <span>02</span>
-                <h3>Boucheries premium</h3>
-                <p>
-                    Anticiper les volumes, préparer une offre haut de gamme et proposer
-                    des morceaux rares avec une lecture claire du produit.
-                </p>
-            </article>
-
-            <article>
-                <span>03</span>
-                <h3>Traiteurs & événements</h3>
-                <p>
-                    Organiser des besoins précis pour des prestations privées,
-                    événements d’exception ou expériences culinaires sur mesure.
-                </p>
-            </article>
-
-            <article>
-                <span>04</span>
-                <h3>Partenaires spécialisés</h3>
-                <p>
-                    Construire une relation professionnelle autour de la disponibilité,
-                    de la traçabilité et de la valorisation de chaque pièce.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="pro-reservation-section">
-        <div class="pro-reservation-card">
-            <div class="pro-reservation-content">
-                <p class="eyebrow">Réserve professionnelle</p>
-
-                <h2>
-                    Une interface pour choisir directement sur l’animal.
-                </h2>
-
-                <p>
-                    Le professionnel ne parcourt pas simplement une liste de produits.
-                    Il entre dans une logique de découpe : il visualise les pièces,
-                    sélectionne les morceaux souhaités, indique ses quantités et transmet
-                    une demande de pré-réservation.
-                </p>
-
-                <div class="pro-reservation-actions">
-                    <a href="{{ route('reserve.pro') }}" class="pro-primary-button">
-                        Ouvrir la réserve
-                    </a>
-
-                    <a href="{{ route('decoupe-volumes') }}" class="pro-secondary-button">
-                        Découpe & volumes
-                    </a>
+    <section class="pro-section pro-services" id="services">
+        <div class="pro-shell">
+            <header class="pro-heading-row">
+                <div>
+                    <p class="pro-kicker">Trois espaces complémentaires</p>
+                    <h2>Un parcours professionnel complet.</h2>
                 </div>
-            </div>
+                <p>
+                    De la première sélection au suivi de l’origine, chaque espace répond à une
+                    étape concrète de votre demande.
+                </p>
+            </header>
 
-            <div class="pro-reservation-side">
-                <div class="pro-reservation-image">
-                    <img
-                        src="{{ asset('assets/images/pro/decoupe-volumes.jpg') }}"
-                        alt="Découpe professionnelle Wagyu"
-                    >
-                </div>
-
-                <div class="pro-reservation-steps">
-                    <article>
+            <div class="pro-service-grid">
+                <a href="{{ route('reserve.pro') }}" class="pro-service-card pro-service-card-featured">
+                    <div class="pro-service-image">
+                        <img
+                            src="{{ asset('assets/images/pro/reserve-professionnelle.jpg') }}"
+                            alt="Pré-réservation professionnelle Wagyu"
+                        >
                         <span>01</span>
-                        <strong>Choisir</strong>
-                        <small>Pièces sélectionnées depuis l’animal.</small>
-                    </article>
+                    </div>
+                    <div class="pro-service-body">
+                        <p>Réserve professionnelle</p>
+                        <h3>Sélectionner les pièces disponibles.</h3>
+                        <span>
+                            Constituez une demande par morceau, quantité et usage avant validation
+                            définitive par la maison.
+                        </span>
+                        <strong>Ouvrir la réserve <i>→</i></strong>
+                    </div>
+                </a>
 
-                    <article>
+                <a href="{{ route('decoupe-volumes') }}" class="pro-service-card">
+                    <div class="pro-service-image">
+                        <img
+                            src="{{ asset('assets/images/pro/decoupe-volumes.jpg') }}"
+                            alt="Découpe et volumes professionnels Wagyu"
+                        >
                         <span>02</span>
-                        <strong>Quantifier</strong>
-                        <small>Ajout au panier pro avec total HT.</small>
-                    </article>
+                    </div>
+                    <div class="pro-service-body">
+                        <p>Découpe & volumes</p>
+                        <h3>Comprendre la répartition de l’animal.</h3>
+                        <span>
+                            Anticipez les rendements, les volumes et la disponibilité réelle des
+                            différentes familles de morceaux.
+                        </span>
+                        <strong>Voir la méthode <i>→</i></strong>
+                    </div>
+                </a>
 
-                    <article>
+                <a href="{{ route('tracabilite') }}" class="pro-service-card">
+                    <div class="pro-service-image">
+                        <img
+                            src="{{ asset('assets/images/pro/tracabilite.jpg') }}"
+                            alt="Traçabilité professionnelle Wagyu France"
+                        >
                         <span>03</span>
-                        <strong>Demander</strong>
-                        <small>Formulaire professionnel et récapitulatif.</small>
-                    </article>
+                    </div>
+                    <div class="pro-service-body">
+                        <p>Origine & traçabilité</p>
+                        <h3>Donner une histoire claire au produit.</h3>
+                        <span>
+                            Retrouvez les repères essentiels pour présenter l’origine et construire
+                            une relation de confiance avec vos clients.
+                        </span>
+                        <strong>Découvrir la traçabilité <i>→</i></strong>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-                    <article>
-                        <span>04</span>
+    <section class="pro-section pro-audience" id="metiers">
+        <div class="pro-shell">
+            <header class="pro-heading-centered">
+                <p class="pro-kicker">Pour les métiers du goût</p>
+                <h2>Une même exigence, des usages différents.</h2>
+                <p>
+                    Chaque métier valorise le Wagyu à sa manière. La sélection professionnelle
+                    s’adapte au service, au conseil et au volume recherché.
+                </p>
+            </header>
+
+            <div class="pro-audience-grid">
+                <article>
+                    <span>01</span>
+                    <small>Restaurants</small>
+                    <h3>Chefs & maisons gastronomiques</h3>
+                    <p>
+                        Pièces signatures, portions maîtrisées, régularité de service et sélection
+                        adaptée à votre carte.
+                    </p>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <small>Commerce de bouche</small>
+                    <h3>Boucheries & épiceries premium</h3>
+                    <p>
+                        Morceaux lisibles, conseils de préparation et offre différenciante pour une
+                        clientèle en recherche de produits rares.
+                    </p>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <small>Événementiel</small>
+                    <h3>Traiteurs & tables privées</h3>
+                    <p>
+                        Besoins ponctuels, quantités anticipées et accompagnement pour des expériences
+                        culinaires sur mesure.
+                    </p>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <small>Partenariats</small>
+                    <h3>Distributeurs spécialisés</h3>
+                    <p>
+                        Relation suivie, compréhension des disponibilités et valorisation cohérente
+                        de chaque partie de l’animal.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="pro-process" id="methode">
+        <div class="pro-shell pro-process-grid">
+            <div class="pro-process-heading">
+                <p class="pro-kicker">Le parcours de pré-réservation</p>
+                <h2>Une demande structurée, sans fausse promesse.</h2>
+                <p>
+                    Le panier professionnel exprime un besoin. Les poids, disponibilités et modalités
+                    sont ensuite confirmés par la maison avant tout engagement définitif.
+                </p>
+            </div>
+
+            <div class="pro-process-steps">
+                <article>
+                    <span>01</span>
+                    <div>
+                        <strong>Sélectionner</strong>
+                        <p>Choisissez les pièces correspondant à votre carte ou à votre activité.</p>
+                    </div>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <div>
+                        <strong>Quantifier</strong>
+                        <p>Indiquez les volumes souhaités et construisez votre demande estimative HT.</p>
+                    </div>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <div>
+                        <strong>Qualifier</strong>
+                        <p>Précisez votre établissement, vos échéances et vos contraintes de service.</p>
+                    </div>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <div>
                         <strong>Confirmer</strong>
-                        <small>Validation finale par Wagyu France.</small>
-                    </article>
-                </div>
+                        <p>Wagyu France vérifie la disponibilité et revient vers vous avec une réponse précise.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="pro-method-section">
-        <div class="pro-section-heading">
-            <p class="eyebrow">Méthode</p>
-
-            <h2>
-                La valeur d’un animal se construit pièce par pièce.
-            </h2>
-
-            <p>
-                L’espace professionnel permet d’aligner les besoins clients avec la réalité
-                de la découpe, pour mieux anticiper, mieux répartir et mieux valoriser.
-            </p>
-        </div>
-
-        <div class="pro-method-grid">
-            <article>
-                <div class="pro-method-visual">
-                    <img
-                        src="{{ asset('assets/images/pro/decoupe-volumes.jpg') }}"
-                        alt="Découpe et volumes Wagyu"
-                    >
-                </div>
-
-                <h3>Lisibilité des pièces</h3>
-                <p>
-                    Chaque morceau est présenté avec son usage, sa disponibilité,
-                    son prix professionnel et son niveau de réservation.
-                </p>
-            </article>
-
-            <article>
-                <div class="pro-method-visual">
-                    <img
-                        src="{{ asset('assets/images/pro/reserve-professionnelle.jpg') }}"
-                        alt="Pré-réservation professionnelle Wagyu"
-                    >
-                </div>
-
-                <h3>Pré-réservation claire</h3>
-                <p>
-                    Le panier pro rassemble les quantités souhaitées avant une validation
-                    définitive par Wagyu France.
-                </p>
-            </article>
-
-            <article>
-                <div class="pro-method-visual">
-                    <img
-                        src="{{ asset('assets/images/pro/tracabilite.jpg') }}"
-                        alt="Traçabilité professionnelle Wagyu"
-                    >
-                </div>
-
-                <h3>Découpe déclenchée au bon moment</h3>
-                <p>
-                    Lorsque le niveau de demande est suffisant, la mise en découpe peut être
-                    organisée avec plus de cohérence.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="pro-split-section">
-        <div class="pro-split-card">
-            <div>
-                <p class="eyebrow">Relation professionnelle</p>
-
+    <section class="pro-section pro-selection">
+        <div class="pro-shell pro-selection-grid">
+            <div class="pro-selection-copy">
+                <p class="pro-kicker">Une sélection qui respecte l’animal</p>
                 <h2>
-                    Plus qu’une commande, une demande qualifiée.
+                    Valoriser les pièces nobles,
+                    <em>sans oublier le reste.</em>
                 </h2>
-
                 <p>
-                    Chaque demande transmise depuis la réserve contient les informations
-                    essentielles : société, contact, type de professionnel, pièces choisies,
-                    quantités souhaitées et total estimatif HT.
+                    Entrecôte, filet et faux-filet occupent naturellement une place importante.
+                    Mais une approche professionnelle cohérente sait aussi travailler le rumsteak,
+                    le paleron, le jarret et les morceaux destinés aux cuissons longues.
+                </p>
+                <p>
+                    Cette lecture globale permet de construire des offres plus riches, de mieux
+                    répartir la demande et de donner de la valeur à chaque pièce.
                 </p>
 
-                <p>
-                    Wagyu France peut ensuite revenir vers le professionnel avec une réponse
-                    plus précise, adaptée aux disponibilités réelles et aux volumes demandés.
-                </p>
+                <div class="pro-selection-tags">
+                    <span>Cuisson minute</span>
+                    <span>Menu dégustation</span>
+                    <span>Cuisson lente</span>
+                    <span>Vente au détail</span>
+                </div>
             </div>
 
-            <div class="pro-split-metrics">
-                <div class="pro-split-image">
-                    <img
-                        src="{{ asset('assets/images/pro/tracabilite.jpg') }}"
-                        alt="Traçabilité Wagyu France"
-                    >
+            <div class="pro-selection-visual">
+                <img
+                    src="{{ asset('assets/images/pro/decoupe-volumes.jpg') }}"
+                    alt="Sélection et découpe des pièces de Wagyu"
+                >
+                <div>
+                    <span>Lecture professionnelle</span>
+                    <strong>Une pièce, un usage, une valeur.</strong>
                 </div>
-
-                <article>
-                    <strong>HT</strong>
-                    <span>lecture professionnelle</span>
-                </article>
-
-                <article>
-                    <strong>7</strong>
-                    <span>pièces principales suivies</span>
-                </article>
-
-                <article>
-                    <strong>1</strong>
-                    <span>animal pré-réservé</span>
-                </article>
             </div>
         </div>
     </section>
 
-    <section class="pro-cta-section">
-        <div class="pro-cta-card">
-            <p class="eyebrow">Accès professionnel</p>
+    <section class="pro-quote">
+        <div class="pro-shell pro-quote-inner">
+            <span aria-hidden="true">“</span>
+            <blockquote>
+                La précision ne consiste pas à promettre tous les morceaux.
+                Elle consiste à comprendre lesquels correspondent réellement à votre besoin.
+            </blockquote>
+            <p>Wagyu France · Relation professionnelle</p>
+        </div>
+    </section>
 
-            <h2>
-                Entrez dans l’espace réservé aux professionnels.
-            </h2>
-
-            <p>
-                Sélectionnez vos pièces, construisez votre demande et transmettez votre
-                pré-réservation à Wagyu France.
-            </p>
-
+    <section class="pro-section pro-contact">
+        <div class="pro-shell pro-contact-card">
             <div>
-                <a href="{{ route('reserve.pro') }}" class="pro-primary-button">
+                <p class="pro-kicker">Votre prochaine sélection</p>
+                <h2>Parlons de votre carte, de vos volumes et de vos échéances.</h2>
+                <p>
+                    Accédez à la réserve pour constituer une première demande ou contactez directement
+                    Wagyu France pour un besoin spécifique.
+                </p>
+            </div>
+
+            <div class="pro-contact-actions">
+                <a href="{{ route('reserve.pro') }}" class="pro-button pro-button-light">
                     Accéder à la réserve pro
                 </a>
-
-                <a href="{{ route('contact') }}" class="pro-secondary-button">
-                    Contacter Wagyu France
+                <a href="{{ route('contact') }}" class="pro-contact-link">
+                    Contacter la maison <span>→</span>
                 </a>
             </div>
         </div>
