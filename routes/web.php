@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAnimalController;
 use App\Http\Controllers\Admin\AdminAnimalCutController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminBillingController;
+use App\Http\Controllers\Admin\AdminCustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLogisticsController;
 use App\Http\Controllers\Admin\AdminProductController;
@@ -116,6 +117,15 @@ Route::middleware('wagyu.admin')->prefix('admin')->name('admin.')->group(functio
         ->name('documents.pro.invoice.issue');
     Route::get('/demandes/pro/{proReservationRequest}/documents/{document}', [CommercialDocumentController::class, 'proPdf'])
         ->name('documents.pro.pdf');
+
+    Route::get('/clients/export', [AdminCustomerController::class, 'export'])->name('customers.export');
+    Route::get('/clients', [AdminCustomerController::class, 'index'])->name('customers.index');
+    Route::get('/clients/{customer}', [AdminCustomerController::class, 'show'])->name('customers.show');
+    Route::put('/clients/{customer}', [AdminCustomerController::class, 'update'])->name('customers.update');
+    Route::post('/clients/{customer}/interactions', [AdminCustomerController::class, 'addInteraction'])
+        ->name('customers.interactions.store');
+    Route::patch('/clients/{customer}/interactions/{interaction}/terminer', [AdminCustomerController::class, 'completeInteraction'])
+        ->name('customers.interactions.complete');
 
     Route::get('/facturation', [AdminBillingController::class, 'index'])->name('billing.index');
     Route::post('/facturation/boutique/{shopOrderRequest}/envoyer-facture', [AdminBillingController::class, 'sendShopInvoice'])
