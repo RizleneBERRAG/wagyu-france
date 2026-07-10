@@ -116,8 +116,10 @@ Route::middleware(['wagyu.admin', 'wagyu.audit'])->prefix('admin')->name('admin.
         Route::put('/demandes/boutique/{shopOrderRequest}/commercial', [CommercialDocumentController::class, 'updateShop'])
             ->name('documents.shop.update');
         Route::post('/demandes/boutique/{shopOrderRequest}/facture', [CommercialDocumentController::class, 'issueShopInvoice'])
+            ->middleware('wagyu.permission:billing.manage')
             ->name('documents.shop.invoice.issue');
         Route::get('/demandes/boutique/{shopOrderRequest}/documents/{document}', [CommercialDocumentController::class, 'shopPdf'])
+            ->middleware('wagyu.invoice-document')
             ->name('documents.shop.pdf');
 
         Route::get('/demandes/pro/{proReservationRequest}', [CommercialDocumentController::class, 'showPro'])
@@ -125,8 +127,10 @@ Route::middleware(['wagyu.admin', 'wagyu.audit'])->prefix('admin')->name('admin.
         Route::put('/demandes/pro/{proReservationRequest}/commercial', [CommercialDocumentController::class, 'updatePro'])
             ->name('documents.pro.update');
         Route::post('/demandes/pro/{proReservationRequest}/facture', [CommercialDocumentController::class, 'issueProInvoice'])
+            ->middleware('wagyu.permission:billing.manage')
             ->name('documents.pro.invoice.issue');
         Route::get('/demandes/pro/{proReservationRequest}/documents/{document}', [CommercialDocumentController::class, 'proPdf'])
+            ->middleware('wagyu.invoice-document')
             ->name('documents.pro.pdf');
     });
 
