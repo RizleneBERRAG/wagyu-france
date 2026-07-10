@@ -15,6 +15,7 @@
     $pdfRoute = fn (string $document) => $isShop
         ? route('admin.documents.shop.pdf', [$requestItem, $document])
         : route('admin.documents.pro.pdf', [$requestItem, $document]);
+    $lockLabel = $requestItem->invoice_number ? 'Facture verrouillée' : 'Stock engagé';
 @endphp
 
 @extends('layouts.admin', [
@@ -109,7 +110,7 @@
                     <span>{{ $requestItem->stock_applied_at ? '✓' : '○' }}</span>
                     <div>
                         <strong>{{ $requestItem->stock_applied_at ? 'Stock réservé' : 'Stock non engagé' }}</strong>
-                        <p>{{ $requestItem->stock_applied_at ? 'Les quantités ont été déduites du catalogue.' : 'Aucune quantité n’a encore été retirée.' }}</p>
+                        <p>{{ $requestItem->stock_applied_at ? 'Les quantités finales ont été déduites du catalogue.' : 'Aucune quantité n’a encore été retirée.' }}</p>
                     </div>
                 </div>
             @endif
@@ -159,8 +160,8 @@
                     <p class="admin-kicker">Finalisation commerciale</p>
                     <h3>Lignes définitives, TVA et paiement</h3>
                 </div>
-                @if($requestItem->invoice_number)
-                    <span class="admin-lock-label">Facture verrouillée</span>
+                @if($commercialLocked)
+                    <span class="admin-lock-label">{{ $lockLabel }}</span>
                 @endif
             </div>
 
@@ -168,7 +169,7 @@
                 @csrf
                 @method('PUT')
 
-                @unless($requestItem->invoice_number)
+                @unless($commercialLocked)
                     <div class="admin-final-lines">
                         <div class="admin-final-line admin-final-line-head">
                             <span>Pièce</span>
@@ -265,13 +266,16 @@
                         @endif
                     </div>
                     <div class="admin-live-total is-locked">
-                        <div><span>Montant facturé</span><small>Valeur figée lors de l’émission.</small></div>
+                        <div>
+                            <span>{{ $requestItem->invoice_number ? 'Montant facturé' : 'Montant confirmé' }}</span>
+                            <small>{{ $requestItem->invoice_number ? 'Valeur figée lors de l’émission.' : 'Les quantités sont verrouillées tant que le stock reste engagé.' }}</small>
+                        </div>
                         <strong>{{ number_format((float) $finalTotal, 2, ',', ' ') }} € {{ $isShop ? 'TTC' : 'HT' }}</strong>
                     </div>
                 @endunless
 
                 <div class="admin-form-grid">
-                    @unless($requestItem->invoice_number)
+                    @unless($commercialLocked)
                         <label>
                             <span>Taux de TVA applicable</span>
                             <div class="admin-input-suffix">
@@ -311,7 +315,7 @@
                 </div>
 
                 <button type="submit" class="admin-primary-button">
-                    {{ $requestItem->invoice_number ? 'Mettre à jour le paiement et les notes' : 'Enregistrer la finalisation' }}
+                    {{ $commercialLocked ? 'Mettre à jour le paiement et les notes' : 'Enregistrer la finalisation' }}
                 </button>
             </form>
         </article>
