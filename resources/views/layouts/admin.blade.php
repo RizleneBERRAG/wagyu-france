@@ -64,6 +64,12 @@
                 @endif
             </a>
 
+            <p>Configuration</p>
+            <a href="{{ route('admin.settings.index') }}" @class(['is-active' => request()->routeIs('admin.settings.*')])>
+                <span class="wf-admin-nav-icon">⚙</span>
+                <strong>Paramètres du site</strong>
+            </a>
+
             <p>Site</p>
             <a href="{{ route('boutique') }}" target="_blank" rel="noopener">
                 <span class="wf-admin-nav-icon">↗</span>
