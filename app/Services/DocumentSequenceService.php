@@ -9,9 +9,25 @@ class DocumentSequenceService
 {
     public function nextInvoiceNumber(): string
     {
-        return DB::transaction(function () {
+        return $this->nextNumber(
+            'invoice',
+            (string) SiteSetting::valueFor('invoice_prefix', 'WF')
+        );
+    }
+
+    public function nextCreditNumber(): string
+    {
+        return $this->nextNumber(
+            'credit',
+            (string) SiteSetting::valueFor('credit_prefix', 'AV-WF')
+        );
+    }
+
+    private function nextNumber(string $sequenceType, string $rawPrefix): string
+    {
+        return DB::transaction(function () use ($sequenceType, $rawPrefix) {
             $year = now()->format('Y');
-            $key = 'invoice-' . $year;
+            $key = $sequenceType . '-' . $year;
             $now = now();
 
             DB::table('document_sequences')->insertOrIgnore([
@@ -35,8 +51,8 @@ class DocumentSequenceService
                     'updated_at' => now(),
                 ]);
 
-            $prefix = strtoupper(trim((string) SiteSetting::valueFor('invoice_prefix', 'WF')));
-            $prefix = preg_replace('/[^A-Z0-9-]/', '', $prefix) ?: 'WF';
+            $prefix = strtoupper(trim($rawPrefix));
+            $prefix = preg_replace('/[^A-Z0-9-]/', '', $prefix) ?: ($sequenceType === 'credit' ? 'AV-WF' : 'WF');
 
             return sprintf('%s-%s-%04d', $prefix, $year, $number);
         }, 5);
