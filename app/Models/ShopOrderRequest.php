@@ -14,6 +14,9 @@ class ShopOrderRequest extends Model
         'city',
         'message',
         'cart',
+        'final_cart',
+        'additional_label',
+        'additional_amount',
         'total',
         'final_total_ttc',
         'vat_rate',
@@ -29,8 +32,10 @@ class ShopOrderRequest extends Model
 
     protected $casts = [
         'cart' => 'array',
+        'final_cart' => 'array',
         'invoice_snapshot' => 'array',
         'total' => 'decimal:2',
+        'additional_amount' => 'decimal:2',
         'final_total_ttc' => 'decimal:2',
         'vat_rate' => 'decimal:2',
         'paid_at' => 'datetime',
