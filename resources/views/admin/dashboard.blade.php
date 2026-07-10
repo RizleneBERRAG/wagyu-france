@@ -11,6 +11,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-role-dashboard.css') }}">
 @endpush
 
 @section('content')
