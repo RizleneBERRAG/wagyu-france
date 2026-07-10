@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\EnsureAdminPermission;
 use App\Http\Middleware\EnsureWagyuAdmin;
+use App\Http\Middleware\RecordAdminActivity;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,6 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'wagyu.admin' => EnsureWagyuAdmin::class,
+            'wagyu.permission' => EnsureAdminPermission::class,
+            'wagyu.audit' => RecordAdminActivity::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
