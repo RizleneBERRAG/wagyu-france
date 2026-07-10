@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactMessage;
 use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
 use Illuminate\Http\RedirectResponse;
@@ -19,10 +20,12 @@ class DemandesController extends Controller
 
         $shopOrders = ShopOrderRequest::latest()->get();
         $proRequests = ProReservationRequest::latest()->get();
+        $contactMessages = ContactMessage::latest()->get();
 
         return view('admin.demandes', [
             'shopOrders' => $shopOrders,
             'proRequests' => $proRequests,
+            'contactMessages' => $contactMessages,
             'statuses' => $this->statuses(),
         ]);
     }
@@ -59,6 +62,23 @@ class DemandesController extends Controller
         ]);
 
         return back()->with('success', 'Statut professionnel mis à jour.');
+    }
+
+    public function updateContactStatus(Request $request, ContactMessage $contactMessage): RedirectResponse
+    {
+        if (session('wf_admin_authenticated') !== true) {
+            return redirect()->route('admin.login');
+        }
+
+        $validated = $request->validate([
+            'status' => ['required', 'string', 'in:nouvelle,en_cours,confirmee,traitee,annulee'],
+        ]);
+
+        $contactMessage->update([
+            'status' => $validated['status'],
+        ]);
+
+        return back()->with('success', 'Statut du message de contact mis à jour.');
     }
 
     private function statuses(): array
