@@ -12,6 +12,11 @@ class ReserveProController extends Controller
         $summary = $dashboard->activeBatchSummary();
         $batch = $summary['batch'] ?? null;
 
+        if ($batch && ! in_array($batch->status, ['open', 'ready'], true)) {
+            $summary = null;
+            $batch = null;
+        }
+
         $cuts = collect($summary['cuts'] ?? [])->mapWithKeys(function (array $cutSummary) {
             $cut = $cutSummary['model'];
 
