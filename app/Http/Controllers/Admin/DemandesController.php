@@ -33,7 +33,8 @@ class DemandesController extends Controller
                         ->orWhere('fullname', 'like', "%{$search}%")
                         ->orWhere('email', 'like', "%{$search}%")
                         ->orWhere('phone', 'like', "%{$search}%")
-                        ->orWhere('city', 'like', "%{$search}%");
+                        ->orWhere('city', 'like', "%{$search}%")
+                        ->orWhere('invoice_number', 'like', "%{$search}%");
                 });
             })
             ->latest()
@@ -47,7 +48,8 @@ class DemandesController extends Controller
                         ->orWhere('bovin_reference', 'like', "%{$search}%")
                         ->orWhere('company', 'like', "%{$search}%")
                         ->orWhere('fullname', 'like', "%{$search}%")
-                        ->orWhere('email', 'like', "%{$search}%");
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('invoice_number', 'like', "%{$search}%");
                 });
             })
             ->latest()
@@ -91,19 +93,25 @@ class DemandesController extends Controller
     ): RedirectResponse {
         $newStatus = $this->validatedStatus($request);
         $oldStatus = $shopOrderRequest->status;
+        $stockStatuses = ['confirmee', 'traitee'];
+        $wasHoldingStock = in_array($oldStatus, $stockStatuses, true);
+        $willHoldStock = in_array($newStatus, $stockStatuses, true);
 
-        if (in_array($newStatus, ['confirmee', 'traitee'], true)) {
+        if (! $wasHoldingStock && $willHoldStock) {
             $stockService->apply($shopOrderRequest);
-        } elseif ($newStatus === 'annulee') {
+        } elseif ($wasHoldingStock && ! $willHoldStock) {
             $stockService->release($shopOrderRequest);
         }
 
         $shopOrderRequest->update(['status' => $newStatus]);
         $this->notifyStatus('shop', $shopOrderRequest, $oldStatus, $newStatus);
 
-        $stockMessage = $shopOrderRequest->fresh()->stock_applied_at
-            ? ' Le stock correspondant est réservé.'
-            : ($newStatus === 'annulee' ? ' Le stock éventuellement réservé a été restauré.' : '');
+        $freshOrder = $shopOrderRequest->fresh();
+        $stockMessage = $freshOrder->stock_applied_at
+            ? ' Le stock correspondant aux lignes finales est réservé.'
+            : ($wasHoldingStock && ! $willHoldStock
+                ? ' Les quantités précédemment réservées ont été restaurées.'
+                : ' Aucun stock n’est engagé à ce stade.');
 
         return back()->with('success', 'Statut boutique mis à jour.' . $stockMessage);
     }
@@ -156,20 +164,27 @@ class DemandesController extends Controller
             fwrite($handle, "\xEF\xBB\xBF");
 
             if ($section === 'shop') {
-                fputcsv($handle, ['Référence', 'Statut', 'Date', 'Client', 'Email', 'Téléphone', 'Ville', 'Pièces', 'Total estimatif', 'Stock réservé'], ';');
+                fputcsv($handle, [
+                    'Référence', 'Facture', 'Statut', 'Paiement', 'Date', 'Client', 'Email', 'Téléphone',
+                    'Ville', 'Pièces finales', 'Estimation', 'Montant final TTC', 'TVA', 'Stock réservé',
+                ], ';');
 
                 ShopOrderRequest::latest()->chunk(200, function ($orders) use ($handle) {
                     foreach ($orders as $order) {
                         fputcsv($handle, [
                             $this->csvValue($order->reference),
+                            $this->csvValue($order->invoice_number),
                             $this->csvValue($this->statuses()[$order->status] ?? $order->status),
+                            $this->csvValue($this->paymentStatuses()[$order->payment_status ?? 'pending'] ?? $order->payment_status),
                             $order->created_at?->format('d/m/Y H:i'),
                             $this->csvValue($order->fullname),
                             $this->csvValue($order->email),
                             $this->csvValue($order->phone),
                             $this->csvValue($order->city),
-                            $this->csvValue($this->cartSummary($order->cart, 'unit_price')),
+                            $this->csvValue($this->cartSummary($order->final_cart ?: $order->cart, 'unit_price')),
                             number_format((float) $order->total, 2, ',', ' '),
+                            $order->final_total_ttc !== null ? number_format((float) $order->final_total_ttc, 2, ',', ' ') : '',
+                            $order->vat_rate !== null ? number_format((float) $order->vat_rate, 2, ',', ' ') . ' %' : '',
                             $order->stock_applied_at ? 'Oui' : 'Non',
                         ], ';');
                     }
@@ -177,14 +192,19 @@ class DemandesController extends Controller
             }
 
             if ($section === 'pro') {
-                fputcsv($handle, ['Référence', 'Animal', 'Statut', 'Date', 'Établissement', 'Contact', 'Email', 'Téléphone', 'Type', 'Ville', 'Pièces', 'Total HT'], ';');
+                fputcsv($handle, [
+                    'Référence', 'Facture', 'Animal', 'Statut', 'Paiement', 'Date', 'Établissement', 'Contact',
+                    'Email', 'Téléphone', 'Type', 'Ville', 'Pièces finales', 'Estimation HT', 'Montant final HT', 'TVA',
+                ], ';');
 
                 ProReservationRequest::latest()->chunk(200, function ($requests) use ($handle) {
                     foreach ($requests as $item) {
                         fputcsv($handle, [
                             $this->csvValue($item->reference),
+                            $this->csvValue($item->invoice_number),
                             $this->csvValue($item->bovin_reference),
                             $this->csvValue($this->statuses()[$item->status] ?? $item->status),
+                            $this->csvValue($this->paymentStatuses()[$item->payment_status ?? 'pending'] ?? $item->payment_status),
                             $item->created_at?->format('d/m/Y H:i'),
                             $this->csvValue($item->company),
                             $this->csvValue($item->fullname),
@@ -192,8 +212,10 @@ class DemandesController extends Controller
                             $this->csvValue($item->phone),
                             $this->csvValue($item->professional_type),
                             $this->csvValue($item->city),
-                            $this->csvValue($this->cartSummary($item->cart, 'unit_price_ht')),
+                            $this->csvValue($this->cartSummary($item->final_cart ?: $item->cart, $item->final_cart ? 'unit_price' : 'unit_price_ht')),
                             number_format((float) $item->total_ht, 2, ',', ' '),
+                            $item->final_total_ht !== null ? number_format((float) $item->final_total_ht, 2, ',', ' ') : '',
+                            $item->vat_rate !== null ? number_format((float) $item->vat_rate, 2, ',', ' ') . ' %' : '',
                         ], ';');
                     }
                 });
@@ -252,7 +274,7 @@ class DemandesController extends Controller
     {
         return collect($cart ?? [])->map(function ($item) use ($priceKey) {
             $name = $item['name'] ?? 'Produit';
-            $quantity = number_format((float) ($item['quantity'] ?? 0), 1, ',', ' ');
+            $quantity = number_format((float) ($item['quantity'] ?? 0), 3, ',', ' ');
             $price = number_format((float) ($item[$priceKey] ?? 0), 2, ',', ' ');
 
             return "{$name} : {$quantity} kg à {$price} €/kg";
@@ -281,6 +303,16 @@ class DemandesController extends Controller
             'confirmee' => 'Confirmée',
             'traitee' => 'Traitée',
             'annulee' => 'Annulée',
+        ];
+    }
+
+    private function paymentStatuses(): array
+    {
+        return [
+            'pending' => 'À régler',
+            'partial' => 'Partiellement réglé',
+            'paid' => 'Réglé',
+            'refunded' => 'Remboursé',
         ];
     }
 }
