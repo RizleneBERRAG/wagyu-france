@@ -7,6 +7,7 @@ use App\Mail\ProReservationCustomerMail;
 use App\Models\AnimalBatch;
 use App\Models\ProReservationRequest;
 use App\Services\AdminDashboardService;
+use App\Services\CustomerSyncService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -15,8 +16,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ProReservationRequestController extends Controller
 {
-    public function store(Request $request, AdminDashboardService $dashboard): JsonResponse
-    {
+    public function store(
+        Request $request,
+        AdminDashboardService $dashboard,
+        CustomerSyncService $customers
+    ): JsonResponse {
         $batch = AnimalBatch::with('cuts')
             ->when(
                 $request->filled('bovin_reference'),
@@ -115,6 +119,17 @@ class ProReservationRequestController extends Controller
             'cart' => $cart,
             'total_ht' => $totalHt,
             'status' => 'nouvelle',
+        ]);
+
+        $customers->sync($reservation, [
+            'type' => 'professional',
+            'relationship_status' => 'prospect',
+            'company' => $reservation->company,
+            'fullname' => $reservation->fullname,
+            'email' => $reservation->email,
+            'phone' => $reservation->phone,
+            'city' => $reservation->city,
+            'professional_type' => $reservation->professional_type,
         ]);
 
         $summary = $dashboard->activeBatchSummary();
