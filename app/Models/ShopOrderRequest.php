@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\ValidationException;
 
 class ShopOrderRequest extends Model
 {
@@ -42,4 +43,39 @@ class ShopOrderRequest extends Model
         'invoice_issued_at' => 'datetime',
         'stock_applied_at' => 'datetime',
     ];
+
+    protected static function booted(): void
+    {
+        static::updating(function (self $order) {
+            $financialFields = [
+                'final_cart',
+                'additional_label',
+                'additional_amount',
+                'final_total_ttc',
+                'vat_rate',
+            ];
+
+            if ($order->getOriginal('invoice_number') && $order->isDirty($financialFields)) {
+                throw ValidationException::withMessages([
+                    'invoice' => 'Les lignes et montants d’une facture émise ne peuvent plus être modifiés.',
+                ]);
+            }
+
+            if ($order->getOriginal('stock_applied_at') && $order->isDirty($financialFields)) {
+                throw ValidationException::withMessages([
+                    'stock' => 'Libérez d’abord le stock en faisant reculer le statut avant de modifier les lignes finales.',
+                ]);
+            }
+
+            if (
+                $order->getOriginal('invoice_number')
+                && $order->isDirty('status')
+                && ! in_array($order->status, ['confirmee', 'traitee'], true)
+            ) {
+                throw ValidationException::withMessages([
+                    'status' => 'Une commande facturée ne peut pas être annulée ou repassée en cours sans émettre un avoir.',
+                ]);
+            }
+        });
+    }
 }
