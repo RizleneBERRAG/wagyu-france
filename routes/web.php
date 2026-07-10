@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AdminAnimalController;
 use App\Http\Controllers\Admin\AdminAnimalCutController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminBillingController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminLogisticsController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\CommercialDocumentController;
@@ -114,6 +116,26 @@ Route::middleware('wagyu.admin')->prefix('admin')->name('admin.')->group(functio
         ->name('documents.pro.invoice.issue');
     Route::get('/demandes/pro/{proReservationRequest}/documents/{document}', [CommercialDocumentController::class, 'proPdf'])
         ->name('documents.pro.pdf');
+
+    Route::get('/facturation', [AdminBillingController::class, 'index'])->name('billing.index');
+    Route::post('/facturation/boutique/{shopOrderRequest}/envoyer-facture', [AdminBillingController::class, 'sendShopInvoice'])
+        ->name('billing.shop.invoice.send');
+    Route::post('/facturation/pro/{proReservationRequest}/envoyer-facture', [AdminBillingController::class, 'sendProInvoice'])
+        ->name('billing.pro.invoice.send');
+    Route::post('/facturation/boutique/{shopOrderRequest}/avoir', [AdminBillingController::class, 'issueShopCredit'])
+        ->name('billing.shop.credit.issue');
+    Route::post('/facturation/pro/{proReservationRequest}/avoir', [AdminBillingController::class, 'issueProCredit'])
+        ->name('billing.pro.credit.issue');
+    Route::get('/facturation/avoirs/{creditNote}/pdf', [AdminBillingController::class, 'creditPdf'])
+        ->name('billing.credit.pdf');
+    Route::post('/facturation/avoirs/{creditNote}/envoyer', [AdminBillingController::class, 'sendCredit'])
+        ->name('billing.credit.send');
+
+    Route::get('/logistique', [AdminLogisticsController::class, 'index'])->name('logistics.index');
+    Route::put('/logistique/boutique/{shopOrderRequest}', [AdminLogisticsController::class, 'updateShop'])
+        ->name('logistics.shop.update');
+    Route::put('/logistique/pro/{proReservationRequest}', [AdminLogisticsController::class, 'updatePro'])
+        ->name('logistics.pro.update');
 
     Route::get('/parametres', [AdminSettingsController::class, 'index'])->name('settings.index');
     Route::put('/parametres', [AdminSettingsController::class, 'update'])->name('settings.update');
