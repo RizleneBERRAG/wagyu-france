@@ -1,10 +1,8 @@
 @php
     $isShop = $kind === 'shop';
     $displayName = $isShop ? $requestItem->fullname : $requestItem->company;
-    $contactName = $isShop ? $requestItem->fullname : $requestItem->fullname;
     $items = $requestItem->cart ?? [];
-    $finalInput = $isShop ? 'final_total_ttc' : 'final_total_ht';
-    $finalLabel = $isShop ? 'Montant final TTC' : 'Montant final HT';
+    $editableItems = old('items', $finalItems);
     $updateRoute = $isShop
         ? route('admin.documents.shop.update', $requestItem)
         : route('admin.documents.pro.update', $requestItem);
@@ -29,6 +27,10 @@
 @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-documents.css') }}">
+@endpush
+
+@push('scripts')
+    <script src="{{ asset('assets/js/admin-documents.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -67,7 +69,7 @@
 
             <dl class="admin-request-info">
                 @unless($isShop)
-                    <div><dt>Contact</dt><dd>{{ $contactName }}</dd></div>
+                    <div><dt>Contact</dt><dd>{{ $requestItem->fullname }}</dd></div>
                 @endunless
                 <div><dt>Email</dt><dd><a href="mailto:{{ $requestItem->email }}">{{ $requestItem->email }}</a></dd></div>
                 <div><dt>Téléphone</dt><dd><a href="tel:{{ $requestItem->phone }}">{{ $requestItem->phone }}</a></dd></div>
@@ -117,8 +119,8 @@
     <section class="admin-card admin-document-items-card">
         <div class="admin-panel-heading">
             <div>
-                <p class="admin-kicker">Sélection</p>
-                <h3>Pièces et quantités demandées</h3>
+                <p class="admin-kicker">Demande initiale</p>
+                <h3>Pièces et quantités souhaitées</h3>
             </div>
             <strong>{{ count($items) }} ligne(s)</strong>
         </div>
@@ -137,7 +139,7 @@
                 @endphp
                 <div class="admin-document-item">
                     <strong>{{ $item['name'] ?? 'Pièce' }}</strong>
-                    <span>{{ number_format((float) ($item['quantity'] ?? 0), 1, ',', ' ') }} kg</span>
+                    <span>{{ number_format((float) ($item['quantity'] ?? 0), 3, ',', ' ') }} kg</span>
                     <span>{{ number_format($unitPrice, 2, ',', ' ') }} €{{ $isShop ? '' : ' HT' }}/kg</span>
                     <strong>{{ number_format($lineTotal, 2, ',', ' ') }} €{{ $isShop ? '' : ' HT' }}</strong>
                 </div>
@@ -155,49 +157,138 @@
             <div class="admin-panel-heading">
                 <div>
                     <p class="admin-kicker">Finalisation commerciale</p>
-                    <h3>Montant, TVA et paiement</h3>
+                    <h3>Lignes définitives, TVA et paiement</h3>
                 </div>
                 @if($requestItem->invoice_number)
-                    <span class="admin-lock-label">Montants verrouillés</span>
+                    <span class="admin-lock-label">Facture verrouillée</span>
                 @endif
             </div>
 
-            <form method="POST" action="{{ $updateRoute }}" class="admin-document-commercial-form">
+            <form method="POST" action="{{ $updateRoute }}" class="admin-document-commercial-form" data-commercial-form>
                 @csrf
                 @method('PUT')
 
-                <div class="admin-form-grid">
-                    <label>
-                        <span>{{ $finalLabel }}</span>
-                        <input
-                            type="number"
-                            name="{{ $finalInput }}"
-                            min="0"
-                            max="999999.99"
-                            step="0.01"
-                            value="{{ old($finalInput, $finalTotal) }}"
-                            @disabled($requestItem->invoice_number)
-                            placeholder="0,00"
-                        >
-                        <small>Montant réellement confirmé après poids, disponibilité et préparation.</small>
-                    </label>
-
-                    <label>
-                        <span>Taux de TVA applicable</span>
-                        <div class="admin-input-suffix">
-                            <input
-                                type="number"
-                                name="vat_rate"
-                                min="0"
-                                max="100"
-                                step="0.01"
-                                value="{{ old('vat_rate', $requestItem->vat_rate ?? $vatRate) }}"
-                                @disabled($requestItem->invoice_number)
-                            >
-                            <b>%</b>
+                @unless($requestItem->invoice_number)
+                    <div class="admin-final-lines">
+                        <div class="admin-final-line admin-final-line-head">
+                            <span>Pièce</span>
+                            <span>Quantité finale</span>
+                            <span>Prix unitaire</span>
+                            <span>Total ligne</span>
                         </div>
-                        <small>À confirmer selon le régime et la nature exacte de la vente.</small>
-                    </label>
+
+                        @foreach($editableItems as $index => $item)
+                            <div class="admin-final-line" data-commercial-line>
+                                <div>
+                                    <strong>{{ $item['name'] ?? 'Pièce' }}</strong>
+                                    <input type="hidden" name="items[{{ $index }}][key]" value="{{ $item['key'] ?? '' }}">
+                                    <input type="hidden" name="items[{{ $index }}][name]" value="{{ $item['name'] ?? 'Pièce' }}">
+                                </div>
+                                <label>
+                                    <input
+                                        type="number"
+                                        name="items[{{ $index }}][quantity]"
+                                        min="0.01"
+                                        max="99999"
+                                        step="0.001"
+                                        value="{{ $item['quantity'] ?? 0 }}"
+                                        data-line-quantity
+                                        required
+                                    >
+                                    <small>kg</small>
+                                </label>
+                                <label>
+                                    <input
+                                        type="number"
+                                        name="items[{{ $index }}][unit_price]"
+                                        min="0"
+                                        max="99999"
+                                        step="0.01"
+                                        value="{{ $item['unit_price'] ?? 0 }}"
+                                        data-line-price
+                                        required
+                                    >
+                                    <small>€/kg</small>
+                                </label>
+                                <strong data-line-total>0,00 €</strong>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="admin-form-grid admin-adjustment-grid">
+                        <label>
+                            <span>Libellé supplémentaire</span>
+                            <input type="text" name="additional_label" value="{{ old('additional_label', $requestItem->additional_label) }}" placeholder="Transport, remise, conditionnement...">
+                        </label>
+                        <label>
+                            <span>Montant supplémentaire</span>
+                            <div class="admin-input-suffix">
+                                <input
+                                    type="number"
+                                    name="additional_amount"
+                                    min="-999999.99"
+                                    max="999999.99"
+                                    step="0.01"
+                                    value="{{ old('additional_amount', $requestItem->additional_amount ?? 0) }}"
+                                    data-additional-amount
+                                >
+                                <b>€</b>
+                            </div>
+                            <small>Valeur négative pour une remise.</small>
+                        </label>
+                    </div>
+
+                    <div class="admin-live-total">
+                        <div>
+                            <span>Montant final calculé</span>
+                            <small>Somme des lignes et de l’ajustement.</small>
+                        </div>
+                        <strong data-commercial-total>0,00 € {{ $isShop ? 'TTC' : 'HT' }}</strong>
+                    </div>
+                @else
+                    <div class="admin-final-lines is-locked">
+                        @foreach($requestItem->final_cart ?? [] as $item)
+                            <div class="admin-final-line">
+                                <strong>{{ $item['name'] ?? 'Pièce' }}</strong>
+                                <span>{{ number_format((float) ($item['quantity'] ?? 0), 3, ',', ' ') }} kg</span>
+                                <span>{{ number_format((float) ($item['unit_price'] ?? 0), 2, ',', ' ') }} €/kg</span>
+                                <strong>{{ number_format((float) ($item['line_total'] ?? 0), 2, ',', ' ') }} €</strong>
+                            </div>
+                        @endforeach
+                        @if(abs((float) $requestItem->additional_amount) > 0.0001)
+                            <div class="admin-final-line">
+                                <strong>{{ $requestItem->additional_label }}</strong>
+                                <span>1</span>
+                                <span>{{ number_format((float) $requestItem->additional_amount, 2, ',', ' ') }} €</span>
+                                <strong>{{ number_format((float) $requestItem->additional_amount, 2, ',', ' ') }} €</strong>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="admin-live-total is-locked">
+                        <div><span>Montant facturé</span><small>Valeur figée lors de l’émission.</small></div>
+                        <strong>{{ number_format((float) $finalTotal, 2, ',', ' ') }} € {{ $isShop ? 'TTC' : 'HT' }}</strong>
+                    </div>
+                @endunless
+
+                <div class="admin-form-grid">
+                    @unless($requestItem->invoice_number)
+                        <label>
+                            <span>Taux de TVA applicable</span>
+                            <div class="admin-input-suffix">
+                                <input
+                                    type="number"
+                                    name="vat_rate"
+                                    min="0"
+                                    max="100"
+                                    step="0.01"
+                                    value="{{ old('vat_rate', $requestItem->vat_rate ?? $vatRate) }}"
+                                    required
+                                >
+                                <b>%</b>
+                            </div>
+                            <small>À confirmer selon le régime et la nature exacte de la vente.</small>
+                        </label>
+                    @endunless
 
                     <label>
                         <span>État du paiement</span>
@@ -219,7 +310,9 @@
                     </label>
                 </div>
 
-                <button type="submit" class="admin-primary-button">Enregistrer la finalisation</button>
+                <button type="submit" class="admin-primary-button">
+                    {{ $requestItem->invoice_number ? 'Mettre à jour le paiement et les notes' : 'Enregistrer la finalisation' }}
+                </button>
             </form>
         </article>
 
@@ -235,7 +328,7 @@
             <div class="admin-document-download-list">
                 <a href="{{ $pdfRoute('order') }}">
                     <span>01</span>
-                    <div><strong>Bon de commande</strong><p>Client, pièces, quantités et montant actuel.</p></div>
+                    <div><strong>Bon de commande</strong><p>Client, lignes finales si elles sont enregistrées, et montant actuel.</p></div>
                     <b>PDF ↓</b>
                 </a>
 
@@ -275,7 +368,7 @@
                             @endunless
                         </ul>
                     @else
-                        <p>Le montant, la TVA, le statut et les informations légales sont présents.</p>
+                        <p>Les lignes, le montant, la TVA, le statut et les informations légales sont présents.</p>
                     @endif
                 </div>
 
