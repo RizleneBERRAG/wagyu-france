@@ -63,6 +63,32 @@ class AdminDashboardService
         $counts = $this->navigationCounts();
         $batch = $this->activeBatchSummary();
 
+        if (config('mail.default') === 'log') {
+            $notifications[] = [
+                'level' => 'warning',
+                'title' => 'Emails encore en mode test',
+                'message' => 'Les messages sont enregistrés dans les logs mais ne quittent pas encore le serveur.',
+                'route' => 'admin.settings.index',
+            ];
+        }
+
+        $legalIncomplete = collect([
+            config('legal.company.legal_name'),
+            config('legal.company.siret'),
+            config('legal.company.publication_director'),
+            config('legal.hosting.name'),
+            config('legal.mediator.name'),
+        ])->contains(fn ($value) => blank($value));
+
+        if ($legalIncomplete) {
+            $notifications[] = [
+                'level' => 'info',
+                'title' => 'Informations légales incomplètes',
+                'message' => 'Complétez l’identité de l’entreprise, l’hébergeur et le médiateur avant la mise en ligne.',
+                'route' => 'admin.settings.index',
+            ];
+        }
+
         if ($counts['orders'] > 0) {
             $notifications[] = [
                 'level' => 'important',
