@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAnimalCutController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminBillingController;
 use App\Http\Controllers\Admin\AdminCustomerController;
+use App\Http\Controllers\Admin\AdminCustomerCreateController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLogisticsController;
 use App\Http\Controllers\Admin\AdminProductController;
@@ -118,6 +119,8 @@ Route::middleware('wagyu.admin')->prefix('admin')->name('admin.')->group(functio
     Route::get('/demandes/pro/{proReservationRequest}/documents/{document}', [CommercialDocumentController::class, 'proPdf'])
         ->name('documents.pro.pdf');
 
+    Route::get('/clients/nouveau', [AdminCustomerCreateController::class, 'create'])->name('customers.create');
+    Route::post('/clients', [AdminCustomerCreateController::class, 'store'])->name('customers.store');
     Route::get('/clients/export', [AdminCustomerController::class, 'export'])->name('customers.export');
     Route::get('/clients', [AdminCustomerController::class, 'index'])->name('customers.index');
     Route::get('/clients/{customer}', [AdminCustomerController::class, 'show'])->name('customers.show');
