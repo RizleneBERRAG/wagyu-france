@@ -8,7 +8,6 @@ use App\Models\CustomerInteraction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -44,7 +43,7 @@ class AdminCustomerController extends Controller
                 'shopOrders.creditNotes',
                 'proReservations.creditNotes',
             ])
-            ->withCount(['shopOrders', 'proReservations', 'contactMessages']);
+            ->withCount(['shopOrders', 'proReservations', 'contactMessages', 'interactions']);
 
         $search = trim((string) $request->query('q'));
         $type = (string) $request->query('type');
@@ -134,7 +133,9 @@ class AdminCustomerController extends Controller
         ]);
 
         $emailKey = mb_strtolower(trim($validated['email']));
-        $duplicate = Customer::where('email_key', $emailKey)->whereKeyNot($customer->getKey())->exists();
+        $duplicate = Customer::where('email_key', $emailKey)
+            ->where('id', '!=', $customer->getKey())
+            ->exists();
 
         if ($duplicate) {
             return back()->withInput()->withErrors([
@@ -193,8 +194,14 @@ class AdminCustomerController extends Controller
             $updates['last_contacted_at'] = $interaction->happened_at ?: now();
         }
 
+        if (
+            $interaction->due_at
+            && (! $customer->next_follow_up_at || $interaction->due_at->lt($customer->next_follow_up_at))
+        ) {
+            $updates['next_follow_up_at'] = $interaction->due_at;
+        }
+
         $customer->update($updates);
-        $this->refreshNextFollowUp($customer);
 
         return back()->with('success', $interaction->due_at
             ? 'L’interaction et sa relance ont été ajoutées.'
@@ -205,8 +212,9 @@ class AdminCustomerController extends Controller
     {
         abort_unless($interaction->customer_id === $customer->id, 404);
 
+        $completedDueAt = $interaction->due_at;
         $interaction->update(['completed_at' => now()]);
-        $this->refreshNextFollowUp($customer);
+        $this->refreshNextFollowUp($customer, $completedDueAt);
 
         return back()->with('success', 'La relance est marquée comme effectuée.');
     }
@@ -224,6 +232,7 @@ class AdminCustomerController extends Controller
             ], ';');
 
             Customer::with(['shopOrders.creditNotes', 'proReservations.creditNotes'])
+                ->withCount(['contactMessages', 'interactions'])
                 ->orderBy('id')
                 ->chunk(200, function ($customers) use ($handle) {
                     foreach ($customers as $customer) {
@@ -274,6 +283,9 @@ class AdminCustomerController extends Controller
             return max(0, $invoice - $credits);
         });
 
+        $contactCount = $customer->contact_messages_count ?? $customer->contactMessages->count();
+        $interactionCount = $customer->interactions_count ?? $customer->interactions->count();
+
         return [
             'model' => $customer,
             'revenue_ttc' => round($shopRevenue + $proRevenue, 2),
@@ -281,10 +293,12 @@ class AdminCustomerController extends Controller
                 + $customer->proReservations->whereNotNull('invoice_number')->count(),
             'activity_count' => $customer->shopOrders->count()
                 + $customer->proReservations->count()
-                + ($customer->contact_messages_count ?? $customer->contactMessages->count()),
+                + $contactCount
+                + $interactionCount,
             'shop_count' => $customer->shopOrders->count(),
             'pro_count' => $customer->proReservations->count(),
-            'contact_count' => $customer->contact_messages_count ?? $customer->contactMessages->count(),
+            'contact_count' => $contactCount,
+            'interaction_count' => $interactionCount,
             'follow_up_due' => $customer->next_follow_up_at && $customer->next_follow_up_at->isPast(),
         ];
     }
@@ -337,14 +351,25 @@ class AdminCustomerController extends Controller
             ->values();
     }
 
-    private function refreshNextFollowUp(Customer $customer): void
+    private function refreshNextFollowUp(Customer $customer, mixed $completedDueAt = null): void
     {
         $nextDue = $customer->interactions()
             ->whereNull('completed_at')
             ->whereNotNull('due_at')
             ->min('due_at');
 
-        $customer->update(['next_follow_up_at' => $nextDue]);
+        if ($nextDue) {
+            $customer->update(['next_follow_up_at' => $nextDue]);
+            return;
+        }
+
+        if (
+            $completedDueAt
+            && $customer->next_follow_up_at
+            && $customer->next_follow_up_at->timestamp === $completedDueAt->timestamp
+        ) {
+            $customer->update(['next_follow_up_at' => null]);
+        }
     }
 
     private function csv(mixed $value): string
