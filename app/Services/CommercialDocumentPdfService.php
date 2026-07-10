@@ -6,7 +6,6 @@ use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
 use App\Models\SiteSetting;
 use App\Services\Pdf\SimplePdfDocument;
-use Illuminate\Support\Carbon;
 
 class CommercialDocumentPdfService
 {
@@ -23,11 +22,21 @@ class CommercialDocumentPdfService
             return $this->render($this->invoiceData($order->invoice_snapshot ?? []));
         }
 
-        $totalTtc = (float) ($order->final_total_ttc ?: $order->total);
+        $isFinal = is_array($order->final_cart) && $order->final_cart !== [];
+        $items = $isFinal
+            ? $this->normalizedFinalItems($order->final_cart)
+            : $this->normalizedShopItems($order->cart ?? []);
+
+        if ($type !== 'preparation') {
+            $items = $this->appendAdjustment($items, $order->additional_label, (float) $order->additional_amount);
+        }
+
+        $totalTtc = $isFinal
+            ? (float) $order->final_total_ttc
+            : (float) $order->total;
         $vatRate = $order->vat_rate !== null
             ? (float) $order->vat_rate
             : $this->defaultVatRate();
-
         [$totalHt, $vatAmount] = $this->fromTtc($totalTtc, $vatRate);
 
         return $this->render([
@@ -48,18 +57,13 @@ class CommercialDocumentPdfService
                 ['label' => 'Statut', 'value' => $this->statusLabel($order->status)],
                 ['label' => 'Paiement', 'value' => $this->paymentLabel($order->payment_status)],
             ],
-            'items' => collect($order->cart ?? [])->map(fn (array $item) => [
-                'name' => $item['name'] ?? 'Produit',
-                'quantity' => (float) ($item['quantity'] ?? 0),
-                'unit_price' => (float) ($item['unit_price'] ?? 0),
-                'line_total' => (float) ($item['line_total'] ?? (($item['quantity'] ?? 0) * ($item['unit_price'] ?? 0))),
-            ])->all(),
+            'items' => $items,
             'amounts' => [
                 'total_ht' => $totalHt,
                 'vat_rate' => $vatRate,
                 'vat_amount' => $vatAmount,
                 'total_ttc' => $totalTtc,
-                'is_estimate' => ! $order->final_total_ttc,
+                'is_estimate' => ! $isFinal,
             ],
             'notes' => $order->document_notes ?: $order->message,
             'payment_terms' => SiteSetting::valueFor('invoice_payment_terms'),
@@ -74,7 +78,18 @@ class CommercialDocumentPdfService
             return $this->render($this->invoiceData($requestItem->invoice_snapshot ?? []));
         }
 
-        $totalHt = (float) ($requestItem->final_total_ht ?: $requestItem->total_ht);
+        $isFinal = is_array($requestItem->final_cart) && $requestItem->final_cart !== [];
+        $items = $isFinal
+            ? $this->normalizedFinalItems($requestItem->final_cart)
+            : $this->normalizedProItems($requestItem->cart ?? []);
+
+        if ($type !== 'preparation') {
+            $items = $this->appendAdjustment($items, $requestItem->additional_label, (float) $requestItem->additional_amount);
+        }
+
+        $totalHt = $isFinal
+            ? (float) $requestItem->final_total_ht
+            : (float) $requestItem->total_ht;
         $vatRate = $requestItem->vat_rate !== null
             ? (float) $requestItem->vat_rate
             : $this->defaultVatRate();
@@ -99,18 +114,13 @@ class CommercialDocumentPdfService
                 ['label' => 'Statut', 'value' => $this->statusLabel($requestItem->status)],
                 ['label' => 'Paiement', 'value' => $this->paymentLabel($requestItem->payment_status)],
             ],
-            'items' => collect($requestItem->cart ?? [])->map(fn (array $item) => [
-                'name' => $item['name'] ?? 'Pièce',
-                'quantity' => (float) ($item['quantity'] ?? 0),
-                'unit_price' => (float) ($item['unit_price_ht'] ?? 0),
-                'line_total' => (float) ($item['line_total_ht'] ?? (($item['quantity'] ?? 0) * ($item['unit_price_ht'] ?? 0))),
-            ])->all(),
+            'items' => $items,
             'amounts' => [
                 'total_ht' => $totalHt,
                 'vat_rate' => $vatRate,
                 'vat_amount' => $vatAmount,
                 'total_ttc' => $totalHt + $vatAmount,
-                'is_estimate' => ! $requestItem->final_total_ht,
+                'is_estimate' => ! $isFinal,
             ],
             'notes' => $requestItem->document_notes ?: $requestItem->message,
             'payment_terms' => SiteSetting::valueFor('invoice_payment_terms'),
@@ -124,6 +134,11 @@ class CommercialDocumentPdfService
         $totalTtc = (float) $order->final_total_ttc;
         $vatRate = (float) $order->vat_rate;
         [$totalHt, $vatAmount] = $this->fromTtc($totalTtc, $vatRate);
+        $items = $this->appendAdjustment(
+            $this->normalizedFinalItems($order->final_cart ?? []),
+            $order->additional_label,
+            (float) $order->additional_amount
+        );
 
         return $this->snapshot([
             'number' => $invoiceNumber,
@@ -139,12 +154,7 @@ class CommercialDocumentPdfService
                 ['label' => 'Commande', 'value' => $order->reference],
                 ['label' => 'Paiement', 'value' => $this->paymentLabel($order->payment_status)],
             ],
-            'items' => collect($order->cart ?? [])->map(fn (array $item) => [
-                'name' => $item['name'] ?? 'Produit',
-                'quantity' => (float) ($item['quantity'] ?? 0),
-                'unit_price' => (float) ($item['unit_price'] ?? 0),
-                'line_total' => (float) ($item['line_total'] ?? (($item['quantity'] ?? 0) * ($item['unit_price'] ?? 0))),
-            ])->all(),
+            'items' => $items,
             'amounts' => [
                 'total_ht' => $totalHt,
                 'vat_rate' => $vatRate,
@@ -161,6 +171,11 @@ class CommercialDocumentPdfService
         $totalHt = (float) $requestItem->final_total_ht;
         $vatRate = (float) $requestItem->vat_rate;
         $vatAmount = round($totalHt * ($vatRate / 100), 2);
+        $items = $this->appendAdjustment(
+            $this->normalizedFinalItems($requestItem->final_cart ?? []),
+            $requestItem->additional_label,
+            (float) $requestItem->additional_amount
+        );
 
         return $this->snapshot([
             'number' => $invoiceNumber,
@@ -177,12 +192,7 @@ class CommercialDocumentPdfService
                 ['label' => 'Animal', 'value' => $requestItem->bovin_reference],
                 ['label' => 'Paiement', 'value' => $this->paymentLabel($requestItem->payment_status)],
             ],
-            'items' => collect($requestItem->cart ?? [])->map(fn (array $item) => [
-                'name' => $item['name'] ?? 'Pièce',
-                'quantity' => (float) ($item['quantity'] ?? 0),
-                'unit_price' => (float) ($item['unit_price_ht'] ?? 0),
-                'line_total' => (float) ($item['line_total_ht'] ?? (($item['quantity'] ?? 0) * ($item['unit_price_ht'] ?? 0))),
-            ])->all(),
+            'items' => $items,
             'amounts' => [
                 'total_ht' => $totalHt,
                 'vat_rate' => $vatRate,
@@ -212,6 +222,52 @@ class CommercialDocumentPdfService
         abort_if($snapshot === [], 404, 'La facture n’a pas encore été émise.');
 
         return $snapshot;
+    }
+
+    private function normalizedFinalItems(array $items): array
+    {
+        return collect($items)->map(fn (array $item) => [
+            'name' => $item['name'] ?? 'Pièce',
+            'quantity' => (float) ($item['quantity'] ?? 0),
+            'unit_price' => (float) ($item['unit_price'] ?? 0),
+            'line_total' => (float) ($item['line_total'] ?? (($item['quantity'] ?? 0) * ($item['unit_price'] ?? 0))),
+        ])->values()->all();
+    }
+
+    private function normalizedShopItems(array $items): array
+    {
+        return collect($items)->map(fn (array $item) => [
+            'name' => $item['name'] ?? 'Produit',
+            'quantity' => (float) ($item['quantity'] ?? 0),
+            'unit_price' => (float) ($item['unit_price'] ?? 0),
+            'line_total' => (float) ($item['line_total'] ?? (($item['quantity'] ?? 0) * ($item['unit_price'] ?? 0))),
+        ])->values()->all();
+    }
+
+    private function normalizedProItems(array $items): array
+    {
+        return collect($items)->map(fn (array $item) => [
+            'name' => $item['name'] ?? 'Pièce',
+            'quantity' => (float) ($item['quantity'] ?? 0),
+            'unit_price' => (float) ($item['unit_price_ht'] ?? 0),
+            'line_total' => (float) ($item['line_total_ht'] ?? (($item['quantity'] ?? 0) * ($item['unit_price_ht'] ?? 0))),
+        ])->values()->all();
+    }
+
+    private function appendAdjustment(array $items, ?string $label, float $amount): array
+    {
+        if (abs($amount) < 0.0001) {
+            return $items;
+        }
+
+        $items[] = [
+            'name' => $label ?: 'Ajustement commercial',
+            'quantity' => 1,
+            'unit_price' => $amount,
+            'line_total' => $amount,
+        ];
+
+        return $items;
     }
 
     private function render(array $data): string
@@ -275,7 +331,6 @@ class CommercialDocumentPdfService
         foreach (array_values(array_filter($lines, fn ($line) => filled($line))) as $index => $line) {
             $pdf->text($x + 14, $cursor, (string) $line, $index === 0 ? 10 : 8.5, $index === 0 ? 'bold' : 'regular', self::INK);
             $cursor += 12;
-
             if ($cursor > $top + 89) {
                 break;
             }
@@ -285,7 +340,6 @@ class CommercialDocumentPdfService
     private function contextBlock(SimplePdfDocument $pdf, array $data, float $top): float
     {
         $items = array_values(array_filter($data['context'] ?? [], fn ($item) => filled($item['value'] ?? null)));
-
         if ($items === []) {
             return $top;
         }
@@ -310,14 +364,12 @@ class CommercialDocumentPdfService
     private function itemsTable(SimplePdfDocument $pdf, array $data, float $top): float
     {
         $preparation = ($data['type'] ?? null) === 'preparation';
-        $cursor = $top;
-        $cursor = $this->tableHeader($pdf, $cursor, $preparation);
+        $cursor = $this->tableHeader($pdf, $top, $preparation);
 
         foreach ($data['items'] ?? [] as $index => $item) {
             if ($cursor > 715) {
                 $this->pageFooter($pdf, $data);
-                $cursor = $this->startContinuationPage($pdf, $data);
-                $cursor = $this->tableHeader($pdf, $cursor, $preparation);
+                $cursor = $this->tableHeader($pdf, $this->startContinuationPage($pdf, $data), $preparation);
             }
 
             $rowHeight = 30;
@@ -372,11 +424,11 @@ class CommercialDocumentPdfService
         $pdf->fillRect($x, $top, $width, 104, self::PAPER);
         $pdf->strokeRect($x, $top, $width, 104, self::LINE, 0.8);
 
-        $labelPrefix = ($amounts['is_estimate'] ?? false) ? 'ESTIMATIF ' : '';
+        $prefix = ($amounts['is_estimate'] ?? false) ? 'ESTIMATIF ' : '';
         $rows = [
-            [$labelPrefix . 'TOTAL HT', $this->money((float) ($amounts['total_ht'] ?? 0))],
+            [$prefix . 'TOTAL HT', $this->money((float) ($amounts['total_ht'] ?? 0))],
             ['TVA ' . $this->percent((float) ($amounts['vat_rate'] ?? 0)), $this->money((float) ($amounts['vat_amount'] ?? 0))],
-            [$labelPrefix . 'TOTAL TTC', $this->money((float) ($amounts['total_ttc'] ?? 0))],
+            [$prefix . 'TOTAL TTC', $this->money((float) ($amounts['total_ttc'] ?? 0))],
         ];
 
         foreach ($rows as $index => [$label, $value]) {
@@ -394,7 +446,6 @@ class CommercialDocumentPdfService
     private function notesAndFooter(SimplePdfDocument $pdf, array $data, float $top): void
     {
         $cursor = $top;
-
         foreach ([
             'NOTES' => $data['notes'] ?? null,
             'CONDITIONS DE PAIEMENT' => $data['payment_terms'] ?? null,
@@ -472,7 +523,7 @@ class CommercialDocumentPdfService
 
     private function quantity(float $value): string
     {
-        return number_format($value, 1, ',', ' ') . ' kg';
+        return number_format($value, 3, ',', ' ') . ' kg';
     }
 
     private function percent(float $value): string
