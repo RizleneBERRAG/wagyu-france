@@ -143,6 +143,9 @@
                                     <button type="submit" class="admin-primary-button">Mettre à jour</button>
                                 </form>
                                 <a href="{{ route('admin.documents.shop.show', $order) }}" class="admin-secondary-button">Ouvrir le dossier</a>
+                                @if($order->customer_id)
+                                    <a href="{{ route('admin.customers.show', $order->customer_id) }}" class="admin-secondary-button">Fiche client</a>
+                                @endif
                             </div>
                             <small>Reçue le {{ $order->created_at->format('d/m/Y à H:i') }}</small>
                         </footer>
@@ -217,6 +220,9 @@
                                     <button type="submit" class="admin-primary-button">Mettre à jour</button>
                                 </form>
                                 <a href="{{ route('admin.documents.pro.show', $requestItem) }}" class="admin-secondary-button">Ouvrir le dossier</a>
+                                @if($requestItem->customer_id)
+                                    <a href="{{ route('admin.customers.show', $requestItem->customer_id) }}" class="admin-secondary-button">Fiche client</a>
+                                @endif
                             </div>
                             <small>Reçue le {{ $requestItem->created_at->format('d/m/Y à H:i') }}</small>
                         </footer>
@@ -263,16 +269,21 @@
                         </div>
 
                         <footer>
-                            <form method="POST" action="{{ route('admin.demandes.contact.status', $message) }}" class="admin-request-status-form">
-                                @csrf
-                                @method('PATCH')
-                                <select name="status">
-                                    @foreach ($statuses as $value => $label)
-                                        <option value="{{ $value }}" @selected($message->status === $value)>{{ $label }}</option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
-                            </form>
+                            <div class="admin-request-footer-actions">
+                                <form method="POST" action="{{ route('admin.demandes.contact.status', $message) }}" class="admin-request-status-form">
+                                    @csrf
+                                    @method('PATCH')
+                                    <select name="status">
+                                        @foreach ($statuses as $value => $label)
+                                            <option value="{{ $value }}" @selected($message->status === $value)>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                                </form>
+                                @if($message->customer_id)
+                                    <a href="{{ route('admin.customers.show', $message->customer_id) }}" class="admin-secondary-button">Fiche client</a>
+                                @endif
+                            </div>
                             <small>Reçu le {{ $message->created_at->format('d/m/Y à H:i') }}</small>
                         </footer>
                     </article>
