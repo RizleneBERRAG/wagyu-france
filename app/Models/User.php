@@ -64,7 +64,6 @@ class User extends Authenticatable
             'orders.manage',
             'customers.manage',
             'billing.manage',
-            'activity.view',
         ],
         'operations' => [
             'dashboard.view',
@@ -72,18 +71,15 @@ class User extends Authenticatable
             'animals.manage',
             'orders.manage',
             'logistics.manage',
-            'activity.view',
         ],
         'accounting' => [
             'dashboard.view',
             'orders.manage',
             'customers.manage',
             'billing.manage',
-            'activity.view',
         ],
         'viewer' => [
             'dashboard.view',
-            'activity.view',
         ],
     ];
 
