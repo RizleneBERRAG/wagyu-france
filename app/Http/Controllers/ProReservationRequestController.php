@@ -18,8 +18,12 @@ class ProReservationRequestController extends Controller
     public function store(Request $request, AdminDashboardService $dashboard): JsonResponse
     {
         $batch = AnimalBatch::with('cuts')
-            ->when($request->filled('bovin_reference'), fn ($query) => $query->where('reference', $request->string('bovin_reference')))
+            ->when(
+                $request->filled('bovin_reference'),
+                fn ($query) => $query->where('reference', (string) $request->input('bovin_reference'))
+            )
             ->where('is_active', true)
+            ->whereIn('status', ['open', 'ready'])
             ->first();
 
         if (! $batch) {
