@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'admin_name' => env('WF_ADMIN_NAME', 'Propriétaire Wagyu France'),
+    'admin_email' => env('WF_ADMIN_EMAIL', env('MAIL_FROM_ADDRESS')),
     'admin_password' => env('WF_ADMIN_PASSWORD', ''),
     'contact_email' => env('LEGAL_CONTACT_EMAIL', env('MAIL_FROM_ADDRESS')),
     'contact_phone' => env('LEGAL_CONTACT_PHONE'),
