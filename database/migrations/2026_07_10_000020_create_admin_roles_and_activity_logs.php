@@ -36,11 +36,26 @@ return new class extends Migration
             $table->index(['user_id', 'created_at']);
         });
 
-        if (DB::table('users')->count() === 0) {
-            $email = mb_strtolower(trim((string) config('wagyu.admin_email')));
-            $password = (string) config('wagyu.admin_password');
+        $email = mb_strtolower(trim((string) config('wagyu.admin_email')));
+        $password = (string) config('wagyu.admin_password');
+        $hasActiveOwner = DB::table('users')->where('role', 'owner')->where('is_active', true)->exists();
 
-            if ($email !== '' && $password !== '') {
+        if (! $hasActiveOwner && $email !== '' && $password !== '') {
+            $existing = DB::table('users')->whereRaw('LOWER(email) = ?', [$email])->first();
+
+            if ($existing) {
+                DB::table('users')->where('id', $existing->id)->update([
+                    'name' => $existing->name ?: (string) config('wagyu.admin_name', 'Propriétaire Wagyu France'),
+                    'job_title' => $existing->job_title ?: 'Propriétaire',
+                    'email' => $email,
+                    'email_verified_at' => $existing->email_verified_at ?: now(),
+                    'password' => Hash::make($password),
+                    'role' => 'owner',
+                    'permissions' => null,
+                    'is_active' => true,
+                    'updated_at' => now(),
+                ]);
+            } else {
                 DB::table('users')->insert([
                     'name' => (string) config('wagyu.admin_name', 'Propriétaire Wagyu France'),
                     'job_title' => 'Propriétaire',
