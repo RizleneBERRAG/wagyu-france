@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RequestReceivedMail;
 use App\Models\ContactMessage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -59,10 +62,31 @@ class ContactMessageController extends Controller
             'privacy_accepted_at' => now(),
         ]);
 
+        $this->sendEmails($message);
+
         return response()->json([
             'message' => 'Votre message a bien été transmis à Wagyu France.',
             'reference' => $message->reference,
         ], 201);
+    }
+
+    private function sendEmails(ContactMessage $message): void
+    {
+        try {
+            $adminEmail = config('wagyu.contact_notification_email');
+
+            if ($adminEmail) {
+                Mail::to($adminEmail)->send(new RequestReceivedMail('contact', $message, true));
+            }
+
+            Mail::to($message->email)->send(new RequestReceivedMail('contact', $message));
+        } catch (\Throwable $exception) {
+            Log::warning('Erreur envoi email contact Wagyu France', [
+                'contact_id' => $message->id,
+                'reference' => $message->reference,
+                'error' => $exception->getMessage(),
+            ]);
+        }
     }
 
     private function generateReference(): string
