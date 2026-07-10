@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 
 class AdminUserController extends Controller
@@ -155,7 +156,11 @@ class AdminUserController extends Controller
             ->whereKeyNot($user->getKey())
             ->exists();
 
-        abort_unless($otherActiveOwners, 422, 'Le dernier propriétaire actif ne peut pas être désactivé ou rétrogradé.');
+        if (! $otherActiveOwners) {
+            throw ValidationException::withMessages([
+                'role' => 'Le dernier propriétaire actif ne peut pas être désactivé ou rétrogradé.',
+            ]);
+        }
     }
 
     private function formData(User $user): array
