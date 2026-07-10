@@ -35,6 +35,7 @@ class AdminSettingsController extends Controller
             'preparation_delay' => ['nullable', 'string', 'max:1000'],
 
             'invoice_prefix' => ['required', 'alpha_dash', 'max:20'],
+            'credit_prefix' => ['required', 'alpha_dash', 'max:20'],
             'default_vat_rate' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'invoice_payment_terms' => ['nullable', 'string', 'max:2000'],
             'invoice_bank_details' => ['nullable', 'string', 'max:2000'],
