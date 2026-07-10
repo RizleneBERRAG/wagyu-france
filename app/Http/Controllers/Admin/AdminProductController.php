@@ -58,6 +58,7 @@ class AdminProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $data = $this->validatedData($request);
+        $data['categories'] = $request->input('categories', []);
         $data['image_path'] = $this->storeImage($request);
         $data['is_active'] = $request->boolean('is_active');
         $data['is_featured'] = $request->boolean('is_featured');
@@ -80,6 +81,7 @@ class AdminProductController extends Controller
     public function update(Request $request, ShopProduct $product): RedirectResponse
     {
         $data = $this->validatedData($request, $product);
+        $data['categories'] = $request->input('categories', []);
         $data['is_active'] = $request->boolean('is_active');
         $data['is_featured'] = $request->boolean('is_featured');
 
