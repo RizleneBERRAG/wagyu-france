@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShopOrderRequest;
+use App\Models\ShopProduct;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,33 +11,6 @@ use Illuminate\Validation\Rule;
 
 class ShopOrderRequestController extends Controller
 {
-    private array $products = [
-        'entrecote' => [
-            'name' => 'Entrecôte Wagyu',
-            'price' => 174,
-        ],
-        'filet' => [
-            'name' => 'Filet Wagyu',
-            'price' => 198,
-        ],
-        'fauxfilet' => [
-            'name' => 'Faux-filet Wagyu',
-            'price' => 174,
-        ],
-        'rumsteak' => [
-            'name' => 'Rumsteak Wagyu',
-            'price' => 137,
-        ],
-        'paleron' => [
-            'name' => 'Paleron Wagyu',
-            'price' => 143,
-        ],
-        'jarret' => [
-            'name' => 'Jarret Wagyu',
-            'price' => 92,
-        ],
-    ];
-
     public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -45,10 +19,13 @@ class ShopOrderRequestController extends Controller
             'phone' => ['required', 'string', 'max:40'],
             'city' => ['required', 'string', 'max:120'],
             'message' => ['nullable', 'string', 'max:3000'],
-
             'cart' => ['required', 'array', 'min:1'],
-            'cart.*.key' => ['required', 'string', Rule::in(array_keys($this->products))],
-            'cart.*.quantity' => ['required', 'integer', 'min:1', 'max:999'],
+            'cart.*.key' => [
+                'required',
+                'string',
+                Rule::exists('shop_products', 'slug')->where(fn ($query) => $query->where('is_active', true)),
+            ],
+            'cart.*.quantity' => ['required', 'numeric', 'min:0.1', 'max:999'],
         ], [
             'fullname.required' => 'Le nom complet est obligatoire.',
             'email.required' => 'L’adresse email est obligatoire.',
@@ -56,6 +33,7 @@ class ShopOrderRequestController extends Controller
             'city.required' => 'La ville est obligatoire.',
             'cart.required' => 'Le panier ne peut pas être vide.',
             'cart.min' => 'Le panier ne peut pas être vide.',
+            'cart.*.key.exists' => 'Un produit du panier n’est plus disponible.',
         ]);
 
         if ($validator->fails()) {
@@ -66,35 +44,57 @@ class ShopOrderRequestController extends Controller
         }
 
         $validated = $validator->validated();
+        $products = ShopProduct::whereIn('slug', collect($validated['cart'])->pluck('key'))
+            ->where('is_active', true)
+            ->get()
+            ->keyBy('slug');
 
-        $cart = collect($validated['cart'])
-            ->map(function (array $item) {
-                $product = $this->products[$item['key']];
-                $quantity = max(1, (int) $item['quantity']);
-                $unitPrice = (float) $product['price'];
+        $cart = [];
+        $errors = [];
 
-                return [
-                    'key' => $item['key'],
-                    'name' => $product['name'],
-                    'quantity' => $quantity,
-                    'unit_price' => $unitPrice,
-                    'line_total' => $unitPrice * $quantity,
-                ];
-            })
-            ->values()
-            ->toArray();
+        foreach ($validated['cart'] as $index => $item) {
+            $product = $products->get($item['key']);
+            $quantity = (float) $item['quantity'];
+
+            if (! $product) {
+                $errors["cart.{$index}.key"][] = 'Ce produit n’est plus disponible.';
+                continue;
+            }
+
+            if ($quantity < (float) $product->min_quantity_kg) {
+                $errors["cart.{$index}.quantity"][] = 'La quantité minimale pour ' . $product->name . ' est de ' . number_format((float) $product->min_quantity_kg, 1, ',', ' ') . ' kg.';
+            }
+
+            if ($quantity > (float) $product->stock_kg) {
+                $errors["cart.{$index}.quantity"][] = 'La quantité demandée dépasse le stock disponible pour ' . $product->name . '.';
+            }
+
+            $unitPrice = (float) $product->price_per_kg;
+            $cart[] = [
+                'key' => $product->slug,
+                'name' => $product->name,
+                'quantity' => $quantity,
+                'unit_price' => $unitPrice,
+                'line_total' => $unitPrice * $quantity,
+            ];
+        }
+
+        if ($errors !== []) {
+            return response()->json([
+                'message' => 'Le panier doit être ajusté avant l’envoi.',
+                'errors' => $errors,
+            ], 422);
+        }
 
         $total = collect($cart)->sum('line_total');
 
         $order = ShopOrderRequest::create([
             'reference' => $this->generateReference(),
-
             'fullname' => $validated['fullname'],
             'email' => $validated['email'],
             'phone' => $validated['phone'],
             'city' => $validated['city'],
             'message' => $validated['message'] ?? null,
-
             'cart' => $cart,
             'total' => $total,
             'status' => 'nouvelle',
