@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingsController;
+use App\Http\Controllers\Admin\CommercialDocumentController;
 use App\Http\Controllers\Admin\DemandesController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ProReservationRequestController;
@@ -95,6 +96,24 @@ Route::middleware('wagyu.admin')->prefix('admin')->name('admin.')->group(functio
         ->name('demandes.pro.status');
     Route::patch('/demandes/contact/{contactMessage}/statut', [DemandesController::class, 'updateContactStatus'])
         ->name('demandes.contact.status');
+
+    Route::get('/demandes/boutique/{shopOrderRequest}', [CommercialDocumentController::class, 'showShop'])
+        ->name('documents.shop.show');
+    Route::put('/demandes/boutique/{shopOrderRequest}/commercial', [CommercialDocumentController::class, 'updateShop'])
+        ->name('documents.shop.update');
+    Route::post('/demandes/boutique/{shopOrderRequest}/facture', [CommercialDocumentController::class, 'issueShopInvoice'])
+        ->name('documents.shop.invoice.issue');
+    Route::get('/demandes/boutique/{shopOrderRequest}/documents/{document}', [CommercialDocumentController::class, 'shopPdf'])
+        ->name('documents.shop.pdf');
+
+    Route::get('/demandes/pro/{proReservationRequest}', [CommercialDocumentController::class, 'showPro'])
+        ->name('documents.pro.show');
+    Route::put('/demandes/pro/{proReservationRequest}/commercial', [CommercialDocumentController::class, 'updatePro'])
+        ->name('documents.pro.update');
+    Route::post('/demandes/pro/{proReservationRequest}/facture', [CommercialDocumentController::class, 'issueProInvoice'])
+        ->name('documents.pro.invoice.issue');
+    Route::get('/demandes/pro/{proReservationRequest}/documents/{document}', [CommercialDocumentController::class, 'proPdf'])
+        ->name('documents.pro.pdf');
 
     Route::get('/parametres', [AdminSettingsController::class, 'index'])->name('settings.index');
     Route::put('/parametres', [AdminSettingsController::class, 'update'])->name('settings.update');
