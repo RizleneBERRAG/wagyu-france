@@ -1,0 +1,179 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\AnimalBatch;
+use App\Models\ContactMessage;
+use App\Models\ProReservationRequest;
+use App\Models\ShopOrderRequest;
+use App\Models\ShopProduct;
+use Illuminate\Support\Collection;
+
+class AdminDashboardService
+{
+    public function navigationCounts(): array
+    {
+        return [
+            'orders' => ShopOrderRequest::where('status', 'nouvelle')->count()
+                + ProReservationRequest::where('status', 'nouvelle')->count(),
+            'contacts' => ContactMessage::where('status', 'nouvelle')->count(),
+            'low_stock' => ShopProduct::where('is_active', true)
+                ->whereColumn('stock_kg', '<=', 'low_stock_threshold')
+                ->count(),
+        ];
+    }
+
+    public function activeBatchSummary(): ?array
+    {
+        $batch = AnimalBatch::with('cuts')->active()->latest('id')->first();
+
+        if (! $batch) {
+            return null;
+        }
+
+        $requestedByCut = $this->requestedQuantities($batch);
+        $available = (float) $batch->cuts->where('is_active', true)->sum('available_kg');
+        $requested = $batch->cuts
+            ->where('is_active', true)
+            ->sum(fn ($cut) => min((float) $cut->available_kg, (float) ($requestedByCut[$cut->slug] ?? 0)));
+        $progress = $available > 0 ? min(100, round(($requested / $available) * 100)) : 0;
+
+        return [
+            'batch' => $batch,
+            'available_kg' => $available,
+            'requested_kg' => $requested,
+            'progress' => $progress,
+            'threshold_reached' => $progress >= $batch->launch_threshold_percent,
+            'cuts' => $batch->cuts->map(function ($cut) use ($requestedByCut) {
+                $requested = (float) ($requestedByCut[$cut->slug] ?? 0);
+                $available = (float) $cut->available_kg;
+
+                return [
+                    'model' => $cut,
+                    'requested_kg' => $requested,
+                    'progress' => $available > 0 ? min(100, round(($requested / $available) * 100)) : 0,
+                ];
+            }),
+        ];
+    }
+
+    public function notifications(): array
+    {
+        $notifications = [];
+        $counts = $this->navigationCounts();
+        $batch = $this->activeBatchSummary();
+
+        if ($counts['orders'] > 0) {
+            $notifications[] = [
+                'level' => 'important',
+                'title' => $counts['orders'] . ' nouvelle(s) commande(s)',
+                'message' => 'Des demandes boutique ou professionnelles attendent une première lecture.',
+                'route' => 'admin.demandes',
+            ];
+        }
+
+        if ($counts['contacts'] > 0) {
+            $notifications[] = [
+                'level' => 'info',
+                'title' => $counts['contacts'] . ' nouveau(x) message(s)',
+                'message' => 'Des visiteurs ont contacté la maison depuis le formulaire.',
+                'route' => 'admin.demandes',
+            ];
+        }
+
+        if ($counts['low_stock'] > 0) {
+            $notifications[] = [
+                'level' => 'warning',
+                'title' => $counts['low_stock'] . ' produit(s) en stock faible',
+                'message' => 'Vérifiez les quantités ou masquez les produits devenus indisponibles.',
+                'route' => 'admin.products.index',
+            ];
+        }
+
+        if (! $batch) {
+            $notifications[] = [
+                'level' => 'warning',
+                'title' => 'Aucun animal actif',
+                'message' => 'La réserve professionnelle ne dispose actuellement d’aucun animal publié.',
+                'route' => 'admin.animals.index',
+            ];
+        } elseif ($batch['progress'] >= 100) {
+            $notifications[] = [
+                'level' => 'critical',
+                'title' => 'Réserve complète à 100 %',
+                'message' => 'Le seuil est dépassé. La découpe ou la clôture doit être organisée.',
+                'route' => 'admin.animals.show',
+                'parameters' => [$batch['batch']],
+            ];
+        } elseif ($batch['threshold_reached']) {
+            $notifications[] = [
+                'level' => 'success',
+                'title' => 'Seuil de lancement atteint : ' . $batch['progress'] . ' %',
+                'message' => 'La réserve a atteint le seuil fixé à ' . $batch['batch']->launch_threshold_percent . ' %. Vous pouvez préparer la découpe.',
+                'route' => 'admin.animals.show',
+                'parameters' => [$batch['batch']],
+            ];
+        }
+
+        return $notifications;
+    }
+
+    public function latestActivity(int $limit = 10): Collection
+    {
+        $shop = ShopOrderRequest::latest()->take($limit)->get()->map(fn ($item) => [
+            'type' => 'Boutique',
+            'title' => $item->fullname,
+            'reference' => $item->reference,
+            'status' => $item->status,
+            'amount' => (float) $item->total,
+            'created_at' => $item->created_at,
+        ]);
+
+        $pro = ProReservationRequest::latest()->take($limit)->get()->map(fn ($item) => [
+            'type' => 'Professionnel',
+            'title' => $item->company,
+            'reference' => $item->reference,
+            'status' => $item->status,
+            'amount' => (float) $item->total_ht,
+            'created_at' => $item->created_at,
+        ]);
+
+        $contacts = ContactMessage::latest()->take($limit)->get()->map(fn ($item) => [
+            'type' => 'Contact',
+            'title' => $item->fullname,
+            'reference' => $item->reference,
+            'status' => $item->status,
+            'amount' => null,
+            'created_at' => $item->created_at,
+        ]);
+
+        return $shop
+            ->concat($pro)
+            ->concat($contacts)
+            ->sortByDesc('created_at')
+            ->take($limit)
+            ->values();
+    }
+
+    public function requestedQuantities(AnimalBatch $batch): array
+    {
+        $totals = [];
+
+        ProReservationRequest::query()
+            ->where('bovin_reference', $batch->reference)
+            ->where('status', '!=', 'annulee')
+            ->get(['cart'])
+            ->each(function ($request) use (&$totals) {
+                foreach ($request->cart ?? [] as $item) {
+                    $key = $item['key'] ?? null;
+                    if (! $key) {
+                        continue;
+                    }
+
+                    $totals[$key] = ($totals[$key] ?? 0) + (float) ($item['quantity'] ?? 0);
+                }
+            });
+
+        return $totals;
+    }
+}
