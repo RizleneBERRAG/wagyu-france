@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-panel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-requests.css') }}">
     @stack('styles')
 </head>
 <body class="wf-admin-body {{ $bodyClass ?? '' }}">
@@ -48,14 +49,14 @@
                 <span class="wf-admin-nav-icon">◈</span>
                 <strong>Animaux & réserve</strong>
             </a>
-            <a href="{{ route('admin.demandes') }}" @class(['is-active' => request()->routeIs('admin.demandes*')])>
+            <a href="{{ route('admin.demandes') }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') !== 'contacts'])>
                 <span class="wf-admin-nav-icon">≡</span>
                 <strong>Commandes & demandes</strong>
                 @if (($adminNavigationCounts['orders'] ?? 0) > 0)
                     <b>{{ $adminNavigationCounts['orders'] }}</b>
                 @endif
             </a>
-            <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}">
+            <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') === 'contacts'])>
                 <span class="wf-admin-nav-icon">✉</span>
                 <strong>Messages</strong>
                 @if (($adminNavigationCounts['contacts'] ?? 0) > 0)
