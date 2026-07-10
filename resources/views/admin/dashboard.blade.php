@@ -1,129 +1,181 @@
-@extends('layouts.app', [
+@extends('layouts.admin', [
     'title' => 'Tableau de bord — Wagyu France',
-    'bodyClass' => 'admin-dashboard-page is-pro'
+    'sectionLabel' => 'Pilotage de la maison',
+    'pageHeading' => 'Vue d’ensemble',
+    'bodyClass' => 'admin-dashboard-page'
 ])
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/admin-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
 @endpush
 
 @section('content')
+    <header class="admin-page-heading">
+        <div>
+            <p class="admin-kicker">Cockpit Wagyu France</p>
+            <h2>Tout ce qui demande votre attention, au même endroit.</h2>
+            <p>
+                Suivez les commandes, les stocks, les messages et la progression de l’animal actif
+                sans avoir à parcourir chaque page du site.
+            </p>
+        </div>
+        <a href="{{ route('admin.products.create') }}" class="admin-primary-button">Ajouter un produit</a>
+    </header>
 
-    <section class="admin-dashboard-hero">
-        <div class="admin-dashboard-grid"></div>
-        <div class="admin-dashboard-glow"></div>
+    <section class="admin-stat-grid">
+        <article class="admin-stat-card">
+            <span>Éléments à traiter</span>
+            <strong>{{ $newCount }}</strong>
+            <small>Commandes, demandes pro et messages au statut « nouvelle ».</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Estimation boutique</span>
+            <strong>{{ number_format($turnoverEstimate, 0, ',', ' ') }} €</strong>
+            <small>Total estimatif des demandes boutique non annulées.</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Catalogue actif</span>
+            <strong>{{ $activeProductCount }}/{{ $productCount }}</strong>
+            <small>{{ $lowStockCount }} produit(s) sous le seuil de stock défini.</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Demandes reçues</span>
+            <strong>{{ $shopCount + $proCount + $contactCount }}</strong>
+            <small>{{ $shopCount }} boutique · {{ $proCount }} pro · {{ $contactCount }} contact.</small>
+        </article>
+    </section>
 
-        <div class="admin-dashboard-inner">
+    <section class="admin-dashboard-grid">
+        <article class="admin-dashboard-reserve admin-card">
+            <div class="admin-panel-heading">
+                <div>
+                    <p class="admin-kicker">Animal actuellement publié</p>
+                    <h3>{{ $activeBatch['batch']->reference ?? 'Aucun animal actif' }}</h3>
+                </div>
+                @if ($activeBatch)
+                    <span class="admin-status admin-status-{{ $activeBatch['batch']->status }}">
+                        {{ $activeBatch['batch']->status_label }}
+                    </span>
+                @endif
+            </div>
+
+            @if ($activeBatch)
+                <div class="admin-reserve-score">
+                    <div>
+                        <strong>{{ $activeBatch['progress'] }}%</strong>
+                        <span>de la réserve demandée</span>
+                    </div>
+                    <div>
+                        <strong>{{ number_format($activeBatch['requested_kg'], 1, ',', ' ') }} kg</strong>
+                        <span>sur {{ number_format($activeBatch['available_kg'], 1, ',', ' ') }} kg</span>
+                    </div>
+                </div>
+
+                <div class="admin-progress" aria-label="Progression de la réserve">
+                    <span style="width: {{ $activeBatch['progress'] }}%"></span>
+                </div>
+
+                <div class="admin-reserve-threshold {{ $activeBatch['threshold_reached'] ? 'is-reached' : '' }}">
+                    <span>Seuil de lancement</span>
+                    <strong>{{ $activeBatch['batch']->launch_threshold_percent }}%</strong>
+                    <p>
+                        @if ($activeBatch['threshold_reached'])
+                            Le seuil est atteint : la préparation de la découpe peut commencer.
+                        @else
+                            Encore {{ max(0, $activeBatch['batch']->launch_threshold_percent - $activeBatch['progress']) }} point(s) avant l’alerte de lancement.
+                        @endif
+                    </p>
+                </div>
+
+                <div class="admin-panel-actions">
+                    <a href="{{ route('admin.animals.show', $activeBatch['batch']) }}" class="admin-primary-button">Gérer l’animal</a>
+                    <a href="{{ route('reserve.pro') }}" target="_blank" class="admin-secondary-button">Voir la réserve</a>
+                </div>
+            @else
+                <div class="admin-empty-state">
+                    Aucun animal n’est actuellement visible dans la réserve professionnelle.
+                </div>
+                <a href="{{ route('admin.animals.create') }}" class="admin-primary-button">Préparer un animal</a>
+            @endif
+        </article>
+
+        <article class="admin-notification-panel admin-card">
+            <div class="admin-panel-heading">
+                <div>
+                    <p class="admin-kicker">Centre d’attention</p>
+                    <h3>Notifications métier</h3>
+                </div>
+                <span>{{ count($notifications) }}</span>
+            </div>
+
+            <div class="admin-notification-list">
+                @forelse ($notifications as $notification)
+                    <a
+                        href="{{ route($notification['route'], $notification['parameters'] ?? []) }}"
+                        class="admin-notification is-{{ $notification['level'] }}"
+                    >
+                        <i></i>
+                        <div>
+                            <strong>{{ $notification['title'] }}</strong>
+                            <p>{{ $notification['message'] }}</p>
+                        </div>
+                        <span>→</span>
+                    </a>
+                @empty
+                    <div class="admin-empty-state">Tout est à jour. Aucune action urgente.</div>
+                @endforelse
+            </div>
+        </article>
+    </section>
+
+    <section class="admin-quick-actions">
+        <a href="{{ route('admin.products.index') }}">
+            <span>01</span>
+            <strong>Gérer la boutique</strong>
+            <p>Prix, stocks, photos, visibilité et ordre des produits.</p>
+        </a>
+        <a href="{{ route('admin.animals.index') }}">
+            <span>02</span>
+            <strong>Lancer un animal</strong>
+            <p>Préparer la réserve, choisir le seuil et suivre les volumes.</p>
+        </a>
+        <a href="{{ route('admin.demandes') }}">
+            <span>03</span>
+            <strong>Traiter les demandes</strong>
+            <p>Commandes particulières, réservations professionnelles et messages.</p>
+        </a>
+    </section>
+
+    <section class="admin-activity-panel admin-card">
+        <div class="admin-panel-heading">
             <div>
-                <p class="eyebrow">Administration interne</p>
-
-                <h1>
-                    Tableau de bord
-                    <span>Wagyu France.</span>
-                </h1>
-
-                <p>
-                    Suivez les demandes boutique, les réservations professionnelles
-                    et les actions importantes.
-                </p>
+                <p class="admin-kicker">Derniers mouvements</p>
+                <h3>Activité récente</h3>
             </div>
-
-            <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-
-                <button type="submit">
-                    Déconnexion
-                </button>
-            </form>
+            <a href="{{ route('admin.demandes') }}">Tout afficher</a>
         </div>
-    </section>
 
-    <section class="admin-dashboard-stats">
-        <div class="admin-dashboard-stat-grid">
-            <article>
-                <span>Boutique</span>
-                <strong>{{ $shopCount }}</strong>
-                <small>{{ $newShopCount }} nouvelle(s)</small>
-            </article>
-
-            <article>
-                <span>Professionnel</span>
-                <strong>{{ $proCount }}</strong>
-                <small>{{ $newProCount }} nouvelle(s)</small>
-            </article>
-
-            <article>
-                <span>Total</span>
-                <strong>{{ $shopCount + $proCount }}</strong>
-                <small>demandes reçues</small>
-            </article>
-        </div>
-    </section>
-
-    <section class="admin-dashboard-actions">
-        <div class="admin-dashboard-action-grid">
-            <a href="{{ route('admin.demandes') }}">
-                <span>01</span>
-                <strong>Voir toutes les demandes</strong>
-                <small>Boutique particulier + réserve professionnelle.</small>
-            </a>
-
-            <a href="{{ route('boutique') }}">
-                <span>02</span>
-                <strong>Voir la boutique</strong>
-                <small>Contrôler le parcours côté particulier.</small>
-            </a>
-
-            <a href="{{ route('reserve.pro') }}">
-                <span>03</span>
-                <strong>Voir la réserve pro</strong>
-                <small>Tester la pré-réservation professionnelle.</small>
-            </a>
-        </div>
-    </section>
-
-    <section class="admin-dashboard-latest">
-        <div class="admin-dashboard-latest-grid">
-            <div class="admin-dashboard-panel">
-                <div class="admin-dashboard-panel-head">
-                    <p class="eyebrow">Boutique</p>
-                    <h2>Dernières demandes</h2>
+        <div class="admin-activity-table">
+            <div class="admin-activity-row admin-activity-head">
+                <span>Origine</span>
+                <span>Client / établissement</span>
+                <span>Référence</span>
+                <span>Statut</span>
+                <span>Montant</span>
+                <span>Date</span>
+            </div>
+            @forelse ($latestActivity as $activity)
+                <div class="admin-activity-row">
+                    <strong>{{ $activity['type'] }}</strong>
+                    <span>{{ $activity['title'] }}</span>
+                    <code>{{ $activity['reference'] }}</code>
+                    <span class="admin-status admin-status-{{ $activity['status'] }}">{{ str_replace('_', ' ', ucfirst($activity['status'])) }}</span>
+                    <span>{{ $activity['amount'] !== null ? number_format($activity['amount'], 0, ',', ' ') . ' €' : '—' }}</span>
+                    <small>{{ $activity['created_at']?->format('d/m/Y H:i') }}</small>
                 </div>
-
-                @forelse ($shopOrders as $order)
-                    <article>
-                        <div>
-                            <strong>{{ $order->fullname }}</strong>
-                            <span>{{ $order->reference }}</span>
-                        </div>
-
-                        <small>{{ number_format((float) $order->total, 2, ',', ' ') }} €</small>
-                    </article>
-                @empty
-                    <p class="admin-dashboard-empty">Aucune demande boutique.</p>
-                @endforelse
-            </div>
-
-            <div class="admin-dashboard-panel">
-                <div class="admin-dashboard-panel-head">
-                    <p class="eyebrow">Professionnel</p>
-                    <h2>Dernières demandes</h2>
-                </div>
-
-                @forelse ($proRequests as $requestItem)
-                    <article>
-                        <div>
-                            <strong>{{ $requestItem->company }}</strong>
-                            <span>{{ $requestItem->reference }}</span>
-                        </div>
-
-                        <small>{{ number_format((float) $requestItem->total_ht, 2, ',', ' ') }} € HT</small>
-                    </article>
-                @empty
-                    <p class="admin-dashboard-empty">Aucune demande professionnelle.</p>
-                @endforelse
-            </div>
+            @empty
+                <div class="admin-empty-state">Aucune activité enregistrée pour le moment.</div>
+            @endforelse
         </div>
     </section>
-
 @endsection
