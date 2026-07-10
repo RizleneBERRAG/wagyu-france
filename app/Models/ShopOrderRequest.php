@@ -47,6 +47,7 @@ class ShopOrderRequest extends Model
     protected static function booted(): void
     {
         static::updating(function (self $order) {
+            $invoiceIssued = filled($order->getOriginal('invoice_number'));
             $financialFields = [
                 'final_cart',
                 'additional_label',
@@ -55,7 +56,7 @@ class ShopOrderRequest extends Model
                 'vat_rate',
             ];
 
-            if ($order->getOriginal('invoice_number') && $order->isDirty($financialFields)) {
+            if ($invoiceIssued && $order->isDirty($financialFields)) {
                 throw ValidationException::withMessages([
                     'invoice' => 'Les lignes et montants d’une facture émise ne peuvent plus être modifiés.',
                 ]);
@@ -68,7 +69,17 @@ class ShopOrderRequest extends Model
             }
 
             if (
-                $order->getOriginal('invoice_number')
+                $invoiceIssued
+                && $order->isDirty('stock_applied_at')
+                && blank($order->stock_applied_at)
+            ) {
+                throw ValidationException::withMessages([
+                    'stock' => 'Le stock d’une commande facturée ne peut pas être libéré sans passer par un avoir.',
+                ]);
+            }
+
+            if (
+                $invoiceIssued
                 && $order->isDirty('status')
                 && ! in_array($order->status, ['confirmee', 'traitee'], true)
             ) {
