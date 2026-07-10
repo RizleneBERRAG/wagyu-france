@@ -20,6 +20,14 @@ class AdminDashboardService
             'low_stock' => ShopProduct::where('is_active', true)
                 ->whereColumn('stock_kg', '<=', 'low_stock_threshold')
                 ->count(),
+            'billing_unsent' => ShopOrderRequest::whereNotNull('invoice_number')->whereNull('invoice_sent_at')->count()
+                + ProReservationRequest::whereNotNull('invoice_number')->whereNull('invoice_sent_at')->count(),
+            'logistics' => ShopOrderRequest::whereIn('status', ['confirmee', 'traitee'])
+                    ->whereNotIn('preparation_status', ['delivered', 'cancelled'])
+                    ->count()
+                + ProReservationRequest::whereIn('status', ['confirmee', 'traitee'])
+                    ->whereNotIn('preparation_status', ['delivered', 'cancelled'])
+                    ->count(),
         ];
     }
 
@@ -104,6 +112,48 @@ class AdminDashboardService
                 'title' => $counts['contacts'] . ' nouveau(x) message(s)',
                 'message' => 'Des visiteurs ont contacté la maison depuis le formulaire.',
                 'route' => 'admin.demandes',
+            ];
+        }
+
+        if ($counts['billing_unsent'] > 0) {
+            $notifications[] = [
+                'level' => 'warning',
+                'title' => $counts['billing_unsent'] . ' facture(s) non envoyée(s)',
+                'message' => 'Des factures sont émises mais n’ont pas encore été transmises depuis le tableau de bord.',
+                'route' => 'admin.billing.index',
+            ];
+        }
+
+        $readyCount = ShopOrderRequest::where('preparation_status', 'ready')->count()
+            + ProReservationRequest::where('preparation_status', 'ready')->count();
+
+        if ($readyCount > 0) {
+            $notifications[] = [
+                'level' => 'success',
+                'title' => $readyCount . ' commande(s) prête(s)',
+                'message' => 'Ces dossiers peuvent être remis, expédiés ou affectés à un transporteur.',
+                'route' => 'admin.logistics.index',
+                'parameters' => ['status' => 'ready'],
+            ];
+        }
+
+        $lateCount = ShopOrderRequest::whereIn('status', ['confirmee', 'traitee'])
+                ->whereNotIn('preparation_status', ['delivered', 'cancelled'])
+                ->whereNotNull('scheduled_at')
+                ->where('scheduled_at', '<', now())
+                ->count()
+            + ProReservationRequest::whereIn('status', ['confirmee', 'traitee'])
+                ->whereNotIn('preparation_status', ['delivered', 'cancelled'])
+                ->whereNotNull('scheduled_at')
+                ->where('scheduled_at', '<', now())
+                ->count();
+
+        if ($lateCount > 0) {
+            $notifications[] = [
+                'level' => 'critical',
+                'title' => $lateCount . ' échéance(s) logistique(s) dépassée(s)',
+                'message' => 'La date prévue est passée alors que la remise ou la livraison n’est pas terminée.',
+                'route' => 'admin.logistics.index',
             ];
         }
 
