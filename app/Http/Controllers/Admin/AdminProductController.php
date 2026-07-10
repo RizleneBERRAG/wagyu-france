@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ShopOrderRequest;
 use App\Models\ShopProduct;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -106,6 +107,21 @@ class AdminProductController extends Controller
 
     public function destroy(ShopProduct $product): RedirectResponse
     {
+        $usedByReservedOrder = ShopOrderRequest::query()
+            ->whereNotNull('stock_applied_at')
+            ->get(['cart'])
+            ->contains(function (ShopOrderRequest $order) use ($product) {
+                return collect($order->cart ?? [])->contains(
+                    fn (array $item) => ($item['key'] ?? null) === $product->slug
+                );
+            });
+
+        if ($usedByReservedOrder) {
+            return back()->withErrors([
+                'product' => 'Ce produit est lié à une commande dont le stock est réservé. Annulez d’abord la commande ou masquez simplement le produit.',
+            ]);
+        }
+
         $this->deleteStoredImage($product->image_path);
         $product->delete();
 
