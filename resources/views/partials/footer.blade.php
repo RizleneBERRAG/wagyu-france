@@ -1,10 +1,10 @@
 <footer class="site-footer">
     <div class="footer-brand">
         <span class="footer-logo-wrap">
-            <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="Wagyu France">
+            <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="{{ config('app.name', 'Wagyu France') }}">
         </span>
         <div>
-            <strong>Wagyu France</strong>
+            <strong>{{ config('app.name', 'Wagyu France') }}</strong>
             <p>Viande Wagyu française d’exception, réservée aux connaisseurs.</p>
         </div>
     </div>
@@ -39,15 +39,23 @@
         <div>
             <h3>Contact</h3>
 
-            <p>Ferme du Bois des Huttes</p>
-            <p>02140 Landouzy-la-Ville</p>
-            <p>France</p>
+            @if (config('wagyu.withdrawal_address'))
+                <p>{{ config('wagyu.withdrawal_address') }}</p>
+            @endif
+
+            @if (config('wagyu.contact_email'))
+                <a href="mailto:{{ config('wagyu.contact_email') }}">{{ config('wagyu.contact_email') }}</a>
+            @endif
+
+            @if (config('wagyu.contact_phone'))
+                <a href="tel:{{ preg_replace('/\s+/', '', config('wagyu.contact_phone')) }}">{{ config('wagyu.contact_phone') }}</a>
+            @endif
         </div>
     </div>
 
     <div class="footer-bottom">
         <p>
-            © {{ date('Y') }} Wagyu France. Tous droits réservés.
+            © {{ date('Y') }} {{ config('app.name', 'Wagyu France') }}. Tous droits réservés.
         </p>
 
         <div class="footer-legal-links">
