@@ -94,7 +94,7 @@ class AdminAnimalController extends Controller
 
         DB::transaction(function () use ($animal, $data) {
             if ($data['is_active']) {
-                AnimalBatch::whereKeyNot($animal->getKey())->update(['is_active' => false]);
+                AnimalBatch::where('id', '!=', $animal->getKey())->update(['is_active' => false]);
             }
 
             if ($data['status'] === 'open' && ! $animal->opens_at && empty($data['opens_at'])) {
@@ -153,7 +153,7 @@ class AdminAnimalController extends Controller
 
     private function copyDefaultCuts(AnimalBatch $animal): void
     {
-        $source = AnimalBatch::whereKeyNot($animal->getKey())
+        $source = AnimalBatch::where('id', '!=', $animal->getKey())
             ->with('cuts')
             ->latest('id')
             ->first();
