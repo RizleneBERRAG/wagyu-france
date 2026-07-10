@@ -21,8 +21,7 @@ class AdminAuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        $accountReady = Schema::hasTable('users')
-            && Schema::hasColumn('users', 'is_active')
+        $accountReady = $this->accountStorageReady()
             && User::query()->where('is_active', true)->exists();
 
         return view('admin.login', compact('accountReady'));
@@ -30,6 +29,12 @@ class AdminAuthController extends Controller
 
     public function authenticate(Request $request, AdminActivityService $activity): RedirectResponse
     {
+        if (! $this->accountStorageReady()) {
+            return back()->withErrors([
+                'email' => 'La migration des comptes administrateurs doit être exécutée avant la première connexion.',
+            ]);
+        }
+
         $validated = $request->validate([
             'email' => ['required', 'email', 'max:190'],
             'password' => ['required', 'string'],
@@ -92,5 +97,12 @@ class AdminAuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');
+    }
+
+    private function accountStorageReady(): bool
+    {
+        return Schema::hasTable('users')
+            && Schema::hasColumn('users', 'is_active')
+            && Schema::hasTable('admin_activity_logs');
     }
 }
