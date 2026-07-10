@@ -8,7 +8,6 @@
 @endpush
 
 @section('content')
-
     <section class="admin-login-section">
         <div class="admin-login-glow"></div>
 
@@ -23,31 +22,48 @@
             </h1>
 
             <p>
-                Accédez au suivi des demandes boutique et professionnelles.
+                Connectez-vous avec votre compte personnel pour accéder aux outils autorisés.
             </p>
 
-            <label>
-                <span>Mot de passe admin</span>
+            @unless($accountReady)
+                <div class="admin-login-error">
+                    Aucun compte administrateur actif n’existe encore. Renseignez WF_ADMIN_EMAIL et WF_ADMIN_PASSWORD avant d’exécuter la migration.
+                </div>
+            @endunless
 
+            <label>
+                <span>Adresse email</span>
                 <input
-                    type="password"
-                    name="password"
-                    placeholder="Votre mot de passe"
+                    type="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                    placeholder="vous@wagyufrance.fr"
+                    autocomplete="username"
                     required
                     autofocus
                 >
             </label>
 
-            @error('password')
-            <div class="admin-login-error">
-                {{ $message }}
-            </div>
-            @enderror
+            <label>
+                <span>Mot de passe</span>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Votre mot de passe"
+                    autocomplete="current-password"
+                    required
+                >
+            </label>
 
-            <button type="submit">
-                Entrer dans l’admin
+            @if($errors->any())
+                <div class="admin-login-error">
+                    {{ $errors->first() }}
+                </div>
+            @endif
+
+            <button type="submit" @disabled(! $accountReady)>
+                Entrer dans l’administration
             </button>
         </form>
     </section>
-
 @endsection
