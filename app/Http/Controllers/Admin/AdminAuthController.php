@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\View\View;
 
 class AdminAuthController extends Controller
@@ -24,24 +25,35 @@ class AdminAuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
+        $key = 'wagyu-admin-login|' . $request->ip();
+
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            return back()->withErrors([
+                'password' => 'Trop de tentatives. Réessayez dans ' . RateLimiter::availableIn($key) . ' seconde(s).',
+            ]);
+        }
+
         $expectedPassword = (string) config('wagyu.admin_password');
 
-        if (! hash_equals($expectedPassword, $validated['password'])) {
+        if ($expectedPassword === '' || ! hash_equals($expectedPassword, $validated['password'])) {
+            RateLimiter::hit($key, 60);
+
             return back()
                 ->withErrors(['password' => 'Mot de passe incorrect.'])
                 ->withInput();
         }
 
-        session([
-            'wf_admin_authenticated' => true,
-        ]);
+        RateLimiter::clear($key);
+        $request->session()->regenerate();
+        $request->session()->put('wf_admin_authenticated', true);
 
         return redirect()->route('admin.dashboard');
     }
 
     public function logout(Request $request): RedirectResponse
     {
-        $request->session()->forget('wf_admin_authenticated');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');
     }
