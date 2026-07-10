@@ -1,5 +1,6 @@
 @extends('layouts.app', [
-    'title' => 'Blog & Actualités — Wagyu France',
+    'title' => 'Conseils, cuisson & dégustation — Wagyu France',
+    'description' => 'Les conseils de Wagyu France pour choisir une pièce, maîtriser sa cuisson, prévoir les bonnes portions et savourer le Wagyu français avec justesse.',
     'bodyClass' => 'blog-page'
 ])
 
@@ -9,395 +10,285 @@
 
 @section('content')
 
-    <section class="blog-hero">
-        <img
-            class="blog-hero-bg"
-            src="{{ asset('assets/images/blog/blog-persillage.jpg') }}"
-            alt="Persillage Wagyu France"
-        >
+    <section class="journal-hero">
+        <div class="journal-shell journal-hero-grid">
+            <div class="journal-hero-copy">
+                <div class="journal-edition-line">
+                    <span>Le carnet de la maison</span>
+                    <small>Édition n° 01</small>
+                </div>
 
-        <div class="blog-hero-overlay"></div>
-
-        <div class="blog-glow blog-glow-left"></div>
-        <div class="blog-glow blog-glow-right"></div>
-
-        <div class="blog-hero-inner">
-            <div class="blog-hero-content">
-                <p class="eyebrow">Blog & actualités</p>
+                <p class="journal-kicker">Conseils & savoir-faire</p>
 
                 <h1>
-                    Comprendre,
-                    <span>choisir et savourer le Wagyu.</span>
+                    L’art de préparer
+                    <em>une viande rare.</em>
                 </h1>
 
-                <p>
-                    Conseils de dégustation, explications sur les pièces, culture du produit,
-                    actualités de la maison et regards professionnels autour du Wagyu français.
+                <p class="journal-hero-lead">
+                    Choisir la bonne pièce, respecter son persillage et maîtriser quelques gestes précis :
+                    notre carnet rassemble l’essentiel pour déguster le Wagyu avec simplicité.
                 </p>
 
-                <div class="blog-hero-actions">
-                    <a href="#articles" class="blog-primary-button">
-                        Lire les articles
-                    </a>
+                <div class="journal-hero-actions">
+                    <a href="#carnet" class="journal-button journal-button-primary">Parcourir le carnet</a>
+                    <a href="{{ route('boutique') }}" class="journal-button journal-button-secondary">Choisir une pièce</a>
+                </div>
 
-                    <a href="{{ route('wagyu') }}" class="blog-secondary-button">
-                        Comprendre le Wagyu
-                    </a>
+                <div class="journal-hero-index" aria-label="Thèmes du carnet">
+                    <div><span>01</span><strong>Choisir</strong></div>
+                    <div><span>02</span><strong>Préparer</strong></div>
+                    <div><span>03</span><strong>Déguster</strong></div>
                 </div>
             </div>
 
-            <div class="blog-hero-card">
-                <img
-                    src="{{ asset('assets/images/blog/blog-cuisson.jpg') }}"
-                    alt="Carnet de conseils Wagyu France"
-                >
+            <figure class="journal-hero-visual">
+                <img src="{{ asset('assets/images/blog/blog-cuisson.jpg') }}" alt="Préparation soignée d’une pièce de Wagyu français">
 
-                <div class="blog-hero-card-content">
-                    <span>Carnet maison</span>
+                <div class="journal-hero-frame" aria-hidden="true"></div>
 
-                    <h2>Notes & conseils</h2>
+                <figcaption>
+                    <span>Le geste juste</span>
+                    <strong>Peu d’artifices, beaucoup de précision.</strong>
+                </figcaption>
 
-                    <p>
-                        Un espace éditorial pour mieux raconter le produit, ses usages,
-                        ses pièces et son expérience.
-                    </p>
+                <div class="journal-hero-seal" aria-hidden="true">
+                    <span>WF</span>
+                    <small>Carnet</small>
+                </div>
+            </figure>
+        </div>
+    </section>
 
-                    <div class="blog-card-tags">
-                        <strong>Dégustation</strong>
-                        <strong>Cuisson</strong>
-                        <strong>Maison</strong>
+    <nav class="journal-chapters" aria-label="Sommaire des conseils">
+        <div class="journal-shell journal-chapters-grid">
+            <a href="#selection"><span>Chapitre 01</span><strong>Bien choisir sa pièce</strong></a>
+            <a href="#cuisson"><span>Chapitre 02</span><strong>Maîtriser la cuisson</strong></a>
+            <a href="#portions"><span>Chapitre 03</span><strong>Prévoir les portions</strong></a>
+            <a href="#carnet"><span>Chapitre 04</span><strong>Lire le carnet</strong></a>
+        </div>
+    </nav>
+
+    <section class="journal-feature" id="selection">
+        <div class="journal-shell journal-feature-grid">
+            <div class="journal-feature-visual">
+                <img src="{{ asset('assets/images/blog/blog-persillage.jpg') }}" alt="Persillage fin d’une pièce de Wagyu">
+                <div class="journal-feature-number">01</div>
+                <span class="journal-feature-label">Dossier à la une</span>
+            </div>
+
+            <article class="journal-feature-copy">
+                <p class="journal-kicker">Comprendre le produit</p>
+                <h2>Le persillage n’est pas un décor. <em>Il guide toute la dégustation.</em></h2>
+
+                <p class="journal-feature-intro">
+                    Les fines veines de gras présentes dans le muscle influencent la texture, la jutosité,
+                    l’intensité aromatique et la façon dont la viande réagit à la chaleur.
+                </p>
+
+                <div class="journal-feature-notes">
+                    <div>
+                        <span>Texture</span>
+                        <strong>Fondante et souple</strong>
+                    </div>
+                    <div>
+                        <span>Cuisson</span>
+                        <strong>Courte et maîtrisée</strong>
+                    </div>
+                    <div>
+                        <span>Service</span>
+                        <strong>En portions mesurées</strong>
                     </div>
                 </div>
+
+                <a href="{{ route('wagyu') }}" class="journal-arrow-link">Comprendre le persillage <span>→</span></a>
+            </article>
+        </div>
+    </section>
+
+    <section class="journal-method" id="cuisson">
+        <div class="journal-shell">
+            <header class="journal-heading journal-heading-split">
+                <div>
+                    <p class="journal-kicker">Le protocole maison</p>
+                    <h2>Quatre gestes pour <em>respecter la pièce.</em></h2>
+                </div>
+
+                <p>
+                    Le Wagyu ne demande ni marinade puissante ni technique compliquée. Une température juste,
+                    une saisie nette et un temps de repos suffisent à révéler le produit.
+                </p>
+            </header>
+
+            <div class="journal-method-grid">
+                <article>
+                    <span>01</span>
+                    <div class="journal-method-mark">T</div>
+                    <h3>Tempérer</h3>
+                    <p>Sortez la pièce avant cuisson afin que la chaleur se diffuse plus régulièrement.</p>
+                    <small>Avant cuisson</small>
+                </article>
+
+                <article>
+                    <span>02</span>
+                    <div class="journal-method-mark">S</div>
+                    <h3>Saisir</h3>
+                    <p>Utilisez une poêle bien chaude et laissez le persillage nourrir naturellement la cuisson.</p>
+                    <small>Cuisson courte</small>
+                </article>
+
+                <article>
+                    <span>03</span>
+                    <div class="journal-method-mark">R</div>
+                    <h3>Reposer</h3>
+                    <p>Accordez quelques minutes à la viande pour que les jus se répartissent dans la pièce.</p>
+                    <small>2 à 4 minutes</small>
+                </article>
+
+                <article>
+                    <span>04</span>
+                    <div class="journal-method-mark">D</div>
+                    <h3>Découper</h3>
+                    <p>Servez en tranches fines, dans le sens opposé aux fibres, avec un assaisonnement discret.</p>
+                    <small>Au dernier moment</small>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="blog-featured-section">
-        <div class="blog-featured-card">
-            <div class="blog-featured-visual">
-                <img
-                    src="{{ asset('assets/images/blog/blog-persillage.jpg') }}"
-                    alt="Article sur le persillage du Wagyu"
-                >
-
-                <span>Article à la une</span>
+    <section class="journal-portions" id="portions">
+        <div class="journal-shell journal-portions-card">
+            <div class="journal-portions-copy">
+                <p class="journal-kicker">La juste quantité</p>
+                <h2>Le Wagyu se savoure mieux <em>lorsqu’il reste mesuré.</em></h2>
+                <p>
+                    Sa richesse et son persillage rendent l’expérience plus intense qu’avec une viande classique.
+                    La portion dépend donc du rôle donné à la pièce dans le repas.
+                </p>
+                <a href="{{ route('boutique') }}" class="journal-arrow-link">Voir les pièces disponibles <span>→</span></a>
             </div>
 
-            <div class="blog-featured-content">
-                <p class="eyebrow">Guide dégustation</p>
+            <div class="journal-portions-values">
+                <article>
+                    <small>Dégustation</small>
+                    <strong>80–120 <span>g</span></strong>
+                    <p>Pour une entrée, un partage ou un menu en plusieurs temps.</p>
+                </article>
 
-                <h2>
-                    Pourquoi le persillage donne au Wagyu cette texture si particulière ?
-                </h2>
+                <article>
+                    <small>Plat principal</small>
+                    <strong>150–200 <span>g</span></strong>
+                    <p>Lorsque le Wagyu constitue le cœur du repas.</p>
+                </article>
 
-                <p>
-                    Le persillage est l’une des signatures les plus reconnaissables du Wagyu.
-                    Il influence la tendreté, la jutosité, la sensation en bouche et la manière
-                    dont la pièce doit être cuite.
-                </p>
-
-                <a href="{{ route('wagyu') }}">
-                    Lire le guide Wagyu
-                </a>
+                <article>
+                    <small>À partager</small>
+                    <strong>1 <span>pièce</span></strong>
+                    <p>Découpée en tranches fines et servie au centre de la table.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <section class="blog-categories-section">
-        <div class="blog-section-heading">
-            <p class="eyebrow">Rubriques</p>
+    <section class="journal-notebook" id="carnet">
+        <div class="journal-shell">
+            <header class="journal-heading journal-heading-center">
+                <p class="journal-kicker">Le carnet Wagyu France</p>
+                <h2>Choisir, préparer et servir <em>avec confiance.</em></h2>
+                <p>Des repères simples pour mieux comprendre chaque pièce et créer une dégustation cohérente.</p>
+            </header>
 
-            <h2>
-                Des contenus pour chaque usage.
-            </h2>
-        </div>
-
-        <div class="blog-category-grid">
-            <article>
-                <span>01</span>
-                <h3>Dégustation</h3>
-                <p>
-                    Comprendre les sensations, les portions, les associations et la manière
-                    de savourer une pièce rare.
-                </p>
-            </article>
-
-            <article>
-                <span>02</span>
-                <h3>Cuisson</h3>
-                <p>
-                    Conseils simples pour respecter le produit : température, saisie,
-                    repos et découpe.
-                </p>
-            </article>
-
-            <article>
-                <span>03</span>
-                <h3>Pièces</h3>
-                <p>
-                    Entrecôte, filet, rumsteak, paleron ou jarret : chaque morceau possède
-                    son caractère.
-                </p>
-            </article>
-
-            <article>
-                <span>04</span>
-                <h3>Professionnels</h3>
-                <p>
-                    Réserve pro, volumes, pré-réservation, traçabilité et logique de découpe.
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="blog-articles-section" id="articles">
-        <div class="blog-section-heading">
-            <p class="eyebrow">Articles récents</p>
-
-            <h2>
-                Le carnet Wagyu France.
-            </h2>
-
-            <p>
-                Ces articles sont pour l’instant statiques. Plus tard, on pourra les brancher
-                à l’admin pour les créer, modifier et publier facilement.
-            </p>
-        </div>
-
-        <div class="blog-articles-grid">
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-persillage.jpg') }}"
-                        alt="Dégustation Wagyu"
-                    >
-
-                    <span>Dégustation</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Guide · 4 min</small>
-
-                    <h3>
-                        Comment déguster le Wagyu sans masquer son goût ?
-                    </h3>
-
-                    <p>
-                        Sel, cuisson courte, repos, tranches fines : quelques gestes simples
-                        suffisent à respecter une pièce d’exception.
-                    </p>
-
-                    <a href="{{ route('wagyu') }}">
-                        Lire
+            <div class="journal-articles-grid">
+                <article class="journal-article journal-article-large">
+                    <a href="{{ route('wagyu') }}" class="journal-article-image">
+                        <img src="{{ asset('assets/images/blog/blog-persillage.jpg') }}" alt="Guide pour déguster le Wagyu">
+                        <span>Dégustation</span>
                     </a>
-                </div>
-            </article>
+                    <div class="journal-article-body">
+                        <div class="journal-article-meta"><span>Guide</span><small>Lecture 4 min</small></div>
+                        <h3>Comment déguster le Wagyu sans masquer son goût&nbsp;?</h3>
+                        <p>Sel, chaleur, repos et découpe : les gestes essentiels pour laisser la viande s’exprimer.</p>
+                        <a href="{{ route('wagyu') }}">Lire le guide <span>→</span></a>
+                    </div>
+                </article>
 
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-cuisson.jpg') }}"
-                        alt="Cuisson du Wagyu"
-                    >
-
-                    <span>Cuisson</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Conseil · 3 min</small>
-
-                    <h3>
-                        Saisir une entrecôte Wagyu : les erreurs à éviter.
-                    </h3>
-
-                    <p>
-                        Une chaleur trop forte ou une cuisson trop longue peut déséquilibrer
-                        la texture. Le Wagyu demande de la précision.
-                    </p>
-
-                    <a href="{{ route('boutique') }}">
-                        Voir les pièces
+                <article class="journal-article">
+                    <a href="{{ route('boutique') }}" class="journal-article-image">
+                        <img src="{{ asset('assets/images/blog/blog-cuisson.jpg') }}" alt="Cuisson d’une entrecôte Wagyu">
+                        <span>Cuisson</span>
                     </a>
-                </div>
-            </article>
+                    <div class="journal-article-body">
+                        <div class="journal-article-meta"><span>Conseil</span><small>Lecture 3 min</small></div>
+                        <h3>Saisir une entrecôte&nbsp;: les erreurs à éviter.</h3>
+                        <p>Une cuisson trop longue ou une poêle mal préparée peuvent déséquilibrer le persillage.</p>
+                        <a href="{{ route('boutique') }}">Voir les pièces <span>→</span></a>
+                    </div>
+                </article>
 
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-pieces.jpg') }}"
-                        alt="Pièces de Wagyu"
-                    >
-
-                    <span>Pièces</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Sélection · 5 min</small>
-
-                    <h3>
-                        Entrecôte, filet, rumsteak : quelle pièce choisir ?
-                    </h3>
-
-                    <p>
-                        Chaque morceau révèle une facette différente du Wagyu :
-                        intensité, fondant, caractère ou équilibre.
-                    </p>
-
-                    <a href="{{ route('boutique') }}">
-                        Découvrir
+                <article class="journal-article">
+                    <a href="{{ route('boutique') }}" class="journal-article-image">
+                        <img src="{{ asset('assets/images/blog/blog-pieces.jpg') }}" alt="Différentes pièces de Wagyu">
+                        <span>Sélection</span>
                     </a>
-                </div>
-            </article>
+                    <div class="journal-article-body">
+                        <div class="journal-article-meta"><span>Pièces</span><small>Lecture 5 min</small></div>
+                        <h3>Entrecôte, filet ou rumsteak&nbsp;: que choisir&nbsp;?</h3>
+                        <p>Intensité, tendreté ou caractère : chaque morceau révèle une facette différente du Wagyu.</p>
+                        <a href="{{ route('boutique') }}">Découvrir la sélection <span>→</span></a>
+                    </div>
+                </article>
 
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/histoire/maison-wagyu-france.jpg') }}"
-                        alt="Maison Wagyu France"
-                    >
-
-                    <span>Maison</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Histoire · 4 min</small>
-
-                    <h3>
-                        Pourquoi Wagyu France sépare l’univers particulier et pro ?
-                    </h3>
-
-                    <p>
-                        Les particuliers veulent déguster. Les professionnels veulent réserver,
-                        anticiper et organiser leurs volumes.
-                    </p>
-
-                    <a href="{{ route('histoire') }}">
-                        Comprendre
+                <article class="journal-article">
+                    <a href="{{ route('histoire') }}" class="journal-article-image">
+                        <img src="{{ asset('assets/images/histoire/maison-wagyu-france.jpg') }}" alt="Maison Wagyu France">
+                        <span>Maison</span>
                     </a>
-                </div>
-            </article>
+                    <div class="journal-article-body">
+                        <div class="journal-article-meta"><span>Histoire</span><small>Lecture 4 min</small></div>
+                        <h3>Pourquoi le temps fait partie intégrante de la qualité.</h3>
+                        <p>Élevage, sélection et préparation : la qualité se construit bien avant la dégustation.</p>
+                        <a href="{{ route('histoire') }}">Lire notre histoire <span>→</span></a>
+                    </div>
+                </article>
 
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-pro.jpg') }}"
-                        alt="Univers professionnel Wagyu France"
-                    >
-
-                    <span>Pro</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Professionnels · 6 min</small>
-
-                    <h3>
-                        Pré-réserver avant découpe : pourquoi cette méthode change tout ?
-                    </h3>
-
-                    <p>
-                        La demande professionnelle permet de mieux répartir, anticiper
-                        et valoriser les pièces avant la mise en découpe.
-                    </p>
-
-                    <a href="{{ route('decoupe-volumes') }}">
-                        Lire
-                    </a>
-                </div>
-            </article>
-
-            <article class="blog-article-card">
-                <div class="blog-article-visual">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-tracabilite.jpg') }}"
-                        alt="Traçabilité Wagyu France"
-                    >
-
-                    <span>Confiance</span>
-                </div>
-
-                <div class="blog-article-content">
-                    <small>Traçabilité · 4 min</small>
-
-                    <h3>
-                        La traçabilité, un vrai argument pour les professionnels.
-                    </h3>
-
-                    <p>
-                        Origine, pièces, volumes et statut de demande renforcent la confiance
-                        autour d’un produit premium.
-                    </p>
-
-                    <a href="{{ route('tracabilite') }}">
-                        Découvrir
-                    </a>
-                </div>
-            </article>
+                <article class="journal-article journal-article-dark">
+                    <div class="journal-article-dark-number">05</div>
+                    <p class="journal-kicker">Pour les professionnels</p>
+                    <h3>Anticiper les volumes et pré-réserver avant découpe.</h3>
+                    <p>Une méthode pensée pour mieux répartir les pièces et construire une demande précise.</p>
+                    <a href="{{ route('decoupe-volumes') }}">Découvrir la méthode <span>→</span></a>
+                </article>
+            </div>
         </div>
     </section>
 
-    <section class="blog-editorial-section">
-        <div class="blog-editorial-card">
+    <section class="journal-note">
+        <div class="journal-shell journal-note-grid">
+            <div class="journal-note-monogram" aria-hidden="true">WF</div>
+
+            <blockquote>
+                <span>Note de la maison</span>
+                <p>«&nbsp;La meilleure préparation est celle qui accompagne la viande sans jamais chercher à prendre sa place.&nbsp;»</p>
+            </blockquote>
+
+            <div class="journal-note-signature">
+                <strong>Wagyu France</strong>
+                <small>Domaine du Tilleul</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="journal-cta">
+        <div class="journal-shell journal-cta-card">
             <div>
-                <p class="eyebrow">Contenu éditorial</p>
-
-                <h2>
-                    Un blog utile pour le SEO et la confiance.
-                </h2>
-
-                <p>
-                    Le blog permet de créer du contenu naturel autour du Wagyu :
-                    cuisson, conservation, pièces, origine, conseils de dégustation,
-                    pré-réservation et univers professionnel.
-                </p>
-
-                <p>
-                    Plus tard, on pourra transformer cette page en vrai module admin :
-                    création d’articles, image, catégorie, brouillon, publication et SEO.
-                </p>
+                <p class="journal-kicker">Passer de la lecture à la dégustation</p>
+                <h2>Choisissez la pièce qui correspond <em>à votre moment.</em></h2>
+                <p>Notre sélection rassemble des pièces à saisir, à partager ou à laisser cuire doucement.</p>
             </div>
 
-            <div class="blog-editorial-panel">
-                <div class="blog-editorial-image">
-                    <img
-                        src="{{ asset('assets/images/blog/blog-pro.jpg') }}"
-                        alt="Contenu éditorial Wagyu France"
-                    >
-                </div>
-
-                <span>✦</span>
-
-                <h3>Objectif SEO</h3>
-
-                <ul>
-                    <li>Créer des pages indexables</li>
-                    <li>Répondre aux questions clients</li>
-                    <li>Renforcer l’expertise</li>
-                    <li>Améliorer le maillage interne</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="blog-cta-section">
-        <div class="blog-cta-card">
-            <p class="eyebrow">Wagyu France</p>
-
-            <h2>
-                Explorer le produit autrement.
-            </h2>
-
-            <p>
-                Découvrez les articles, la boutique ou l’espace professionnel selon votre besoin.
-            </p>
-
-            <div>
-                <a href="{{ route('boutique') }}" class="blog-primary-button">
-                    Boutique particulier
-                </a>
-
-                <a href="{{ route('professionnels') }}" class="blog-secondary-button">
-                    Univers professionnel
-                </a>
+            <div class="journal-cta-actions">
+                <a href="{{ route('boutique') }}" class="journal-button journal-button-light">Découvrir la boutique</a>
+                <a href="{{ route('contact') }}" class="journal-cta-link">Demander conseil <span>→</span></a>
             </div>
         </div>
     </section>
