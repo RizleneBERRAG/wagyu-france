@@ -1,296 +1,241 @@
-@extends('layouts.app', [
-    'title' => 'Administration — Demandes Wagyu France',
-    'bodyClass' => 'admin-demandes-page is-pro'
+@extends('layouts.admin', [
+    'title' => 'Commandes & demandes — Wagyu France',
+    'sectionLabel' => 'Relation client',
+    'pageHeading' => 'Commandes & demandes',
+    'bodyClass' => 'admin-requests-page'
 ])
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/admin-demandes.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin-management.css') }}">
 @endpush
 
 @section('content')
-
-    <section class="admin-hero">
-        <div class="admin-hero-grid"></div>
-        <div class="admin-red-glow"></div>
-        <div class="admin-gold-glow"></div>
-
-        <div class="admin-hero-inner">
-            <p class="eyebrow">Administration interne</p>
-
-            <h1>
-                Suivi des demandes
-                <span>Wagyu France.</span>
-            </h1>
-
+    <header class="admin-page-heading">
+        <div>
+            <p class="admin-kicker">Centre de traitement</p>
+            <h2>Une seule file pour suivre toutes les demandes.</h2>
             <p>
-                Retrouvez ici les commandes boutique, les pré-réservations professionnelles
-                et les messages envoyés depuis la page de contact.
+                Recherchez un client, filtrez par statut et faites avancer chaque dossier
+                de « nouvelle » à « traitée » sans perdre la référence ni le détail des pièces.
             </p>
-
-            @if (session('success'))
-                <div class="admin-alert">
-                    {{ session('success') }}
-                </div>
-            @endif
         </div>
+    </header>
+
+    <section class="admin-stat-grid">
+        <article class="admin-stat-card">
+            <span>À traiter</span>
+            <strong>{{ $counts['new'] }}</strong>
+            <small>Éléments encore au statut « nouvelle ».</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Boutique</span>
+            <strong>{{ $counts['shop'] }}</strong>
+            <small>Demandes de particuliers.</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Professionnels</span>
+            <strong>{{ $counts['pro'] }}</strong>
+            <small>Pré-réservations liées aux animaux.</small>
+        </article>
+        <article class="admin-stat-card">
+            <span>Messages</span>
+            <strong>{{ $counts['contact'] }}</strong>
+            <small>Demandes générales et partenariats.</small>
+        </article>
     </section>
 
-    <section class="admin-stats-section">
-        <div class="admin-stats-grid">
-            <article>
-                <span>Boutique</span>
-                <strong>{{ $shopOrders->count() }}</strong>
-                <small>demandes particulier</small>
-            </article>
+    <nav class="admin-request-tabs" aria-label="Type de demande">
+        <a href="{{ route('admin.demandes', ['section' => 'all']) }}" @class(['is-active' => $section === 'all'])>Tout</a>
+        <a href="{{ route('admin.demandes', ['section' => 'shop']) }}" @class(['is-active' => $section === 'shop'])>Boutique <b>{{ $counts['shop'] }}</b></a>
+        <a href="{{ route('admin.demandes', ['section' => 'pro']) }}" @class(['is-active' => $section === 'pro'])>Professionnels <b>{{ $counts['pro'] }}</b></a>
+        <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}" @class(['is-active' => $section === 'contacts'])>Messages <b>{{ $counts['contact'] }}</b></a>
+    </nav>
 
-            <article>
-                <span>Professionnel</span>
-                <strong>{{ $proRequests->count() }}</strong>
-                <small>demandes réserve pro</small>
-            </article>
+    <div class="admin-toolbar">
+        <form method="GET" action="{{ route('admin.demandes') }}">
+            <input type="hidden" name="section" value="{{ $section }}">
+            <input type="search" name="q" value="{{ request('q') }}" placeholder="Référence, nom, email, société...">
+            <select name="status">
+                <option value="">Tous les statuts</option>
+                @foreach ($statuses as $value => $label)
+                    <option value="{{ $value }}" @selected(request('status') === $value)>{{ $label }}</option>
+                @endforeach
+            </select>
+            <button type="submit" class="admin-secondary-button">Rechercher</button>
+        </form>
+    </div>
 
-            <article>
-                <span>Contact</span>
-                <strong>{{ $contactMessages->count() }}</strong>
-                <small>messages reçus</small>
-            </article>
+    @if (in_array($section, ['all', 'shop'], true))
+        <section class="admin-request-section" id="boutique">
+            <div class="admin-request-section-heading">
+                <div><p class="admin-kicker">Particuliers</p><h3>Demandes boutique</h3></div>
+                <span>{{ $shopOrders->count() }} résultat(s)</span>
+            </div>
 
-            <article>
-                <span>Total</span>
-                <strong>{{ $shopOrders->count() + $proRequests->count() + $contactMessages->count() }}</strong>
-                <small>demandes reçues</small>
-            </article>
-        </div>
-    </section>
-
-    <section class="admin-section">
-        <div class="admin-section-heading">
-            <p class="eyebrow">Messages directs</p>
-            <h2>Demandes de contact.</h2>
-        </div>
-
-        <div class="admin-request-grid">
-            @forelse ($contactMessages as $contactMessage)
-                <article class="admin-request-card admin-request-card-pro">
-                    <div class="admin-request-top">
-                        <div>
-                            <span class="admin-reference">{{ $contactMessage->reference }}</span>
-                            <h3>{{ $contactMessage->fullname }}</h3>
-                        </div>
-
-                        <strong class="admin-status admin-status-{{ $contactMessage->status }}">
-                            {{ $statuses[$contactMessage->status] ?? $contactMessage->status }}
-                        </strong>
-                    </div>
-
-                    <div class="admin-info-grid">
-                        <div>
-                            <span>Profil</span>
-                            <strong>{{ ucfirst($contactMessage->audience) }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Motif</span>
-                            <strong>{{ $contactMessage->subject }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Email</span>
-                            <strong>{{ $contactMessage->email }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Téléphone</span>
-                            <strong>{{ $contactMessage->phone ?: 'Non précisé' }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Société</span>
-                            <strong>{{ $contactMessage->company ?: 'Non précisée' }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Ville</span>
-                            <strong>{{ $contactMessage->city ?: 'Non précisée' }}</strong>
-                        </div>
-
-                        <div>
-                            <span>Contact préféré</span>
-                            <strong>{{ ucfirst($contactMessage->preferred_contact) }}</strong>
-                        </div>
-                    </div>
-
-                    <div class="admin-message">
-                        <span>Message</span>
-                        <p>{{ $contactMessage->message }}</p>
-                    </div>
-
-                    <form method="POST" action="{{ route('admin.demandes.contact.status', $contactMessage) }}" class="admin-status-form">
-                        @csrf
-                        @method('PATCH')
-
-                        <label>
-                            <span>Modifier le statut</span>
-                            <select name="status">
-                                @foreach ($statuses as $value => $label)
-                                    <option value="{{ $value }}" @selected($contactMessage->status === $value)>
-                                        {{ $label }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </label>
-
-                        <button type="submit">Mettre à jour</button>
-                    </form>
-
-                    <small class="admin-date">
-                        Reçu le {{ $contactMessage->created_at->format('d/m/Y à H:i') }}
-                    </small>
-                </article>
-            @empty
-                <div class="admin-empty">Aucun message de contact pour le moment.</div>
-            @endforelse
-        </div>
-    </section>
-
-    <section class="admin-section">
-        <div class="admin-section-heading">
-            <p class="eyebrow">Boutique particulier</p>
-            <h2>Demandes de commande.</h2>
-        </div>
-
-        <div class="admin-request-grid">
-            @forelse ($shopOrders as $order)
-                <article class="admin-request-card">
-                    <div class="admin-request-top">
-                        <div>
-                            <span class="admin-reference">{{ $order->reference }}</span>
-                            <h3>{{ $order->fullname }}</h3>
-                        </div>
-
-                        <strong class="admin-status admin-status-{{ $order->status }}">
-                            {{ $statuses[$order->status] ?? $order->status }}
-                        </strong>
-                    </div>
-
-                    <div class="admin-info-grid">
-                        <div><span>Email</span><strong>{{ $order->email }}</strong></div>
-                        <div><span>Téléphone</span><strong>{{ $order->phone }}</strong></div>
-                        <div><span>Ville</span><strong>{{ $order->city }}</strong></div>
-                        <div><span>Total</span><strong>{{ number_format((float) $order->total, 2, ',', ' ') }} €</strong></div>
-                    </div>
-
-                    @if ($order->message)
-                        <div class="admin-message">
-                            <span>Message</span>
-                            <p>{{ $order->message }}</p>
-                        </div>
-                    @endif
-
-                    <div class="admin-cart">
-                        <span>Pièces demandées</span>
-                        @foreach ($order->cart ?? [] as $item)
-                            <div class="admin-cart-line">
-                                <strong>{{ $item['name'] ?? 'Produit' }}</strong>
-                                <small>
-                                    {{ $item['quantity'] ?? 0 }} kg ·
-                                    {{ number_format((float) ($item['unit_price'] ?? 0), 2, ',', ' ') }} €/kg
-                                </small>
+            <div class="admin-request-card-grid">
+                @forelse ($shopOrders as $order)
+                    <article class="admin-request-card">
+                        <header>
+                            <div>
+                                <span class="admin-request-type">Boutique</span>
+                                <h4>{{ $order->fullname }}</h4>
+                                <code>{{ $order->reference }}</code>
                             </div>
-                        @endforeach
-                    </div>
+                            <span class="admin-status admin-status-{{ $order->status }}">{{ $statuses[$order->status] ?? $order->status }}</span>
+                        </header>
 
-                    <form method="POST" action="{{ route('admin.demandes.shop.status', $order) }}" class="admin-status-form">
-                        @csrf
-                        @method('PATCH')
-                        <label>
-                            <span>Modifier le statut</span>
-                            <select name="status">
-                                @foreach ($statuses as $value => $label)
-                                    <option value="{{ $value }}" @selected($order->status === $value)>{{ $label }}</option>
-                                @endforeach
-                            </select>
-                        </label>
-                        <button type="submit">Mettre à jour</button>
-                    </form>
+                        <dl class="admin-request-info">
+                            <div><dt>Email</dt><dd><a href="mailto:{{ $order->email }}">{{ $order->email }}</a></dd></div>
+                            <div><dt>Téléphone</dt><dd><a href="tel:{{ $order->phone }}">{{ $order->phone }}</a></dd></div>
+                            <div><dt>Ville</dt><dd>{{ $order->city }}</dd></div>
+                            <div><dt>Estimation</dt><dd>{{ number_format((float) $order->total, 2, ',', ' ') }} €</dd></div>
+                        </dl>
 
-                    <small class="admin-date">Reçue le {{ $order->created_at->format('d/m/Y à H:i') }}</small>
-                </article>
-            @empty
-                <div class="admin-empty">Aucune demande boutique pour le moment.</div>
-            @endforelse
-        </div>
-    </section>
+                        @if ($order->message)
+                            <div class="admin-request-message"><strong>Message du client</strong><p>{{ $order->message }}</p></div>
+                        @endif
 
-    <section class="admin-section">
-        <div class="admin-section-heading">
-            <p class="eyebrow">Réserve professionnelle</p>
-            <h2>Demandes pro.</h2>
-        </div>
-
-        <div class="admin-request-grid">
-            @forelse ($proRequests as $requestItem)
-                <article class="admin-request-card admin-request-card-pro">
-                    <div class="admin-request-top">
-                        <div>
-                            <span class="admin-reference">{{ $requestItem->reference }}</span>
-                            <h3>{{ $requestItem->company }}</h3>
+                        <div class="admin-request-lines">
+                            <strong>Pièces demandées</strong>
+                            @foreach ($order->cart ?? [] as $item)
+                                <div>
+                                    <span>{{ $item['name'] ?? 'Produit' }}</span>
+                                    <small>{{ number_format((float) ($item['quantity'] ?? 0), 1, ',', ' ') }} kg · {{ number_format((float) ($item['unit_price'] ?? 0), 2, ',', ' ') }} €/kg</small>
+                                </div>
+                            @endforeach
                         </div>
 
-                        <strong class="admin-status admin-status-{{ $requestItem->status }}">
-                            {{ $statuses[$requestItem->status] ?? $requestItem->status }}
-                        </strong>
-                    </div>
+                        <footer>
+                            <form method="POST" action="{{ route('admin.demandes.shop.status', $order) }}" class="admin-request-status-form">
+                                @csrf
+                                @method('PATCH')
+                                <select name="status">
+                                    @foreach ($statuses as $value => $label)
+                                        <option value="{{ $value }}" @selected($order->status === $value)>{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                            </form>
+                            <small>Reçue le {{ $order->created_at->format('d/m/Y à H:i') }}</small>
+                        </footer>
+                    </article>
+                @empty
+                    <div class="admin-empty-state">Aucune demande boutique ne correspond aux filtres.</div>
+                @endforelse
+            </div>
+        </section>
+    @endif
 
-                    <div class="admin-info-grid">
-                        <div><span>Contact</span><strong>{{ $requestItem->fullname }}</strong></div>
-                        <div><span>Email</span><strong>{{ $requestItem->email }}</strong></div>
-                        <div><span>Téléphone</span><strong>{{ $requestItem->phone }}</strong></div>
-                        <div><span>Type</span><strong>{{ $requestItem->professional_type }}</strong></div>
-                        <div><span>Ville</span><strong>{{ $requestItem->city ?: 'Non précisée' }}</strong></div>
-                        <div><span>Total HT</span><strong>{{ number_format((float) $requestItem->total_ht, 2, ',', ' ') }} €</strong></div>
-                    </div>
+    @if (in_array($section, ['all', 'pro'], true))
+        <section class="admin-request-section" id="professionnels">
+            <div class="admin-request-section-heading">
+                <div><p class="admin-kicker">Réserve</p><h3>Demandes professionnelles</h3></div>
+                <span>{{ $proRequests->count() }} résultat(s)</span>
+            </div>
 
-                    @if ($requestItem->message)
-                        <div class="admin-message">
-                            <span>Message</span>
-                            <p>{{ $requestItem->message }}</p>
-                        </div>
-                    @endif
-
-                    <div class="admin-cart">
-                        <span>Pièces pré-réservées</span>
-                        @foreach ($requestItem->cart ?? [] as $item)
-                            <div class="admin-cart-line">
-                                <strong>{{ $item['name'] ?? 'Pièce' }}</strong>
-                                <small>
-                                    {{ $item['quantity'] ?? 0 }} kg ·
-                                    {{ number_format((float) ($item['unit_price'] ?? $item['price'] ?? 0), 2, ',', ' ') }} €/kg
-                                </small>
+            <div class="admin-request-card-grid">
+                @forelse ($proRequests as $requestItem)
+                    <article class="admin-request-card is-pro">
+                        <header>
+                            <div>
+                                <span class="admin-request-type">{{ $requestItem->professional_type }}</span>
+                                <h4>{{ $requestItem->company }}</h4>
+                                <code>{{ $requestItem->reference }} · {{ $requestItem->bovin_reference }}</code>
                             </div>
-                        @endforeach
-                    </div>
+                            <span class="admin-status admin-status-{{ $requestItem->status }}">{{ $statuses[$requestItem->status] ?? $requestItem->status }}</span>
+                        </header>
 
-                    <form method="POST" action="{{ route('admin.demandes.pro.status', $requestItem) }}" class="admin-status-form">
-                        @csrf
-                        @method('PATCH')
-                        <label>
-                            <span>Modifier le statut</span>
-                            <select name="status">
-                                @foreach ($statuses as $value => $label)
-                                    <option value="{{ $value }}" @selected($requestItem->status === $value)>{{ $label }}</option>
-                                @endforeach
-                            </select>
-                        </label>
-                        <button type="submit">Mettre à jour</button>
-                    </form>
+                        <dl class="admin-request-info">
+                            <div><dt>Contact</dt><dd>{{ $requestItem->fullname }}</dd></div>
+                            <div><dt>Email</dt><dd><a href="mailto:{{ $requestItem->email }}">{{ $requestItem->email }}</a></dd></div>
+                            <div><dt>Téléphone</dt><dd><a href="tel:{{ $requestItem->phone }}">{{ $requestItem->phone }}</a></dd></div>
+                            <div><dt>Total HT</dt><dd>{{ number_format((float) $requestItem->total_ht, 2, ',', ' ') }} €</dd></div>
+                        </dl>
 
-                    <small class="admin-date">Reçue le {{ $requestItem->created_at->format('d/m/Y à H:i') }}</small>
-                </article>
-            @empty
-                <div class="admin-empty">Aucune demande professionnelle pour le moment.</div>
-            @endforelse
-        </div>
-    </section>
+                        @if ($requestItem->message)
+                            <div class="admin-request-message"><strong>Besoin précisé</strong><p>{{ $requestItem->message }}</p></div>
+                        @endif
 
+                        <div class="admin-request-lines">
+                            <strong>Pièces pré-réservées</strong>
+                            @foreach ($requestItem->cart ?? [] as $item)
+                                <div>
+                                    <span>{{ $item['name'] ?? 'Pièce' }}</span>
+                                    <small>{{ number_format((float) ($item['quantity'] ?? 0), 1, ',', ' ') }} kg · {{ number_format((float) ($item['unit_price_ht'] ?? 0), 2, ',', ' ') }} € HT/kg</small>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <footer>
+                            <form method="POST" action="{{ route('admin.demandes.pro.status', $requestItem) }}" class="admin-request-status-form">
+                                @csrf
+                                @method('PATCH')
+                                <select name="status">
+                                    @foreach ($statuses as $value => $label)
+                                        <option value="{{ $value }}" @selected($requestItem->status === $value)>{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                            </form>
+                            <small>Reçue le {{ $requestItem->created_at->format('d/m/Y à H:i') }}</small>
+                        </footer>
+                    </article>
+                @empty
+                    <div class="admin-empty-state">Aucune demande professionnelle ne correspond aux filtres.</div>
+                @endforelse
+            </div>
+        </section>
+    @endif
+
+    @if (in_array($section, ['all', 'contacts'], true))
+        <section class="admin-request-section" id="contacts">
+            <div class="admin-request-section-heading">
+                <div><p class="admin-kicker">Contact</p><h3>Messages reçus</h3></div>
+                <span>{{ $contactMessages->count() }} résultat(s)</span>
+            </div>
+
+            <div class="admin-request-card-grid">
+                @forelse ($contactMessages as $message)
+                    <article class="admin-request-card is-contact">
+                        <header>
+                            <div>
+                                <span class="admin-request-type">{{ ucfirst($message->audience) }}</span>
+                                <h4>{{ $message->fullname }}</h4>
+                                <code>{{ $message->reference }}</code>
+                            </div>
+                            <span class="admin-status admin-status-{{ $message->status }}">{{ $statuses[$message->status] ?? $message->status }}</span>
+                        </header>
+
+                        <dl class="admin-request-info">
+                            <div><dt>Email</dt><dd><a href="mailto:{{ $message->email }}">{{ $message->email }}</a></dd></div>
+                            <div><dt>Téléphone</dt><dd>{{ $message->phone ?: 'Non précisé' }}</dd></div>
+                            <div><dt>Société</dt><dd>{{ $message->company ?: '—' }}</dd></div>
+                            <div><dt>Réponse souhaitée</dt><dd>{{ ucfirst($message->preferred_contact) }}</dd></div>
+                        </dl>
+
+                        <div class="admin-request-message">
+                            <strong>{{ $message->subject }}</strong>
+                            <p>{{ $message->message }}</p>
+                        </div>
+
+                        <footer>
+                            <form method="POST" action="{{ route('admin.demandes.contact.status', $message) }}" class="admin-request-status-form">
+                                @csrf
+                                @method('PATCH')
+                                <select name="status">
+                                    @foreach ($statuses as $value => $label)
+                                        <option value="{{ $value }}" @selected($message->status === $value)>{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                            </form>
+                            <small>Reçu le {{ $message->created_at->format('d/m/Y à H:i') }}</small>
+                        </footer>
+                    </article>
+                @empty
+                    <div class="admin-empty-state">Aucun message ne correspond aux filtres.</div>
+                @endforelse
+            </div>
+        </section>
+    @endif
 @endsection
