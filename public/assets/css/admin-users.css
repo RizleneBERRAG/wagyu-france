@@ -1,0 +1,516 @@
+/* ADMIN USERS & ACTIVITY */
+
+.admin-user-grid {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.admin-user-card {
+    padding: 24px;
+    border: 1px solid var(--admin-line);
+    background: var(--admin-paper);
+    box-shadow: 0 18px 50px rgba(48, 37, 28, 0.07);
+}
+
+.admin-user-card.is-inactive {
+    opacity: 0.72;
+    background: #f5f1eb;
+}
+
+.admin-user-card > header {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-user-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: var(--admin-burgundy);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.admin-user-card header p {
+    margin: 0 0 4px;
+    color: var(--admin-bronze);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.admin-user-card header h3 {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.admin-user-card header span:not(.admin-user-state) {
+    display: block;
+    margin-top: 5px;
+    color: var(--admin-muted);
+    font-size: 0.72rem;
+}
+
+.admin-user-state {
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.admin-user-state.is-active {
+    color: #246c48;
+    background: #e8f4ed;
+}
+
+.admin-user-state.is-inactive {
+    color: #8b4d45;
+    background: #f4e9e7;
+}
+
+.admin-user-contact {
+    margin-top: 20px;
+    padding: 14px 0;
+    border-top: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+    display: grid;
+    gap: 6px;
+}
+
+.admin-user-contact a {
+    color: var(--admin-burgundy);
+    font-weight: 700;
+    font-size: 0.76rem;
+}
+
+.admin-user-contact span {
+    color: var(--admin-muted);
+    font-size: 0.68rem;
+}
+
+.admin-user-permissions {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.admin-user-permissions span {
+    padding: 6px 9px;
+    border-radius: 999px;
+    color: #675748;
+    background: #f3ece3;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.admin-user-card footer {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.admin-user-card footer small {
+    color: var(--admin-muted);
+    font-size: 0.64rem;
+}
+
+.admin-user-card footer > div {
+    display: flex;
+    gap: 8px;
+}
+
+.admin-user-card footer form {
+    margin: 0;
+}
+
+.admin-user-form {
+    display: grid;
+    gap: 18px;
+}
+
+.admin-user-form-section {
+    padding: 26px;
+}
+
+.admin-user-form-section > header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.admin-user-form-section > header > span {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: var(--admin-burgundy);
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.admin-user-form-section h3 {
+    margin: 4px 0 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 2rem;
+}
+
+.admin-user-form-grid,
+.admin-user-role-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.admin-user-form-grid label,
+.admin-user-role-row > label {
+    display: grid;
+    gap: 8px;
+}
+
+.admin-user-form-grid label > span,
+.admin-user-role-row label > span:first-child {
+    color: var(--admin-text);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.admin-user-form-grid input,
+.admin-user-role-row select {
+    width: 100%;
+    min-height: 50px;
+    padding: 0 14px;
+    border: 1px solid rgba(94, 73, 54, 0.18);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--admin-text);
+    font: inherit;
+}
+
+.admin-user-form-grid small {
+    color: var(--admin-muted);
+    font-size: 0.62rem;
+}
+
+.admin-user-form-grid .is-wide {
+    grid-column: 1 / -1;
+}
+
+.admin-user-active-toggle {
+    min-height: 82px;
+    padding: 16px;
+    border: 1px solid var(--admin-line);
+    border-radius: 16px;
+    display: flex !important;
+    align-items: center;
+    gap: 12px !important;
+    background: #faf6f0;
+}
+
+.admin-user-active-toggle input {
+    width: 20px;
+    height: 20px;
+}
+
+.admin-user-active-toggle span {
+    display: grid;
+    gap: 4px;
+}
+
+.admin-user-active-toggle strong {
+    font-size: 0.76rem;
+}
+
+.admin-user-active-toggle small {
+    color: var(--admin-muted);
+    font-size: 0.64rem;
+    line-height: 1.45;
+}
+
+.admin-user-permission-help {
+    margin: -4px 0 18px;
+    color: var(--admin-muted);
+    font-size: 0.72rem;
+    line-height: 1.6;
+}
+
+.admin-user-permission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.admin-user-permission-grid label {
+    min-height: 82px;
+    padding: 14px;
+    border: 1px solid var(--admin-line);
+    border-radius: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #fff;
+}
+
+.admin-user-permission-grid input {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+}
+
+.admin-user-permission-grid span {
+    display: grid;
+    gap: 4px;
+}
+
+.admin-user-permission-grid strong {
+    font-size: 0.72rem;
+    line-height: 1.35;
+}
+
+.admin-user-permission-grid small {
+    color: var(--admin-muted);
+    font-size: 0.6rem;
+}
+
+.admin-user-form-submit {
+    padding: 22px 24px;
+    border: 1px solid var(--admin-line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    background: var(--admin-paper);
+}
+
+.admin-user-form-submit strong {
+    display: block;
+    font-size: 0.82rem;
+}
+
+.admin-user-form-submit p {
+    margin: 5px 0 0;
+    color: var(--admin-muted);
+    font-size: 0.67rem;
+}
+
+.admin-activity-toolbar form {
+    display: grid;
+    grid-template-columns: minmax(230px, 1.2fr) minmax(190px, 0.8fr) minmax(170px, 0.7fr) 145px 145px auto auto;
+    gap: 9px;
+}
+
+.admin-activity-toolbar input,
+.admin-activity-toolbar select {
+    width: 100%;
+    min-height: 46px;
+    padding: 0 12px;
+    border: 1px solid var(--admin-line);
+    background: #fff;
+    color: var(--admin-text);
+    font: inherit;
+    font-size: 0.7rem;
+}
+
+.admin-activity-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.admin-activity-log-list {
+    display: grid;
+}
+
+.admin-activity-log-row {
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--admin-line);
+    display: grid;
+    grid-template-columns: 12px 1fr;
+    gap: 14px;
+}
+
+.admin-activity-log-row:last-child {
+    border-bottom: 0;
+}
+
+.admin-activity-log-dot {
+    width: 9px;
+    height: 9px;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: var(--admin-bronze);
+    box-shadow: 0 0 0 5px rgba(181, 139, 76, 0.12);
+}
+
+.admin-activity-log-main > header {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.admin-activity-log-main header strong {
+    display: block;
+    font-size: 0.78rem;
+    line-height: 1.45;
+}
+
+.admin-activity-log-main header span {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--admin-burgundy);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.admin-activity-log-main time {
+    flex: 0 0 auto;
+    color: var(--admin-muted);
+    font-size: 0.64rem;
+}
+
+.admin-activity-log-meta {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+}
+
+.admin-activity-log-meta span {
+    color: var(--admin-muted);
+    font-size: 0.65rem;
+}
+
+.admin-activity-log-meta b {
+    margin-right: 4px;
+    color: var(--admin-text);
+}
+
+.admin-activity-log-main details {
+    margin-top: 13px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #f8f3ed;
+}
+
+.admin-activity-log-main summary {
+    cursor: pointer;
+    color: var(--admin-burgundy);
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.admin-activity-log-main dl {
+    margin: 12px 0 0;
+    display: grid;
+    gap: 8px;
+}
+
+.admin-activity-log-main dl div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px;
+    font-size: 0.62rem;
+}
+
+.admin-activity-log-main dt {
+    color: var(--admin-muted);
+    text-transform: capitalize;
+}
+
+.admin-activity-log-main dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.admin-user-pagination {
+    margin-top: 20px;
+}
+
+.admin-user-pagination nav > div:first-child {
+    display: none;
+}
+
+.admin-user-pagination nav > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+@media (max-width: 1180px) {
+    .admin-activity-toolbar form {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .admin-user-grid,
+    .admin-user-form-grid,
+    .admin-user-role-row,
+    .admin-user-permission-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-user-form-grid .is-wide {
+        grid-column: auto;
+    }
+
+    .admin-activity-toolbar form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .admin-user-card,
+    .admin-user-form-section {
+        padding: 18px;
+    }
+
+    .admin-user-card > header {
+        grid-template-columns: 46px 1fr;
+    }
+
+    .admin-user-state {
+        grid-column: 1 / -1;
+        justify-self: start;
+    }
+
+    .admin-user-card footer,
+    .admin-user-form-submit,
+    .admin-activity-log-main > header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .admin-user-card footer > div {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .admin-activity-toolbar form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-activity-log-main dl div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
