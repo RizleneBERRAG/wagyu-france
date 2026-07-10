@@ -4,52 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Mail\ProReservationAdminMail;
 use App\Mail\ProReservationCustomerMail;
+use App\Models\AnimalBatch;
 use App\Models\ProReservationRequest;
+use App\Services\AdminDashboardService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class ProReservationRequestController extends Controller
 {
-    private array $cuts = [
-        'paleron' => [
-            'name' => 'Paleron Wagyu',
-            'price' => 143,
-        ],
-        'entrecote' => [
-            'name' => 'Entrecôte Wagyu',
-            'price' => 174,
-        ],
-        'fauxfilet' => [
-            'name' => 'Faux-filet Wagyu',
-            'price' => 174,
-        ],
-        'rumsteak' => [
-            'name' => 'Rumsteak Wagyu',
-            'price' => 137,
-        ],
-        'filet' => [
-            'name' => 'Filet Wagyu',
-            'price' => 198,
-        ],
-        'macreuse' => [
-            'name' => 'Macreuse Wagyu',
-            'price' => 119,
-        ],
-        'jarret' => [
-            'name' => 'Jarret Wagyu',
-            'price' => 92,
-        ],
-    ];
-
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, AdminDashboardService $dashboard): JsonResponse
     {
-        $validator = Validator::make($request->all(), [
-            'bovin_reference' => ['nullable', 'string', 'max:80'],
+        $batch = AnimalBatch::with('cuts')
+            ->when($request->filled('bovin_reference'), fn ($query) => $query->where('reference', $request->string('bovin_reference')))
+            ->where('is_active', true)
+            ->first();
 
+        if (! $batch) {
+            return response()->json([
+                'message' => 'Aucun animal n’est actuellement ouvert à la pré-réservation.',
+                'errors' => ['bovin_reference' => ['La réserve professionnelle est momentanément fermée.']],
+            ], 422);
+        }
+
+        $validator = Validator::make($request->all(), [
             'company' => ['required', 'string', 'max:190'],
             'fullname' => ['required', 'string', 'max:190'],
             'email' => ['required', 'email', 'max:190'],
@@ -57,10 +37,9 @@ class ProReservationRequestController extends Controller
             'professional_type' => ['required', 'string', 'max:100'],
             'city' => ['nullable', 'string', 'max:120'],
             'message' => ['nullable', 'string', 'max:3000'],
-
             'cart' => ['required', 'array', 'min:1'],
-            'cart.*.key' => ['required', 'string', Rule::in(array_keys($this->cuts))],
-            'cart.*.quantity' => ['required', 'integer', 'min:1', 'max:999'],
+            'cart.*.key' => ['required', 'string'],
+            'cart.*.quantity' => ['required', 'numeric', 'min:0.1', 'max:999'],
         ], [
             'company.required' => 'Le nom de la société est obligatoire.',
             'fullname.required' => 'Le nom complet est obligatoire.',
@@ -79,30 +58,49 @@ class ProReservationRequestController extends Controller
         }
 
         $validated = $validator->validated();
+        $cuts = $batch->cuts->where('is_active', true)->keyBy('slug');
+        $cart = [];
+        $errors = [];
 
-        $cart = collect($validated['cart'])
-            ->map(function (array $item) {
-                $cut = $this->cuts[$item['key']];
-                $quantity = max(1, (int) $item['quantity']);
-                $unitPrice = (float) $cut['price'];
+        foreach ($validated['cart'] as $index => $item) {
+            $cut = $cuts->get($item['key']);
+            $quantity = (float) $item['quantity'];
 
-                return [
-                    'key' => $item['key'],
-                    'name' => $cut['name'],
-                    'quantity' => $quantity,
-                    'unit_price_ht' => $unitPrice,
-                    'line_total_ht' => $unitPrice * $quantity,
-                ];
-            })
-            ->values()
-            ->toArray();
+            if (! $cut) {
+                $errors["cart.{$index}.key"][] = 'Cette pièce n’est plus disponible sur l’animal actif.';
+                continue;
+            }
+
+            if ($quantity < (float) $cut->min_quantity_kg) {
+                $errors["cart.{$index}.quantity"][] = 'La quantité minimale pour ' . $cut->name . ' est de ' . number_format((float) $cut->min_quantity_kg, 1, ',', ' ') . ' kg.';
+            }
+
+            if ($quantity > (float) $cut->available_kg) {
+                $errors["cart.{$index}.quantity"][] = 'La quantité demandée dépasse le volume indicatif de ' . $cut->name . '.';
+            }
+
+            $unitPrice = (float) $cut->price_per_kg;
+            $cart[] = [
+                'key' => $cut->slug,
+                'name' => $cut->name,
+                'quantity' => $quantity,
+                'unit_price_ht' => $unitPrice,
+                'line_total_ht' => $unitPrice * $quantity,
+            ];
+        }
+
+        if ($errors !== []) {
+            return response()->json([
+                'message' => 'La sélection doit être ajustée avant l’envoi.',
+                'errors' => $errors,
+            ], 422);
+        }
 
         $totalHt = collect($cart)->sum('line_total_ht');
 
         $reservation = ProReservationRequest::create([
             'reference' => $this->generateReference(),
-            'bovin_reference' => $validated['bovin_reference'] ?? 'WF-2026-01',
-
+            'bovin_reference' => $batch->reference,
             'company' => $validated['company'],
             'fullname' => $validated['fullname'],
             'email' => $validated['email'],
@@ -110,11 +108,15 @@ class ProReservationRequestController extends Controller
             'professional_type' => $validated['professional_type'],
             'city' => $validated['city'] ?? null,
             'message' => $validated['message'] ?? null,
-
             'cart' => $cart,
             'total_ht' => $totalHt,
             'status' => 'nouvelle',
         ]);
+
+        $summary = $dashboard->activeBatchSummary();
+        if ($summary && $summary['batch']->is($batch) && $summary['threshold_reached'] && $batch->status === 'open') {
+            $batch->update(['status' => 'ready']);
+        }
 
         $this->sendReservationEmails($reservation);
 
