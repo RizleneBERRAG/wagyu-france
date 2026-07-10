@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ProReservationRequestController;
 use App\Http\Controllers\ShopOrderRequestController;
 use App\Http\Controllers\Admin\DemandesController;
@@ -24,6 +25,7 @@ Route::view('/histoire', 'pages.histoire')->name('histoire');
 Route::view('/blog', 'pages.blog')->name('blog');
 
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 
 Route::view('/mentions-legales', 'pages.mentions-legales')->name('mentions.legales');
 
@@ -47,7 +49,7 @@ Route::view('/tracabilite', 'pages.tracabilite')->name('tracabilite');
 
 /*
 |--------------------------------------------------------------------------
-| Demandes de pré-réservation pro
+| Demandes clients et professionnelles
 |--------------------------------------------------------------------------
 */
 
@@ -56,13 +58,6 @@ Route::post('/reserve-pro/demande', [ProReservationRequestController::class, 'st
 
 Route::post('/boutique/demande', [ShopOrderRequestController::class, 'store'])
     ->name('shop.order.store');
-
-
-/*
-|--------------------------------------------------------------------------
-| Administration interne
-|--------------------------------------------------------------------------
-*/
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +86,5 @@ Route::patch('/admin/demandes/boutique/{shopOrderRequest}/statut', [DemandesCont
 Route::patch('/admin/demandes/pro/{proReservationRequest}/statut', [DemandesController::class, 'updateProStatus'])
     ->name('admin.demandes.pro.status');
 
+Route::patch('/admin/demandes/contact/{contactMessage}/statut', [DemandesController::class, 'updateContactStatus'])
+    ->name('admin.demandes.contact.status');
