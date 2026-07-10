@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\RequestReceivedMail;
 use App\Models\ShopOrderRequest;
 use App\Models\ShopProduct;
+use App\Services\CustomerSyncService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +15,7 @@ use Illuminate\Validation\Rule;
 
 class ShopOrderRequestController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, CustomerSyncService $customers): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'fullname' => ['required', 'string', 'max:190'],
@@ -101,6 +102,15 @@ class ShopOrderRequestController extends Controller
             'cart' => $cart,
             'total' => $total,
             'status' => 'nouvelle',
+        ]);
+
+        $customers->sync($order, [
+            'type' => 'individual',
+            'relationship_status' => 'prospect',
+            'fullname' => $order->fullname,
+            'email' => $order->email,
+            'phone' => $order->phone,
+            'city' => $order->city,
         ]);
 
         $this->sendEmails($order);
