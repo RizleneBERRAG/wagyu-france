@@ -47,8 +47,9 @@ class AdminUserController extends Controller
             'role' => $data['role'],
             'permissions' => $this->permissions($data['role'], $data['permissions'] ?? []),
             'is_active' => $request->boolean('is_active'),
-            'email_verified_at' => now(),
         ]);
+
+        $user->forceFill(['email_verified_at' => now()])->saveQuietly();
 
         return redirect()->route('admin.users.edit', $user)
             ->with('success', 'Le compte de ' . $user->name . ' a été créé.');
@@ -63,21 +64,17 @@ class AdminUserController extends Controller
     {
         $data = $this->validatedData($request, $user);
         $isActive = $request->boolean('is_active');
+        $newPermissions = $this->permissions($data['role'], $data['permissions'] ?? []);
 
         $this->guardOwnerContinuity($user, $data['role'], $isActive);
-
-        if ($request->user()->is($user) && ! $isActive) {
-            return back()->withInput()->withErrors([
-                'is_active' => 'Vous ne pouvez pas désactiver votre propre compte.',
-            ]);
-        }
+        $this->guardSelfAccessChanges($request, $user, $data['role'], $newPermissions, $isActive);
 
         $updates = [
             'name' => $data['name'],
             'job_title' => $data['job_title'] ?? null,
             'email' => mb_strtolower(trim($data['email'])),
             'role' => $data['role'],
-            'permissions' => $this->permissions($data['role'], $data['permissions'] ?? []),
+            'permissions' => $newPermissions,
             'is_active' => $isActive,
         ];
 
@@ -159,6 +156,38 @@ class AdminUserController extends Controller
         if (! $otherActiveOwners) {
             throw ValidationException::withMessages([
                 'role' => 'Le dernier propriétaire actif ne peut pas être désactivé ou rétrogradé.',
+            ]);
+        }
+    }
+
+    private function guardSelfAccessChanges(
+        Request $request,
+        User $user,
+        string $newRole,
+        ?array $newPermissions,
+        bool $newState
+    ): void {
+        if (! $request->user()->is($user)) {
+            return;
+        }
+
+        if (! $newState) {
+            throw ValidationException::withMessages([
+                'is_active' => 'Vous ne pouvez pas désactiver votre propre compte.',
+            ]);
+        }
+
+        $currentPermissions = $user->effectivePermissions();
+        $resolvedNewPermissions = $newRole === 'owner'
+            ? User::presetPermissions('owner')
+            : ($newPermissions ?? User::presetPermissions($newRole));
+
+        sort($currentPermissions);
+        sort($resolvedNewPermissions);
+
+        if ($newRole !== $user->role || $currentPermissions !== $resolvedNewPermissions) {
+            throw ValidationException::withMessages([
+                'role' => 'Votre rôle et vos permissions doivent être modifiés par un autre propriétaire autorisé.',
             ]);
         }
     }
