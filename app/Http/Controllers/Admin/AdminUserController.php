@@ -42,7 +42,7 @@ class AdminUserController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'job_title' => $data['job_title'] ?? null,
-            'email' => mb_strtolower(trim($data['email'])),
+            'email' => $data['email'],
             'password' => $data['password'],
             'role' => $data['role'],
             'permissions' => $this->permissions($data['role'], $data['permissions'] ?? []),
@@ -72,7 +72,7 @@ class AdminUserController extends Controller
         $updates = [
             'name' => $data['name'],
             'job_title' => $data['job_title'] ?? null,
-            'email' => mb_strtolower(trim($data['email'])),
+            'email' => $data['email'],
             'role' => $data['role'],
             'permissions' => $newPermissions,
             'is_active' => $isActive,
@@ -107,7 +107,7 @@ class AdminUserController extends Controller
 
     private function validatedData(Request $request, ?User $user = null): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:190'],
             'job_title' => ['nullable', 'string', 'max:190'],
             'email' => [
@@ -125,6 +125,21 @@ class AdminUserController extends Controller
             'password.min' => 'Le mot de passe doit contenir au moins 12 caractères.',
             'password.confirmed' => 'La confirmation du mot de passe ne correspond pas.',
         ]);
+
+        $data['email'] = mb_strtolower(trim($data['email']));
+
+        $duplicate = User::query()
+            ->whereRaw('LOWER(email) = ?', [$data['email']])
+            ->when($user, fn ($query) => $query->where('id', '!=', $user->getKey()))
+            ->exists();
+
+        if ($duplicate) {
+            throw ValidationException::withMessages([
+                'email' => 'Cette adresse email appartient déjà à un autre utilisateur.',
+            ]);
+        }
+
+        return $data;
     }
 
     private function permissions(string $role, array $permissions): ?array
@@ -150,7 +165,7 @@ class AdminUserController extends Controller
         $otherActiveOwners = User::query()
             ->where('role', 'owner')
             ->where('is_active', true)
-            ->whereKeyNot($user->getKey())
+            ->where('id', '!=', $user->getKey())
             ->exists();
 
         if (! $otherActiveOwners) {
