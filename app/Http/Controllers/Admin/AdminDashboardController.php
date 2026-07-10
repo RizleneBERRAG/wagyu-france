@@ -3,29 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactMessage;
 use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\ShopProduct;
+use App\Services\AdminDashboardService;
 use Illuminate\View\View;
 
 class AdminDashboardController extends Controller
 {
-    public function index(): View|RedirectResponse
+    public function index(AdminDashboardService $dashboard): View
     {
-        if (session('wf_admin_authenticated') !== true) {
-            return redirect()->route('admin.login');
-        }
-
-        $shopOrders = ShopOrderRequest::latest()->take(5)->get();
-        $proRequests = ProReservationRequest::latest()->take(5)->get();
+        $activeBatch = $dashboard->activeBatchSummary();
 
         return view('admin.dashboard', [
-            'shopOrders' => $shopOrders,
-            'proRequests' => $proRequests,
             'shopCount' => ShopOrderRequest::count(),
             'proCount' => ProReservationRequest::count(),
-            'newShopCount' => ShopOrderRequest::where('status', 'nouvelle')->count(),
-            'newProCount' => ProReservationRequest::where('status', 'nouvelle')->count(),
+            'contactCount' => ContactMessage::count(),
+            'newCount' => ShopOrderRequest::where('status', 'nouvelle')->count()
+                + ProReservationRequest::where('status', 'nouvelle')->count()
+                + ContactMessage::where('status', 'nouvelle')->count(),
+            'turnoverEstimate' => (float) ShopOrderRequest::whereNotIn('status', ['annulee'])->sum('total'),
+            'productCount' => ShopProduct::count(),
+            'activeProductCount' => ShopProduct::where('is_active', true)->count(),
+            'lowStockCount' => ShopProduct::where('is_active', true)
+                ->whereColumn('stock_kg', '<=', 'low_stock_threshold')
+                ->count(),
+            'activeBatch' => $activeBatch,
+            'notifications' => $dashboard->notifications(),
+            'latestActivity' => $dashboard->latestActivity(),
         ]);
     }
 }
