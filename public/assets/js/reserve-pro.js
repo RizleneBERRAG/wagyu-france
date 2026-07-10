@@ -1,162 +1,55 @@
-const STAGE = {
-    width: 1000,
-    height: 520
-};
+const RESERVE_STAGE = { width: 1000, height: 520 };
 
-const cuts = {
+const RESERVE_GEOMETRY = {
     paleron: {
-        name: 'Paleron Wagyu',
-        description: 'Pièce de l’épaule, riche et savoureuse, idéale pour cuisson lente, effiloché premium ou carte bistronomique.',
-        price: '143 €/kg',
-        priceValue: 143,
-        stock: '5,8 kg',
-        reserved: '33%',
-        min: '2 kg',
-        percent: 33,
-        dot: { x: 280, y: 240 },
-        label: { x: 90, y: 245 },
-        hit: { x: 280, y: 240, w: 180, h: 120 },
-        frame: {
-            x: 252,
-            y: 238,
-            w: 210,
-            h: 130,
-            rotate: -10,
-            radius: '48% 52% 46% 54% / 50% 46% 54% 50%'
-        }
+        dot: { x: 280, y: 240 }, label: { x: 90, y: 245 }, hit: { x: 280, y: 240, w: 180, h: 120 },
+        frame: { x: 252, y: 238, w: 210, h: 130, rotate: -10, radius: '48% 52% 46% 54% / 50% 46% 54% 50%' }
     },
     entrecote: {
-        name: 'Entrecôte Wagyu',
-        description: 'Pièce emblématique située sur la partie haute du dos, persillage intense, parfaite pour les restaurants premium.',
-        price: '174 €/kg',
-        priceValue: 174,
-        stock: '8,5 kg',
-        reserved: '74%',
-        min: '2 kg',
-        percent: 74,
-        dot: { x: 470, y: 150 },
-        label: { x: 500, y: 40 },
-        hit: { x: 470, y: 150, w: 240, h: 110 },
-        frame: {
-            x: 515,
-            y: 185,
-            w: 300,
-            h: 92,
-            rotate: 2,
-            radius: '46% 54% 50% 50% / 58% 50% 50% 42%'
-        }
+        dot: { x: 470, y: 150 }, label: { x: 500, y: 40 }, hit: { x: 470, y: 150, w: 240, h: 110 },
+        frame: { x: 515, y: 185, w: 300, h: 92, rotate: 2, radius: '46% 54% 50% 50% / 58% 50% 50% 42%' }
     },
     fauxfilet: {
-        name: 'Faux-filet Wagyu',
-        description: 'Zone dorsale arrière, équilibre idéal entre tendreté, puissance aromatique et rendement professionnel.',
-        price: '174 €/kg',
-        priceValue: 174,
-        stock: '7,1 kg',
-        reserved: '58%',
-        min: '2 kg',
-        percent: 58,
-        dot: { x: 665, y: 160 },
-        label: { x: 700, y: 65 },
-        hit: { x: 665, y: 160, w: 210, h: 110 },
-        frame: {
-            x: 690,
-            y: 190,
-            w: 250,
-            h: 100,
-            rotate: -2,
-            radius: '44% 56% 48% 52% / 58% 50% 50% 42%'
-        }
+        dot: { x: 665, y: 160 }, label: { x: 700, y: 65 }, hit: { x: 665, y: 160, w: 210, h: 110 },
+        frame: { x: 690, y: 190, w: 250, h: 100, rotate: -2, radius: '44% 56% 48% 52% / 58% 50% 50% 42%' }
     },
     rumsteak: {
-        name: 'Rumsteak Wagyu',
-        description: 'Pièce arrière de caractère, régulière et élégante, adaptée aux menus dégustation et découpes précises.',
-        price: '137 €/kg',
-        priceValue: 137,
-        stock: '6,4 kg',
-        reserved: '49%',
-        min: '2 kg',
-        percent: 49,
-        dot: { x: 830, y: 225 },
-        label: { x: 970, y: 235 },
-        hit: { x: 830, y: 225, w: 160, h: 130 },
-        frame: {
-            x: 820,
-            y: 235,
-            w: 160,
-            h: 140,
-            rotate: 10,
-            radius: '44% 56% 52% 48% / 50% 48% 52% 50%'
-        }
+        dot: { x: 830, y: 225 }, label: { x: 970, y: 235 }, hit: { x: 830, y: 225, w: 160, h: 130 },
+        frame: { x: 820, y: 235, w: 160, h: 140, rotate: 10, radius: '44% 56% 52% 48% / 50% 48% 52% 50%' }
     },
     filet: {
-        name: 'Filet Wagyu',
-        description: 'Pièce noble et fondante, située sous la zone lombaire, idéale pour une carte gastronomique.',
-        price: '198 €/kg',
-        priceValue: 198,
-        stock: '4,2 kg',
-        reserved: '61%',
-        min: '1 kg',
-        percent: 61,
-        dot: { x: 610, y: 340 },
-        label: { x: 735, y: 345 },
-        hit: { x: 610, y: 340, w: 240, h: 100 },
-        frame: {
-            x: 600,
-            y: 335,
-            w: 230,
-            h: 86,
-            rotate: -8,
-            radius: '52% 48% 54% 46% / 58% 46% 54% 42%'
-        }
+        dot: { x: 610, y: 340 }, label: { x: 735, y: 345 }, hit: { x: 610, y: 340, w: 240, h: 100 },
+        frame: { x: 600, y: 335, w: 230, h: 86, rotate: -8, radius: '52% 48% 54% 46% / 58% 46% 54% 42%' }
     },
     macreuse: {
-        name: 'Macreuse Wagyu',
-        description: 'Morceau de l’avant, intéressant pour les chefs qui souhaitent valoriser des pièces moins classiques.',
-        price: '119 €/kg',
-        priceValue: 119,
-        stock: '5,2 kg',
-        reserved: '28%',
-        min: '2 kg',
-        percent: 28,
-        dot: { x: 335, y: 335 },
-        label: { x: 275, y: 495 },
-        hit: { x: 335, y: 335, w: 180, h: 135 },
-        frame: {
-            x: 355,
-            y: 355,
-            w: 200,
-            h: 145,
-            rotate: -20,
-            radius: '48% 52% 50% 50% / 42% 58% 42% 58%'
-        }
+        dot: { x: 335, y: 335 }, label: { x: 275, y: 495 }, hit: { x: 335, y: 335, w: 180, h: 135 },
+        frame: { x: 355, y: 355, w: 200, h: 145, rotate: -20, radius: '48% 52% 50% 50% / 42% 58% 42% 58%' }
     },
     jarret: {
-        name: 'Jarret Wagyu',
-        description: 'Pièce basse de la patte, parfaite pour jus, bouillons, plats mijotés et préparations gastronomiques longues.',
-        price: '92 €/kg',
-        priceValue: 92,
-        stock: '4,9 kg',
-        reserved: '22%',
-        min: '2 kg',
-        percent: 22,
-        dot: { x: 820, y: 445 },
-        label: { x: 940, y: 485 },
-        hit: { x: 820, y: 445, w: 150, h: 150 },
-        frame: {
-            x: 835,
-            y: 438,
-            w: 110,
-            h: 175,
-            rotate: 8,
-            radius: '46% 54% 48% 52% / 36% 36% 64% 64%'
-        }
+        dot: { x: 820, y: 445 }, label: { x: 940, y: 485 }, hit: { x: 820, y: 445, w: 150, h: 150 },
+        frame: { x: 835, y: 438, w: 110, h: 175, rotate: 8, radius: '46% 54% 48% 52% / 36% 36% 64% 64%' }
     }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const animalStage = document.querySelector('[data-animal-stage]') || document.querySelector('.animal-stage');
-    const animalArea = document.querySelector('.luxury-animal-area');
+    const dataElement = document.getElementById('reserve-cuts-data');
+    let reserveData = {};
 
+    try {
+        reserveData = JSON.parse(dataElement?.textContent || '{}');
+    } catch (error) {
+        console.error('Données de réserve invalides', error);
+    }
+
+    const cuts = Object.fromEntries(
+        Object.entries(reserveData).map(([key, cut]) => [key, { ...cut, ...(RESERVE_GEOMETRY[key] || {}) }])
+    );
+
+    const cutKeys = Object.keys(cuts);
+    if (cutKeys.length === 0) return;
+
+    const animalStage = document.querySelector('[data-animal-stage]');
+    const animalArea = document.querySelector('.luxury-animal-area');
     const allCutElements = document.querySelectorAll('[data-cut]');
     const interactiveCutElements = document.querySelectorAll('.cut-hit, .cut-tag');
 
@@ -191,28 +84,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartConfirmation = document.querySelector('[data-cart-confirmation]');
     const confirmationSummary = document.querySelector('[data-confirmation-summary]');
 
-    let selectedCut = 'paleron';
+    const bovinReference = checkoutForm?.dataset.bovinReference || 'reserve';
+    const storageKey = `wf-pro-cart-${bovinReference}`;
+    let selectedCut = cutKeys[0];
     let proCart = {};
 
+    try {
+        proCart = JSON.parse(sessionStorage.getItem(storageKey) || '{}');
+    } catch {
+        proCart = {};
+    }
+
+    Object.keys(proCart).forEach((key) => {
+        if (!cuts[key]) delete proCart[key];
+    });
+
+    const formatPrice = (value) => `${Math.round(value).toLocaleString('fr-FR')} €`;
+    const formatQuantity = (value) => Number(value).toLocaleString('fr-FR', { maximumFractionDigits: 1 });
+
+    function escapeHtml(value) {
+        const element = document.createElement('div');
+        element.textContent = String(value ?? '');
+        return element.innerHTML;
+    }
+
+    function saveCart() {
+        sessionStorage.setItem(storageKey, JSON.stringify(proCart));
+    }
+
     function getScale() {
-        if (!animalStage) {
-            return { x: 1, y: 1 };
-        }
-
+        if (!animalStage) return { x: 1, y: 1 };
         const rect = animalStage.getBoundingClientRect();
-
-        return {
-            x: rect.width / STAGE.width,
-            y: rect.height / STAGE.height
-        };
+        return { x: rect.width / RESERVE_STAGE.width, y: rect.height / RESERVE_STAGE.height };
     }
 
     function placeCutElements() {
         if (!animalStage) return;
-
         const scale = getScale();
 
         Object.entries(cuts).forEach(([key, cut]) => {
+            if (!cut.dot || !cut.label || !cut.hit || !cut.frame) return;
+
             const tag = animalStage.querySelector(`.cut-tag[data-cut="${key}"]`);
             const dot = animalStage.querySelector(`.cut-dot[data-cut="${key}"]`);
             const line = animalStage.querySelector(`.cut-line[data-cut="${key}"]`);
@@ -255,12 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dy = labelY - dotY;
                 const distance = Math.sqrt((dx * dx) + (dy * dy));
                 const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                const labelGap = 84;
-                const lineWidth = Math.max(distance - labelGap, 20);
-
                 line.style.left = `${dotX}px`;
                 line.style.top = `${dotY}px`;
-                line.style.width = `${lineWidth}px`;
+                line.style.width = `${Math.max(distance - 84, 20)}px`;
                 line.style.transform = `rotate(${angle}deg)`;
             }
         });
@@ -273,407 +182,276 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cut) return;
 
         selectedCut = cutKey;
-
         allCutElements.forEach((element) => {
-            const isActive = element.dataset.cut === cutKey;
-            element.classList.toggle('active', isActive);
-
-            if (element.tagName === 'BUTTON') {
-                element.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-            }
+            const active = element.dataset.cut === cutKey;
+            element.classList.toggle('active', active);
+            if (element.tagName === 'BUTTON') element.setAttribute('aria-pressed', active ? 'true' : 'false');
         });
 
-        if (animalArea) {
-            animalArea.dataset.selectedCut = cutKey;
-        }
-
+        if (animalArea) animalArea.dataset.selectedCut = cutKey;
         if (cutName) cutName.textContent = cut.name;
-        if (cutDescription) cutDescription.textContent = cut.description;
+        if (cutDescription) cutDescription.textContent = cut.description || '';
         if (cutPrice) cutPrice.textContent = cut.price;
         if (cutStock) cutStock.textContent = cut.stock;
         if (cutReserved) cutReserved.textContent = cut.reserved;
         if (cutMin) cutMin.textContent = cut.min;
         if (cutPercentLabel) cutPercentLabel.textContent = cut.reserved;
         if (cutPercentBar) cutPercentBar.style.width = `${cut.percent}%`;
-        if (quantityInput) quantityInput.value = 1;
+
+        if (quantityInput) {
+            const minimum = Math.max(0.1, Number(cut.minValue) || 1);
+            const maximum = Math.max(minimum, Number(cut.stockValue) || minimum);
+            quantityInput.min = String(minimum);
+            quantityInput.max = String(maximum);
+            quantityInput.step = '0.1';
+            quantityInput.value = String(minimum);
+        }
+
         if (reserveFeedback) reserveFeedback.textContent = '';
     }
 
-    function formatPrice(value) {
-        return `${Math.round(value).toLocaleString('fr-FR')} €`;
-    }
-
     function getCartCount() {
-        return Object.values(proCart).reduce((total, item) => total + item.quantity, 0);
+        return Object.values(proCart).reduce((total, item) => total + Number(item.quantity || 0), 0);
     }
 
-    function getCartTotal() {
-        return Object.entries(proCart).reduce((total, [key, item]) => {
-            return total + (cuts[key].priceValue * item.quantity);
+    function getCartTotal(cart = proCart) {
+        return Object.entries(cart).reduce((total, [key, item]) => {
+            return total + ((Number(cuts[key]?.priceValue) || 0) * Number(item.quantity || 0));
         }, 0);
     }
 
     function hideCheckout() {
-        if (checkoutForm) checkoutForm.classList.add('is-hidden');
-        if (cartConfirmation) cartConfirmation.classList.add('is-hidden');
-        if (cartDrawer) cartDrawer.classList.remove('is-confirmed');
+        checkoutForm?.classList.add('is-hidden');
+        cartConfirmation?.classList.add('is-hidden');
+        cartDrawer?.classList.remove('is-confirmed', 'is-checkout');
     }
 
     function openCart() {
         if (!cartDrawer || !cartOverlay) return;
-
         cartDrawer.classList.add('is-open');
         cartOverlay.classList.add('is-open');
         cartDrawer.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('cart-open');
+        document.body.classList.add('pro-cart-open');
     }
 
     function closeCart() {
         if (!cartDrawer || !cartOverlay) return;
-
         cartDrawer.classList.remove('is-open');
         cartOverlay.classList.remove('is-open');
         cartDrawer.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('cart-open');
-
-        setTimeout(() => {
-            hideCheckout();
-        }, 280);
+        document.body.classList.remove('pro-cart-open');
+        setTimeout(hideCheckout, 250);
     }
 
     function renderCart() {
-        if (!cartItemsContainer || !cartTotal || !cartEmpty) return;
-
+        if (!cartItemsContainer || !cartEmpty || !cartTotal) return;
         const entries = Object.entries(proCart);
         cartItemsContainer.innerHTML = '';
-
         cartEmpty.classList.toggle('is-hidden', entries.length > 0);
 
         entries.forEach(([key, item]) => {
             const cut = cuts[key];
-            const lineTotal = cut.priceValue * item.quantity;
+            if (!cut) return;
 
             const article = document.createElement('article');
             article.className = 'pro-cart-item';
-
             article.innerHTML = `
-                <div class="pro-cart-item-top">
-                    <div>
-                        <h3>${cut.name}</h3>
-                        <small>${cut.price} · ${cut.min} min.</small>
-                    </div>
-
-                    <button class="cart-remove" type="button" data-cart-remove="${key}" aria-label="Retirer ${cut.name}">
-                        ×
-                    </button>
+                <div class="pro-cart-item-head">
+                    <div><h3>${escapeHtml(cut.name)}</h3><small>${escapeHtml(cut.price)}</small></div>
+                    <button type="button" data-cart-remove="${escapeHtml(key)}" aria-label="Retirer">×</button>
                 </div>
-
                 <div class="pro-cart-item-bottom">
-                    <div class="cart-qty">
-                        <button type="button" data-cart-minus="${key}">-</button>
-                        <span>${item.quantity}</span>
-                        <button type="button" data-cart-plus="${key}">+</button>
+                    <div class="pro-cart-item-qty">
+                        <button type="button" data-cart-minus="${escapeHtml(key)}">−</button>
+                        <span>${formatQuantity(item.quantity)} kg</span>
+                        <button type="button" data-cart-plus="${escapeHtml(key)}">+</button>
                     </div>
-
-                    <strong class="cart-line-total">${formatPrice(lineTotal)} HT</strong>
+                    <strong>${formatPrice(Number(cut.priceValue) * Number(item.quantity))}</strong>
                 </div>
             `;
-
             cartItemsContainer.appendChild(article);
         });
 
-        cartTotal.textContent = `${formatPrice(getCartTotal())} HT`;
-
-        cartCounters.forEach((counter) => {
-            counter.textContent = getCartCount();
-        });
+        cartTotal.textContent = formatPrice(getCartTotal());
+        cartCounters.forEach((counter) => counter.textContent = formatQuantity(getCartCount()));
+        saveCart();
     }
 
-    function addToCart(cutKey, quantity) {
-        const normalizedQuantity = Math.max(1, Number(quantity) || 1);
+    function addSelectedCut() {
+        const cut = cuts[selectedCut];
+        if (!cut || !quantityInput) return;
 
-        if (!proCart[cutKey]) {
-            proCart[cutKey] = { quantity: 0 };
+        const minimum = Math.max(0.1, Number(cut.minValue) || 1);
+        const maximum = Math.max(minimum, Number(cut.stockValue) || minimum);
+        const quantity = Math.min(maximum, Math.max(minimum, Number(quantityInput.value) || minimum));
+        const current = Number(proCart[selectedCut]?.quantity || 0);
+        const next = Math.min(maximum, current + quantity);
+
+        proCart[selectedCut] = { quantity: next };
+        if (reserveFeedback) {
+            reserveFeedback.textContent = next >= maximum
+                ? `${cut.name} ajouté — volume indicatif maximal atteint.`
+                : `${cut.name} ajouté à votre sélection.`;
         }
-
-        proCart[cutKey].quantity += normalizedQuantity;
 
         hideCheckout();
         renderCart();
         openCart();
     }
 
-    function updateCartQuantity(cutKey, delta) {
-        if (!proCart[cutKey]) return;
+    function updateCartItem(key, delta) {
+        const cut = cuts[key];
+        if (!cut || !proCart[key]) return;
 
-        proCart[cutKey].quantity += delta;
+        const minimum = Math.max(0.1, Number(cut.minValue) || 1);
+        const maximum = Math.max(minimum, Number(cut.stockValue) || minimum);
+        const next = Number(proCart[key].quantity) + delta;
 
-        if (proCart[cutKey].quantity <= 0) {
-            delete proCart[cutKey];
+        if (next < minimum) {
+            delete proCart[key];
+        } else {
+            proCart[key].quantity = Math.min(maximum, next);
         }
 
         hideCheckout();
         renderCart();
     }
 
-    function removeCartItem(cutKey) {
-        delete proCart[cutKey];
-        hideCheckout();
-        renderCart();
+    function showCheckout() {
+        if (Object.keys(proCart).length === 0) return openCart();
+        if (!checkoutForm || !cartDrawer) return;
+        cartDrawer.classList.add('is-checkout');
+        checkoutForm.classList.remove('is-hidden');
+        cartConfirmation?.classList.add('is-hidden');
+        checkoutForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function showCheckoutForm() {
-        if (getCartCount() === 0) {
-            openCart();
-            return;
-        }
-
-        if (cartConfirmation) cartConfirmation.classList.add('is-hidden');
-
-        if (checkoutForm) {
-            checkoutForm.classList.remove('is-hidden');
-            checkoutForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-
-    function buildConfirmation(formData, savedData = null, cartSnapshot = null, totalSnapshot = null) {
-        const cartToDisplay = cartSnapshot || proCart;
-        const totalToDisplay = totalSnapshot ?? getCartTotal();
-
-        const items = Object.entries(cartToDisplay)
-            .map(([key, item]) => {
-                const cut = cuts[key];
-                return `${cut.name} — ${item.quantity} kg`;
-            })
+    function buildConfirmation(formData, snapshot, reference, total) {
+        if (!confirmationSummary) return;
+        const items = Object.entries(snapshot)
+            .map(([key, item]) => `${escapeHtml(cuts[key]?.name || key)} — ${formatQuantity(item.quantity)} kg`)
             .join('<br>');
 
-        if (!confirmationSummary) return;
-
-        const referenceLine = savedData?.reference
-            ? `<strong>Référence :</strong> ${savedData.reference}<br>`
-            : '';
-
         confirmationSummary.innerHTML = `
-        ${referenceLine}
-        <strong>Contact :</strong> ${formData.get('fullname')}<br>
-        <strong>Société :</strong> ${formData.get('company')}<br>
-        <strong>Email :</strong> ${formData.get('email')}<br>
-        <strong>Téléphone :</strong> ${formData.get('phone')}<br>
-        <strong>Type :</strong> ${formData.get('professional_type')}<br>
-        <strong>Total estimatif :</strong> ${formatPrice(totalToDisplay)} HT<br><br>
-        <strong>Pièces demandées :</strong><br>
-        ${items}
-    `;
+            <strong>Référence :</strong> ${escapeHtml(reference)}<br>
+            <strong>Établissement :</strong> ${escapeHtml(formData.get('company'))}<br>
+            <strong>Contact :</strong> ${escapeHtml(formData.get('fullname'))}<br>
+            <strong>Total estimatif :</strong> ${formatPrice(total)} HT<br><br>
+            <strong>Pièces demandées :</strong><br>${items}
+        `;
     }
 
     interactiveCutElements.forEach((element) => {
-        element.addEventListener('click', () => {
-            updateCut(element.dataset.cut);
-        });
-
-        element.addEventListener('mouseenter', () => {
-            const cutKey = element.dataset.cut;
-
-            document.querySelectorAll(`[data-cut="${cutKey}"]`).forEach((relatedElement) => {
-                relatedElement.classList.add('is-hovered');
-            });
-        });
-
-        element.addEventListener('mouseleave', () => {
-            const cutKey = element.dataset.cut;
-
-            document.querySelectorAll(`[data-cut="${cutKey}"]`).forEach((relatedElement) => {
-                relatedElement.classList.remove('is-hovered');
-            });
-        });
+        element.addEventListener('click', () => updateCut(element.dataset.cut));
     });
 
-    if (quantityMinus && quantityPlus && quantityInput) {
-        quantityMinus.addEventListener('click', () => {
-            const currentValue = Number(quantityInput.value) || 1;
-            quantityInput.value = Math.max(1, currentValue - 1);
-        });
-
-        quantityPlus.addEventListener('click', () => {
-            const currentValue = Number(quantityInput.value) || 1;
-            quantityInput.value = currentValue + 1;
-        });
-    }
-
-    if (reserveButton && reserveFeedback) {
-        reserveButton.addEventListener('click', () => {
-            const cut = cuts[selectedCut];
-            const quantity = Number(quantityInput.value) || 1;
-
-            addToCart(selectedCut, quantity);
-
-            reserveFeedback.textContent = `${quantity} kg de ${cut.name} ajouté au panier pro.`;
-            reserveButton.textContent = 'Ajouté au panier';
-
-            setTimeout(() => {
-                reserveButton.textContent = 'Ajouter à ma pré-réservation';
-            }, 1600);
-        });
-    }
-
-    cartOpenButtons.forEach((button) => {
-        button.addEventListener('click', openCart);
+    quantityMinus?.addEventListener('click', () => {
+        const minimum = Number(quantityInput.min) || 1;
+        quantityInput.value = String(Math.max(minimum, (Number(quantityInput.value) || minimum) - 1));
     });
 
-    cartCloseButtons.forEach((button) => {
-        button.addEventListener('click', closeCart);
+    quantityPlus?.addEventListener('click', () => {
+        const maximum = Number(quantityInput.max) || 999;
+        quantityInput.value = String(Math.min(maximum, (Number(quantityInput.value) || 0) + 1));
     });
 
-    if (cartOverlay) {
-        cartOverlay.addEventListener('click', closeCart);
-    }
+    reserveButton?.addEventListener('click', addSelectedCut);
+    cartOpenButtons.forEach((button) => button.addEventListener('click', openCart));
+    cartCloseButtons.forEach((button) => button.addEventListener('click', closeCart));
+    cartOverlay?.addEventListener('click', closeCart);
+    cartSubmitButton?.addEventListener('click', showCheckout);
+    checkoutBackButton?.addEventListener('click', () => {
+        checkoutForm?.classList.add('is-hidden');
+        cartDrawer?.classList.remove('is-checkout');
+    });
 
-    if (cartItemsContainer) {
-        cartItemsContainer.addEventListener('click', (event) => {
-            const minusButton = event.target.closest('[data-cart-minus]');
-            const plusButton = event.target.closest('[data-cart-plus]');
-            const removeButton = event.target.closest('[data-cart-remove]');
+    cartClearButton?.addEventListener('click', () => {
+        proCart = {};
+        hideCheckout();
+        renderCart();
+    });
 
-            if (minusButton) {
-                updateCartQuantity(minusButton.dataset.cartMinus, -1);
-            }
-
-            if (plusButton) {
-                updateCartQuantity(plusButton.dataset.cartPlus, 1);
-            }
-
-            if (removeButton) {
-                removeCartItem(removeButton.dataset.cartRemove);
-            }
-        });
-    }
-
-    if (cartClearButton) {
-        cartClearButton.addEventListener('click', () => {
-            proCart = {};
+    cartItemsContainer?.addEventListener('click', (event) => {
+        const minus = event.target.closest('[data-cart-minus]');
+        const plus = event.target.closest('[data-cart-plus]');
+        const remove = event.target.closest('[data-cart-remove]');
+        if (minus) updateCartItem(minus.dataset.cartMinus, -1);
+        if (plus) updateCartItem(plus.dataset.cartPlus, 1);
+        if (remove) {
+            delete proCart[remove.dataset.cartRemove];
             hideCheckout();
             renderCart();
-        });
-    }
+        }
+    });
 
-    if (cartSubmitButton) {
-        cartSubmitButton.addEventListener('click', showCheckoutForm);
-    }
+    checkoutForm?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!checkoutForm.checkValidity()) return checkoutForm.reportValidity();
 
-    if (checkoutBackButton) {
-        checkoutBackButton.addEventListener('click', () => {
-            if (checkoutForm) checkoutForm.classList.add('is-hidden');
-        });
-    }
+        const submitButton = checkoutForm.querySelector('.checkout-submit-button');
+        const formData = new FormData(checkoutForm);
+        const snapshot = JSON.parse(JSON.stringify(proCart));
+        const totalSnapshot = getCartTotal(snapshot);
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
 
-    if (checkoutForm) {
-        checkoutForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+        const payload = {
+            _token: csrfToken,
+            bovin_reference: bovinReference,
+            company: formData.get('company'),
+            fullname: formData.get('fullname'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            professional_type: formData.get('professional_type'),
+            city: formData.get('city'),
+            message: formData.get('message'),
+            cart: Object.entries(snapshot).map(([key, item]) => ({ key, quantity: item.quantity }))
+        };
 
-            if (!checkoutForm.checkValidity()) {
-                checkoutForm.reportValidity();
-                return;
+        try {
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Transmission en cours...';
             }
 
-            const submitButton = checkoutForm.querySelector('.checkout-submit-button');
-            const formData = new FormData(checkoutForm);
-
-            const cartPayload = Object.entries(proCart).map(([key, item]) => {
-                return {
-                    key: key,
-                    quantity: item.quantity
-                };
+            const response = await fetch(checkoutForm.dataset.requestUrl, {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify(payload)
             });
 
-            const payload = {
-                bovin_reference: 'WF-2026-01',
-                company: formData.get('company'),
-                fullname: formData.get('fullname'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                professional_type: formData.get('professional_type'),
-                city: formData.get('city'),
-                message: formData.get('message'),
-                cart: cartPayload
-            };
+            const data = await response.json();
+            if (!response.ok) throw data;
 
-            try {
-                if (submitButton) {
-                    submitButton.disabled = true;
-                    submitButton.textContent = 'Envoi en cours...';
-                }
-
-                const csrfToken =
-                    document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') ||
-                    checkoutForm.querySelector('input[name="_token"]')?.value ||
-                    '';
-
-                payload._token = csrfToken;
-
-                const response = await fetch(checkoutForm.dataset.requestUrl, {
-                    method: 'POST',
-                    credentials: 'same-origin',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                const data = await response.json();
-
-                if (!response.ok) {
-                    throw data;
-                }
-
-                const cartSnapshot = structuredClone(proCart);
-                const totalSnapshot = getCartTotal();
-
-                buildConfirmation(formData, data, cartSnapshot, totalSnapshot);
-
-                proCart = {};
-                renderCart();
-
-                checkoutForm.reset();
-                checkoutForm.classList.add('is-hidden');
-
-                if (cartDrawer) {
-                    cartDrawer.classList.add('is-confirmed');
-                }
-
-                if (cartConfirmation) {
-                    cartConfirmation.classList.remove('is-hidden');
-                    cartConfirmation.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-
-            } catch (error) {
-                let message = 'Impossible d’envoyer la demande pour le moment.';
-
-                if (error?.message) {
-                    message = error.message;
-                }
-
-                alert(message);
-            } finally {
-                if (submitButton) {
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'Envoyer ma demande pro';
-                }
+            buildConfirmation(formData, snapshot, data.reference || '', totalSnapshot);
+            proCart = {};
+            renderCart();
+            checkoutForm.reset();
+            checkoutForm.classList.add('is-hidden');
+            cartDrawer?.classList.remove('is-checkout');
+            cartDrawer?.classList.add('is-confirmed');
+            cartConfirmation?.classList.remove('is-hidden');
+            cartConfirmation?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (error) {
+            alert(error?.message || 'Impossible de transmettre la demande pour le moment.');
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Transmettre ma demande';
             }
-        });
-    }
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeCart();
+    });
 
     window.addEventListener('resize', placeCutElements);
-
-    if ('ResizeObserver' in window && animalStage) {
-        const observer = new ResizeObserver(() => {
-            placeCutElements();
-        });
-
-        observer.observe(animalStage);
-    }
-
     placeCutElements();
     updateCut(selectedCut);
     renderCart();
