@@ -1,0 +1,276 @@
+.admin-logistics-toolbar {
+    margin-top: 22px;
+    padding: 18px;
+}
+
+.admin-logistics-toolbar form {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(170px, 0.35fr) minmax(170px, 0.35fr) auto;
+    gap: 12px;
+}
+
+.admin-logistics-toolbar input,
+.admin-logistics-toolbar select,
+.admin-logistics-editor input,
+.admin-logistics-editor select,
+.admin-logistics-editor textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 13px;
+    border: 1px solid rgba(95, 75, 56, 0.18);
+    border-radius: 13px;
+    color: #302821;
+    background: rgba(255, 255, 255, 0.82);
+    font: inherit;
+}
+
+.admin-logistics-editor textarea {
+    min-height: 92px;
+    padding-top: 11px;
+    resize: vertical;
+}
+
+.admin-logistics-board {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(285px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+    padding-bottom: 22px;
+    overflow-x: auto;
+}
+
+.admin-logistics-column {
+    min-width: 285px;
+    border: 1px solid rgba(95, 75, 56, 0.14);
+    border-radius: 20px;
+    background: rgba(250, 246, 240, 0.68);
+}
+
+.admin-logistics-column > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 58px;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(95, 75, 56, 0.12);
+}
+
+.admin-logistics-column > header > div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.admin-logistics-column > header span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #a8947f;
+}
+
+.admin-logistics-column.is-preparing > header span {
+    background: #b58b4c;
+}
+
+.admin-logistics-column.is-ready > header span {
+    background: #5b8d62;
+}
+
+.admin-logistics-column.is-dispatched > header span {
+    background: #446d8f;
+}
+
+.admin-logistics-column.is-delivered > header span {
+    background: #2f8f68;
+}
+
+.admin-logistics-column.is-cancelled > header span {
+    background: #8e4b4b;
+}
+
+.admin-logistics-column > header strong {
+    color: #3f342b;
+    font-size: 0.82rem;
+}
+
+.admin-logistics-column > header b {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    color: #6d1c1c;
+    background: rgba(127, 29, 29, 0.08);
+    font-size: 0.74rem;
+}
+
+.admin-logistics-column-body {
+    display: grid;
+    gap: 12px;
+    padding: 12px;
+}
+
+.admin-logistics-card {
+    padding: 16px;
+    border: 1px solid rgba(95, 75, 56, 0.13);
+    border-radius: 17px;
+    background: #fffdf9;
+    box-shadow: 0 12px 28px rgba(72, 51, 34, 0.06);
+}
+
+.admin-logistics-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.admin-logistics-card h4 {
+    margin: 7px 0 4px;
+    color: #332b24;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.45rem;
+    line-height: 1;
+}
+
+.admin-logistics-card code {
+    color: #7f1d1d;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.admin-logistics-card-head > small {
+    max-width: 90px;
+    color: #8a7969;
+    font-size: 0.68rem;
+    text-align: right;
+}
+
+.admin-logistics-card-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.admin-logistics-card-meta > div {
+    padding: 10px;
+    border-radius: 12px;
+    background: #f7f1e9;
+}
+
+.admin-logistics-card-meta span,
+.admin-logistics-editor label > span {
+    display: block;
+    color: #88796c;
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.admin-logistics-card-meta strong {
+    display: block;
+    margin-top: 5px;
+    color: #4a3f36;
+    font-size: 0.72rem;
+    line-height: 1.4;
+}
+
+.admin-logistics-tracking {
+    margin-top: 10px;
+    padding: 11px 12px;
+    border-left: 3px solid #b58b4c;
+    background: rgba(181, 139, 76, 0.08);
+}
+
+.admin-logistics-tracking span,
+.admin-logistics-tracking strong {
+    display: block;
+}
+
+.admin-logistics-tracking span {
+    color: #8a6b4d;
+    font-size: 0.68rem;
+    font-weight: 800;
+}
+
+.admin-logistics-tracking strong {
+    margin-top: 4px;
+    color: #3d332b;
+    font-size: 0.78rem;
+}
+
+.admin-logistics-editor {
+    margin-top: 14px;
+    border: 1px solid rgba(127, 29, 29, 0.12);
+    border-radius: 14px;
+    background: rgba(127, 29, 29, 0.025);
+}
+
+.admin-logistics-editor summary {
+    padding: 13px 14px;
+    color: #6d1c1c;
+    font-size: 0.75rem;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.admin-logistics-editor form {
+    display: grid;
+    gap: 12px;
+    padding: 0 14px 14px;
+}
+
+.admin-logistics-editor label {
+    display: grid;
+    gap: 7px;
+}
+
+.admin-logistics-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.admin-logistics-card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.admin-logistics-card-actions a {
+    flex: 1;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border: 1px solid rgba(95, 75, 56, 0.16);
+    border-radius: 999px;
+    color: #6d1c1c;
+    font-size: 0.68rem;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.admin-logistics-empty {
+    padding: 28px 14px;
+    color: #8a7e73;
+    font-size: 0.76rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+@media (max-width: 1050px) {
+    .admin-logistics-toolbar form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 620px) {
+    .admin-logistics-toolbar form,
+    .admin-logistics-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
