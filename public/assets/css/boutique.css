@@ -73,8 +73,6 @@
     border-color: #fff;
 }
 
-/* HERO */
-
 .shop-hero {
     padding: 74px 0 78px;
     background: var(--shop-soft);
@@ -202,8 +200,6 @@
     line-height: 1.45;
 }
 
-/* SERVICE STRIP */
-
 .shop-service-strip {
     background: var(--shop-ink);
     color: #fff;
@@ -245,8 +241,6 @@
     font-size: 0.85rem;
     line-height: 1.55;
 }
-
-/* PRODUCTS */
 
 .shop-products-section {
     padding: 92px 0 104px;
@@ -566,8 +560,6 @@
     border-color: var(--shop-red-dark);
 }
 
-/* QUANTITY GUIDE */
-
 .shop-guide-section {
     padding: 90px 0;
     background: var(--shop-cream);
@@ -621,8 +613,6 @@
     line-height: 1.55;
 }
 
-/* REASSURANCE */
-
 .shop-reassurance-section {
     padding: 92px 0;
     background: #fff;
@@ -670,8 +660,6 @@
     line-height: 1.65;
 }
 
-/* CTA */
-
 .shop-contact-cta {
     padding: 0 0 96px;
     background: #fff;
@@ -703,8 +691,6 @@
     line-height: 1.7;
 }
 
-/* FLOATING CART */
-
 .shop-floating-cart {
     position: fixed;
     z-index: 850;
@@ -723,8 +709,6 @@
     font-weight: 800;
     cursor: pointer;
 }
-
-/* DRAWER */
 
 body.shop-cart-open {
     overflow: hidden;
@@ -1090,8 +1074,6 @@ body.shop-cart-open {
     display: none;
 }
 
-/* RESPONSIVE */
-
 @media (max-width: 1240px) {
     .shop-shell {
         width: min(100% - 64px, 1500px);
@@ -1158,6 +1140,14 @@ body.shop-cart-open {
         flex-wrap: nowrap;
         overflow-x: auto;
         padding-bottom: 5px;
+    }
+
+    .shop-filters::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .shop-filters::-webkit-scrollbar-thumb {
+        background: #cfc7bc;
     }
 
     .shop-cart-button {
