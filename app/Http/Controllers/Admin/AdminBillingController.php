@@ -185,22 +185,27 @@ class AdminBillingController extends Controller
         }
 
         $credit = DB::transaction(function () use ($documentable, $kind, $validated, $sequence) {
-            $locked = $documentable::query()
+            $locked = $documentable->newQuery()
                 ->whereKey($documentable->getKey())
                 ->lockForUpdate()
                 ->firstOrFail();
 
-            $locked->load('creditNotes');
             $snapshot = $locked->invoice_snapshot ?? [];
             $vatRate = (float) data_get($snapshot, 'amounts.vat_rate', $locked->vat_rate ?? 0);
             $invoiceBasis = $kind === 'shop'
                 ? (float) data_get($snapshot, 'amounts.total_ttc', 0)
                 : (float) data_get($snapshot, 'amounts.total_ht', 0);
             $alreadyCredited = $kind === 'shop'
-                ? (float) $locked->creditNotes->sum('amount_ttc')
-                : (float) $locked->creditNotes->sum('amount_ht');
+                ? (float) $locked->creditNotes()->sum('amount_ttc')
+                : (float) $locked->creditNotes()->sum('amount_ht');
             $remaining = max(0, round($invoiceBasis - $alreadyCredited, 2));
             $requestedAmount = round((float) $validated['amount'], 2);
+
+            if ($invoiceBasis <= 0) {
+                throw ValidationException::withMessages([
+                    'amount' => 'Le montant de la facture d’origine est invalide ou indisponible.',
+                ]);
+            }
 
             if ($remaining <= 0) {
                 throw ValidationException::withMessages([
@@ -283,6 +288,10 @@ class AdminBillingController extends Controller
                 $pdf,
                 $filename
             ));
+
+            if (config('mail.default') === 'log') {
+                return back()->with('success', 'Email généré en mode test dans les logs. Le document n’est pas marqué comme réellement envoyé.');
+            }
 
             $afterSend();
 
