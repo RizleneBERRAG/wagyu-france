@@ -26,13 +26,13 @@
     @yield('content')
 </main>
 
-@if (! request()->routeIs('boutique'))
+@if (! request()->routeIs('boutique', 'reserve.pro'))
     @include('partials.cart-drawer')
 @endif
 
 @include('partials.footer')
 
-@if (! request()->routeIs('boutique'))
+@if (! request()->routeIs('boutique', 'reserve.pro'))
     <script src="{{ asset('assets/js/cart-preview.js') }}" defer></script>
 @endif
 <script src="{{ asset('assets/js/site-header-menu.js') }}" defer></script>
