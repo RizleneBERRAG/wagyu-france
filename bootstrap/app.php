@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\EnsureAdminPermission;
+use App\Http\Middleware\EnsureBillingForInvoiceDocument;
 use App\Http\Middleware\EnsureWagyuAdmin;
 use App\Http\Middleware\RecordAdminActivity;
 use Illuminate\Foundation\Application;
@@ -17,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'wagyu.admin' => EnsureWagyuAdmin::class,
             'wagyu.permission' => EnsureAdminPermission::class,
+            'wagyu.invoice-document' => EnsureBillingForInvoiceDocument::class,
             'wagyu.audit' => RecordAdminActivity::class,
         ]);
     })
