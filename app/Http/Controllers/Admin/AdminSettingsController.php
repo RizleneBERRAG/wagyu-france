@@ -34,10 +34,17 @@ class AdminSettingsController extends Controller
             'withdrawal_address' => ['nullable', 'string', 'max:1000'],
             'preparation_delay' => ['nullable', 'string', 'max:1000'],
 
+            'invoice_prefix' => ['required', 'alpha_dash', 'max:20'],
+            'default_vat_rate' => ['nullable', 'numeric', 'min:0', 'max:100'],
+            'invoice_payment_terms' => ['nullable', 'string', 'max:2000'],
+            'invoice_bank_details' => ['nullable', 'string', 'max:2000'],
+            'invoice_footer' => ['nullable', 'string', 'max:1000'],
+
             'legal_company_name' => ['nullable', 'string', 'max:190'],
             'legal_company_form' => ['nullable', 'string', 'max:120'],
             'legal_company_address' => ['nullable', 'string', 'max:1000'],
             'legal_company_siret' => ['nullable', 'string', 'max:40'],
+            'legal_vat_number' => ['nullable', 'string', 'max:40'],
             'legal_publication_director' => ['nullable', 'string', 'max:190'],
             'legal_host_name' => ['nullable', 'string', 'max:190'],
             'legal_host_address' => ['nullable', 'string', 'max:1000'],
@@ -49,6 +56,6 @@ class AdminSettingsController extends Controller
 
         SiteSetting::putMany($validated);
 
-        return back()->with('success', 'Les paramètres du site ont été enregistrés.');
+        return back()->with('success', 'Les paramètres du site et des documents ont été enregistrés.');
     }
 }
