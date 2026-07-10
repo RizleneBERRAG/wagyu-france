@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Validation\ValidationException;
 
 class ProReservationRequest extends Model
 {
     protected $fillable = [
+        'customer_id',
         'reference',
         'bovin_reference',
         'company',
@@ -60,6 +62,11 @@ class ProReservationRequest extends Model
         'dispatched_at' => 'datetime',
         'delivered_at' => 'datetime',
     ];
+
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
     public function creditNotes(): MorphMany
     {
