@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminAnimalCutController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminSettingsController;
 use App\Http\Controllers\Admin\DemandesController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\ProReservationRequestController;
@@ -87,10 +88,14 @@ Route::middleware('wagyu.admin')->prefix('admin')->name('admin.')->group(functio
     Route::put('/animaux/{animal}/pieces/{cut}', [AdminAnimalCutController::class, 'update'])->name('animals.cuts.update');
 
     Route::get('/demandes', [DemandesController::class, 'index'])->name('demandes');
+    Route::get('/demandes/export/{section}', [DemandesController::class, 'export'])->name('demandes.export');
     Route::patch('/demandes/boutique/{shopOrderRequest}/statut', [DemandesController::class, 'updateShopStatus'])
         ->name('demandes.shop.status');
     Route::patch('/demandes/pro/{proReservationRequest}/statut', [DemandesController::class, 'updateProStatus'])
         ->name('demandes.pro.status');
     Route::patch('/demandes/contact/{contactMessage}/statut', [DemandesController::class, 'updateContactStatus'])
         ->name('demandes.contact.status');
+
+    Route::get('/parametres', [AdminSettingsController::class, 'index'])->name('settings.index');
+    Route::put('/parametres', [AdminSettingsController::class, 'update'])->name('settings.update');
 });
