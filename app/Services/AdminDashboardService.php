@@ -4,10 +4,12 @@ namespace App\Services;
 
 use App\Models\AnimalBatch;
 use App\Models\ContactMessage;
+use App\Models\Customer;
 use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
 use App\Models\ShopProduct;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Schema;
 
 class AdminDashboardService
 {
@@ -28,6 +30,7 @@ class AdminDashboardService
                 + ProReservationRequest::whereIn('status', ['confirmee', 'traitee'])
                     ->whereNotIn('preparation_status', ['delivered', 'cancelled'])
                     ->count(),
+            'crm_followups' => $this->crmFollowUpCount(),
         ];
     }
 
@@ -112,6 +115,16 @@ class AdminDashboardService
                 'title' => $counts['contacts'] . ' nouveau(x) message(s)',
                 'message' => 'Des visiteurs ont contacté la maison depuis le formulaire.',
                 'route' => 'admin.demandes',
+            ];
+        }
+
+        if ($counts['crm_followups'] > 0) {
+            $notifications[] = [
+                'level' => 'important',
+                'title' => $counts['crm_followups'] . ' relance(s) client à effectuer',
+                'message' => 'Des échéances commerciales sont arrivées ou dépassées dans le CRM.',
+                'route' => 'admin.customers.index',
+                'parameters' => ['segment' => 'follow_up'],
             ];
         }
 
@@ -251,5 +264,16 @@ class AdminDashboardService
             });
 
         return $totals;
+    }
+
+    private function crmFollowUpCount(): int
+    {
+        if (! Schema::hasTable('customers')) {
+            return 0;
+        }
+
+        return Customer::whereNotNull('next_follow_up_at')
+            ->where('next_follow_up_at', '<=', now())
+            ->count();
     }
 }
