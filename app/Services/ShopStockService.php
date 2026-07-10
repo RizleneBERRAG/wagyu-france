@@ -18,7 +18,13 @@ class ShopStockService
                 return;
             }
 
-            $cart = collect($order->cart ?? []);
+            if (! is_array($order->final_cart) || $order->final_cart === []) {
+                throw ValidationException::withMessages([
+                    'stock' => 'Finalisez les quantités et les prix du dossier avant de confirmer la commande.',
+                ]);
+            }
+
+            $cart = collect($order->final_cart);
             $products = ShopProduct::query()
                 ->whereIn('slug', $cart->pluck('key')->filter())
                 ->lockForUpdate()
@@ -38,7 +44,7 @@ class ShopStockService
                 }
 
                 if ((float) $product->stock_kg < $quantity) {
-                    $errors[] = $product->name . ' : stock disponible ' . number_format((float) $product->stock_kg, 1, ',', ' ') . ' kg, quantité demandée ' . number_format($quantity, 1, ',', ' ') . ' kg.';
+                    $errors[] = $product->name . ' : stock disponible ' . number_format((float) $product->stock_kg, 3, ',', ' ') . ' kg, quantité finale ' . number_format($quantity, 3, ',', ' ') . ' kg.';
                 }
             }
 
@@ -64,7 +70,7 @@ class ShopStockService
                 return;
             }
 
-            $cart = collect($order->cart ?? []);
+            $cart = collect($order->final_cart ?? []);
             $products = ShopProduct::query()
                 ->whereIn('slug', $cart->pluck('key')->filter())
                 ->lockForUpdate()
