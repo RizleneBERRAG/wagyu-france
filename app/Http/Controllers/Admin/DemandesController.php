@@ -7,6 +7,7 @@ use App\Mail\RequestStatusMail;
 use App\Models\ContactMessage;
 use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
+use App\Services\AdminDashboardService;
 use App\Services\ShopStockService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
@@ -107,15 +108,30 @@ class DemandesController extends Controller
         return back()->with('success', 'Statut boutique mis à jour.' . $stockMessage);
     }
 
-    public function updateProStatus(Request $request, ProReservationRequest $proReservationRequest): RedirectResponse
-    {
+    public function updateProStatus(
+        Request $request,
+        ProReservationRequest $proReservationRequest,
+        AdminDashboardService $dashboard
+    ): RedirectResponse {
         $newStatus = $this->validatedStatus($request);
         $oldStatus = $proReservationRequest->status;
 
         $proReservationRequest->update(['status' => $newStatus]);
+
+        $summary = $dashboard->activeBatchSummary();
+        if ($summary && $summary['batch']->reference === $proReservationRequest->bovin_reference) {
+            $batch = $summary['batch'];
+
+            if ($summary['threshold_reached'] && $batch->status === 'open') {
+                $batch->update(['status' => 'ready']);
+            } elseif (! $summary['threshold_reached'] && $batch->status === 'ready') {
+                $batch->update(['status' => 'open']);
+            }
+        }
+
         $this->notifyStatus('pro', $proReservationRequest, $oldStatus, $newStatus);
 
-        return back()->with('success', 'Statut professionnel mis à jour. La progression de l’animal a été recalculée.');
+        return back()->with('success', 'Statut professionnel mis à jour. La progression et le seuil de l’animal ont été recalculés.');
     }
 
     public function updateContactStatus(Request $request, ContactMessage $contactMessage): RedirectResponse
