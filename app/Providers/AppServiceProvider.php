@@ -2,23 +2,21 @@
 
 namespace App\Providers;
 
+use App\Services\AdminDashboardService;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
+        $this->app->singleton(AdminDashboardService::class);
     }
 
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
+    public function boot(AdminDashboardService $dashboard): void
     {
-        //
+        View::composer('layouts.admin', function ($view) use ($dashboard) {
+            $view->with('adminNavigationCounts', $dashboard->navigationCounts());
+        });
     }
 }
