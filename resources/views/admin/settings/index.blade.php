@@ -16,8 +16,8 @@
             <p class="admin-kicker">Configuration centrale</p>
             <h2>Les informations importantes, modifiables sans toucher au code.</h2>
             <p>
-                Les coordonnées, emails de notification, modalités commerciales et données juridiques
-                renseignées ici sont réutilisées dans le site et les messages automatiques.
+                Les coordonnées, emails, modalités commerciales, documents PDF et données juridiques
+                renseignés ici sont réutilisés dans toute l’administration.
             </p>
         </div>
         <a href="{{ route('contact') }}" target="_blank" class="admin-secondary-button">Voir la page contact</a>
@@ -33,15 +33,15 @@
                     : 'Les emails sont préparés mais restent inscrits dans les logs tant que le SMTP n’est pas configuré.' }}
             </p>
         </article>
-        <article class="admin-card">
-            <span>Une seule source</span>
-            <strong>Paramètres centralisés</strong>
-            <p>Une modification enregistrée ici alimente les pages juridiques et les différents parcours de contact.</p>
+        <article class="admin-card is-ready">
+            <span>Documents commerciaux</span>
+            <strong>PDF générés en interne</strong>
+            <p>Aucune bibliothèque externe n’est nécessaire pour les bons de commande, de préparation et les factures.</p>
         </article>
         <article class="admin-card">
             <span>Sécurité</span>
-            <strong>Aucun mot de passe SMTP ici</strong>
-            <p>Les identifiants sensibles restent exclusivement dans le fichier <code>.env</code> du serveur.</p>
+            <strong>Numérotation définitive</strong>
+            <p>Une facture émise conserve son numéro et son instantané même si les paramètres changent ensuite.</p>
         </article>
     </section>
 
@@ -135,8 +135,44 @@
             <header>
                 <span>04</span>
                 <div>
+                    <p class="admin-kicker">Documents & facturation</p>
+                    <h3>Numérotation, TVA et mentions de paiement</h3>
+                </div>
+            </header>
+
+            <div class="admin-settings-grid">
+                <label>
+                    <span>Préfixe des factures *</span>
+                    <input type="text" name="invoice_prefix" required value="{{ old('invoice_prefix', $settings['invoice_prefix'] ?? 'WF') }}" placeholder="WF">
+                    <small>Exemple : WF-2026-0001. Ne change pas les factures déjà émises.</small>
+                </label>
+                <label>
+                    <span>Taux de TVA proposé par défaut</span>
+                    <input type="number" name="default_vat_rate" min="0" max="100" step="0.01" value="{{ old('default_vat_rate', $settings['default_vat_rate'] ?? '') }}" placeholder="À confirmer">
+                    <small>Le taux reste modifiable dossier par dossier avant émission.</small>
+                </label>
+                <label class="is-wide">
+                    <span>Conditions de paiement</span>
+                    <textarea name="invoice_payment_terms" rows="3">{{ old('invoice_payment_terms', $settings['invoice_payment_terms'] ?? '') }}</textarea>
+                </label>
+                <label class="is-wide">
+                    <span>Coordonnées de paiement</span>
+                    <textarea name="invoice_bank_details" rows="4" placeholder="IBAN, BIC ou instructions de règlement...">{{ old('invoice_bank_details', $settings['invoice_bank_details'] ?? '') }}</textarea>
+                    <small>Ces informations apparaissent dans les documents commerciaux lorsqu’elles sont renseignées.</small>
+                </label>
+                <label class="is-wide">
+                    <span>Texte de pied de page</span>
+                    <textarea name="invoice_footer" rows="2">{{ old('invoice_footer', $settings['invoice_footer'] ?? 'Merci pour votre confiance.') }}</textarea>
+                </label>
+            </div>
+        </section>
+
+        <section class="admin-settings-section admin-card">
+            <header>
+                <span>05</span>
+                <div>
                     <p class="admin-kicker">Cadre juridique</p>
-                    <h3>Informations reprises dans les pages légales</h3>
+                    <h3>Informations reprises dans les pages légales et les factures</h3>
                 </div>
             </header>
 
@@ -156,6 +192,10 @@
                 <label>
                     <span>SIRET</span>
                     <input type="text" name="legal_company_siret" value="{{ old('legal_company_siret', $settings['legal_company_siret'] ?? '') }}">
+                </label>
+                <label>
+                    <span>Numéro de TVA intracommunautaire</span>
+                    <input type="text" name="legal_vat_number" value="{{ old('legal_vat_number', $settings['legal_vat_number'] ?? '') }}">
                 </label>
                 <label>
                     <span>Directeur de publication</span>
@@ -191,7 +231,7 @@
         <div class="admin-settings-submit">
             <div>
                 <strong>Enregistrer les paramètres</strong>
-                <p>Les nouvelles valeurs seront utilisées dès la requête suivante.</p>
+                <p>Les nouvelles valeurs seront utilisées dès la requête suivante. Les factures déjà émises restent inchangées.</p>
             </div>
             <button type="submit" class="admin-primary-button">Enregistrer les modifications</button>
         </div>
