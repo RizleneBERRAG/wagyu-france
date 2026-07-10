@@ -134,7 +134,7 @@ class ProReservationRequestController extends Controller
     private function sendReservationEmails(ProReservationRequest $reservation): void
     {
         try {
-            $adminEmail = env('WAGYU_PRO_EMAIL', config('mail.from.address'));
+            $adminEmail = config('wagyu.pro_email');
 
             if ($adminEmail) {
                 Mail::to($adminEmail)->send(new ProReservationAdminMail($reservation));
