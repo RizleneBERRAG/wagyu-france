@@ -16,10 +16,12 @@ class ShopOrderRequest extends Model
         'cart',
         'total',
         'status',
+        'stock_applied_at',
     ];
 
     protected $casts = [
         'cart' => 'array',
         'total' => 'decimal:2',
+        'stock_applied_at' => 'datetime',
     ];
 }
