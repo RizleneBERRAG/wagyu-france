@@ -13,7 +13,7 @@
                 <tr>
                     <td style="padding:30px 34px;background:#581818;color:#fff;">
                         <div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#d6ad73;font-weight:700;">Wagyu France</div>
-                        <h1 style="margin:10px 0 0;font-family:Georgia,serif;font-size:30px;font-weight:500;">Votre dossier avance.</h1>
+                        <h1 style="margin:10px 0 0;font-family:Georgia,serif;font-size:30px;font-weight:500;">Mise à jour de votre dossier.</h1>
                     </td>
                 </tr>
                 <tr>
