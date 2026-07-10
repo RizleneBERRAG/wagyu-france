@@ -17,6 +17,9 @@ class ProReservationRequest extends Model
         'city',
         'message',
         'cart',
+        'final_cart',
+        'additional_label',
+        'additional_amount',
         'total_ht',
         'final_total_ht',
         'vat_rate',
@@ -31,8 +34,10 @@ class ProReservationRequest extends Model
 
     protected $casts = [
         'cart' => 'array',
+        'final_cart' => 'array',
         'invoice_snapshot' => 'array',
         'total_ht' => 'decimal:2',
+        'additional_amount' => 'decimal:2',
         'final_total_ht' => 'decimal:2',
         'vat_rate' => 'decimal:2',
         'paid_at' => 'datetime',
