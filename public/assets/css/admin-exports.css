@@ -75,6 +75,44 @@
     line-height: 1.55;
 }
 
+.admin-request-card-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.admin-request-invoice-badge {
+    display: inline-flex;
+    min-height: 30px;
+    padding: 0 11px;
+    align-items: center;
+    border: 1px solid rgba(130, 30, 30, 0.18);
+    border-radius: 999px;
+    color: #7f2020;
+    background: rgba(130, 30, 30, 0.06);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.admin-request-footer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-request-footer-actions .admin-request-status-form {
+    flex: 1 1 320px;
+}
+
+.admin-request-footer-actions .admin-secondary-button {
+    flex: 0 0 auto;
+    min-height: 42px;
+    white-space: nowrap;
+}
+
 @media (max-width: 860px) {
     .admin-page-heading {
         align-items: stretch;
@@ -92,12 +130,17 @@
         grid-template-columns: 1fr;
     }
 
-    .admin-export-global .admin-secondary-button {
+    .admin-export-global .admin-secondary-button,
+    .admin-request-footer-actions .admin-secondary-button {
         width: 100%;
     }
 
     .admin-request-section-heading {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .admin-request-card-badges {
+        align-items: flex-start;
     }
 }
