@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${Math.round(value).toLocaleString('fr-FR')} €`;
     }
 
+    function escapeHtml(value) {
+        const element = document.createElement('div');
+        element.textContent = String(value ?? '');
+        return element.innerHTML;
+    }
+
     function getCartCount() {
         return Object.values(shopCart).reduce((total, item) => total + item.quantity, 0);
     }
@@ -79,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         entries.forEach(([id, item]) => {
             const lineTotal = item.price * item.quantity;
+            const safeName = escapeHtml(item.name);
+            const safeId = escapeHtml(id);
 
             const article = document.createElement('article');
             article.className = 'shop-cart-item';
@@ -86,20 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
             article.innerHTML = `
                 <div class="shop-cart-item-top">
                     <div>
-                        <h3>${item.name}</h3>
+                        <h3>${safeName}</h3>
                         <small>${item.price} €/kg</small>
                     </div>
 
-                    <button class="shop-cart-remove" type="button" data-remove="${id}" aria-label="Retirer ${item.name}">
+                    <button class="shop-cart-remove" type="button" data-remove="${safeId}" aria-label="Retirer ${safeName}">
                         ×
                     </button>
                 </div>
 
                 <div class="shop-cart-item-bottom">
                     <div class="shop-cart-qty">
-                        <button type="button" data-minus="${id}">-</button>
+                        <button type="button" data-minus="${safeId}">-</button>
                         <span>${item.quantity}</span>
-                        <button type="button" data-plus="${id}">+</button>
+                        <button type="button" data-plus="${safeId}">+</button>
                     </div>
 
                     <strong class="shop-cart-line-total">${formatPrice(lineTotal)}</strong>
@@ -194,15 +202,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const items = Object.values(cartSnapshot)
             .map((item) => {
-                return `${item.name} — ${item.quantity} kg`;
+                return `${escapeHtml(item.name)} — ${item.quantity} kg`;
             })
             .join('<br>');
 
         confirmationSummary.innerHTML = `
-            <strong>Contact :</strong> ${formData.get('fullname')}<br>
-            <strong>Email :</strong> ${formData.get('email')}<br>
-            <strong>Téléphone :</strong> ${formData.get('phone')}<br>
-            <strong>Ville :</strong> ${formData.get('city')}<br>
+            <strong>Contact :</strong> ${escapeHtml(formData.get('fullname'))}<br>
+            <strong>Email :</strong> ${escapeHtml(formData.get('email'))}<br>
+            <strong>Téléphone :</strong> ${escapeHtml(formData.get('phone'))}<br>
+            <strong>Ville :</strong> ${escapeHtml(formData.get('city'))}<br>
             <strong>Total estimatif :</strong> ${formatPrice(totalSnapshot)}<br><br>
             <strong>Pièces demandées :</strong><br>
             ${items}
@@ -369,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (confirmationSummary && data.reference) {
                     confirmationSummary.insertAdjacentHTML(
                         'afterbegin',
-                        `<strong>Référence :</strong> ${data.reference}<br>`
+                        `<strong>Référence :</strong> ${escapeHtml(data.reference)}<br>`
                     );
                 }
 
