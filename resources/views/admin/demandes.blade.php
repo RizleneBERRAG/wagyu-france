@@ -90,7 +90,12 @@
                                 <h4>{{ $order->fullname }}</h4>
                                 <code>{{ $order->reference }}</code>
                             </div>
-                            <span class="admin-status admin-status-{{ $order->status }}">{{ $statuses[$order->status] ?? $order->status }}</span>
+                            <div class="admin-request-card-badges">
+                                <span class="admin-status admin-status-{{ $order->status }}">{{ $statuses[$order->status] ?? $order->status }}</span>
+                                @if($order->invoice_number)
+                                    <span class="admin-request-invoice-badge">{{ $order->invoice_number }}</span>
+                                @endif
+                            </div>
                         </header>
 
                         <dl class="admin-request-info">
@@ -98,6 +103,8 @@
                             <div><dt>Téléphone</dt><dd><a href="tel:{{ $order->phone }}">{{ $order->phone }}</a></dd></div>
                             <div><dt>Ville</dt><dd>{{ $order->city }}</dd></div>
                             <div><dt>Estimation</dt><dd>{{ number_format((float) $order->total, 2, ',', ' ') }} €</dd></div>
+                            <div><dt>Montant final</dt><dd>{{ $order->final_total_ttc !== null ? number_format((float) $order->final_total_ttc, 2, ',', ' ') . ' € TTC' : 'À confirmer' }}</dd></div>
+                            <div><dt>Paiement</dt><dd>{{ ['pending' => 'À régler', 'partial' => 'Partiel', 'paid' => 'Réglé', 'refunded' => 'Remboursé'][$order->payment_status ?? 'pending'] ?? $order->payment_status }}</dd></div>
                         </dl>
 
                         <div @class(['admin-stock-state', 'is-applied' => $order->stock_applied_at, 'is-free' => ! $order->stock_applied_at])>
@@ -124,16 +131,19 @@
                         </div>
 
                         <footer>
-                            <form method="POST" action="{{ route('admin.demandes.shop.status', $order) }}" class="admin-request-status-form">
-                                @csrf
-                                @method('PATCH')
-                                <select name="status">
-                                    @foreach ($statuses as $value => $label)
-                                        <option value="{{ $value }}" @selected($order->status === $value)>{{ $label }}</option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
-                            </form>
+                            <div class="admin-request-footer-actions">
+                                <form method="POST" action="{{ route('admin.demandes.shop.status', $order) }}" class="admin-request-status-form">
+                                    @csrf
+                                    @method('PATCH')
+                                    <select name="status">
+                                        @foreach ($statuses as $value => $label)
+                                            <option value="{{ $value }}" @selected($order->status === $value)>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                                </form>
+                                <a href="{{ route('admin.documents.shop.show', $order) }}" class="admin-secondary-button">Ouvrir le dossier</a>
+                            </div>
                             <small>Reçue le {{ $order->created_at->format('d/m/Y à H:i') }}</small>
                         </footer>
                     </article>
@@ -163,14 +173,21 @@
                                 <h4>{{ $requestItem->company }}</h4>
                                 <code>{{ $requestItem->reference }} · {{ $requestItem->bovin_reference }}</code>
                             </div>
-                            <span class="admin-status admin-status-{{ $requestItem->status }}">{{ $statuses[$requestItem->status] ?? $requestItem->status }}</span>
+                            <div class="admin-request-card-badges">
+                                <span class="admin-status admin-status-{{ $requestItem->status }}">{{ $statuses[$requestItem->status] ?? $requestItem->status }}</span>
+                                @if($requestItem->invoice_number)
+                                    <span class="admin-request-invoice-badge">{{ $requestItem->invoice_number }}</span>
+                                @endif
+                            </div>
                         </header>
 
                         <dl class="admin-request-info">
                             <div><dt>Contact</dt><dd>{{ $requestItem->fullname }}</dd></div>
                             <div><dt>Email</dt><dd><a href="mailto:{{ $requestItem->email }}">{{ $requestItem->email }}</a></dd></div>
                             <div><dt>Téléphone</dt><dd><a href="tel:{{ $requestItem->phone }}">{{ $requestItem->phone }}</a></dd></div>
-                            <div><dt>Total HT</dt><dd>{{ number_format((float) $requestItem->total_ht, 2, ',', ' ') }} €</dd></div>
+                            <div><dt>Total estimatif</dt><dd>{{ number_format((float) $requestItem->total_ht, 2, ',', ' ') }} € HT</dd></div>
+                            <div><dt>Montant final</dt><dd>{{ $requestItem->final_total_ht !== null ? number_format((float) $requestItem->final_total_ht, 2, ',', ' ') . ' € HT' : 'À confirmer' }}</dd></div>
+                            <div><dt>Paiement</dt><dd>{{ ['pending' => 'À régler', 'partial' => 'Partiel', 'paid' => 'Réglé', 'refunded' => 'Remboursé'][$requestItem->payment_status ?? 'pending'] ?? $requestItem->payment_status }}</dd></div>
                         </dl>
 
                         @if ($requestItem->message)
@@ -188,16 +205,19 @@
                         </div>
 
                         <footer>
-                            <form method="POST" action="{{ route('admin.demandes.pro.status', $requestItem) }}" class="admin-request-status-form">
-                                @csrf
-                                @method('PATCH')
-                                <select name="status">
-                                    @foreach ($statuses as $value => $label)
-                                        <option value="{{ $value }}" @selected($requestItem->status === $value)>{{ $label }}</option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" class="admin-primary-button">Mettre à jour</button>
-                            </form>
+                            <div class="admin-request-footer-actions">
+                                <form method="POST" action="{{ route('admin.demandes.pro.status', $requestItem) }}" class="admin-request-status-form">
+                                    @csrf
+                                    @method('PATCH')
+                                    <select name="status">
+                                        @foreach ($statuses as $value => $label)
+                                            <option value="{{ $value }}" @selected($requestItem->status === $value)>{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="admin-primary-button">Mettre à jour</button>
+                                </form>
+                                <a href="{{ route('admin.documents.pro.show', $requestItem) }}" class="admin-secondary-button">Ouvrir le dossier</a>
+                            </div>
                             <small>Reçue le {{ $requestItem->created_at->format('d/m/Y à H:i') }}</small>
                         </footer>
                     </article>
