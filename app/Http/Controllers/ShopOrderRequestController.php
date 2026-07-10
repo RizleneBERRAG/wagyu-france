@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RequestReceivedMail;
 use App\Models\ShopOrderRequest;
 use App\Models\ShopProduct;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -100,11 +103,32 @@ class ShopOrderRequestController extends Controller
             'status' => 'nouvelle',
         ]);
 
+        $this->sendEmails($order);
+
         return response()->json([
             'message' => 'Votre demande de commande a bien été enregistrée.',
             'reference' => $order->reference,
             'total' => number_format($total, 2, ',', ' ') . ' €',
         ], 201);
+    }
+
+    private function sendEmails(ShopOrderRequest $order): void
+    {
+        try {
+            $adminEmail = config('wagyu.order_email');
+
+            if ($adminEmail) {
+                Mail::to($adminEmail)->send(new RequestReceivedMail('shop', $order, true));
+            }
+
+            Mail::to($order->email)->send(new RequestReceivedMail('shop', $order));
+        } catch (\Throwable $exception) {
+            Log::warning('Erreur envoi email demande boutique Wagyu France', [
+                'order_id' => $order->id,
+                'reference' => $order->reference,
+                'error' => $exception->getMessage(),
+            ]);
+        }
     }
 
     private function generateReference(): string
