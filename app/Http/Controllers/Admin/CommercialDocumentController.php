@@ -29,10 +29,17 @@ class CommercialDocumentController extends Controller
 
     public function updateShop(Request $request, ShopOrderRequest $shopOrderRequest): RedirectResponse
     {
-        if ($shopOrderRequest->invoice_number) {
+        if ($shopOrderRequest->invoice_number || $shopOrderRequest->stock_applied_at) {
             $shopOrderRequest->update($this->paymentAndNotesData($request, $shopOrderRequest->paid_at));
 
-            return back()->with('success', 'Le suivi de paiement et les notes ont été mis à jour. Les données facturées restent verrouillées.');
+            $reason = $shopOrderRequest->invoice_number
+                ? 'la facture est déjà émise'
+                : 'le stock correspondant est déjà engagé';
+
+            return back()->with(
+                'success',
+                'Le suivi de paiement et les notes ont été mis à jour. Les lignes restent verrouillées car ' . $reason . '.'
+            );
         }
 
         $data = $this->commercialData($request, $shopOrderRequest->paid_at);
@@ -108,7 +115,8 @@ class CommercialDocumentController extends Controller
             $shopOrderRequest->status,
             $shopOrderRequest->final_total_ttc,
             $shopOrderRequest->vat_rate,
-            $shopOrderRequest->final_cart
+            $shopOrderRequest->final_cart,
+            (bool) $shopOrderRequest->stock_applied_at
         )) {
             return $response;
         }
@@ -208,6 +216,9 @@ class CommercialDocumentController extends Controller
             ? (float) $requestItem->vat_rate
             : (float) SiteSetting::valueFor('default_vat_rate', 0);
         $finalItems = $requestItem->final_cart ?: $this->initialFinalCart($requestItem->cart ?? [], $isShop);
+        $commercialLocked = filled($requestItem->invoice_number)
+            || ($isShop && filled($requestItem->stock_applied_at));
+        $stockReady = ! $isShop || filled($requestItem->stock_applied_at);
 
         return [
             'kind' => $kind,
@@ -216,6 +227,7 @@ class CommercialDocumentController extends Controller
             'finalTotal' => $finalTotal,
             'vatRate' => $vatRate,
             'finalItems' => $finalItems,
+            'commercialLocked' => $commercialLocked,
             'paymentStatuses' => [
                 'pending' => 'À régler',
                 'partial' => 'Partiellement réglé',
@@ -233,7 +245,8 @@ class CommercialDocumentController extends Controller
                 $requestItem->status,
                 $finalTotal,
                 $requestItem->vat_rate,
-                $requestItem->final_cart
+                $requestItem->final_cart,
+                $stockReady
             ),
             'legalReady' => $this->legalReady(),
         ];
@@ -323,9 +336,14 @@ class CommercialDocumentController extends Controller
         return $data;
     }
 
-    private function invoiceErrorResponse(string $status, mixed $finalTotal, mixed $vatRate, mixed $finalCart): ?RedirectResponse
-    {
-        $errors = $this->invoiceRequirements($status, $finalTotal, $vatRate, $finalCart);
+    private function invoiceErrorResponse(
+        string $status,
+        mixed $finalTotal,
+        mixed $vatRate,
+        mixed $finalCart,
+        bool $stockReady = true
+    ): ?RedirectResponse {
+        $errors = $this->invoiceRequirements($status, $finalTotal, $vatRate, $finalCart, $stockReady);
 
         if (! $this->legalReady()) {
             $errors[] = 'Complétez la dénomination légale, l’adresse et le SIRET dans les paramètres.';
@@ -336,8 +354,13 @@ class CommercialDocumentController extends Controller
             : back()->withErrors(['invoice' => implode(' ', $errors)]);
     }
 
-    private function invoiceRequirements(string $status, mixed $finalTotal, mixed $vatRate, mixed $finalCart): array
-    {
+    private function invoiceRequirements(
+        string $status,
+        mixed $finalTotal,
+        mixed $vatRate,
+        mixed $finalCart,
+        bool $stockReady = true
+    ): array {
         $errors = [];
 
         if (! in_array($status, ['confirmee', 'traitee'], true)) {
@@ -354,6 +377,10 @@ class CommercialDocumentController extends Controller
 
         if ($vatRate === null || (float) $vatRate < 0) {
             $errors[] = 'Renseignez le taux de TVA applicable, y compris 0 si nécessaire.';
+        }
+
+        if (! $stockReady) {
+            $errors[] = 'Confirmez la commande afin de réserver les quantités finales en stock.';
         }
 
         return $errors;
