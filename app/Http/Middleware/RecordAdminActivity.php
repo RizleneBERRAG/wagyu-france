@@ -4,18 +4,48 @@ namespace App\Http\Middleware;
 
 use App\Services\AdminActivityService;
 use Closure;
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class RecordAdminActivity
 {
+    private const AUDITED_FIELDS = [
+        'name',
+        'price_per_kg',
+        'stock_kg',
+        'low_stock_threshold',
+        'min_quantity_kg',
+        'available_kg',
+        'launch_threshold_percent',
+        'status',
+        'is_active',
+        'role',
+        'permissions',
+        'relationship_status',
+        'payment_status',
+        'preparation_status',
+        'delivery_method',
+        'scheduled_at',
+        'carrier',
+        'tracking_number',
+        'final_total_ttc',
+        'final_total_ht',
+        'vat_rate',
+        'invoice_number',
+        'invoice_sent_at',
+        'next_follow_up_at',
+    ];
+
     public function __construct(private readonly AdminActivityService $activity)
     {
     }
 
     public function handle(Request $request, Closure $next): Response
     {
+        $subject = $this->subject($request);
+        $before = $this->snapshot($subject);
         $response = $next($request);
 
         if (! in_array($request->method(), ['POST', 'PUT', 'PATCH', 'DELETE'], true)
@@ -30,15 +60,15 @@ class RecordAdminActivity
             return $response;
         }
 
-        $subject = $this->subject($request);
         $action = $this->action($routeName, $request->method());
         $description = $this->description($routeName, $subject);
+        $changes = $this->changes($before, $this->snapshot($subject));
 
         $this->activity->record(
             $action,
             $description,
             $subject,
-            $this->safeProperties($request),
+            $this->safeProperties($request, $changes),
             $request->user(),
             $request
         );
@@ -106,7 +136,7 @@ class RecordAdminActivity
         };
     }
 
-    private function safeProperties(Request $request): array
+    private function safeProperties(Request $request, array $changes): array
     {
         $allowedValues = [
             'status',
@@ -132,7 +162,53 @@ class RecordAdminActivity
             'route' => optional($request->route())->getName(),
             'method' => $request->method(),
             'values' => $values === [] ? null : $values,
+            'changes' => $changes === [] ? null : $changes,
             'changed_fields' => $changedFields,
         ], fn ($value) => $value !== null && $value !== []);
+    }
+
+    private function snapshot(?Model $subject): array
+    {
+        if (! $subject) {
+            return [];
+        }
+
+        return collect(self::AUDITED_FIELDS)
+            ->filter(fn (string $field) => array_key_exists($field, $subject->getAttributes()))
+            ->mapWithKeys(fn (string $field) => [$field => $this->normalize($subject->getAttribute($field))])
+            ->all();
+    }
+
+    private function changes(array $before, array $after): array
+    {
+        $changes = [];
+
+        foreach (array_unique(array_merge(array_keys($before), array_keys($after))) as $field) {
+            $old = $before[$field] ?? null;
+            $new = $after[$field] ?? null;
+
+            if ($old !== $new) {
+                $changes[$field] = ['before' => $old, 'after' => $new];
+            }
+        }
+
+        return $changes;
+    }
+
+    private function normalize(mixed $value): mixed
+    {
+        if ($value instanceof DateTimeInterface) {
+            return $value->format(DATE_ATOM);
+        }
+
+        if (is_bool($value) || is_numeric($value) || is_string($value) || $value === null) {
+            return $value;
+        }
+
+        if (is_array($value)) {
+            return $value;
+        }
+
+        return (string) $value;
     }
 }
