@@ -15,8 +15,8 @@
             <p class="admin-kicker">Cockpit Wagyu France</p>
             <h2>Tout ce qui demande votre attention, au même endroit.</h2>
             <p>
-                Suivez les commandes, les stocks, la facturation, la logistique, les messages
-                et la progression de l’animal actif sans parcourir chaque page du site.
+                Suivez les commandes, les clients, les relances, les stocks, la facturation, la logistique,
+                les messages et la progression de l’animal actif sans parcourir chaque page du site.
             </p>
         </div>
         <a href="{{ route('admin.products.create') }}" class="admin-primary-button">Ajouter un produit</a>
@@ -144,13 +144,18 @@
             <strong>Traiter les demandes</strong>
             <p>Commandes particulières, réservations professionnelles et messages.</p>
         </a>
-        <a href="{{ route('admin.billing.index') }}">
+        <a href="{{ route('admin.customers.index') }}">
             <span>04</span>
+            <strong>Suivre les clients</strong>
+            <p>Historique, chiffre d’affaires, notes, segmentation et relances.</p>
+        </a>
+        <a href="{{ route('admin.billing.index') }}">
+            <span>05</span>
             <strong>Facturer & rectifier</strong>
             <p>Envoyer les factures, suivre leur transmission et émettre les avoirs.</p>
         </a>
         <a href="{{ route('admin.logistics.index') }}">
-            <span>05</span>
+            <span>06</span>
             <strong>Préparer & livrer</strong>
             <p>Planification, conditionnement, retrait, transport et suivi client.</p>
         </a>
