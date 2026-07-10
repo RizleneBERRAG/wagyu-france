@@ -20,7 +20,10 @@
                 sont automatiquement regroupés par adresse email.
             </p>
         </div>
-        <a href="{{ route('admin.customers.export') }}" class="admin-secondary-button">Exporter les clients</a>
+        <div class="admin-crm-heading-actions">
+            <a href="{{ route('admin.customers.create') }}" class="admin-primary-button">Ajouter un contact</a>
+            <a href="{{ route('admin.customers.export') }}" class="admin-secondary-button">Exporter les clients</a>
+        </div>
     </header>
 
     <section class="admin-stat-grid admin-crm-stats">
