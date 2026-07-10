@@ -8,6 +8,7 @@ use App\Models\ContactMessage;
 use App\Models\ProReservationRequest;
 use App\Models\ShopOrderRequest;
 use App\Services\AdminDashboardService;
+use App\Services\CustomerSyncService;
 use App\Services\ShopStockService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
@@ -89,7 +90,8 @@ class DemandesController extends Controller
     public function updateShopStatus(
         Request $request,
         ShopOrderRequest $shopOrderRequest,
-        ShopStockService $stockService
+        ShopStockService $stockService,
+        CustomerSyncService $customers
     ): RedirectResponse {
         $newStatus = $this->validatedStatus($request);
         $oldStatus = $shopOrderRequest->status;
@@ -104,6 +106,14 @@ class DemandesController extends Controller
         }
 
         $shopOrderRequest->update(['status' => $newStatus]);
+        $shopOrderRequest->loadMissing('customer');
+
+        if ($willHoldStock) {
+            $customers->markActive($shopOrderRequest->customer);
+        } else {
+            $customers->touch($shopOrderRequest->customer);
+        }
+
         $this->notifyStatus('shop', $shopOrderRequest, $oldStatus, $newStatus);
 
         $freshOrder = $shopOrderRequest->fresh();
@@ -119,12 +129,20 @@ class DemandesController extends Controller
     public function updateProStatus(
         Request $request,
         ProReservationRequest $proReservationRequest,
-        AdminDashboardService $dashboard
+        AdminDashboardService $dashboard,
+        CustomerSyncService $customers
     ): RedirectResponse {
         $newStatus = $this->validatedStatus($request);
         $oldStatus = $proReservationRequest->status;
 
         $proReservationRequest->update(['status' => $newStatus]);
+        $proReservationRequest->loadMissing('customer');
+
+        if (in_array($newStatus, ['confirmee', 'traitee'], true)) {
+            $customers->markActive($proReservationRequest->customer);
+        } else {
+            $customers->touch($proReservationRequest->customer);
+        }
 
         $summary = $dashboard->activeBatchSummary();
         if ($summary && $summary['batch']->reference === $proReservationRequest->bovin_reference) {
@@ -142,12 +160,17 @@ class DemandesController extends Controller
         return back()->with('success', 'Statut professionnel mis à jour. La progression et le seuil de l’animal ont été recalculés.');
     }
 
-    public function updateContactStatus(Request $request, ContactMessage $contactMessage): RedirectResponse
-    {
+    public function updateContactStatus(
+        Request $request,
+        ContactMessage $contactMessage,
+        CustomerSyncService $customers
+    ): RedirectResponse {
         $newStatus = $this->validatedStatus($request);
         $oldStatus = $contactMessage->status;
 
         $contactMessage->update(['status' => $newStatus]);
+        $contactMessage->loadMissing('customer');
+        $customers->touch($contactMessage->customer);
         $this->notifyStatus('contact', $contactMessage, $oldStatus, $newStatus);
 
         return back()->with('success', 'Statut du message de contact mis à jour.');
