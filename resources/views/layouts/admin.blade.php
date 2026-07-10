@@ -56,6 +56,13 @@
                     <b>{{ $adminNavigationCounts['orders'] }}</b>
                 @endif
             </a>
+            <a href="{{ route('admin.customers.index') }}" @class(['is-active' => request()->routeIs('admin.customers.*')])>
+                <span class="wf-admin-nav-icon">◎</span>
+                <strong>Clients & CRM</strong>
+                @if (($adminNavigationCounts['crm_followups'] ?? 0) > 0)
+                    <b class="is-warning">{{ $adminNavigationCounts['crm_followups'] }}</b>
+                @endif
+            </a>
             <a href="{{ route('admin.billing.index') }}" @class(['is-active' => request()->routeIs('admin.billing.*')])>
                 <span class="wf-admin-nav-icon">€</span>
                 <strong>Facturation & avoirs</strong>
@@ -123,6 +130,7 @@
                 @php
                     $topbarAlerts = ($adminNavigationCounts['orders'] ?? 0)
                         + ($adminNavigationCounts['contacts'] ?? 0)
+                        + ($adminNavigationCounts['crm_followups'] ?? 0)
                         + ($adminNavigationCounts['billing_unsent'] ?? 0)
                         + ($adminNavigationCounts['logistics'] ?? 0);
                 @endphp
