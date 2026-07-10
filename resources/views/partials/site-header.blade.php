@@ -54,7 +54,6 @@
                             <path d="M3 4h2l1.7 9.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20 7H6.1M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
                         </svg>
                         <span>Panier</span>
-                        <strong class="wf-cart-count" data-shop-cart-count>0</strong>
                     </button>
                 @else
                     <button class="wf-cart-button" type="button" data-cart-open aria-label="Ouvrir le panier">
