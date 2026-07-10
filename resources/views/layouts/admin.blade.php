@@ -1,3 +1,7 @@
+@php
+    $currentAdmin = auth()->user();
+    $can = fn (string $permission) => $currentAdmin?->canAccess($permission) ?? false;
+@endphp
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,65 +35,109 @@
         </div>
 
         <nav class="wf-admin-nav" aria-label="Administration principale">
-            <p>Pilotage</p>
-            <a href="{{ route('admin.dashboard') }}" @class(['is-active' => request()->routeIs('admin.dashboard')])>
-                <span class="wf-admin-nav-icon">⌂</span>
-                <strong>Tableau de bord</strong>
-            </a>
+            @if($can('dashboard.view'))
+                <p>Pilotage</p>
+                <a href="{{ route('admin.dashboard') }}" @class(['is-active' => request()->routeIs('admin.dashboard')])>
+                    <span class="wf-admin-nav-icon">⌂</span>
+                    <strong>Tableau de bord</strong>
+                </a>
+            @endif
 
-            <p>Commerce</p>
-            <a href="{{ route('admin.products.index') }}" @class(['is-active' => request()->routeIs('admin.products.*')])>
-                <span class="wf-admin-nav-icon">▦</span>
-                <strong>Produits boutique</strong>
-                @if (($adminNavigationCounts['low_stock'] ?? 0) > 0)
-                    <b class="is-warning">{{ $adminNavigationCounts['low_stock'] }}</b>
-                @endif
-            </a>
-            <a href="{{ route('admin.animals.index') }}" @class(['is-active' => request()->routeIs('admin.animals.*')])>
-                <span class="wf-admin-nav-icon">◈</span>
-                <strong>Animaux & réserve</strong>
-            </a>
-            <a href="{{ route('admin.demandes') }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') !== 'contacts'])>
-                <span class="wf-admin-nav-icon">≡</span>
-                <strong>Commandes & demandes</strong>
-                @if (($adminNavigationCounts['orders'] ?? 0) > 0)
-                    <b>{{ $adminNavigationCounts['orders'] }}</b>
-                @endif
-            </a>
-            <a href="{{ route('admin.customers.index') }}" @class(['is-active' => request()->routeIs('admin.customers.*')])>
-                <span class="wf-admin-nav-icon">◎</span>
-                <strong>Clients & CRM</strong>
-                @if (($adminNavigationCounts['crm_followups'] ?? 0) > 0)
-                    <b class="is-warning">{{ $adminNavigationCounts['crm_followups'] }}</b>
-                @endif
-            </a>
-            <a href="{{ route('admin.billing.index') }}" @class(['is-active' => request()->routeIs('admin.billing.*')])>
-                <span class="wf-admin-nav-icon">€</span>
-                <strong>Facturation & avoirs</strong>
-                @if (($adminNavigationCounts['billing_unsent'] ?? 0) > 0)
-                    <b class="is-warning">{{ $adminNavigationCounts['billing_unsent'] }}</b>
-                @endif
-            </a>
-            <a href="{{ route('admin.logistics.index') }}" @class(['is-active' => request()->routeIs('admin.logistics.*')])>
-                <span class="wf-admin-nav-icon">⇢</span>
-                <strong>Préparation & livraison</strong>
-                @if (($adminNavigationCounts['logistics'] ?? 0) > 0)
-                    <b>{{ $adminNavigationCounts['logistics'] }}</b>
-                @endif
-            </a>
-            <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') === 'contacts'])>
-                <span class="wf-admin-nav-icon">✉</span>
-                <strong>Messages</strong>
-                @if (($adminNavigationCounts['contacts'] ?? 0) > 0)
-                    <b>{{ $adminNavigationCounts['contacts'] }}</b>
-                @endif
-            </a>
+            @if($can('products.manage') || $can('animals.manage') || $can('orders.manage') || $can('customers.manage') || $can('billing.manage') || $can('logistics.manage'))
+                <p>Commerce</p>
+            @endif
 
-            <p>Configuration</p>
-            <a href="{{ route('admin.settings.index') }}" @class(['is-active' => request()->routeIs('admin.settings.*')])>
-                <span class="wf-admin-nav-icon">⚙</span>
-                <strong>Paramètres du site</strong>
-            </a>
+            @if($can('products.manage'))
+                <a href="{{ route('admin.products.index') }}" @class(['is-active' => request()->routeIs('admin.products.*')])>
+                    <span class="wf-admin-nav-icon">▦</span>
+                    <strong>Produits boutique</strong>
+                    @if (($adminNavigationCounts['low_stock'] ?? 0) > 0)
+                        <b class="is-warning">{{ $adminNavigationCounts['low_stock'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('animals.manage'))
+                <a href="{{ route('admin.animals.index') }}" @class(['is-active' => request()->routeIs('admin.animals.*')])>
+                    <span class="wf-admin-nav-icon">◈</span>
+                    <strong>Animaux & réserve</strong>
+                </a>
+            @endif
+
+            @if($can('orders.manage'))
+                <a href="{{ route('admin.demandes') }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') !== 'contacts'])>
+                    <span class="wf-admin-nav-icon">≡</span>
+                    <strong>Commandes & demandes</strong>
+                    @if (($adminNavigationCounts['orders'] ?? 0) > 0)
+                        <b>{{ $adminNavigationCounts['orders'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('customers.manage'))
+                <a href="{{ route('admin.customers.index') }}" @class(['is-active' => request()->routeIs('admin.customers.*')])>
+                    <span class="wf-admin-nav-icon">◎</span>
+                    <strong>Clients & CRM</strong>
+                    @if (($adminNavigationCounts['crm_followups'] ?? 0) > 0)
+                        <b class="is-warning">{{ $adminNavigationCounts['crm_followups'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('billing.manage'))
+                <a href="{{ route('admin.billing.index') }}" @class(['is-active' => request()->routeIs('admin.billing.*')])>
+                    <span class="wf-admin-nav-icon">€</span>
+                    <strong>Facturation & avoirs</strong>
+                    @if (($adminNavigationCounts['billing_unsent'] ?? 0) > 0)
+                        <b class="is-warning">{{ $adminNavigationCounts['billing_unsent'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('logistics.manage'))
+                <a href="{{ route('admin.logistics.index') }}" @class(['is-active' => request()->routeIs('admin.logistics.*')])>
+                    <span class="wf-admin-nav-icon">⇢</span>
+                    <strong>Préparation & livraison</strong>
+                    @if (($adminNavigationCounts['logistics'] ?? 0) > 0)
+                        <b>{{ $adminNavigationCounts['logistics'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('orders.manage'))
+                <a href="{{ route('admin.demandes', ['section' => 'contacts']) }}" @class(['is-active' => request()->routeIs('admin.demandes*') && request('section') === 'contacts'])>
+                    <span class="wf-admin-nav-icon">✉</span>
+                    <strong>Messages</strong>
+                    @if (($adminNavigationCounts['contacts'] ?? 0) > 0)
+                        <b>{{ $adminNavigationCounts['contacts'] }}</b>
+                    @endif
+                </a>
+            @endif
+
+            @if($can('settings.manage') || $can('users.manage') || $can('activity.view'))
+                <p>Configuration & sécurité</p>
+            @endif
+
+            @if($can('settings.manage'))
+                <a href="{{ route('admin.settings.index') }}" @class(['is-active' => request()->routeIs('admin.settings.*')])>
+                    <span class="wf-admin-nav-icon">⚙</span>
+                    <strong>Paramètres du site</strong>
+                </a>
+            @endif
+
+            @if($can('users.manage'))
+                <a href="{{ route('admin.users.index') }}" @class(['is-active' => request()->routeIs('admin.users.*')])>
+                    <span class="wf-admin-nav-icon">♙</span>
+                    <strong>Utilisateurs & permissions</strong>
+                </a>
+            @endif
+
+            @if($can('activity.view'))
+                <a href="{{ route('admin.activity.index') }}" @class(['is-active' => request()->routeIs('admin.activity.*')])>
+                    <span class="wf-admin-nav-icon">◷</span>
+                    <strong>Journal d’activité</strong>
+                </a>
+            @endif
 
             <p>Site</p>
             <a href="{{ route('boutique') }}" target="_blank" rel="noopener">
@@ -104,8 +152,11 @@
 
         <div class="wf-admin-sidebar-footer">
             <div>
-                <span>Session active</span>
-                <strong>Gestionnaire Wagyu France</strong>
+                <span>{{ $currentAdmin?->role_label ?? 'Session active' }}</span>
+                <strong>{{ $currentAdmin?->name ?? 'Utilisateur' }}</strong>
+                @if($currentAdmin?->job_title)
+                    <small>{{ $currentAdmin->job_title }}</small>
+                @endif
             </div>
             <form method="POST" action="{{ route('admin.logout') }}">
                 @csrf
@@ -128,11 +179,11 @@
             <div class="wf-admin-topbar-actions">
                 <a href="{{ route('home') }}" target="_blank" rel="noopener">Voir le site</a>
                 @php
-                    $topbarAlerts = ($adminNavigationCounts['orders'] ?? 0)
-                        + ($adminNavigationCounts['contacts'] ?? 0)
-                        + ($adminNavigationCounts['crm_followups'] ?? 0)
-                        + ($adminNavigationCounts['billing_unsent'] ?? 0)
-                        + ($adminNavigationCounts['logistics'] ?? 0);
+                    $topbarAlerts = 0;
+                    $topbarAlerts += $can('orders.manage') ? (($adminNavigationCounts['orders'] ?? 0) + ($adminNavigationCounts['contacts'] ?? 0)) : 0;
+                    $topbarAlerts += $can('customers.manage') ? ($adminNavigationCounts['crm_followups'] ?? 0) : 0;
+                    $topbarAlerts += $can('billing.manage') ? ($adminNavigationCounts['billing_unsent'] ?? 0) : 0;
+                    $topbarAlerts += $can('logistics.manage') ? ($adminNavigationCounts['logistics'] ?? 0) : 0;
                 @endphp
                 <span class="wf-admin-alert-dot" title="{{ $topbarAlerts }} élément(s) à surveiller">
                     {{ $topbarAlerts }}
