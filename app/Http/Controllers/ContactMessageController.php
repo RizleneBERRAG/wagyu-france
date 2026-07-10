@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\RequestReceivedMail;
 use App\Models\ContactMessage;
+use App\Services\CustomerSyncService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +14,7 @@ use Illuminate\Validation\Rule;
 
 class ContactMessageController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function store(Request $request, CustomerSyncService $customers): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'audience' => ['required', 'string', Rule::in(['particulier', 'professionnel', 'partenaire'])],
@@ -60,6 +61,23 @@ class ContactMessageController extends Controller
             'preferred_contact' => $validated['preferred_contact'],
             'status' => 'nouvelle',
             'privacy_accepted_at' => now(),
+        ]);
+
+        $type = match ($message->audience) {
+            'professionnel' => 'professional',
+            'partenaire' => 'partner',
+            default => 'individual',
+        };
+
+        $customers->sync($message, [
+            'type' => $type,
+            'relationship_status' => 'prospect',
+            'company' => $message->company,
+            'fullname' => $message->fullname,
+            'email' => $message->email,
+            'phone' => $message->phone,
+            'city' => $message->city,
+            'preferred_contact' => $message->preferred_contact,
         ]);
 
         $this->sendEmails($message);
