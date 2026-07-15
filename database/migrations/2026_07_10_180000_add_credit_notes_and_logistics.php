@@ -10,29 +10,31 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('shop_order_requests', function (Blueprint $table) {
-            $table->timestamp('invoice_sent_at')->nullable()->after('invoice_issued_at');
-            $table->string('preparation_status')->default('pending')->after('stock_applied_at');
-            $table->string('delivery_method')->nullable()->after('preparation_status');
-            $table->timestamp('scheduled_at')->nullable()->after('delivery_method');
-            $table->string('carrier')->nullable()->after('scheduled_at');
-            $table->string('tracking_number')->nullable()->after('carrier');
-            $table->text('logistics_notes')->nullable()->after('tracking_number');
-            $table->timestamp('prepared_at')->nullable()->after('logistics_notes');
-            $table->timestamp('dispatched_at')->nullable()->after('prepared_at');
-            $table->timestamp('delivered_at')->nullable()->after('dispatched_at');
+            // These fields must not depend on columns created by a later migration.
+            $table->timestamp('invoice_sent_at')->nullable();
+            $table->string('preparation_status')->default('pending');
+            $table->string('delivery_method')->nullable();
+            $table->timestamp('scheduled_at')->nullable();
+            $table->string('carrier')->nullable();
+            $table->string('tracking_number')->nullable();
+            $table->text('logistics_notes')->nullable();
+            $table->timestamp('prepared_at')->nullable();
+            $table->timestamp('dispatched_at')->nullable();
+            $table->timestamp('delivered_at')->nullable();
         });
 
         Schema::table('pro_reservation_requests', function (Blueprint $table) {
-            $table->timestamp('invoice_sent_at')->nullable()->after('invoice_issued_at');
-            $table->string('preparation_status')->default('pending')->after('invoice_snapshot');
-            $table->string('delivery_method')->nullable()->after('preparation_status');
-            $table->timestamp('scheduled_at')->nullable()->after('delivery_method');
-            $table->string('carrier')->nullable()->after('scheduled_at');
-            $table->string('tracking_number')->nullable()->after('carrier');
-            $table->text('logistics_notes')->nullable()->after('tracking_number');
-            $table->timestamp('prepared_at')->nullable()->after('logistics_notes');
-            $table->timestamp('dispatched_at')->nullable()->after('prepared_at');
-            $table->timestamp('delivered_at')->nullable()->after('dispatched_at');
+            // These fields must not depend on columns created by a later migration.
+            $table->timestamp('invoice_sent_at')->nullable();
+            $table->string('preparation_status')->default('pending');
+            $table->string('delivery_method')->nullable();
+            $table->timestamp('scheduled_at')->nullable();
+            $table->string('carrier')->nullable();
+            $table->string('tracking_number')->nullable();
+            $table->text('logistics_notes')->nullable();
+            $table->timestamp('prepared_at')->nullable();
+            $table->timestamp('dispatched_at')->nullable();
+            $table->timestamp('delivered_at')->nullable();
         });
 
         Schema::create('credit_notes', function (Blueprint $table) {
