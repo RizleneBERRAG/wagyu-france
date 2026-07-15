@@ -21,6 +21,8 @@ fi
 
 php artisan storage:link >/dev/null 2>&1 || true
 
-chmod -R ug+rwX storage bootstrap/cache || true
+# Environnement local uniquement : garantir l'écriture depuis PHP-FPM,
+# quel que soit le système hôte (Windows/WSL, macOS ou Linux).
+chmod -R 0777 storage bootstrap/cache || true
 
 exec php-fpm
