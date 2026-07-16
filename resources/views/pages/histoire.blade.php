@@ -18,11 +18,6 @@
                     <p class="story-kicker">Maison française · Domaine du Tilleul</p>
                 </div>
 
-                <div class="story-hero-edition" aria-hidden="true">
-                    <span>Édition</span>
-                    <strong>01</strong>
-                </div>
-
                 <h1>
                     Le temps comme
                     <em>premier savoir-faire.</em>

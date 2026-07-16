@@ -23,7 +23,7 @@
 .admin-panel-heading h3 {
     margin: 6px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.2rem;
+    font-size: 35.2px;
     line-height: 1;
 }
 
@@ -36,13 +36,13 @@
     justify-content: center;
     color: #fff;
     background: var(--admin-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 800;
 }
 
 .admin-panel-heading > a {
     color: var(--admin-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
 }
 
@@ -62,7 +62,7 @@
 .admin-reserve-score strong {
     display: block;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.35rem;
+    font-size: 37.6px;
     line-height: 1;
 }
 
@@ -70,7 +70,7 @@
     display: block;
     margin-top: 8px;
     color: var(--admin-muted);
-    font-size: 0.72rem;
+    font-size: 11.52px;
 }
 
 .admin-reserve-threshold {
@@ -87,7 +87,7 @@
 
 .admin-reserve-threshold span {
     color: var(--admin-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -100,7 +100,7 @@
 .admin-reserve-threshold p {
     margin: 8px 0 0;
     color: var(--admin-text);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.55;
 }
 
@@ -149,13 +149,13 @@
 }
 
 .admin-notification strong {
-    font-size: 0.76rem;
+    font-size: 12.16px;
 }
 
 .admin-notification p {
     margin: 5px 0 0;
     color: var(--admin-text);
-    font-size: 0.69rem;
+    font-size: 11.04px;
     line-height: 1.45;
 }
 
@@ -186,7 +186,7 @@
 
 .admin-quick-actions span {
     color: var(--admin-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
 }
 
@@ -194,13 +194,13 @@
     display: block;
     margin-top: 28px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.8rem;
+    font-size: 28.8px;
 }
 
 .admin-quick-actions p {
     margin: 10px 0 0;
     color: var(--admin-text);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.55;
 }
 
@@ -222,7 +222,7 @@
     grid-template-columns: 115px 1.2fr 1fr 120px 100px 125px;
     align-items: center;
     gap: 14px;
-    font-size: 0.72rem;
+    font-size: 11.52px;
 }
 
 .admin-activity-head {
@@ -230,7 +230,7 @@
     border-top: 0;
     color: var(--admin-muted);
     background: #f8f3ed;
-    font-size: 0.63rem;
+    font-size: 10.08px;
     font-weight: 700;
     text-transform: uppercase;
 }
@@ -311,7 +311,7 @@
 
 .admin-product-reference {
     color: var(--admin-burgundy);
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -320,7 +320,7 @@
 .admin-product-body h3 {
     margin: 9px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
     line-height: 1;
 }
 
@@ -328,7 +328,7 @@
     min-height: 48px;
     margin: 12px 0 0;
     color: var(--admin-text);
-    font-size: 0.76rem;
+    font-size: 12.16px;
     line-height: 1.55;
 }
 
@@ -348,14 +348,14 @@
 .admin-product-metrics span {
     display: block;
     color: var(--admin-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     text-transform: uppercase;
 }
 
 .admin-product-metrics strong {
     display: block;
     margin-top: 6px;
-    font-size: 0.86rem;
+    font-size: 13.76px;
 }
 
 .admin-product-metrics .is-low strong {
@@ -400,7 +400,7 @@
     padding: 16px;
     color: var(--admin-text);
     background: #f8f1e8;
-    font-size: 0.74rem;
+    font-size: 11.84px;
     line-height: 1.55;
 }
 
@@ -422,7 +422,7 @@
 .admin-animal-active h3 {
     margin: 8px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.8rem;
+    font-size: 44.8px;
 }
 
 .admin-animal-active p {
@@ -440,7 +440,7 @@
 .admin-animal-score strong {
     display: block;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 3.5rem;
+    font-size: 56px;
     line-height: 1;
 }
 
@@ -448,7 +448,7 @@
     display: block;
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.62);
-    font-size: 0.72rem;
+    font-size: 11.52px;
 }
 
 .admin-animal-list {
@@ -470,14 +470,14 @@
 .admin-animal-row h3 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.65rem;
+    font-size: 26.4px;
 }
 
 .admin-animal-row p,
 .admin-animal-row small {
     margin: 5px 0 0;
     color: var(--admin-muted);
-    font-size: 0.69rem;
+    font-size: 11.04px;
 }
 
 .admin-animal-row-actions {
@@ -500,14 +500,14 @@
 
 .admin-animal-summary-grid span {
     color: var(--admin-muted);
-    font-size: 0.64rem;
+    font-size: 10.24px;
     text-transform: uppercase;
 }
 
 .admin-animal-summary-grid strong {
     display: block;
     margin-top: 9px;
-    font-size: 1.2rem;
+    font-size: 19.2px;
 }
 
 .admin-cut-list {
@@ -532,19 +532,19 @@
 .admin-cut-card-header h3 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.8rem;
+    font-size: 28.8px;
 }
 
 .admin-cut-card-header p {
     margin: 6px 0 0;
     color: var(--admin-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 .admin-cut-progress-meta {
     display: flex;
     gap: 14px;
-    font-size: 0.69rem;
+    font-size: 11.04px;
 }
 
 .admin-cut-progress-meta strong {

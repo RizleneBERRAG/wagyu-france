@@ -23,7 +23,7 @@
     color: var(--story-ink);
     background: var(--story-ivory);
     overflow-x: hidden;
-    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-family: var(--wf-font-sans);
 }
 
 .histoire-page main {
@@ -39,7 +39,7 @@
 .story-kicker {
     margin: 0;
     color: var(--story-red);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 700;
     line-height: 1.4;
     letter-spacing: 0.17em;
@@ -63,7 +63,7 @@
 
 .histoire-page h1,
 .histoire-page h2 {
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: var(--wf-font-serif);
     font-weight: 500;
 }
 
@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     color: inherit;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     letter-spacing: 0.025em;
     text-decoration: none;
@@ -138,7 +138,7 @@
     align-items: center;
     gap: 12px;
     color: var(--story-red);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -206,34 +206,10 @@
     background: var(--story-bronze);
 }
 
-.story-hero-edition {
-    position: absolute;
-    top: -6px;
-    right: 0;
-    display: grid;
-    justify-items: end;
-    color: var(--story-bronze);
-}
-
-.story-hero-edition span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 0.9rem;
-    font-style: italic;
-}
-
-.story-hero-edition strong {
-    margin-top: -5px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 3.2rem;
-    font-weight: 400;
-    line-height: 1;
-    opacity: 0.48;
-}
-
 .story-hero h1 {
     max-width: 670px;
     margin-top: 27px;
-    font-size: clamp(3.4rem, 5.6vw, 5.6rem);
+    font-size: clamp(52.8px, 5.5vw, 88px);
     line-height: 0.94;
     letter-spacing: -0.045em;
 }
@@ -248,7 +224,7 @@
     max-width: 625px;
     margin-top: 29px !important;
     color: var(--story-copy);
-    font-size: 0.96rem;
+    font-size: 15.36px;
     line-height: 1.9;
 }
 
@@ -283,7 +259,7 @@
 
 .story-hero-signature span {
     color: var(--story-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -291,8 +267,8 @@
 
 .story-hero-signature strong {
     color: var(--story-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.06rem;
+    font-family: var(--wf-font-serif);
+    font-size: 16.96px;
     font-weight: 600;
     font-style: italic;
 }
@@ -355,7 +331,7 @@
 .story-hero-main-image figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.66);
-    font-size: 0.6rem;
+    font-size: 9.6px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -364,8 +340,8 @@
 .story-hero-main-image figcaption strong {
     display: block;
     margin-top: 7px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
 }
 
@@ -388,8 +364,8 @@
 .story-hero-detail-image figcaption {
     padding: 13px 5px 0;
     color: var(--story-copy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 0.98rem;
+    font-family: var(--wf-font-serif);
+    font-size: 15.68px;
     font-style: italic;
     text-align: center;
 }
@@ -426,14 +402,14 @@
 }
 
 .story-hero-seal > span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.8rem;
+    font-family: var(--wf-font-serif);
+    font-size: 44.8px;
     line-height: 0.82;
 }
 
 .story-hero-seal small {
     margin-top: 9px;
-    font-size: 0.47rem;
+    font-size: 7.52px;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -460,7 +436,7 @@
     align-items: center;
     gap: 13px;
     color: rgba(255, 255, 255, 0.76);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 600;
     text-decoration: none;
     transition: color 0.2s ease, background 0.2s ease;
@@ -477,8 +453,8 @@
 
 .story-chapters a span {
     color: #c7958f;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.15rem;
+    font-family: var(--wf-font-serif);
+    font-size: 18.4px;
 }
 
 /* =========================================================
@@ -499,8 +475,8 @@
 
 .story-section-index {
     color: rgba(170, 130, 97, 0.28);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 4.8rem;
+    font-family: var(--wf-font-serif);
+    font-size: 76.8px;
     line-height: 0.8;
 }
 
@@ -510,7 +486,7 @@
 .story-transmission-copy h2,
 .story-final-copy h2 {
     margin-top: 14px;
-    font-size: clamp(2.65rem, 4.5vw, 4.5rem);
+    font-size: clamp(42.4px, 4.5vw, 72px);
     line-height: 0.98;
     letter-spacing: -0.035em;
 }
@@ -522,7 +498,7 @@
 
 .story-manifesto-copy p {
     color: var(--story-copy);
-    font-size: 0.92rem;
+    font-size: 14.72px;
     line-height: 1.9;
 }
 
@@ -534,8 +510,8 @@
     float: left;
     margin: 2px 9px -3px 0;
     color: var(--story-red);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 4.2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 67.2px;
     line-height: 0.72;
 }
 
@@ -586,7 +562,7 @@
 
 .story-value-number {
     color: var(--story-bronze);
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 700;
     letter-spacing: 0.14em;
 }
@@ -596,8 +572,8 @@
     right: 18px;
     top: 10px;
     color: rgba(170, 130, 97, 0.1);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 8rem;
+    font-family: var(--wf-font-serif);
+    font-size: 128px;
     font-style: italic;
     line-height: 1;
 }
@@ -605,8 +581,8 @@
 .story-values-grid h3 {
     position: relative;
     margin-top: 76px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.72rem;
+    font-family: var(--wf-font-serif);
+    font-size: 27.52px;
     font-weight: 600;
 }
 
@@ -623,7 +599,7 @@
     position: relative;
     margin-top: 18px;
     color: var(--story-copy);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.75;
 }
 
@@ -683,7 +659,7 @@
 .story-domain-media figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.64);
-    font-size: 0.58rem;
+    font-size: 9.28px;
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -692,8 +668,8 @@
 .story-domain-media figcaption strong {
     display: block;
     margin-top: 8px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
 }
 
 .story-domain-frame {
@@ -713,7 +689,7 @@
     bottom: 64px;
     writing-mode: vertical-rl;
     color: var(--story-bronze);
-    font-size: 0.55rem;
+    font-size: 8.8px;
     font-weight: 700;
     letter-spacing: 0.2em;
 }
@@ -725,7 +701,7 @@
 .story-domain-intro {
     margin-top: 27px !important;
     color: var(--story-copy);
-    font-size: 0.94rem;
+    font-size: 15.04px;
     line-height: 1.9;
 }
 
@@ -745,21 +721,21 @@
 
 .story-domain-points article > span {
     color: var(--story-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.15rem;
+    font-family: var(--wf-font-serif);
+    font-size: 18.4px;
 }
 
 .story-domain-points strong {
     color: var(--story-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.18rem;
+    font-family: var(--wf-font-serif);
+    font-size: 18.88px;
     font-weight: 600;
 }
 
 .story-domain-points p {
     margin-top: 6px;
     color: var(--story-copy);
-    font-size: 0.74rem;
+    font-size: 11.84px;
     line-height: 1.65;
 }
 
@@ -788,7 +764,7 @@
 
 .story-heading-split > p {
     color: var(--story-copy);
-    font-size: 0.88rem;
+    font-size: 14.08px;
     line-height: 1.85;
 }
 
@@ -809,8 +785,8 @@
 
 .story-method-number {
     color: var(--story-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
 }
 
 .story-method-line {
@@ -835,7 +811,7 @@
 
 .story-method-label {
     color: var(--story-muted);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -843,15 +819,15 @@
 
 .story-method-track h3 {
     margin-top: 10px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
 }
 
 .story-method-track article > p:last-child {
     margin-top: 13px;
     color: var(--story-copy);
-    font-size: 0.75rem;
+    font-size: 12px;
     line-height: 1.7;
 }
 
@@ -899,8 +875,8 @@
     top: 50%;
     left: 50%;
     color: rgba(255, 255, 255, 0.025);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 16rem;
+    font-family: var(--wf-font-serif);
+    font-size: 256px;
     line-height: 1;
     transform: translate(-50%, -50%);
 }
@@ -909,8 +885,8 @@
     position: relative;
     z-index: 2;
     max-width: 930px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.5rem, 4.7vw, 4.5rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(40px, 4.7vw, 72px);
     font-weight: 400;
     line-height: 1.08;
     letter-spacing: -0.025em;
@@ -921,7 +897,7 @@
     z-index: 2;
     margin-top: 27px;
     color: #c89b92;
-    font-size: 0.63rem;
+    font-size: 10.08px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -951,7 +927,7 @@
 .story-transmission-copy > p:last-child {
     margin-top: 26px;
     color: var(--story-copy);
-    font-size: 0.88rem;
+    font-size: 14.08px;
     line-height: 1.88;
 }
 
@@ -1001,13 +977,13 @@
 
 .story-path-top > span {
     color: var(--story-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
 }
 
 .story-path-top small {
     color: var(--story-muted);
-    font-size: 0.55rem;
+    font-size: 8.8px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -1021,8 +997,8 @@
     position: relative;
     z-index: 2;
     margin-top: 70px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.4rem;
+    font-family: var(--wf-font-serif);
+    font-size: 38.4px;
     font-weight: 500;
 }
 
@@ -1035,7 +1011,7 @@
     z-index: 2;
     margin-top: 15px;
     color: var(--story-copy);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.75;
 }
 
@@ -1060,7 +1036,7 @@
 
 .story-path li {
     color: var(--story-copy);
-    font-size: 0.7rem;
+    font-size: 11.2px;
 }
 
 .story-path-pro li {
@@ -1086,7 +1062,7 @@
     align-items: center;
     justify-content: space-between;
     color: var(--story-red);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -1130,8 +1106,8 @@
     right: -10px;
     bottom: -70px;
     color: rgba(255, 255, 255, 0.045);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 15rem;
+    font-family: var(--wf-font-serif);
+    font-size: 240px;
     line-height: 1;
 }
 
@@ -1172,7 +1148,7 @@
     max-width: 700px;
     margin-top: 16px;
     color: rgba(255, 255, 255, 0.72);
-    font-size: 0.79rem;
+    font-size: 12.64px;
     line-height: 1.75;
 }
 
@@ -1239,12 +1215,7 @@
     .story-hero-copy {
         max-width: 760px;
     }
-
-    .story-hero-edition {
-        right: 8px;
-    }
-
-    .story-hero-media {
+.story-hero-media {
         min-height: 610px;
     }
 
@@ -1338,20 +1309,15 @@
 
     .story-hero h1 {
         margin-top: 22px;
-        font-size: clamp(2.85rem, 13vw, 4rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
     }
 
     .story-hero-lead {
         margin-top: 22px !important;
-        font-size: 0.88rem;
+        font-size: 14.08px;
         line-height: 1.78;
     }
-
-    .story-hero-edition {
-        display: none;
-    }
-
-    .story-hero-actions {
+.story-hero-actions {
         display: grid;
     }
 
@@ -1390,7 +1356,7 @@
 
     .story-hero-detail-image figcaption {
         padding-top: 9px;
-        font-size: 0.76rem;
+        font-size: 12.16px;
     }
 
     .story-hero-seal {
@@ -1401,11 +1367,11 @@
     }
 
     .story-hero-seal > span {
-        font-size: 2.1rem;
+        font-size: 33.6px;
     }
 
     .story-hero-seal small {
-        font-size: 0.36rem;
+        font-size: 5.76px;
     }
 
     .story-chapters-grid {
@@ -1415,7 +1381,7 @@
     .story-chapters a {
         min-height: 66px;
         padding: 0 16px;
-        font-size: 0.62rem;
+        font-size: 9.92px;
     }
 
     .story-chapters a:nth-child(3),
@@ -1437,7 +1403,7 @@
     }
 
     .story-section-index {
-        font-size: 3.7rem;
+        font-size: 59.2px;
     }
 
     .story-manifesto-copy {
@@ -1449,7 +1415,7 @@
     .story-domain-copy h2,
     .story-transmission-copy h2,
     .story-final-copy h2 {
-        font-size: clamp(2.35rem, 11vw, 3.3rem);
+        font-size: clamp(37.6px, 11vw, 52.8px);
     }
 
     .story-heading-centered {
@@ -1527,11 +1493,11 @@
     }
 
     .story-quote blockquote {
-        font-size: clamp(2.1rem, 10vw, 3rem);
+        font-size: clamp(33.6px, 10vw, 48px);
     }
 
     .story-quote-monogram {
-        font-size: 10rem;
+        font-size: 160px;
     }
 
     .story-paths {
@@ -1588,7 +1554,7 @@
     }
 
     .story-hero-detail-image figcaption {
-        font-size: 0.66rem;
+        font-size: 10.56px;
     }
 
     .story-hero-seal {
@@ -1599,11 +1565,11 @@
     .story-chapters a {
         min-height: 60px;
         gap: 8px;
-        font-size: 0.56rem;
+        font-size: 8.96px;
     }
 
     .story-chapters a span {
-        font-size: 0.95rem;
+        font-size: 15.2px;
     }
 
     .story-domain-media {

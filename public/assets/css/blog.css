@@ -20,7 +20,7 @@
     overflow-x: hidden;
     color: var(--journal-ink);
     background: var(--journal-ivory);
-    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-family: var(--wf-font-sans);
 }
 
 .blog-page main {
@@ -48,7 +48,7 @@
 
 .journal-kicker {
     color: var(--journal-red);
-    font-size: 0.69rem;
+    font-size: 11.04px;
     font-weight: 700;
     letter-spacing: 0.16em;
     line-height: 1.4;
@@ -72,7 +72,7 @@
     align-items: center;
     justify-content: center;
     color: inherit;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     line-height: 1;
     text-decoration: none;
@@ -123,7 +123,7 @@
     align-items: center;
     gap: 18px;
     color: var(--journal-red);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -158,8 +158,8 @@
     left: -18px;
     bottom: -34px;
     color: rgba(137, 112, 83, 0.06);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(8rem, 18vw, 17rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(128px, 18vw, 272px);
     font-weight: 600;
     letter-spacing: -0.07em;
     line-height: 0.75;
@@ -190,7 +190,7 @@
     justify-content: space-between;
     gap: 20px;
     color: var(--journal-muted);
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -205,27 +205,24 @@
     max-width: 690px;
     margin-top: 19px;
     color: var(--journal-ink);
-    font-size: clamp(3.35rem, 6.1vw, 5.55rem);
-    font-weight: 650;
-    letter-spacing: -0.055em;
-    line-height: 0.98;
+    font-size: clamp(52.8px, 5.5vw, 88px);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 0.94;
 }
 
 .journal-hero h1 em {
     display: block;
     margin-top: 5px;
     color: var(--journal-red);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.08em;
-    font-weight: 500;
-    letter-spacing: -0.045em;
+    font-weight: 400;
 }
 
 .journal-hero-lead {
     max-width: 610px;
     margin-top: 28px !important;
     color: var(--journal-copy);
-    font-size: 0.97rem;
+    font-size: 15.52px;
     line-height: 1.9;
 }
 
@@ -261,14 +258,14 @@
 
 .journal-hero-index span {
     color: var(--journal-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.05rem;
+    font-family: var(--wf-font-serif);
+    font-size: 16.8px;
     font-weight: 600;
 }
 
 .journal-hero-index strong {
     color: var(--journal-ink);
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -334,7 +331,7 @@
 .journal-hero-visual figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.68);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -343,8 +340,8 @@
 .journal-hero-visual figcaption strong {
     display: block;
     margin-top: 8px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
+    font-family: var(--wf-font-serif);
+    font-size: 23.2px;
     font-weight: 500;
     line-height: 1.15;
 }
@@ -369,15 +366,15 @@
 }
 
 .journal-hero-seal span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
     font-weight: 600;
     line-height: 0.9;
 }
 
 .journal-hero-seal small {
     margin-top: 6px;
-    font-size: 0.49rem;
+    font-size: 7.84px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -419,15 +416,15 @@
 
 .journal-chapters span {
     color: #d8a9a3;
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
 }
 
 .journal-chapters strong {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.12rem;
+    font-family: var(--wf-font-serif);
+    font-size: 17.92px;
     font-weight: 500;
 }
 
@@ -486,8 +483,8 @@
     top: -48px;
     left: -18px;
     color: rgba(143, 37, 35, 0.13);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 9rem;
+    font-family: var(--wf-font-serif);
+    font-size: 144px;
     font-weight: 600;
     line-height: 1;
 }
@@ -500,7 +497,7 @@
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.7);
     color: #fff;
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -518,9 +515,9 @@
 .journal-cta h2 {
     margin-top: 14px;
     color: var(--journal-ink);
-    font-size: clamp(2.4rem, 4vw, 3.7rem);
-    font-weight: 620;
-    letter-spacing: -0.047em;
+    font-size: clamp(38.4px, 4vw, 59.2px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
     line-height: 1.05;
 }
 
@@ -529,15 +526,13 @@
 .journal-portions-copy h2 em,
 .journal-cta h2 em {
     color: var(--journal-red);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.05em;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .journal-feature-intro {
     margin-top: 24px !important;
     color: var(--journal-copy);
-    font-size: 0.93rem;
+    font-size: 14.88px;
     line-height: 1.85;
 }
 
@@ -564,7 +559,7 @@
 
 .journal-feature-notes span {
     color: var(--journal-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -572,7 +567,7 @@
 
 .journal-feature-notes strong {
     color: var(--journal-ink);
-    font-size: 0.73rem;
+    font-size: 11.68px;
     font-weight: 650;
     text-align: right;
 }
@@ -601,7 +596,7 @@
 .journal-heading-split > p,
 .journal-heading-center > p {
     color: var(--journal-copy);
-    font-size: 0.86rem;
+    font-size: 13.76px;
     line-height: 1.8;
 }
 
@@ -636,7 +631,7 @@
 
 .journal-method-grid article > span {
     color: var(--journal-bronze);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.1em;
 }
@@ -644,8 +639,8 @@
 .journal-method-mark {
     margin-top: 30px;
     color: rgba(143, 37, 35, 0.18);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 5.4rem;
+    font-family: var(--wf-font-serif);
+    font-size: 86.4px;
     font-weight: 600;
     line-height: 0.7;
 }
@@ -653,15 +648,15 @@
 .journal-method-grid h3 {
     margin-top: 26px;
     color: var(--journal-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
     font-weight: 600;
 }
 
 .journal-method-grid p {
     margin-top: 14px !important;
     color: var(--journal-copy);
-    font-size: 0.75rem;
+    font-size: 12px;
     line-height: 1.7;
 }
 
@@ -671,7 +666,7 @@
     padding-top: 15px;
     border-top: 1px solid var(--journal-line);
     color: var(--journal-red);
-    font-size: 0.58rem;
+    font-size: 9.28px;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -719,7 +714,7 @@
 .journal-portions-copy > p:not(.journal-kicker) {
     margin-top: 23px !important;
     color: var(--journal-copy);
-    font-size: 0.86rem;
+    font-size: 13.76px;
     line-height: 1.83;
 }
 
@@ -748,7 +743,7 @@
 
 .journal-portions-values small {
     color: var(--journal-muted);
-    font-size: 0.58rem;
+    font-size: 9.28px;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -757,8 +752,8 @@
 .journal-portions-values strong {
     margin-top: 19px;
     color: var(--journal-red);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.7rem, 4.3vw, 4rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(43.2px, 4.3vw, 64px);
     font-weight: 600;
     line-height: 0.85;
     white-space: nowrap;
@@ -773,7 +768,7 @@
 .journal-portions-values p {
     margin-top: 24px !important;
     color: var(--journal-copy);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     line-height: 1.65;
 }
 
@@ -870,7 +865,7 @@
     padding-bottom: 6px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.65);
     color: #fff;
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -894,7 +889,7 @@
     justify-content: space-between;
     gap: 14px;
     color: var(--journal-muted);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -908,21 +903,21 @@
 .journal-article-dark h3 {
     margin-top: 18px;
     color: var(--journal-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
     line-height: 1.12;
 }
 
 .journal-article-large .journal-article-body h3 {
-    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-size: clamp(32px, 3vw, 44.8px);
 }
 
 .journal-article-body > p,
 .journal-article-dark > p:not(.journal-kicker) {
     margin-top: 15px !important;
     color: var(--journal-copy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.7;
 }
 
@@ -934,7 +929,7 @@
     align-items: center;
     gap: 14px;
     color: var(--journal-red);
-    font-size: 0.63rem;
+    font-size: 10.08px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -972,8 +967,8 @@
     right: -9px;
     top: -35px;
     color: rgba(255, 255, 255, 0.055);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 10rem;
+    font-family: var(--wf-font-serif);
+    font-size: 160px;
     font-weight: 600;
     line-height: 1;
 }
@@ -996,7 +991,7 @@
 
 .journal-article-dark h3 {
     color: #fff;
-    font-size: 1.8rem;
+    font-size: 28.8px;
 }
 
 .journal-article-dark > p:not(.journal-kicker) {
@@ -1034,8 +1029,8 @@
     display: grid;
     place-items: center;
     color: #d9b58d;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.1rem;
+    font-family: var(--wf-font-serif);
+    font-size: 33.6px;
     font-weight: 600;
 }
 
@@ -1047,7 +1042,7 @@
 
 .journal-note blockquote span {
     color: #d9aaa5;
-    font-size: 0.59rem;
+    font-size: 9.44px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -1056,8 +1051,8 @@
 .journal-note blockquote p {
     margin-top: 13px !important;
     color: #fff;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(28.8px, 3vw, 44px);
     font-weight: 500;
     line-height: 1.22;
 }
@@ -1068,14 +1063,14 @@
 }
 
 .journal-note-signature strong {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.3rem;
+    font-family: var(--wf-font-serif);
+    font-size: 20.8px;
     font-weight: 600;
 }
 
 .journal-note-signature small {
     color: rgba(255, 255, 255, 0.55);
-    font-size: 0.58rem;
+    font-size: 9.28px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -1121,7 +1116,7 @@
     max-width: 770px;
     margin-top: 18px !important;
     color: rgba(255, 255, 255, 0.74);
-    font-size: 0.82rem;
+    font-size: 13.12px;
     line-height: 1.75;
 }
 
@@ -1139,7 +1134,7 @@
     justify-content: center;
     gap: 12px;
     color: #fff;
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -1172,7 +1167,7 @@
     }
 
     .journal-portions-values strong {
-        font-size: 3rem;
+        font-size: 48px;
     }
 
     .journal-article,
@@ -1294,13 +1289,13 @@
     }
 
     .journal-hero h1 {
-        font-size: clamp(2.55rem, 13vw, 3.55rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
         line-height: 1;
     }
 
     .journal-hero-lead {
         margin-top: 21px !important;
-        font-size: 0.88rem;
+        font-size: 14.08px;
         line-height: 1.75;
     }
 
@@ -1357,7 +1352,7 @@
     }
 
     .journal-hero-seal span {
-        font-size: 1.45rem;
+        font-size: 23.2px;
     }
 
     .journal-chapters-grid {
@@ -1391,7 +1386,7 @@
     .journal-feature-number {
         top: -30px;
         left: -4px;
-        font-size: 6.5rem;
+        font-size: 104px;
     }
 
     .journal-feature-copy {
@@ -1402,7 +1397,7 @@
     .journal-heading h2,
     .journal-portions-copy h2,
     .journal-cta h2 {
-        font-size: clamp(2rem, 10vw, 2.75rem);
+        font-size: clamp(32px, 10vw, 44px);
     }
 
     .journal-method-grid {
@@ -1460,7 +1455,7 @@
     }
 
     .journal-note blockquote p {
-        font-size: 1.72rem;
+        font-size: 27.52px;
     }
 
     .journal-cta-card {

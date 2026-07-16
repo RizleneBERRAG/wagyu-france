@@ -21,7 +21,7 @@
     color: var(--wagyu-ink);
     background: var(--wagyu-ivory);
     overflow-x: hidden;
-    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-family: var(--wf-font-sans);
 }
 
 .wagyu-page main {
@@ -68,7 +68,7 @@
     align-items: center;
     gap: 14px;
     color: var(--wagyu-bordeaux);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.17em;
     line-height: 1.4;
@@ -84,7 +84,7 @@
 
 .wagyu-page h1,
 .wagyu-page h2 {
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: var(--wf-font-serif);
     font-weight: 500;
     letter-spacing: -0.035em;
 }
@@ -92,7 +92,7 @@
 .wagyu-page h1 em,
 .wagyu-page h2 em {
     color: var(--wagyu-bordeaux);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .wagyu-page h3 {
@@ -108,7 +108,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     letter-spacing: 0.02em;
     text-decoration: none;
@@ -174,7 +174,7 @@
     align-items: center;
     gap: 10px;
     color: var(--wagyu-bordeaux);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -191,8 +191,8 @@
 
 .wagyu-section-index {
     color: rgba(168, 129, 81, 0.16);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(5rem, 9vw, 9rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(80px, 9vw, 144px);
     font-weight: 500;
     line-height: 0.7;
     letter-spacing: -0.06em;
@@ -221,8 +221,8 @@
     left: -30px;
     bottom: -62px;
     color: rgba(36, 31, 26, 0.025);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(9rem, 18vw, 19rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(144px, 18vw, 304px);
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.07em;
@@ -246,35 +246,20 @@
 
 .wagyu-editorial-mark {
     margin-bottom: 32px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 16px;
     color: var(--wagyu-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-}
-
-.wagyu-editorial-mark i {
-    height: 1px;
-    background: var(--wagyu-line-dark);
-}
-
-.wagyu-editorial-mark strong {
-    color: var(--wagyu-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1rem;
-    font-weight: 600;
 }
 
 .wagyu-hero h1 {
     max-width: 680px;
     margin-top: 18px;
     color: var(--wagyu-ink);
-    font-size: clamp(3.25rem, 5.6vw, 5.3rem);
-    line-height: 0.99;
+    font-size: clamp(52.8px, 5.5vw, 88px);
+    letter-spacing: -0.045em;
+    line-height: 0.94;
 }
 
 .wagyu-hero h1 em {
@@ -286,7 +271,7 @@
     max-width: 620px;
     margin-top: 27px !important;
     color: var(--wagyu-copy);
-    font-size: 0.96rem;
+    font-size: 15.36px;
     line-height: 1.9;
 }
 
@@ -323,7 +308,7 @@
 
 .wagyu-hero-facts dt {
     color: var(--wagyu-muted);
-    font-size: 0.59rem;
+    font-size: 9.44px;
     font-weight: 700;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -332,7 +317,7 @@
 .wagyu-hero-facts dd {
     margin-top: 7px;
     color: var(--wagyu-ink);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 600;
     line-height: 1.5;
 }
@@ -392,7 +377,7 @@
 .wagyu-hero-visual figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.66);
-    font-size: 0.6rem;
+    font-size: 9.6px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -401,8 +386,8 @@
 .wagyu-hero-visual figcaption strong {
     display: block;
     margin-top: 9px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     font-weight: 500;
     line-height: 1.05;
 }
@@ -411,7 +396,7 @@
     display: block;
     margin-top: 12px;
     color: rgba(255, 255, 255, 0.66);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 600;
     letter-spacing: 0.08em;
 }
@@ -435,14 +420,14 @@
 }
 
 .wagyu-hero-seal span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     line-height: 1;
 }
 
 .wagyu-hero-seal small {
     margin-top: 6px;
-    font-size: 0.46rem;
+    font-size: 7.36px;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -475,7 +460,7 @@
     justify-content: center;
     gap: 10px;
     color: #5e564e;
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 650;
     text-decoration: none;
     transition: color 0.2s ease, background 0.2s ease;
@@ -487,8 +472,8 @@
 
 .wagyu-chapter-nav a span {
     color: var(--wagyu-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 0.92rem;
+    font-family: var(--wf-font-serif);
+    font-size: 14.72px;
 }
 
 .wagyu-chapter-nav a:hover {
@@ -523,7 +508,7 @@
 .wagyu-section-heading h2 {
     margin-top: 15px;
     color: var(--wagyu-ink);
-    font-size: clamp(2.65rem, 4.2vw, 4.25rem);
+    font-size: clamp(42.4px, 4.2vw, 68px);
     line-height: 1.02;
 }
 
@@ -538,8 +523,8 @@
 .wagyu-lead-paragraph {
     max-width: 760px;
     color: var(--wagyu-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(1.45rem, 2.15vw, 2rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(23.2px, 2.15vw, 32px);
     font-weight: 500;
     line-height: 1.42;
 }
@@ -555,7 +540,7 @@
 
 .wagyu-intro-columns p {
     color: var(--wagyu-copy);
-    font-size: 0.84rem;
+    font-size: 13.44px;
     line-height: 1.85;
 }
 
@@ -580,8 +565,8 @@
     left: 19px;
     top: 8px;
     color: var(--wagyu-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 3.5rem;
+    font-family: var(--wf-font-serif);
+    font-size: 56px;
     line-height: 1;
 }
 
@@ -589,8 +574,8 @@
     position: relative;
     z-index: 2;
     color: #4e463f;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.25rem;
+    font-family: var(--wf-font-serif);
+    font-size: 20px;
     font-style: italic;
     line-height: 1.45;
 }
@@ -667,7 +652,7 @@
 .wagyu-marbling-visual figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.64);
-    font-size: 0.59rem;
+    font-size: 9.44px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -676,8 +661,8 @@
 .wagyu-marbling-visual figcaption strong {
     display: block;
     margin-top: 9px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.7rem;
+    font-family: var(--wf-font-serif);
+    font-size: 27.2px;
     font-weight: 500;
 }
 
@@ -689,14 +674,14 @@
     max-width: 600px;
     margin-top: 15px;
     color: var(--wagyu-ink);
-    font-size: clamp(2.65rem, 4vw, 4.15rem);
+    font-size: clamp(42.4px, 4vw, 66.4px);
     line-height: 1.02;
 }
 
 .wagyu-marbling-content > p:not(.wagyu-kicker) {
     margin-top: 22px;
     color: var(--wagyu-copy);
-    font-size: 0.86rem;
+    font-size: 13.76px;
     line-height: 1.86;
 }
 
@@ -717,19 +702,19 @@
 
 .wagyu-marbling-notes article > span {
     color: var(--wagyu-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.1rem;
+    font-family: var(--wf-font-serif);
+    font-size: 17.6px;
 }
 
 .wagyu-marbling-notes strong {
     color: var(--wagyu-ink);
-    font-size: 0.83rem;
+    font-size: 13.28px;
 }
 
 .wagyu-marbling-notes p {
     margin-top: 6px !important;
     color: var(--wagyu-muted);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.55;
 }
 
@@ -754,7 +739,7 @@
 
 .wagyu-heading-row > p {
     color: var(--wagyu-copy);
-    font-size: 0.85rem;
+    font-size: 13.6px;
     line-height: 1.8;
 }
 
@@ -795,7 +780,7 @@
     align-items: center;
     justify-content: space-between;
     color: var(--wagyu-muted);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -803,8 +788,8 @@
 
 .wagyu-card-topline span {
     color: var(--wagyu-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1rem;
+    font-family: var(--wf-font-serif);
+    font-size: 16px;
 }
 
 .wagyu-card-letter {
@@ -812,8 +797,8 @@
     right: 18px;
     top: 34px;
     color: rgba(146, 41, 36, 0.055);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 10rem;
+    font-family: var(--wf-font-serif);
+    font-size: 160px;
     font-weight: 500;
     line-height: 1;
 }
@@ -823,8 +808,8 @@
     z-index: 2;
     margin-top: 110px;
     color: var(--wagyu-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.25rem;
+    font-family: var(--wf-font-serif);
+    font-size: 36px;
     font-weight: 500;
 }
 
@@ -833,7 +818,7 @@
     z-index: 2;
     margin-top: 12px;
     color: var(--wagyu-copy);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.72;
 }
 
@@ -935,13 +920,13 @@
 .wagyu-cut-image > span {
     left: 22px;
     bottom: 21px;
-    font-size: 0.55rem;
+    font-size: 8.8px;
 }
 
 .wagyu-cut-image > small {
     right: 20px;
     top: 19px;
-    font-size: 0.5rem;
+    font-size: 8px;
 }
 
 .wagyu-cut-body {
@@ -950,7 +935,7 @@
 
 .wagyu-cut-body > p {
     color: var(--wagyu-bronze);
-    font-size: 0.56rem;
+    font-size: 8.96px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -959,8 +944,8 @@
 .wagyu-cut-body h3 {
     margin-top: 9px;
     color: var(--wagyu-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
     font-weight: 500;
 }
 
@@ -969,7 +954,7 @@
     min-height: 54px;
     margin-top: 9px;
     color: var(--wagyu-copy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.6;
 }
 
@@ -989,7 +974,7 @@
 
 .wagyu-cut-body dt {
     color: var(--wagyu-muted);
-    font-size: 0.52rem;
+    font-size: 8.32px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -998,7 +983,7 @@
 .wagyu-cut-body dd {
     margin-top: 6px;
     color: var(--wagyu-ink);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 650;
 }
 
@@ -1035,7 +1020,7 @@
 .wagyu-cooking h2 {
     margin-top: 16px;
     color: #ffffff;
-    font-size: clamp(2.65rem, 4vw, 4.2rem);
+    font-size: clamp(42.4px, 4vw, 67.2px);
     line-height: 1;
 }
 
@@ -1047,7 +1032,7 @@
 .wagyu-cooking-content > p:not(.wagyu-kicker) {
     margin-top: 22px;
     color: rgba(255, 255, 255, 0.66);
-    font-size: 0.82rem;
+    font-size: 13.12px;
     line-height: 1.82;
 }
 
@@ -1098,7 +1083,7 @@
 .wagyu-cooking-visual figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.62);
-    font-size: 0.56rem;
+    font-size: 8.96px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -1107,8 +1092,8 @@
 .wagyu-cooking-visual figcaption strong {
     display: block;
     margin-top: 7px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.65rem;
+    font-family: var(--wf-font-serif);
+    font-size: 26.4px;
     font-weight: 500;
 }
 
@@ -1127,19 +1112,19 @@
 
 .wagyu-cooking-steps article > span {
     color: #d8ae7d;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 19.2px;
 }
 
 .wagyu-cooking-steps strong {
     color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 12.8px;
 }
 
 .wagyu-cooking-steps p {
     margin-top: 7px !important;
     color: rgba(255, 255, 255, 0.56);
-    font-size: 0.69rem;
+    font-size: 11.04px;
     line-height: 1.58;
 }
 
@@ -1187,15 +1172,15 @@
     display: grid;
     place-items: center;
     color: var(--wagyu-bordeaux);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.6rem;
+    font-family: var(--wf-font-serif);
+    font-size: 41.6px;
 }
 
 .wagyu-origin-card h2 {
     max-width: 730px;
     margin-top: 13px;
     color: var(--wagyu-ink);
-    font-size: clamp(2.45rem, 3.5vw, 3.65rem);
+    font-size: clamp(39.2px, 3.5vw, 58.4px);
     line-height: 1.02;
 }
 
@@ -1203,7 +1188,7 @@
     max-width: 780px;
     margin-top: 17px;
     color: var(--wagyu-copy);
-    font-size: 0.82rem;
+    font-size: 13.12px;
     line-height: 1.78;
 }
 
@@ -1261,8 +1246,8 @@
     top: 6px;
     transform: translateX(-50%);
     color: rgba(168, 129, 81, 0.08);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 9rem;
+    font-family: var(--wf-font-serif);
+    font-size: 144px;
     line-height: 1;
 }
 
@@ -1277,7 +1262,7 @@
     max-width: 800px;
     margin: 16px auto 0;
     color: var(--wagyu-ink);
-    font-size: clamp(2.7rem, 4.4vw, 4.4rem);
+    font-size: clamp(43.2px, 4.4vw, 70.4px);
     line-height: 1;
 }
 
@@ -1287,7 +1272,7 @@
     max-width: 650px;
     margin: 18px auto 0;
     color: var(--wagyu-copy);
-    font-size: 0.84rem;
+    font-size: 13.44px;
     line-height: 1.75;
 }
 
@@ -1438,14 +1423,14 @@
     }
 
     .wagyu-page h1 {
-        font-size: clamp(2.65rem, 12vw, 3.65rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
     }
 
     .wagyu-section-heading h2,
     .wagyu-marbling-content h2,
     .wagyu-cooking h2,
     .wagyu-final-card h2 {
-        font-size: clamp(2.35rem, 10vw, 3.25rem);
+        font-size: clamp(37.6px, 10vw, 52px);
     }
 
     .wagyu-hero {
@@ -1458,7 +1443,7 @@
     }
 
     .wagyu-hero-lead {
-        font-size: 0.88rem;
+        font-size: 14.08px;
         line-height: 1.78;
     }
 
@@ -1510,7 +1495,7 @@
     }
 
     .wagyu-hero-visual figcaption strong {
-        font-size: 1.55rem;
+        font-size: 24.8px;
     }
 
     .wagyu-chapter-nav {
@@ -1548,7 +1533,7 @@
     }
 
     .wagyu-lead-paragraph {
-        font-size: 1.45rem;
+        font-size: 23.2px;
     }
 
     .wagyu-intro blockquote {
@@ -1655,7 +1640,7 @@
     }
 
     .wagyu-kicker {
-        font-size: 0.6rem;
+        font-size: 9.6px;
         gap: 10px;
     }
 

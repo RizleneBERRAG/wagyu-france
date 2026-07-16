@@ -35,14 +35,14 @@
     color: #fff;
     background: var(--admin-burgundy);
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.7rem;
+    font-size: 27.2px;
     font-weight: 600;
 }
 
 .admin-user-card header p {
     margin: 0 0 4px;
     color: var(--admin-bronze);
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -51,7 +51,7 @@
 .admin-user-card header h3 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.8rem;
+    font-size: 28.8px;
     line-height: 1;
 }
 
@@ -59,13 +59,13 @@
     display: block;
     margin-top: 5px;
     color: var(--admin-muted);
-    font-size: 0.72rem;
+    font-size: 11.52px;
 }
 
 .admin-user-state {
     padding: 7px 10px;
     border-radius: 999px;
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 800;
     text-transform: uppercase;
 }
@@ -92,12 +92,12 @@
 .admin-user-contact a {
     color: var(--admin-burgundy);
     font-weight: 700;
-    font-size: 0.76rem;
+    font-size: 12.16px;
 }
 
 .admin-user-contact span {
     color: var(--admin-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 .admin-user-permissions {
@@ -112,7 +112,7 @@
     border-radius: 999px;
     color: #675748;
     background: #f3ece3;
-    font-size: 0.6rem;
+    font-size: 9.6px;
     font-weight: 700;
 }
 
@@ -126,7 +126,7 @@
 
 .admin-user-card footer small {
     color: var(--admin-muted);
-    font-size: 0.64rem;
+    font-size: 10.24px;
 }
 
 .admin-user-card footer > div {
@@ -162,14 +162,14 @@
     place-items: center;
     color: #fff;
     background: var(--admin-burgundy);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 800;
 }
 
 .admin-user-form-section h3 {
     margin: 4px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
 }
 
 .admin-user-form-grid,
@@ -188,7 +188,7 @@
 .admin-user-form-grid label > span,
 .admin-user-role-row label > span:first-child {
     color: var(--admin-text);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 700;
 }
 
@@ -206,7 +206,7 @@
 
 .admin-user-form-grid small {
     color: var(--admin-muted);
-    font-size: 0.62rem;
+    font-size: 9.92px;
 }
 
 .admin-user-form-grid .is-wide {
@@ -235,19 +235,19 @@
 }
 
 .admin-user-active-toggle strong {
-    font-size: 0.76rem;
+    font-size: 12.16px;
 }
 
 .admin-user-active-toggle small {
     color: var(--admin-muted);
-    font-size: 0.64rem;
+    font-size: 10.24px;
     line-height: 1.45;
 }
 
 .admin-user-permission-help {
     margin: -4px 0 18px;
     color: var(--admin-muted);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.6;
 }
 
@@ -280,13 +280,13 @@
 }
 
 .admin-user-permission-grid strong {
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.35;
 }
 
 .admin-user-permission-grid small {
     color: var(--admin-muted);
-    font-size: 0.6rem;
+    font-size: 9.6px;
 }
 
 .admin-user-form-submit {
@@ -301,13 +301,13 @@
 
 .admin-user-form-submit strong {
     display: block;
-    font-size: 0.82rem;
+    font-size: 13.12px;
 }
 
 .admin-user-form-submit p {
     margin: 5px 0 0;
     color: var(--admin-muted);
-    font-size: 0.67rem;
+    font-size: 10.72px;
 }
 
 .admin-activity-toolbar form {
@@ -325,7 +325,7 @@
     background: #fff;
     color: var(--admin-text);
     font: inherit;
-    font-size: 0.7rem;
+    font-size: 11.2px;
 }
 
 .admin-activity-card {
@@ -366,7 +366,7 @@
 
 .admin-activity-log-main header strong {
     display: block;
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.45;
 }
 
@@ -374,7 +374,7 @@
     display: inline-block;
     margin-top: 6px;
     color: var(--admin-burgundy);
-    font-size: 0.6rem;
+    font-size: 9.6px;
     font-weight: 800;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -383,7 +383,7 @@
 .admin-activity-log-main time {
     flex: 0 0 auto;
     color: var(--admin-muted);
-    font-size: 0.64rem;
+    font-size: 10.24px;
 }
 
 .admin-activity-log-meta {
@@ -395,7 +395,7 @@
 
 .admin-activity-log-meta span {
     color: var(--admin-muted);
-    font-size: 0.65rem;
+    font-size: 10.4px;
 }
 
 .admin-activity-log-meta b {
@@ -413,7 +413,7 @@
 .admin-activity-log-main summary {
     cursor: pointer;
     color: var(--admin-burgundy);
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 700;
 }
 
@@ -427,7 +427,7 @@
     display: grid;
     grid-template-columns: 130px 1fr;
     gap: 10px;
-    font-size: 0.62rem;
+    font-size: 9.92px;
 }
 
 .admin-activity-log-main dt {

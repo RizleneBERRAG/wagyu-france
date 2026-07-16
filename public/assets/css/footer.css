@@ -7,7 +7,7 @@
     color: #f8f4ee;
     background: #211e1a;
     border-top: 4px solid #941d1d;
-    font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+    font-family: var(--wf-font-sans);
 }
 
 .footer-brand,
@@ -45,7 +45,7 @@
 .footer-brand strong {
     display: block;
     color: #ffffff;
-    font-size: 0.98rem;
+    font-size: 15.68px;
     font-weight: 700;
     letter-spacing: 0.055em;
     text-transform: uppercase;
@@ -55,7 +55,7 @@
     max-width: 560px;
     margin: 6px 0 0;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 0.76rem;
+    font-size: 12.16px;
     line-height: 1.55;
 }
 
@@ -69,7 +69,7 @@
 .footer-grid h3 {
     margin: 0 0 17px;
     color: #ffffff;
-    font-size: 0.69rem;
+    font-size: 11.04px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -81,7 +81,7 @@
     width: fit-content;
     margin: 0 0 9px;
     color: rgba(255, 255, 255, 0.62);
-    font-size: 0.73rem;
+    font-size: 11.68px;
     line-height: 1.5;
     text-decoration: none;
 }
@@ -110,7 +110,7 @@
 .footer-bottom p {
     margin: 0;
     color: rgba(255, 255, 255, 0.45);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     line-height: 1.5;
 }
 
@@ -124,7 +124,7 @@
 
 .footer-legal-links a {
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -168,11 +168,11 @@
     }
 
     .footer-brand strong {
-        font-size: 0.84rem;
+        font-size: 13.44px;
     }
 
     .footer-brand p {
-        font-size: 0.7rem;
+        font-size: 11.2px;
     }
 
     .footer-grid {
@@ -183,13 +183,13 @@
 
     .footer-grid h3 {
         margin-bottom: 13px;
-        font-size: 0.63rem;
+        font-size: 10.08px;
     }
 
     .footer-grid a,
     .footer-grid p {
         margin-bottom: 7px;
-        font-size: 0.68rem;
+        font-size: 10.88px;
     }
 
     .footer-bottom {

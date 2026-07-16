@@ -22,14 +22,14 @@
     margin: 8px 0 16px;
     color: #312820;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
     line-height: 1.05;
 }
 
 .admin-customer-create-help p,
 .admin-customer-create-help li {
     color: #75695e;
-    font-size: 0.8rem;
+    font-size: 12.8px;
     line-height: 1.7;
 }
 

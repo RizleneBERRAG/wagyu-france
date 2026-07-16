@@ -41,7 +41,7 @@
 
 .reserve-kicker {
     color: var(--reserve-red);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 800;
     letter-spacing: 0.16em;
     line-height: 1.5;
@@ -50,14 +50,14 @@
 
 .reserve-pro-page h1,
 .reserve-pro-page h2 {
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: var(--wf-font-serif);
     font-weight: 500;
 }
 
 .reserve-pro-page h1 em,
 .reserve-pro-page h2 em {
     color: var(--reserve-red);
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .reserve-button-link {
@@ -68,7 +68,7 @@
     align-items: center;
     justify-content: center;
     color: inherit;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 800;
     letter-spacing: 0.04em;
     text-decoration: none;
@@ -135,8 +135,8 @@
     right: -20px;
     top: 54px;
     color: rgba(86, 66, 52, 0.035);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(8rem, 18vw, 17rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(128px, 18vw, 272px);
     font-weight: 600;
     letter-spacing: -0.06em;
     line-height: 0.7;
@@ -161,8 +161,8 @@
     max-width: 720px;
     margin-top: 18px;
     color: var(--reserve-ink);
-    font-size: clamp(3.35rem, 5.7vw, 5.75rem);
-    letter-spacing: -0.052em;
+    font-size: clamp(52.8px, 5.5vw, 88px);
+    letter-spacing: -0.045em;
     line-height: 0.94;
 }
 
@@ -175,7 +175,7 @@
     max-width: 650px;
     margin-top: 27px !important;
     color: var(--reserve-copy);
-    font-size: 0.98rem;
+    font-size: 15.68px;
     line-height: 1.9;
 }
 
@@ -197,7 +197,7 @@
 
 .reserve-hero-facts dt {
     color: var(--reserve-bronze);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -206,7 +206,7 @@
 .reserve-hero-facts dd {
     margin: 7px 0 0;
     color: var(--reserve-ink);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 650;
     line-height: 1.5;
 }
@@ -263,7 +263,7 @@
 .reserve-hero-visual figcaption span {
     display: block;
     color: rgba(255, 255, 255, 0.65);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -273,8 +273,8 @@
     display: block;
     max-width: 470px;
     margin-top: 8px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.22rem;
+    font-family: var(--wf-font-serif);
+    font-size: 19.52px;
     font-weight: 500;
     line-height: 1.35;
 }
@@ -310,14 +310,14 @@
 }
 
 .reserve-hero-seal span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.6rem;
+    font-family: var(--wf-font-serif);
+    font-size: 25.6px;
     line-height: 1;
 }
 
 .reserve-hero-seal small {
     margin-top: 4px;
-    font-size: 0.47rem;
+    font-size: 7.52px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -355,7 +355,7 @@
 .reserve-status-progress span {
     display: block;
     color: rgba(255, 255, 255, 0.54);
-    font-size: 0.6rem;
+    font-size: 9.6px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -366,7 +366,7 @@
     display: block;
     margin-top: 8px;
     color: #fff;
-    font-size: 0.8rem;
+    font-size: 12.8px;
     font-weight: 650;
 }
 
@@ -379,8 +379,8 @@
 
 .reserve-status-progress strong {
     color: #ddb899;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
+    font-family: var(--wf-font-serif);
+    font-size: 23.2px;
     font-weight: 500;
 }
 
@@ -409,7 +409,7 @@
     gap: 12px;
     color: #fff;
     background: transparent;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 800;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
@@ -429,7 +429,7 @@
     justify-content: center;
     color: var(--reserve-dark);
     background: #fff;
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 /* =========================================================
@@ -454,14 +454,14 @@
 .reserve-workspace-heading h2 {
     margin-top: 10px;
     color: var(--reserve-ink);
-    font-size: clamp(2.5rem, 4vw, 3.8rem);
+    font-size: clamp(40px, 4vw, 60.8px);
     letter-spacing: -0.04em;
     line-height: 1;
 }
 
 .reserve-workspace-heading > p {
     color: var(--reserve-copy);
-    font-size: 0.87rem;
+    font-size: 13.92px;
     line-height: 1.8;
 }
 
@@ -500,15 +500,15 @@
 
 .reserve-card-index {
     color: var(--reserve-bronze);
-    font-size: 0.59rem;
+    font-size: 9.44px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
 .reserve-card-top > div:first-child strong {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
+    font-family: var(--wf-font-serif);
+    font-size: 23.2px;
     font-weight: 600;
 }
 
@@ -523,7 +523,7 @@
     align-items: center;
     gap: 8px;
     color: var(--reserve-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 700;
 }
 
@@ -542,7 +542,7 @@
 
 .pro-access-button {
     color: var(--reserve-red);
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
     text-decoration: none;
 }
@@ -573,8 +573,8 @@
     right: 20px;
     bottom: 12px;
     color: rgba(72, 56, 43, 0.045);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(4rem, 9vw, 8.5rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(64px, 9vw, 136px);
     font-weight: 600;
     letter-spacing: -0.045em;
     line-height: 0.8;
@@ -627,7 +627,7 @@
 .exception-index {
     display: block;
     color: rgba(255, 255, 255, 0.56);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 800;
     letter-spacing: 0.11em;
     text-transform: uppercase;
@@ -636,8 +636,8 @@
 .exception-card h3 {
     margin-top: 11px;
     color: #fff;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.38rem;
+    font-family: var(--wf-font-serif);
+    font-size: 22.08px;
     font-weight: 600;
     line-height: 1.15;
 }
@@ -645,7 +645,7 @@
 .exception-card p {
     margin-top: 11px !important;
     color: rgba(255, 255, 255, 0.65);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     line-height: 1.7;
 }
 
@@ -739,8 +739,8 @@
     gap: 12px;
     color: var(--reserve-ink);
     background: rgba(251, 248, 243, 0.94);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.68rem;
+    font-family: var(--wf-font-sans);
+    font-size: 10.88px;
     font-weight: 750;
     box-shadow: 0 12px 22px rgba(55, 42, 31, 0.1);
     transform: translate(-50%, -50%);
@@ -757,7 +757,7 @@
     justify-content: center;
     color: var(--reserve-bronze);
     font-style: normal;
-    font-size: 0.8rem;
+    font-size: 12.8px;
 }
 
 .cut-tag:hover,
@@ -811,7 +811,7 @@
     right: 0;
     top: 2px;
     color: var(--reserve-bronze);
-    font-size: 0.58rem;
+    font-size: 9.28px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -821,7 +821,7 @@
     max-width: 720px;
     margin-top: 13px;
     color: var(--reserve-ink);
-    font-size: clamp(3rem, 5vw, 4.9rem);
+    font-size: clamp(48px, 5vw, 78.4px);
     letter-spacing: -0.052em;
     line-height: 0.92;
 }
@@ -830,7 +830,7 @@
     max-width: 780px;
     margin-top: 22px !important;
     color: var(--reserve-copy);
-    font-size: 0.92rem;
+    font-size: 14.72px;
     line-height: 1.85;
 }
 
@@ -865,7 +865,7 @@
 
 .cut-stats span {
     color: var(--reserve-muted);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -874,8 +874,8 @@
 .cut-stats strong {
     margin-top: 10px;
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.6rem;
+    font-family: var(--wf-font-serif);
+    font-size: 25.6px;
     font-weight: 600;
     line-height: 1;
 }
@@ -884,7 +884,7 @@
     min-height: 30px;
     margin-top: 7px;
     color: var(--reserve-muted);
-    font-size: 0.56rem;
+    font-size: 8.96px;
     line-height: 1.45;
 }
 
@@ -903,7 +903,7 @@
     padding-bottom: 17px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.52);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -923,15 +923,15 @@
 .piece-progress-top span {
     max-width: 190px;
     color: rgba(255, 255, 255, 0.61);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     line-height: 1.5;
 }
 
 .piece-progress-top strong {
     color: #deb697;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.6rem;
+    font-family: var(--wf-font-serif);
+    font-size: 25.6px;
     font-weight: 500;
 }
 
@@ -957,7 +957,7 @@
     display: block;
     margin-bottom: 10px;
     color: rgba(255, 255, 255, 0.64);
-    font-size: 0.64rem;
+    font-size: 10.24px;
     font-weight: 750;
 }
 
@@ -980,7 +980,7 @@
 
 .quantity-box button {
     color: #ddb899;
-    font-size: 1rem;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -1001,7 +1001,7 @@
     width: 100%;
     min-height: 50px;
     margin-top: 12px;
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 800;
     letter-spacing: 0.035em;
     cursor: pointer;
@@ -1039,7 +1039,7 @@
     min-height: 20px;
     margin-top: 12px !important;
     color: #e2bfa4;
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 750;
     line-height: 1.45;
 }
@@ -1049,7 +1049,7 @@
     padding-top: 17px;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
     color: rgba(255, 255, 255, 0.5);
-    font-size: 0.59rem;
+    font-size: 9.44px;
     line-height: 1.65;
 }
 
@@ -1079,14 +1079,14 @@
     max-width: 740px;
     margin-top: 11px;
     color: #fff;
-    font-size: clamp(2.6rem, 4.3vw, 4.15rem);
+    font-size: clamp(41.6px, 4.3vw, 66.4px);
     letter-spacing: -0.045em;
     line-height: 0.98;
 }
 
 .section-heading > p {
     color: rgba(255, 255, 255, 0.57);
-    font-size: 0.81rem;
+    font-size: 12.96px;
     line-height: 1.8;
 }
 
@@ -1108,7 +1108,7 @@
 
 .pro-flow-grid span {
     color: #d4a684;
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 800;
     letter-spacing: 0.1em;
 }
@@ -1116,15 +1116,15 @@
 .pro-flow-grid h3 {
     margin-top: 28px;
     color: #fff;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
 }
 
 .pro-flow-grid p {
     margin-top: 12px !important;
     color: rgba(255, 255, 255, 0.55);
-    font-size: 0.7rem;
+    font-size: 11.2px;
     line-height: 1.7;
 }
 
@@ -1155,7 +1155,7 @@
     max-width: 820px;
     margin-top: 10px;
     color: #fff;
-    font-size: clamp(2rem, 3.4vw, 3rem);
+    font-size: clamp(32px, 3.4vw, 48px);
     letter-spacing: -0.035em;
     line-height: 1.03;
 }
@@ -1182,7 +1182,7 @@ body.cart-open {
     color: #fff;
     background: var(--reserve-red);
     box-shadow: 0 16px 34px rgba(70, 30, 27, 0.2);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 800;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -1202,7 +1202,7 @@ body.cart-open {
     justify-content: center;
     color: var(--reserve-red);
     background: #fff;
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 .pro-cart-overlay {
@@ -1271,8 +1271,8 @@ body.cart-open {
 .pro-cart-head h2 {
     margin-top: 7px;
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.3rem;
+    font-family: var(--wf-font-serif);
+    font-size: 36.8px;
     font-weight: 600;
     letter-spacing: -0.04em;
     line-height: 0.95;
@@ -1287,7 +1287,7 @@ body.cart-open {
     justify-content: center;
     color: var(--reserve-ink);
     background: transparent;
-    font-size: 1.45rem;
+    font-size: 23.2px;
     cursor: pointer;
 }
 
@@ -1327,21 +1327,21 @@ body.cart-open {
     align-items: center;
     justify-content: center;
     color: var(--reserve-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.1rem;
+    font-family: var(--wf-font-serif);
+    font-size: 17.6px;
 }
 
 .pro-cart-empty h3 {
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
+    font-family: var(--wf-font-serif);
+    font-size: 23.2px;
     font-weight: 600;
 }
 
 .pro-cart-empty p {
     margin-top: 10px !important;
     color: var(--reserve-copy);
-    font-size: 0.73rem;
+    font-size: 11.68px;
     line-height: 1.7;
 }
 
@@ -1365,8 +1365,8 @@ body.cart-open {
 
 .pro-cart-item h3 {
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.25rem;
+    font-family: var(--wf-font-serif);
+    font-size: 20px;
     font-weight: 600;
 }
 
@@ -1374,7 +1374,7 @@ body.cart-open {
     display: block;
     margin-top: 5px;
     color: var(--reserve-muted);
-    font-size: 0.59rem;
+    font-size: 9.44px;
     font-weight: 700;
 }
 
@@ -1418,7 +1418,7 @@ body.cart-open {
     justify-content: center;
     color: var(--reserve-ink);
     background: transparent;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 800;
 }
 
@@ -1434,7 +1434,7 @@ body.cart-open {
 
 .cart-line-total {
     color: var(--reserve-red);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 800;
 }
 
@@ -1452,7 +1452,7 @@ body.cart-open {
 
 .pro-cart-summary span {
     color: var(--reserve-muted);
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 800;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -1460,15 +1460,15 @@ body.cart-open {
 
 .pro-cart-summary strong {
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.65rem;
+    font-family: var(--wf-font-serif);
+    font-size: 26.4px;
     font-weight: 600;
 }
 
 .pro-cart-summary p {
     margin-top: 11px !important;
     color: var(--reserve-copy);
-    font-size: 0.63rem;
+    font-size: 10.08px;
     line-height: 1.6;
 }
 
@@ -1477,7 +1477,7 @@ body.cart-open {
     width: 100%;
     min-height: 47px;
     margin-top: 11px;
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
     cursor: pointer;
     transition: transform 0.2s ease, background 0.2s ease;
@@ -1530,15 +1530,15 @@ body.cart-open {
 .checkout-intro h3 {
     margin-top: 7px;
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
 }
 
 .checkout-intro > p:not(.reserve-kicker) {
     margin-top: 9px !important;
     color: var(--reserve-copy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     line-height: 1.65;
 }
 
@@ -1556,7 +1556,7 @@ body.cart-open {
 
 .checkout-grid label span {
     color: var(--reserve-muted);
-    font-size: 0.57rem;
+    font-size: 9.12px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1574,7 +1574,7 @@ body.cart-open {
     background: var(--reserve-paper);
     outline: none;
     font: inherit;
-    font-size: 0.75rem;
+    font-size: 12px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -1610,7 +1610,7 @@ body.cart-open {
 .checkout-back-button,
 .checkout-submit-button {
     min-height: 47px;
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
     cursor: pointer;
 }
@@ -1657,15 +1657,15 @@ body.cart-open {
 
 .pro-cart-confirmation h3 {
     color: var(--reserve-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.55rem;
+    font-family: var(--wf-font-serif);
+    font-size: 24.8px;
     font-weight: 600;
 }
 
 .pro-cart-confirmation > p {
     margin-top: 10px !important;
     color: var(--reserve-copy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     line-height: 1.65;
 }
 
@@ -1675,7 +1675,7 @@ body.cart-open {
     color: var(--reserve-copy);
     background: var(--reserve-paper);
     border: 1px solid var(--reserve-line);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     line-height: 1.75;
     text-align: left;
 }
@@ -1691,7 +1691,7 @@ body.cart-open {
     border: 1px solid var(--reserve-red);
     color: #fff;
     background: var(--reserve-red);
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
     cursor: pointer;
 }
@@ -1863,12 +1863,12 @@ body.cart-open {
     }
 
     .reserve-hero-copy h1 {
-        font-size: clamp(2.8rem, 14vw, 4rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
         line-height: 0.98;
     }
 
     .reserve-hero-lead {
-        font-size: 0.88rem;
+        font-size: 14.08px;
         line-height: 1.75;
     }
 
@@ -1928,7 +1928,7 @@ body.cart-open {
     }
 
     .reserve-workspace-heading h2 {
-        font-size: 2.35rem;
+        font-size: 37.6px;
     }
 
     .reserve-main-card {
@@ -2004,7 +2004,7 @@ body.cart-open {
     }
 
     .cut-detail-left h2 {
-        font-size: 2.8rem;
+        font-size: 44.8px;
     }
 
     .cut-stats {
@@ -2036,7 +2036,7 @@ body.cart-open {
     }
 
     .section-heading h2 {
-        font-size: 2.5rem;
+        font-size: 40px;
     }
 
     .pro-flow-grid {
@@ -2066,7 +2066,7 @@ body.cart-open {
     }
 
     .reserve-help h2 {
-        font-size: 2.2rem;
+        font-size: 35.2px;
     }
 
     .pro-cart-floating {

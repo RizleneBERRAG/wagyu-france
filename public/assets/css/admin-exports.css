@@ -17,7 +17,7 @@
 
 .admin-request-section-tools > span {
     color: #807367;
-    font-size: 0.86rem;
+    font-size: 13.76px;
 }
 
 .admin-request-section-tools > a {
@@ -30,7 +30,7 @@
     border-radius: 999px;
     color: #8d2024;
     background: #fffdf9;
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-decoration: none;
@@ -62,7 +62,7 @@
 
 .admin-stock-state span {
     color: #302922;
-    font-size: 0.78rem;
+    font-size: 12.48px;
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -71,7 +71,7 @@
 .admin-stock-state p {
     margin: 6px 0 0;
     color: #756b61;
-    font-size: 0.86rem;
+    font-size: 13.76px;
     line-height: 1.55;
 }
 
@@ -91,7 +91,7 @@
     border-radius: 999px;
     color: #7f2020;
     background: rgba(130, 30, 30, 0.06);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 900;
     letter-spacing: 0.04em;
 }

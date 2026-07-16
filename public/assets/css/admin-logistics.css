@@ -90,7 +90,7 @@
 
 .admin-logistics-column > header strong {
     color: #3f342b;
-    font-size: 0.82rem;
+    font-size: 13.12px;
 }
 
 .admin-logistics-column > header b {
@@ -101,7 +101,7 @@
     border-radius: 50%;
     color: #6d1c1c;
     background: rgba(127, 29, 29, 0.08);
-    font-size: 0.74rem;
+    font-size: 11.84px;
 }
 
 .admin-logistics-column-body {
@@ -129,20 +129,20 @@
     margin: 7px 0 4px;
     color: #332b24;
     font-family: "Cormorant Garamond", serif;
-    font-size: 1.45rem;
+    font-size: 23.2px;
     line-height: 1;
 }
 
 .admin-logistics-card code {
     color: #7f1d1d;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 800;
 }
 
 .admin-logistics-card-head > small {
     max-width: 90px;
     color: #8a7969;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     text-align: right;
 }
 
@@ -163,7 +163,7 @@
 .admin-logistics-editor label > span {
     display: block;
     color: #88796c;
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 900;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -173,7 +173,7 @@
     display: block;
     margin-top: 5px;
     color: #4a3f36;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.4;
 }
 
@@ -191,14 +191,14 @@
 
 .admin-logistics-tracking span {
     color: #8a6b4d;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 800;
 }
 
 .admin-logistics-tracking strong {
     margin-top: 4px;
     color: #3d332b;
-    font-size: 0.78rem;
+    font-size: 12.48px;
 }
 
 .admin-logistics-editor {
@@ -211,7 +211,7 @@
 .admin-logistics-editor summary {
     padding: 13px 14px;
     color: #6d1c1c;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 900;
     cursor: pointer;
 }
@@ -249,7 +249,7 @@
     border: 1px solid rgba(95, 75, 56, 0.16);
     border-radius: 999px;
     color: #6d1c1c;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 900;
     text-decoration: none;
 }
@@ -257,7 +257,7 @@
 .admin-logistics-empty {
     padding: 28px 14px;
     color: #8a7e73;
-    font-size: 0.76rem;
+    font-size: 12.16px;
     line-height: 1.6;
     text-align: center;
 }

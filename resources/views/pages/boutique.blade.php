@@ -18,8 +18,6 @@
             <div class="shop-hero-copy">
                 <div class="shop-hero-edition" aria-hidden="true">
                     <span>Collection particulière</span>
-                    <i></i>
-                    <strong>{{ str_pad((string) max(1, $products->count()), 2, '0', STR_PAD_LEFT) }}</strong>
                 </div>
 
                 <p class="shop-kicker">La boutique Wagyu France</p>
@@ -63,7 +61,6 @@
         <div class="shop-shell">
             <header class="shop-products-heading">
                 <div class="shop-heading-title">
-                    <span class="shop-section-number">02</span>
                     <div><p class="shop-kicker">Notre sélection</p><h2>Choisissez votre <em>pièce.</em></h2></div>
                 </div>
                 <div class="shop-products-intro">
@@ -177,7 +174,7 @@
     <section class="shop-reassurance-section">
         <div class="shop-shell">
             <header class="shop-reassurance-heading">
-                <div class="shop-heading-title"><span class="shop-section-number">03</span><div><p class="shop-kicker">Votre commande</p><h2>Soignée jusqu’à <em>votre table.</em></h2></div></div>
+                <div class="shop-heading-title"><div><p class="shop-kicker">Votre commande</p><h2>Soignée jusqu’à <em>votre table.</em></h2></div></div>
             </header>
             <div class="shop-reassurance-grid">
                 <article><span>01</span><strong>Vous sélectionnez</strong><p>La pièce et la quantité souhaitées sont ajoutées à votre demande.</p></article>

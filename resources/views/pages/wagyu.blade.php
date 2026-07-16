@@ -15,8 +15,6 @@
             <div class="wagyu-hero-copy">
                 <div class="wagyu-editorial-mark">
                     <span>Collection découverte</span>
-                    <i></i>
-                    <strong>01</strong>
                 </div>
 
                 <p class="wagyu-kicker">Comprendre le Wagyu</p>

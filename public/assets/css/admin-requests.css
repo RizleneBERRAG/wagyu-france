@@ -19,7 +19,7 @@
     align-items: center;
     gap: 8px;
     color: var(--admin-text);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
 }
 
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.08);
-    font-size: 0.62rem;
+    font-size: 9.92px;
 }
 
 .admin-request-tabs a.is-active b {
@@ -59,13 +59,13 @@
 .admin-request-section-heading h3 {
     margin: 6px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.35rem;
+    font-size: 37.6px;
     line-height: 1;
 }
 
 .admin-request-section-heading > span {
     color: var(--admin-muted);
-    font-size: 0.7rem;
+    font-size: 11.2px;
 }
 
 .admin-request-card-grid {
@@ -98,7 +98,7 @@
 
 .admin-request-type {
     color: var(--admin-burgundy);
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -107,7 +107,7 @@
 .admin-request-card h4 {
     margin: 7px 0 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
     line-height: 1;
 }
 
@@ -116,7 +116,7 @@
     margin-top: 8px;
     color: var(--admin-muted);
     font-family: inherit;
-    font-size: 0.65rem;
+    font-size: 10.4px;
 }
 
 .admin-request-info {
@@ -134,14 +134,14 @@
 
 .admin-request-info dt {
     color: var(--admin-muted);
-    font-size: 0.6rem;
+    font-size: 9.6px;
     text-transform: uppercase;
 }
 
 .admin-request-info dd {
     margin: 5px 0 0;
     overflow-wrap: anywhere;
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 600;
 }
 
@@ -156,7 +156,7 @@
 .admin-request-message > strong,
 .admin-request-lines > strong {
     color: var(--admin-burgundy);
-    font-size: 0.67rem;
+    font-size: 10.72px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -164,7 +164,7 @@
 .admin-request-message p {
     margin: 9px 0 0;
     color: var(--admin-text);
-    font-size: 0.76rem;
+    font-size: 12.16px;
     line-height: 1.65;
     white-space: pre-line;
 }
@@ -181,13 +181,13 @@
 }
 
 .admin-request-lines span {
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 600;
 }
 
 .admin-request-lines small {
     color: var(--admin-muted);
-    font-size: 0.67rem;
+    font-size: 10.72px;
     text-align: right;
 }
 
@@ -203,7 +203,7 @@
 
 .admin-request-card > footer > small {
     color: var(--admin-muted);
-    font-size: 0.65rem;
+    font-size: 10.4px;
     text-align: right;
 }
 
@@ -217,7 +217,7 @@
     padding: 0 10px;
     border: 1px solid var(--admin-line);
     background: #fff;
-    font-size: 0.7rem;
+    font-size: 11.2px;
 }
 
 .admin-request-status-form button {

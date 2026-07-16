@@ -78,14 +78,14 @@
     color: #fff;
     background: #5b1c1c;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.45rem;
+    font-size: 23.2px;
     font-weight: 700;
 }
 
 .admin-customer-card header p {
     margin: 1px 0 4px;
     color: #9a774d;
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 800;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -95,7 +95,7 @@
     margin: 0;
     color: #2f2721;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.65rem;
+    font-size: 26.4px;
     line-height: 1;
 }
 
@@ -103,7 +103,7 @@
     display: block;
     margin-top: 6px;
     color: #7b6f64;
-    font-size: 0.76rem;
+    font-size: 12.16px;
 }
 
 .admin-crm-status {
@@ -115,7 +115,7 @@
     border-radius: 999px;
     color: #5e5146;
     background: #eee7df;
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 900;
     white-space: nowrap;
 }
@@ -159,7 +159,7 @@
 .admin-customer-contact-card a,
 .admin-customer-contact-card > span {
     color: #65594e;
-    font-size: 0.78rem;
+    font-size: 12.48px;
     text-decoration: none;
 }
 
@@ -183,7 +183,7 @@
 .admin-customer-metrics span {
     display: block;
     color: #84766a;
-    font-size: 0.61rem;
+    font-size: 9.76px;
     font-weight: 800;
     text-transform: uppercase;
 }
@@ -192,7 +192,7 @@
     display: block;
     margin-top: 6px;
     color: #422f26;
-    font-size: 0.92rem;
+    font-size: 14.72px;
 }
 
 .admin-customer-tags {
@@ -208,7 +208,7 @@
     border-radius: 999px;
     color: #745e48;
     background: #fbf7f1;
-    font-size: 0.64rem;
+    font-size: 10.24px;
     font-weight: 700;
 }
 
@@ -231,7 +231,7 @@
 
 .admin-customer-follow-up span {
     color: #8a6c4c;
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 900;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -240,7 +240,7 @@
 .admin-customer-follow-up strong {
     margin-top: 4px;
     color: #4b382b;
-    font-size: 0.78rem;
+    font-size: 12.48px;
 }
 
 .admin-customer-card > footer {
@@ -254,7 +254,7 @@
 
 .admin-customer-card footer small {
     color: #8a7d72;
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 .admin-crm-empty {
@@ -276,7 +276,7 @@
 .admin-crm-pagination span,
 .admin-crm-pagination strong {
     color: #6f6257;
-    font-size: 0.75rem;
+    font-size: 12px;
     text-decoration: none;
 }
 
@@ -289,7 +289,7 @@
     display: inline-flex;
     margin-bottom: 18px;
     color: #7d6550;
-    font-size: 0.82rem;
+    font-size: 13.12px;
     font-weight: 800;
     text-decoration: none;
 }
@@ -351,7 +351,7 @@
 
 .admin-form-grid label > span {
     color: #4c4037;
-    font-size: 0.73rem;
+    font-size: 11.68px;
     font-weight: 900;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -360,7 +360,7 @@
 .admin-form-grid label > small,
 .admin-form-grid label span small {
     color: #84776b;
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 500;
     line-height: 1.5;
     text-transform: none;
@@ -394,7 +394,7 @@
 .admin-customer-followup-card h3 {
     margin: 8px 0 16px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
 }
 
 .admin-customer-contact-card > strong,
@@ -416,7 +416,7 @@
 .admin-customer-followup-card > strong {
     display: block;
     color: #6a251f;
-    font-size: 1.15rem;
+    font-size: 18.4px;
 }
 
 .admin-customer-followup-card p,
@@ -501,7 +501,7 @@
 
 .admin-customer-timeline-content header span {
     color: #9a774d;
-    font-size: 0.62rem;
+    font-size: 9.92px;
     font-weight: 900;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -514,14 +514,14 @@
 
 .admin-customer-timeline-content time {
     color: #8a7d72;
-    font-size: 0.67rem;
+    font-size: 10.72px;
     white-space: nowrap;
 }
 
 .admin-customer-timeline-content p {
     margin: 12px 0 0;
     color: #6f6258;
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.65;
     white-space: pre-line;
 }
@@ -540,7 +540,7 @@
     color: #6b1d1d;
     background: transparent;
     font: inherit;
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 900;
     text-decoration: none;
     cursor: pointer;
@@ -548,7 +548,7 @@
 
 .admin-customer-timeline-content footer b {
     color: #4d392d;
-    font-size: 0.78rem;
+    font-size: 12.48px;
 }
 
 .admin-timeline-due {
@@ -556,7 +556,7 @@
     border-radius: 999px;
     color: #76562e;
     background: #f7ead8;
-    font-size: 0.65rem;
+    font-size: 10.4px;
     font-weight: 800;
 }
 

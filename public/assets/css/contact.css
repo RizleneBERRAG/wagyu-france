@@ -34,7 +34,7 @@
 .contact-kicker {
     margin: 0;
     color: var(--contact-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -47,7 +47,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.035em;
     text-decoration: none;
@@ -130,10 +130,10 @@
 .contact-hero-copy h1 {
     max-width: 850px;
     margin: 18px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(4rem, 7.8vw, 7.8rem);
-    line-height: 0.88;
-    letter-spacing: -0.055em;
+    font-family: var(--wf-font-serif);
+    font-size: clamp(52.8px, 5.5vw, 88px);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
     font-weight: 500;
 }
 
@@ -147,7 +147,7 @@
     max-width: 720px;
     margin: 30px 0 0;
     color: var(--contact-text);
-    font-size: 1.03rem;
+    font-size: 16.48px;
     line-height: 1.9;
 }
 
@@ -173,7 +173,7 @@
 
 .contact-hero-facts dt {
     color: var(--contact-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -182,7 +182,7 @@
 .contact-hero-facts dd {
     margin: 8px 0 0;
     color: var(--contact-text);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.55;
 }
 
@@ -234,7 +234,7 @@
 .contact-hero-visual figcaption span {
     display: block;
     color: #e8d4bd;
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -244,8 +244,8 @@
     max-width: 420px;
     margin-top: 8px;
     display: block;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     line-height: 1.05;
     font-weight: 500;
 }
@@ -276,14 +276,14 @@
 }
 
 .contact-hero-seal span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     line-height: 1;
 }
 
 .contact-hero-seal small {
     margin-top: 5px;
-    font-size: 0.55rem;
+    font-size: 8.8px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
 }
@@ -309,7 +309,7 @@
     align-items: center;
     gap: 12px;
     color: var(--contact-text);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     text-decoration: none;
     transition: color 0.2s ease, background 0.2s ease;
@@ -321,8 +321,8 @@
 
 .contact-chapters a span {
     color: var(--contact-burgundy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 19.2px;
 }
 
 .contact-chapters a:hover {
@@ -349,8 +349,8 @@
 .contact-followup-copy h2 {
     max-width: 840px;
     margin: 12px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.8rem, 5vw, 5.4rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(44.8px, 5vw, 86.4px);
     line-height: 0.96;
     letter-spacing: -0.04em;
     font-weight: 500;
@@ -400,8 +400,8 @@
 
 .contact-path-grid article > span {
     color: var(--contact-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
 }
 
 .contact-path-grid article.is-featured > span,
@@ -413,7 +413,7 @@
 .contact-path-grid small {
     margin-top: 40px;
     color: var(--contact-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -421,8 +421,8 @@
 
 .contact-path-grid h3 {
     margin: 12px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.25rem;
+    font-family: var(--wf-font-serif);
+    font-size: 36px;
     line-height: 1;
     font-weight: 500;
 }
@@ -444,7 +444,7 @@
     display: flex;
     justify-content: space-between;
     color: var(--contact-burgundy);
-    font-size: 0.76rem;
+    font-size: 12.16px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -454,7 +454,7 @@
 }
 
 .contact-path-grid a b {
-    font-size: 1rem;
+    font-size: 16px;
 }
 
 /* FORM AREA */
@@ -527,7 +527,7 @@
 .contact-form-image span {
     display: block;
     color: #d9b591;
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -537,8 +537,8 @@
     max-width: 380px;
     margin-top: 7px;
     display: block;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
     line-height: 1.05;
     font-weight: 500;
 }
@@ -559,19 +559,19 @@
 
 .contact-form-promises article > span {
     color: #d9b591;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.3rem;
+    font-family: var(--wf-font-serif);
+    font-size: 20.8px;
 }
 
 .contact-form-promises strong {
     display: block;
-    font-size: 0.88rem;
+    font-size: 14.08px;
 }
 
 .contact-form-promises p {
     margin: 6px 0 0;
     color: rgba(255, 255, 255, 0.58);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     line-height: 1.55;
 }
 
@@ -595,7 +595,7 @@
 
 .contact-form-heading > span {
     color: var(--contact-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -603,8 +603,8 @@
 
 .contact-form-heading h3 {
     margin: 10px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.7rem;
+    font-family: var(--wf-font-serif);
+    font-size: 43.2px;
     line-height: 1;
     font-weight: 500;
 }
@@ -621,7 +621,7 @@
 .contact-preference-fieldset legend {
     margin-bottom: 10px;
     color: var(--contact-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -656,13 +656,13 @@
 }
 
 .contact-audience-grid strong {
-    font-size: 0.82rem;
+    font-size: 13.12px;
 }
 
 .contact-audience-grid small {
     margin-top: 5px;
     color: var(--contact-muted);
-    font-size: 0.65rem;
+    font-size: 10.4px;
 }
 
 .contact-audience-grid input:checked + span {
@@ -694,7 +694,7 @@
 
 .contact-field-grid label > span {
     color: var(--contact-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.09em;
     text-transform: uppercase;
@@ -741,7 +741,7 @@
 
 .contact-character-note {
     color: var(--contact-muted);
-    font-size: 0.66rem;
+    font-size: 10.56px;
 }
 
 .contact-preference-fieldset > div {
@@ -756,7 +756,7 @@
     display: inline-flex;
     align-items: center;
     color: var(--contact-text);
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
 }
 
@@ -784,7 +784,7 @@
 
 .contact-privacy span {
     color: var(--contact-text);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     line-height: 1.55;
 }
 
@@ -798,7 +798,7 @@
     border-left: 3px solid #a42127;
     color: #70191d;
     background: #f8e9e9;
-    font-size: 0.75rem;
+    font-size: 12px;
     line-height: 1.65;
 }
 
@@ -819,7 +819,7 @@
     align-items: center;
     justify-content: space-between;
     font: inherit;
-    font-size: 0.78rem;
+    font-size: 12.48px;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
@@ -837,13 +837,13 @@
 }
 
 .contact-submit-button b {
-    font-size: 1.15rem;
+    font-size: 18.4px;
 }
 
 .contact-form-note {
     margin: 13px 0 0;
     color: var(--contact-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     line-height: 1.55;
 }
 
@@ -868,14 +868,14 @@
     background: var(--contact-burgundy);
     display: grid;
     place-items: center;
-    font-size: 1.4rem;
+    font-size: 22.4px;
 }
 
 .contact-confirmation h3 {
     max-width: 560px;
     margin: 12px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 3rem;
+    font-family: var(--wf-font-serif);
+    font-size: 48px;
     line-height: 1;
     font-weight: 500;
 }
@@ -902,7 +902,7 @@
 
 .contact-reference-card span {
     color: var(--contact-muted);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -911,7 +911,7 @@
 .contact-reference-card strong {
     margin-top: 8px;
     color: var(--contact-burgundy);
-    font-size: 1rem;
+    font-size: 16px;
     letter-spacing: 0.04em;
 }
 
@@ -923,7 +923,7 @@
     color: var(--contact-ink);
     background: transparent;
     font: inherit;
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -971,13 +971,13 @@
 
 .contact-followup-steps article > span {
     color: #ebcdb0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
 }
 
 .contact-followup-steps strong {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.8rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28.8px;
     font-weight: 500;
 }
 
@@ -1010,14 +1010,14 @@
 
 .contact-faq-grid article > span {
     color: var(--contact-bronze);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.7rem;
+    font-family: var(--wf-font-serif);
+    font-size: 27.2px;
 }
 
 .contact-faq-grid h3 {
     margin: 28px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     line-height: 1.05;
     font-weight: 500;
 }
@@ -1032,7 +1032,7 @@
     margin-top: auto;
     padding-top: 24px;
     color: var(--contact-burgundy);
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 700;
     text-decoration: none;
 }
@@ -1051,16 +1051,16 @@
 
 .contact-quote-inner > span {
     color: var(--contact-bronze-light);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 5.5rem;
+    font-family: var(--wf-font-serif);
+    font-size: 88px;
     line-height: 0.6;
 }
 
 .contact-quote blockquote {
     max-width: 960px;
     margin: 28px auto 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(40px, 5vw, 80px);
     line-height: 0.98;
     font-weight: 400;
 }
@@ -1068,7 +1068,7 @@
 .contact-quote p {
     margin: 28px 0 0;
     color: rgba(255, 255, 255, 0.52);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -1183,7 +1183,7 @@
     }
 
     .contact-hero-copy h1 {
-        font-size: clamp(3.25rem, 17vw, 5rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
     }
 
     .contact-hero-actions {
@@ -1227,7 +1227,7 @@
     }
 
     .contact-hero-visual figcaption strong {
-        font-size: 1.55rem;
+        font-size: 24.8px;
     }
 
     .contact-hero-seal {
@@ -1268,7 +1268,7 @@
     .contact-section-heading h2,
     .contact-form-intro h2,
     .contact-followup-copy h2 {
-        font-size: clamp(2.6rem, 13vw, 4rem);
+        font-size: clamp(41.6px, 13vw, 64px);
     }
 
     .contact-path-grid article {
@@ -1281,7 +1281,7 @@
     }
 
     .contact-form-heading h3 {
-        font-size: 2.25rem;
+        font-size: 36px;
     }
 
     .contact-audience-grid,
@@ -1312,7 +1312,7 @@
     }
 
     .contact-confirmation h3 {
-        font-size: 2.4rem;
+        font-size: 38.4px;
     }
 
     .contact-followup-steps article {
@@ -1325,7 +1325,7 @@
     }
 
     .contact-quote blockquote {
-        font-size: clamp(2.4rem, 12vw, 3.7rem);
+        font-size: clamp(38.4px, 12vw, 59.2px);
     }
 }
 

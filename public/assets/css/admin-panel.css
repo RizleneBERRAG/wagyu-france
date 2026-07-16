@@ -88,14 +88,14 @@ body.wf-admin-body {
 }
 
 .wf-admin-brand strong {
-    font-size: 0.91rem;
+    font-size: 14.56px;
     letter-spacing: 0.055em;
     text-transform: uppercase;
 }
 
 .wf-admin-brand span {
     color: rgba(247, 241, 233, 0.58);
-    font-size: 0.68rem;
+    font-size: 10.88px;
 }
 
 .wf-admin-sidebar-close {
@@ -106,7 +106,7 @@ body.wf-admin-body {
     border: 1px solid rgba(255, 255, 255, 0.14);
     color: #fff;
     background: transparent;
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 .wf-admin-nav {
@@ -118,7 +118,7 @@ body.wf-admin-body {
 .wf-admin-nav > p {
     margin: 20px 12px 7px;
     color: rgba(247, 241, 233, 0.42);
-    font-size: 0.64rem;
+    font-size: 10.24px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -136,7 +136,7 @@ body.wf-admin-body {
     align-items: center;
     gap: 11px;
     color: rgba(247, 241, 233, 0.72);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     transition: 0.2s ease;
 }
 
@@ -154,7 +154,7 @@ body.wf-admin-body {
 .wf-admin-nav-icon {
     width: 25px;
     color: #c9a77f;
-    font-size: 1.03rem;
+    font-size: 16.48px;
     text-align: center;
 }
 
@@ -173,7 +173,7 @@ body.wf-admin-body {
     justify-content: center;
     color: #fff;
     background: var(--admin-burgundy);
-    font-size: 0.66rem;
+    font-size: 10.56px;
 }
 
 .wf-admin-nav a b.is-warning {
@@ -193,11 +193,11 @@ body.wf-admin-body {
 
 .wf-admin-sidebar-footer span {
     color: rgba(247, 241, 233, 0.44);
-    font-size: 0.64rem;
+    font-size: 10.24px;
 }
 
 .wf-admin-sidebar-footer strong {
-    font-size: 0.74rem;
+    font-size: 11.84px;
 }
 
 .wf-admin-sidebar-footer button {
@@ -242,7 +242,7 @@ body.wf-admin-body {
 .wf-admin-topbar p {
     margin: 0;
     color: var(--admin-burgundy);
-    font-size: 0.64rem;
+    font-size: 10.24px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -251,7 +251,7 @@ body.wf-admin-body {
 .wf-admin-topbar h1 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-size: 28px;
     line-height: 1;
     font-weight: 600;
 }
@@ -271,7 +271,7 @@ body.wf-admin-body {
     align-items: center;
     color: var(--admin-text);
     background: #fff;
-    font-size: 0.7rem;
+    font-size: 11.2px;
     font-weight: 700;
 }
 
@@ -285,7 +285,7 @@ body.wf-admin-body {
     justify-content: center;
     color: #fff;
     background: var(--admin-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 800;
 }
 
@@ -321,7 +321,7 @@ body.wf-admin-body {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    font-size: 0.82rem;
+    font-size: 13.12px;
 }
 
 .wf-admin-flash p,
@@ -382,7 +382,7 @@ body.wf-admin-body {
 .admin-page-heading .admin-kicker {
     margin: 0 0 8px;
     color: var(--admin-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.17em;
     text-transform: uppercase;
@@ -391,7 +391,7 @@ body.wf-admin-body {
 .admin-page-heading h2 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.3rem, 4vw, 4.2rem);
+    font-size: clamp(36.8px, 4vw, 67.2px);
     line-height: 0.95;
     font-weight: 600;
 }
@@ -399,7 +399,7 @@ body.wf-admin-body {
 .admin-page-heading p:last-child {
     margin: 14px 0 0;
     color: var(--admin-text);
-    font-size: 0.88rem;
+    font-size: 14.08px;
     line-height: 1.7;
 }
 
@@ -412,7 +412,7 @@ body.wf-admin-body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     cursor: pointer;
 }
@@ -461,7 +461,7 @@ body.wf-admin-body {
 
 .admin-stat-card > span {
     color: var(--admin-muted);
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -471,7 +471,7 @@ body.wf-admin-body {
     display: block;
     margin-top: 16px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.7rem;
+    font-size: 43.2px;
     line-height: 0.9;
 }
 
@@ -489,7 +489,7 @@ body.wf-admin-body {
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
-    font-size: 0.64rem;
+    font-size: 10.24px;
     font-weight: 700;
 }
 
@@ -560,7 +560,7 @@ body.wf-admin-body {
 .admin-form-card h3 {
     margin: 0 0 22px;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-size: 32px;
 }
 
 .admin-field {
@@ -575,7 +575,7 @@ body.wf-admin-body {
 .admin-field > span,
 .admin-field legend {
     color: var(--admin-muted);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -629,7 +629,7 @@ body.wf-admin-body {
     align-items: center;
     color: var(--admin-text);
     background: #fff;
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 600;
     cursor: pointer;
 }
@@ -727,7 +727,7 @@ body.wf-admin-body {
     }
 
     .wf-admin-topbar h1 {
-        font-size: 1.35rem;
+        font-size: 21.6px;
     }
 
     .wf-admin-topbar-actions > a {
@@ -744,7 +744,7 @@ body.wf-admin-body {
     }
 
     .admin-page-heading h2 {
-        font-size: 2.7rem;
+        font-size: 43.2px;
     }
 
     .admin-stat-grid,

@@ -20,6 +20,10 @@
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 
+<div class="wf-scroll-progress" aria-hidden="true">
+    <i data-scroll-progress></i>
+</div>
+
 @include('partials.site-header')
 
 <main>
@@ -36,6 +40,7 @@
     <script src="{{ asset('assets/js/cart-preview.js') }}" defer></script>
 @endif
 <script src="{{ asset('assets/js/site-header-menu.js') }}" defer></script>
+<script src="{{ asset('assets/js/scroll-effects.js') }}" defer></script>
 @stack('scripts')
 </body>
 </html>

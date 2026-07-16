@@ -15,14 +15,12 @@
             <div class="home-hero-content">
                 <div class="home-hero-edition" aria-hidden="true">
                     <span>Maison Wagyu France</span>
-                    <i></i>
-                    <strong>01</strong>
                 </div>
 
                 <p class="home-kicker">Élevé en France · Domaine du Tilleul</p>
 
                 <h1>
-                    Le Wagyu français,
+                    <span>Le Wagyu français,</span>
                     <em>élevé avec patience.</em>
                 </h1>
 
@@ -120,7 +118,6 @@
         <div class="home-shell">
             <div class="home-heading-row">
                 <div class="home-heading-title">
-                    <span class="home-section-number">02</span>
                     <div>
                         <p class="home-kicker">Choisir selon votre envie</p>
                         <h2>Une pièce pour chaque <em>dégustation.</em></h2>
@@ -174,7 +171,6 @@
         <div class="home-shell">
             <div class="home-heading-row home-heading-row-products">
                 <div class="home-heading-title">
-                    <span class="home-section-number">03</span>
                     <div>
                         <p class="home-kicker">La sélection Wagyu France</p>
                         <h2>Nos pièces <em>emblématiques.</em></h2>
@@ -301,7 +297,6 @@
     <section class="home-guide">
         <div class="home-shell home-guide-grid">
             <div class="home-guide-heading">
-                <span class="home-guide-mark">Le geste juste</span>
                 <p class="home-kicker">Bien préparer le Wagyu</p>
                 <h2>Peu d’artifices.<br><em>Une cuisson précise.</em></h2>
             </div>

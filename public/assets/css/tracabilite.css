@@ -34,7 +34,7 @@
 .trace-kicker {
     margin: 0;
     color: var(--trace-burgundy);
-    font-size: 0.72rem;
+    font-size: 11.52px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -47,7 +47,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.035em;
     text-decoration: none;
@@ -141,11 +141,11 @@
     max-width: 800px;
     margin: 20px 0 0;
     color: var(--trace-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(4rem, 7vw, 7.35rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(52.8px, 5.5vw, 88px);
     font-weight: 500;
-    line-height: 0.87;
-    letter-spacing: -0.055em;
+    line-height: 0.94;
+    letter-spacing: -0.045em;
 }
 
 .trace-hero-copy h1 em {
@@ -158,7 +158,7 @@
     max-width: 690px;
     margin: 30px 0 0;
     color: var(--trace-text);
-    font-size: 1.03rem;
+    font-size: 16.48px;
     line-height: 1.82;
 }
 
@@ -184,7 +184,7 @@
 
 .trace-hero-facts dt {
     color: var(--trace-burgundy);
-    font-size: 0.67rem;
+    font-size: 10.72px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -193,7 +193,7 @@
 .trace-hero-facts dd {
     margin: 8px 0 0;
     color: var(--trace-text);
-    font-size: 0.84rem;
+    font-size: 13.44px;
     line-height: 1.5;
 }
 
@@ -253,7 +253,7 @@
 
 .trace-hero-visual figcaption span {
     color: var(--trace-bronze-light);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -261,8 +261,8 @@
 
 .trace-hero-visual figcaption strong {
     margin-top: 8px;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.42rem;
+    font-family: var(--wf-font-serif);
+    font-size: 22.72px;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -287,14 +287,14 @@
 }
 
 .trace-hero-seal span {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 35.2px;
     line-height: 0.8;
 }
 
 .trace-hero-seal small {
     margin-top: 9px;
-    font-size: 0.54rem;
+    font-size: 8.64px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
@@ -325,7 +325,7 @@
     align-items: center;
     gap: 12px;
     color: var(--trace-text);
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 650;
     text-decoration: none;
     transition: color 0.2s ease, background 0.2s ease;
@@ -337,8 +337,8 @@
 
 .trace-chapters a span {
     color: var(--trace-burgundy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.15rem;
+    font-family: var(--wf-font-serif);
+    font-size: 18.4px;
 }
 
 .trace-chapters a:hover {
@@ -368,8 +368,8 @@
 .trace-contact-card h2 {
     margin: 16px 0 0;
     color: var(--trace-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.9rem, 5vw, 5.2rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(46.4px, 5vw, 83.2px);
     font-weight: 500;
     line-height: 0.95;
     letter-spacing: -0.045em;
@@ -390,7 +390,7 @@
 .trace-contact-card > div:first-child > p:last-child {
     margin: 0;
     color: var(--trace-text);
-    font-size: 0.98rem;
+    font-size: 15.68px;
     line-height: 1.8;
 }
 
@@ -424,8 +424,8 @@
     float: left;
     margin: 3px 12px 0 0;
     color: var(--trace-burgundy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 4.7rem;
+    font-family: var(--wf-font-serif);
+    font-size: 75.2px;
     line-height: 0.7;
 }
 
@@ -460,22 +460,22 @@
 
 .trace-pillar-grid article > span {
     color: var(--trace-burgundy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.35rem;
+    font-family: var(--wf-font-serif);
+    font-size: 21.6px;
 }
 
 .trace-pillar-grid h3 {
     margin: 64px 0 0;
     color: var(--trace-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 32px;
     font-weight: 600;
 }
 
 .trace-pillar-grid p {
     margin: 14px 0 0;
     color: var(--trace-text);
-    font-size: 0.88rem;
+    font-size: 14.08px;
     line-height: 1.72;
 }
 
@@ -520,14 +520,14 @@
     align-items: center;
     gap: 12px;
     color: #ffffff;
-    font-size: 0.77rem;
+    font-size: 12.32px;
     font-weight: 700;
     text-decoration: none;
 }
 
 .trace-text-link span {
     color: var(--trace-bronze-light);
-    font-size: 1.1rem;
+    font-size: 17.6px;
     transition: transform 0.2s ease;
 }
 
@@ -550,20 +550,20 @@
 
 .trace-journey-steps article > span {
     color: var(--trace-bronze-light);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.42rem;
+    font-family: var(--wf-font-serif);
+    font-size: 22.72px;
 }
 
 .trace-journey-steps strong {
     color: #ffffff;
-    font-size: 0.96rem;
+    font-size: 15.36px;
     font-weight: 650;
 }
 
 .trace-journey-steps p {
     margin: 8px 0 0;
     color: rgba(249, 245, 239, 0.64);
-    font-size: 0.84rem;
+    font-size: 13.44px;
     line-height: 1.65;
 }
 
@@ -625,15 +625,15 @@
 
 .trace-dossier-visual span {
     color: var(--trace-bronze-light);
-    font-size: 0.66rem;
+    font-size: 10.56px;
     font-weight: 700;
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
 
 .trace-dossier-visual strong {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.75rem;
+    font-family: var(--wf-font-serif);
+    font-size: 28px;
     font-weight: 500;
 }
 
@@ -656,7 +656,7 @@
 
 .trace-dossier-list dt {
     color: var(--trace-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -665,7 +665,7 @@
 .trace-dossier-list dd {
     margin: 0;
     color: var(--trace-text);
-    font-size: 0.87rem;
+    font-size: 13.92px;
     line-height: 1.55;
 }
 
@@ -690,7 +690,7 @@
 
 .trace-use-grid article > span {
     color: var(--trace-burgundy);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -699,15 +699,15 @@
 .trace-use-grid h3 {
     margin: 76px 0 0;
     color: var(--trace-ink);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 2.2rem;
+    font-family: var(--wf-font-serif);
+    font-size: 35.2px;
     font-weight: 600;
 }
 
 .trace-use-grid p {
     margin: 16px 0 0;
     color: var(--trace-text);
-    font-size: 0.88rem;
+    font-size: 14.08px;
     line-height: 1.72;
 }
 
@@ -724,7 +724,7 @@
     position: relative;
     padding-left: 18px;
     color: var(--trace-muted);
-    font-size: 0.78rem;
+    font-size: 12.48px;
 }
 
 .trace-use-grid li::before {
@@ -770,20 +770,20 @@
 
 .trace-transmission-points article > span {
     color: var(--trace-burgundy);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.4rem;
+    font-family: var(--wf-font-serif);
+    font-size: 22.4px;
 }
 
 .trace-transmission-points strong {
     color: var(--trace-ink);
-    font-size: 0.94rem;
+    font-size: 15.04px;
     font-weight: 700;
 }
 
 .trace-transmission-points p {
     margin: 8px 0 0;
     color: var(--trace-text);
-    font-size: 0.84rem;
+    font-size: 13.44px;
     line-height: 1.65;
 }
 
@@ -803,15 +803,15 @@
 .trace-quote-inner > span {
     display: block;
     color: var(--trace-bronze-light);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 5.6rem;
+    font-family: var(--wf-font-serif);
+    font-size: 89.6px;
     line-height: 0.5;
 }
 
 .trace-quote blockquote {
     margin: 28px 0 0;
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2.6rem, 4.7vw, 4.9rem);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(41.6px, 4.7vw, 78.4px);
     font-weight: 400;
     line-height: 0.98;
     letter-spacing: -0.035em;
@@ -820,7 +820,7 @@
 .trace-quote p {
     margin: 28px 0 0;
     color: rgba(255, 255, 255, 0.62);
-    font-size: 0.68rem;
+    font-size: 10.88px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -850,8 +850,8 @@
     right: 22px;
     bottom: -68px;
     color: rgba(255, 255, 255, 0.035);
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 15rem;
+    font-family: var(--wf-font-serif);
+    font-size: 240px;
     line-height: 1;
     pointer-events: none;
 }
@@ -885,14 +885,14 @@
     align-items: center;
     gap: 11px;
     color: #ffffff;
-    font-size: 0.75rem;
+    font-size: 12px;
     font-weight: 700;
     text-decoration: none;
 }
 
 .trace-contact-link span {
     color: var(--trace-bronze-light);
-    font-size: 1.1rem;
+    font-size: 17.6px;
     transition: transform 0.2s ease;
 }
 
@@ -1028,11 +1028,11 @@
     }
 
     .trace-hero-copy h1 {
-        font-size: clamp(3.45rem, 15vw, 5rem);
+        font-size: clamp(44.8px, 12vw, 60.8px);
     }
 
     .trace-hero-lead {
-        font-size: 0.94rem;
+        font-size: 15.04px;
     }
 
     .trace-hero-actions {
@@ -1078,7 +1078,7 @@
     }
 
     .trace-hero-seal span {
-        font-size: 1.8rem;
+        font-size: 28.8px;
     }
 
     .trace-chapters {
@@ -1097,7 +1097,7 @@
     .trace-dossier-content h2,
     .trace-transmission-copy h2,
     .trace-contact-card h2 {
-        font-size: clamp(2.75rem, 12vw, 4rem);
+        font-size: clamp(44px, 12vw, 64px);
     }
 
     .trace-pillar-grid {
@@ -1165,7 +1165,7 @@
     }
 
     .trace-contact-card::after {
-        font-size: 10rem;
+        font-size: 160px;
         right: -10px;
     }
 }
@@ -1176,7 +1176,7 @@
     }
 
     .trace-hero-visual figcaption strong {
-        font-size: 1.2rem;
+        font-size: 19.2px;
     }
 
     .trace-hero-seal {
@@ -1199,7 +1199,7 @@
     }
 
     .trace-quote blockquote {
-        font-size: 2.55rem;
+        font-size: 40.8px;
     }
 }
 
