@@ -200,7 +200,7 @@
     position: relative;
     padding-bottom: 5px;
     color: var(--home-red);
-    font-size: 11.52px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 1.5;
     text-decoration: none;
@@ -1225,7 +1225,7 @@
 
 .home-professional-link {
     color: #ffffff;
-    font-size: 10.88px;
+    font-size: 12px;
     font-weight: 700;
     text-align: center;
 }

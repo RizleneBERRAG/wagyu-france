@@ -161,7 +161,7 @@
 
 .story-hero {
     position: relative;
-    padding: 72px 0 94px;
+    padding: 70px 0 90px;
     background:
         linear-gradient(90deg, rgba(170, 130, 97, 0.04) 1px, transparent 1px),
         linear-gradient(rgba(170, 130, 97, 0.04) 1px, transparent 1px),
@@ -181,7 +181,7 @@
 }
 
 .story-hero-grid {
-    min-height: 660px;
+    min-height: 620px;
     display: grid;
     grid-template-columns: minmax(0, 0.82fr) minmax(560px, 1.18fr);
     align-items: center;
@@ -209,7 +209,7 @@
 .story-hero h1 {
     max-width: 670px;
     margin-top: 27px;
-    font-size: clamp(52.8px, 5.5vw, 88px);
+    font-size: clamp(40px, 4.2vw, 64px);
     line-height: 0.94;
     letter-spacing: -0.045em;
 }
@@ -1309,7 +1309,7 @@
 
     .story-hero h1 {
         margin-top: 22px;
-        font-size: clamp(44.8px, 12vw, 60.8px);
+        font-size: clamp(36px, 10vw, 46px);
     }
 
     .story-hero-lead {

@@ -142,7 +142,7 @@
 
 .journal-hero {
     position: relative;
-    padding: 68px 0 84px;
+    padding: 70px 0 90px;
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(163, 122, 78, 0.05) 1px, transparent 1px),
@@ -205,7 +205,7 @@
     max-width: 690px;
     margin-top: 19px;
     color: var(--journal-ink);
-    font-size: clamp(52.8px, 5.5vw, 88px);
+    font-size: clamp(40px, 4.2vw, 64px);
     font-weight: 500;
     letter-spacing: -0.045em;
     line-height: 0.94;
@@ -1289,7 +1289,7 @@
     }
 
     .journal-hero h1 {
-        font-size: clamp(44.8px, 12vw, 60.8px);
+        font-size: clamp(36px, 10vw, 46px);
         line-height: 1;
     }
 

@@ -156,31 +156,43 @@
     </section>
 
     <section class="shop-guide-section">
-        <div class="shop-shell shop-guide-grid">
-            <div class="shop-guide-heading">
-                <span class="shop-guide-label">Le conseil de la maison</span>
-                <p class="shop-kicker">Bien choisir</p>
-                <h2>Quelle quantité <em>prévoir&nbsp;?</em></h2>
-                <p>Le Wagyu se déguste en portions mesurées. Son persillage permet une expérience généreuse sans quantité excessive.</p>
-            </div>
-            <div class="shop-guide-values">
-                <article><span>01</span><strong>120 à 150 g</strong><small>par personne</small><p>Pour une dégustation ou un menu en plusieurs services.</p></article>
-                <article><span>02</span><strong>180 à 220 g</strong><small>par personne</small><p>Pour faire de la pièce le cœur du repas.</p></article>
-                <article><span>03</span><strong>2 à 4 min</strong><small>de repos</small><p>Après cuisson, pour laisser les jus se répartir.</p></article>
-            </div>
-        </div>
-    </section>
-
-    <section class="shop-reassurance-section">
         <div class="shop-shell">
-            <header class="shop-reassurance-heading">
-                <div class="shop-heading-title"><div><p class="shop-kicker">Votre commande</p><h2>Soignée jusqu’à <em>votre table.</em></h2></div></div>
-            </header>
-            <div class="shop-reassurance-grid">
-                <article><span>01</span><strong>Vous sélectionnez</strong><p>La pièce et la quantité souhaitées sont ajoutées à votre demande.</p></article>
-                <article><span>02</span><strong>Nous confirmons</strong><p>La disponibilité, le poids exact et le montant final sont vérifiés.</p></article>
-                <article><span>03</span><strong>Nous préparons</strong><p>Votre commande est découpée et conditionnée avec attention.</p></article>
-                <article><span>04</span><strong>Vous dégustez</strong><p>Nos recommandations vous accompagnent jusqu’à la cuisson.</p></article>
+            <div class="shop-duo" data-open-card>
+                <span class="shop-duo-label">Le conseil de la maison</span>
+
+                <span class="shop-duo-tease shop-duo-tease-left" aria-hidden="true">Les justes quantités</span>
+                <span class="shop-duo-tease shop-duo-tease-right" aria-hidden="true">Une commande soignée</span>
+
+                <button type="button" class="shop-duo-cover" aria-label="Ouvrir la carte du conseil de la maison">
+                    <span class="shop-duo-cover-frame"></span>
+                    <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="" class="shop-duo-cover-logo">
+                    <em>Le conseil de la maison</em>
+                    <small>Wagyu France · Domaine du Tilleul</small>
+                </button>
+
+                <div class="shop-duo-panel shop-duo-left">
+                    <p class="shop-kicker">Bien choisir</p>
+                    <h2>Quelle quantité <em>prévoir&nbsp;?</em></h2>
+                    <p class="shop-duo-intro">Le Wagyu se déguste en portions mesurées. Son persillage permet une expérience généreuse sans quantité excessive.</p>
+
+                    <ul class="shop-duo-doses">
+                        <li><strong>120 à 150 g</strong><small>par personne</small><p>Pour une dégustation ou un menu en plusieurs services.</p></li>
+                        <li><strong>180 à 220 g</strong><small>par personne</small><p>Pour faire de la pièce le cœur du repas.</p></li>
+                        <li><strong>2 à 4 min</strong><small>de repos</small><p>Après cuisson, pour laisser les jus se répartir.</p></li>
+                    </ul>
+                </div>
+
+                <div class="shop-duo-panel shop-duo-right">
+                    <p class="shop-kicker">Votre commande</p>
+                    <h2>Soignée jusqu’à <em>votre table.</em></h2>
+
+                    <ol class="shop-duo-steps">
+                        <li><span>01</span><div><strong>Vous sélectionnez</strong><p>La pièce et la quantité souhaitées sont ajoutées à votre demande.</p></div></li>
+                        <li><span>02</span><div><strong>Nous confirmons</strong><p>La disponibilité, le poids exact et le montant final sont vérifiés.</p></div></li>
+                        <li><span>03</span><div><strong>Nous préparons</strong><p>Votre commande est découpée et conditionnée avec attention.</p></div></li>
+                        <li><span>04</span><div><strong>Vous dégustez</strong><p>Nos recommandations vous accompagnent jusqu’à la cuisson.</p></div></li>
+                    </ol>
+                </div>
             </div>
         </div>
     </section>

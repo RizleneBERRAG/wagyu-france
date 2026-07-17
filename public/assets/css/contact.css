@@ -131,7 +131,7 @@
     max-width: 850px;
     margin: 18px 0 0;
     font-family: var(--wf-font-serif);
-    font-size: clamp(52.8px, 5.5vw, 88px);
+    font-size: clamp(40px, 4.2vw, 64px);
     line-height: 0.94;
     letter-spacing: -0.045em;
     font-weight: 500;
@@ -1183,7 +1183,7 @@
     }
 
     .contact-hero-copy h1 {
-        font-size: clamp(44.8px, 12vw, 60.8px);
+        font-size: clamp(36px, 10vw, 46px);
     }
 
     .contact-hero-actions {

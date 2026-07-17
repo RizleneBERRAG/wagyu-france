@@ -205,7 +205,7 @@
 
 .wagyu-hero {
     position: relative;
-    padding: 72px 0 88px;
+    padding: 70px 0 90px;
     background:
         linear-gradient(90deg, rgba(168, 129, 81, 0.045) 1px, transparent 1px),
         linear-gradient(rgba(168, 129, 81, 0.045) 1px, transparent 1px),
@@ -232,7 +232,7 @@
 .wagyu-hero-grid {
     position: relative;
     z-index: 2;
-    min-height: 640px;
+    min-height: 620px;
     display: grid;
     grid-template-columns: minmax(0, 0.88fr) minmax(500px, 1.12fr);
     align-items: center;
@@ -257,7 +257,7 @@
     max-width: 680px;
     margin-top: 18px;
     color: var(--wagyu-ink);
-    font-size: clamp(52.8px, 5.5vw, 88px);
+    font-size: clamp(40px, 4.2vw, 64px);
     letter-spacing: -0.045em;
     line-height: 0.94;
 }
@@ -324,7 +324,7 @@
 
 .wagyu-hero-visual {
     position: relative;
-    min-height: 640px;
+    min-height: 620px;
     margin: 22px 18px 22px 0;
 }
 
@@ -1423,7 +1423,7 @@
     }
 
     .wagyu-page h1 {
-        font-size: clamp(44.8px, 12vw, 60.8px);
+        font-size: clamp(36px, 10vw, 46px);
     }
 
     .wagyu-section-heading h2,
