@@ -30,25 +30,6 @@
                     une cuisson précise et le respect du produit.
                 </p>
 
-                <div class="wagyu-hero-actions">
-                    <a href="#persillage" class="wagyu-button wagyu-button-primary">Découvrir le persillage</a>
-                    <a href="{{ route('boutique') }}" class="wagyu-button wagyu-button-secondary">Voir les pièces</a>
-                </div>
-
-                <dl class="wagyu-hero-facts">
-                    <div>
-                        <dt>Texture</dt>
-                        <dd>Fondante et délicate</dd>
-                    </div>
-                    <div>
-                        <dt>Signature</dt>
-                        <dd>Persillage intramusculaire</dd>
-                    </div>
-                    <div>
-                        <dt>Dégustation</dt>
-                        <dd>Portions mesurées</dd>
-                    </div>
-                </dl>
             </div>
 
             <figure class="wagyu-hero-visual">
@@ -71,9 +52,26 @@
                 </div>
             </figure>
         </div>
+
+        <div class="wagyu-shell">
+            <dl class="wagyu-hero-facts">
+                <div>
+                    <dt>Texture</dt>
+                    <dd>Fondante et délicate</dd>
+                </div>
+                <div>
+                    <dt>Signature</dt>
+                    <dd>Persillage intramusculaire</dd>
+                </div>
+                <div>
+                    <dt>Dégustation</dt>
+                    <dd>Portions mesurées</dd>
+                </div>
+            </dl>
+        </div>
     </section>
 
-    <nav class="wagyu-chapter-nav" aria-label="Sommaire de la page">
+    <nav class="wagyu-chapter-nav" aria-label="Sommaire de la page" data-section-nav>
         <div class="wagyu-shell">
             <a href="#singularite"><span>01</span> Singularité</a>
             <a href="#persillage"><span>02</span> Persillage</a>
@@ -84,39 +82,36 @@
     </nav>
 
     <section class="wagyu-intro wagyu-section" id="singularite">
-        <div class="wagyu-shell wagyu-intro-grid">
-            <div class="wagyu-section-index" aria-hidden="true">01</div>
+        <div class="wagyu-shell">
+            <div class="wagyu-intro-top">
+                <header class="wagyu-section-heading">
+                    <p class="wagyu-kicker">Une viande à part</p>
+                    <h2>
+                        Le Wagyu ne se déguste pas
+                        <em>comme une viande classique.</em>
+                    </h2>
+                </header>
 
-            <header class="wagyu-section-heading">
-                <p class="wagyu-kicker">Une viande à part</p>
-                <h2>
-                    Le Wagyu ne se déguste pas
-                    <em>comme une viande classique.</em>
-                </h2>
-            </header>
-
-            <div class="wagyu-intro-copy">
                 <p class="wagyu-lead-paragraph">
                     Sa richesse ne vient pas uniquement de son intensité. Elle réside dans un équilibre
                     rare entre tendreté, gras intramusculaire, jutosité et profondeur aromatique.
                 </p>
-
-                <div class="wagyu-intro-columns">
-                    <p>
-                        Une portion mesurée suffit souvent à révéler toute la personnalité du produit.
-                        Le Wagyu invite à ralentir, à observer la matière et à privilégier une cuisson courte.
-                    </p>
-                    <p>
-                        Chaque pièce possède son propre registre&nbsp;: certaines sont délicates et précises,
-                        d’autres plus puissantes, charnues ou adaptées à des cuissons longues.
-                    </p>
-                </div>
-
-                <blockquote>
-                    <span>“</span>
-                    <p>Une viande généreuse ne demande pas davantage. Elle demande davantage d’attention.</p>
-                </blockquote>
             </div>
+
+            <div class="wagyu-intro-columns">
+                <p>
+                    Une portion mesurée suffit souvent à révéler toute la personnalité du produit.
+                    Le Wagyu invite à ralentir, à observer la matière et à privilégier une cuisson courte.
+                </p>
+                <p>
+                    Chaque pièce possède son propre registre&nbsp;: certaines sont délicates et précises,
+                    d’autres plus puissantes, charnues ou adaptées à des cuissons longues.
+                </p>
+            </div>
+
+            <blockquote class="wagyu-intro-quote">
+                <p>Une viande généreuse ne demande pas davantage. Elle demande davantage d’attention.</p>
+            </blockquote>
         </div>
     </section>
 
@@ -135,7 +130,6 @@
             </figure>
 
             <div class="wagyu-marbling-content">
-                <div class="wagyu-section-index" aria-hidden="true">02</div>
                 <p class="wagyu-kicker">Le persillage</p>
                 <h2>Ce marbrage fin qui transforme la dégustation.</h2>
 
@@ -191,17 +185,17 @@
                 </p>
             </div>
 
-            <div class="wagyu-sensory-grid">
+            <div class="wagyu-sensory-grid" data-reveal>
                 <article>
                     <div class="wagyu-card-topline">
                         <span>01</span>
                         <small>Toucher</small>
                     </div>
-                    <strong class="wagyu-card-letter" aria-hidden="true">F</strong>
                     <h3>Fondant</h3>
                     <p>
                         Une texture souple et presque beurrée, qui s’exprime sans demander une cuisson longue.
                     </p>
+                    <div class="wagyu-card-scale-head"><small>Intensité</small><span>92&nbsp;%</span></div>
                     <div class="wagyu-card-scale"><i style="width: 92%"></i></div>
                 </article>
 
@@ -210,11 +204,11 @@
                         <span>02</span>
                         <small>Bouche</small>
                     </div>
-                    <strong class="wagyu-card-letter" aria-hidden="true">J</strong>
                     <h3>Jutosité</h3>
                     <p>
                         Une sensation ample et enveloppante, portée par la fonte progressive du persillage.
                     </p>
+                    <div class="wagyu-card-scale-head"><small>Intensité</small><span>86&nbsp;%</span></div>
                     <div class="wagyu-card-scale"><i style="width: 86%"></i></div>
                 </article>
 
@@ -223,11 +217,11 @@
                         <span>03</span>
                         <small>Finale</small>
                     </div>
-                    <strong class="wagyu-card-letter" aria-hidden="true">L</strong>
                     <h3>Longueur</h3>
                     <p>
                         Le goût reste présent après la bouchée, avec une finale douce, profonde et persistante.
                     </p>
+                    <div class="wagyu-card-scale-head"><small>Intensité</small><span>89&nbsp;%</span></div>
                     <div class="wagyu-card-scale"><i style="width: 89%"></i></div>
                 </article>
             </div>
@@ -320,7 +314,6 @@
     <section class="wagyu-cooking wagyu-section" id="degustation">
         <div class="wagyu-shell wagyu-cooking-grid">
             <div class="wagyu-cooking-content">
-                <div class="wagyu-section-index" aria-hidden="true">05</div>
                 <p class="wagyu-kicker">Le geste juste</p>
                 <h2>
                     Cuire peu,
@@ -382,21 +375,6 @@
             <div class="wagyu-origin-actions">
                 <a href="{{ route('histoire') }}" class="wagyu-button wagyu-button-light">Découvrir notre histoire</a>
                 <a href="{{ route('tracabilite') }}" class="wagyu-origin-link">Consulter la traçabilité <span>→</span></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="wagyu-final-cta">
-        <div class="wagyu-shell wagyu-final-card">
-            <div class="wagyu-final-number" aria-hidden="true">06</div>
-            <p class="wagyu-kicker">Passer à la dégustation</p>
-            <h2>Choisissez la pièce qui correspond à votre table.</h2>
-            <p>
-                Découvrez les morceaux disponibles, leurs profils et les recommandations de préparation.
-            </p>
-            <div>
-                <a href="{{ route('boutique') }}" class="wagyu-button wagyu-button-primary">Découvrir la boutique</a>
-                <a href="{{ route('contact') }}" class="wagyu-button wagyu-button-secondary">Demander conseil</a>
             </div>
         </div>
     </section>

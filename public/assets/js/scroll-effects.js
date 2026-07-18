@@ -89,3 +89,64 @@
         }
     });
 })();
+(function () {
+    'use strict';
+
+    var nav = document.querySelector('[data-section-nav]');
+    if (!nav) { return; }
+
+    var liens = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var sections = liens
+        .map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
+        .filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) { return; }
+
+    function activer(id) {
+        liens.forEach(function (a) {
+            a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+        });
+    }
+
+    var obs = new IntersectionObserver(function (entrees) {
+        entrees.forEach(function (e) {
+            if (e.isIntersecting) { activer(e.target.id); }
+        });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+
+    sections.forEach(function (s) { obs.observe(s); });
+})();
+(function () {
+    'use strict';
+
+    var nav = document.querySelector('[data-section-nav]');
+    var fin = document.querySelector('[data-nav-end]') || document.querySelector('.wagyu-origin');
+    if (!nav || !fin || !('IntersectionObserver' in window)) { return; }
+
+    var obs = new IntersectionObserver(function (entrees) {
+        nav.classList.toggle('is-hidden', entrees[0].isIntersecting);
+    }, { rootMargin: '0px 0px -18% 0px' });
+
+    obs.observe(fin);
+})();
+(function () {
+    'use strict';
+
+    var livre = document.querySelector('[data-book]');
+    if (!livre) { return; }
+
+    var feuilles = Array.prototype.slice.call(livre.querySelectorAll('.story-leaf'));
+    if (!feuilles.length) { return; }
+
+    livre.addEventListener('click', function () {
+        var courante = -1;
+        for (var i = 0; i < feuilles.length; i++) {
+            if (!feuilles[i].classList.contains('is-turned')) { courante = i; break; }
+        }
+
+        if (courante >= 0 && courante < feuilles.length - 1) {
+            feuilles[courante].classList.add('is-turned');
+        } else {
+            feuilles.forEach(function (f) { f.classList.remove('is-turned'); });
+        }
+    });
+})();

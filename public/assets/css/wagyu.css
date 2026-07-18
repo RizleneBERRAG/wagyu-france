@@ -75,13 +75,6 @@
     text-transform: uppercase;
 }
 
-.wagyu-kicker::before {
-    content: "";
-    width: 34px;
-    height: 1px;
-    background: var(--wagyu-bronze);
-}
-
 .wagyu-page h1,
 .wagyu-page h2 {
     font-family: var(--wf-font-serif);
@@ -157,17 +150,6 @@
     background: #ffffff;
     border-color: var(--wagyu-bronze);
 }
-
-.wagyu-button-light {
-    color: var(--wagyu-charcoal);
-    background: #ffffff;
-    border-color: #ffffff;
-}
-
-.wagyu-button-light::after {
-    border-color: rgba(39, 34, 30, 0.14);
-}
-
 .wagyu-text-link,
 .wagyu-origin-link {
     display: inline-flex;
@@ -205,28 +187,14 @@
 
 .wagyu-hero {
     position: relative;
-    padding: 70px 0 90px;
+    padding: 70px 0 0;
     background:
         linear-gradient(90deg, rgba(168, 129, 81, 0.045) 1px, transparent 1px),
         linear-gradient(rgba(168, 129, 81, 0.045) 1px, transparent 1px),
         #faf7f2;
-    background-size: 72px 72px;
+    background-size: 54px 54px;
     border-bottom: 1px solid var(--wagyu-line);
     overflow: hidden;
-}
-
-.wagyu-hero::before {
-    content: "WAGYU";
-    position: absolute;
-    left: -30px;
-    bottom: -62px;
-    color: rgba(36, 31, 26, 0.025);
-    font-family: var(--wf-font-serif);
-    font-size: clamp(144px, 18vw, 304px);
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.07em;
-    pointer-events: none;
 }
 
 .wagyu-hero-grid {
@@ -241,7 +209,8 @@
 
 .wagyu-hero-copy {
     position: relative;
-    padding: 34px 0;
+    align-self: start;
+    padding: 42px 0 0;
 }
 
 .wagyu-editorial-mark {
@@ -275,51 +244,54 @@
     line-height: 1.9;
 }
 
-.wagyu-hero-actions {
-    margin-top: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 11px;
-}
-
 .wagyu-hero-facts {
-    margin-top: 44px;
-    padding-top: 25px;
-    border-top: 1px solid var(--wagyu-line);
+    margin-top: 70px;
+    padding: 28px 0 32px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
 }
 
 .wagyu-hero-facts div {
-    position: relative;
-    padding-left: 14px;
+    padding: 6px 34px;
+    border-left: 1px solid var(--wagyu-line);
 }
 
-.wagyu-hero-facts div::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    bottom: 2px;
-    width: 1px;
-    background: var(--wagyu-bronze-soft);
+.wagyu-hero-facts div:first-child {
+    padding-left: 0;
+    border-left: 0;
 }
 
 .wagyu-hero-facts dt {
-    color: var(--wagyu-muted);
-    font-size: 9.44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--wagyu-bronze);
+    font-size: 9.6px;
     font-weight: 700;
-    letter-spacing: 0.11em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
 }
 
+.wagyu-hero-facts dt::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--wagyu-bronze);
+    transform: rotate(45deg);
+    transition: background 0.3s ease;
+}
+
+.wagyu-hero-facts div:hover dt::before {
+    background: var(--wagyu-bronze);
+}
+
 .wagyu-hero-facts dd {
-    margin-top: 7px;
+    margin-top: 11px;
     color: var(--wagyu-ink);
-    font-size: 11.52px;
-    font-weight: 600;
-    line-height: 1.5;
+    font-family: var(--wf-font-serif);
+    font-size: 19.5px;
+    font-weight: 500;
+    line-height: 1.3;
 }
 
 .wagyu-hero-visual {
@@ -436,150 +408,27 @@
 /* =========================================================
    CHAPTER NAV
 ========================================================= */
-
-.wagyu-chapter-nav {
-    position: sticky;
-    top: 116px;
-    z-index: 20;
-    border-bottom: 1px solid var(--wagyu-line);
-    background: rgba(251, 248, 243, 0.95);
-    backdrop-filter: blur(12px);
-}
-
-.wagyu-chapter-nav .wagyu-shell {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-}
-
-.wagyu-chapter-nav a {
-    min-height: 66px;
-    padding: 0 20px;
-    border-left: 1px solid var(--wagyu-line);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #5e564e;
-    font-size: 10.72px;
-    font-weight: 650;
-    text-decoration: none;
-    transition: color 0.2s ease, background 0.2s ease;
-}
-
-.wagyu-chapter-nav a:last-child {
-    border-right: 1px solid var(--wagyu-line);
-}
-
-.wagyu-chapter-nav a span {
-    color: var(--wagyu-bronze);
-    font-family: var(--wf-font-serif);
-    font-size: 14.72px;
-}
-
-.wagyu-chapter-nav a:hover {
-    color: var(--wagyu-bordeaux);
-    background: #ffffff;
-}
-
 #singularite,
 #persillage,
 #sensations,
 #pieces,
 #degustation {
-    scroll-margin-top: 176px;
+    scroll-margin-top: 118px;
 }
 
 /* =========================================================
    INTRO / SINGULARITÉ
 ========================================================= */
-
-.wagyu-intro {
-    background: var(--wagyu-ivory);
-}
-
-.wagyu-intro-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 130px minmax(300px, 0.82fr) minmax(0, 1.18fr);
-    gap: 54px;
-    align-items: start;
-}
-
 .wagyu-section-heading h2 {
     margin-top: 15px;
     color: var(--wagyu-ink);
-    font-size: clamp(42.4px, 4.2vw, 68px);
-    line-height: 1.02;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
 }
 
 .wagyu-section-heading h2 em {
     display: block;
 }
-
-.wagyu-intro-copy {
-    padding-top: 4px;
-}
-
-.wagyu-lead-paragraph {
-    max-width: 760px;
-    color: var(--wagyu-ink);
-    font-family: var(--wf-font-serif);
-    font-size: clamp(23.2px, 2.15vw, 32px);
-    font-weight: 500;
-    line-height: 1.42;
-}
-
-.wagyu-intro-columns {
-    margin-top: 32px;
-    padding-top: 28px;
-    border-top: 1px solid var(--wagyu-line-dark);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 34px;
-}
-
-.wagyu-intro-columns p {
-    color: var(--wagyu-copy);
-    font-size: 13.44px;
-    line-height: 1.85;
-}
-
-.wagyu-intro blockquote {
-    position: relative;
-    margin-top: 35px;
-    padding: 24px 28px 24px 58px;
-    border: 1px solid var(--wagyu-line);
-    background: rgba(255, 255, 255, 0.46);
-}
-
-.wagyu-intro blockquote::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    border: 1px solid rgba(168, 129, 81, 0.16);
-    pointer-events: none;
-}
-
-.wagyu-intro blockquote > span {
-    position: absolute;
-    left: 19px;
-    top: 8px;
-    color: var(--wagyu-bronze);
-    font-family: var(--wf-font-serif);
-    font-size: 56px;
-    line-height: 1;
-}
-
-.wagyu-intro blockquote p {
-    position: relative;
-    z-index: 2;
-    color: #4e463f;
-    font-family: var(--wf-font-serif);
-    font-size: 20px;
-    font-style: italic;
-    line-height: 1.45;
-}
-
 /* =========================================================
    MARBLING
 ========================================================= */
@@ -592,14 +441,14 @@
 
 .wagyu-marbling-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(390px, 0.92fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(430px, 1.1fr);
     align-items: center;
-    gap: 88px;
+    gap: 76px;
 }
 
 .wagyu-marbling-visual {
     position: relative;
-    min-height: 650px;
+    min-height: 520px;
     margin: 18px 0 18px 18px;
 }
 
@@ -643,10 +492,15 @@
 .wagyu-marbling-visual figcaption {
     position: absolute;
     z-index: 3;
-    left: 34px;
-    right: 34px;
-    bottom: 30px;
+    left: 26px;
+    right: 26px;
+    bottom: 26px;
+    padding: 16px 22px;
     color: #ffffff;
+    background: rgba(15, 12, 9, 0.5);
+    border: 1px solid rgba(229, 201, 130, 0.25);
+    border-left: 2px solid var(--wagyu-bronze);
+    backdrop-filter: blur(8px);
 }
 
 .wagyu-marbling-visual figcaption span {
@@ -662,20 +516,16 @@
     display: block;
     margin-top: 9px;
     font-family: var(--wf-font-serif);
-    font-size: 27.2px;
+    font-size: 20px;
     font-weight: 500;
 }
 
-.wagyu-marbling-content .wagyu-section-index {
-    margin-bottom: 26px;
-}
-
 .wagyu-marbling-content h2 {
-    max-width: 600px;
+    max-width: 560px;
     margin-top: 15px;
     color: var(--wagyu-ink);
-    font-size: clamp(42.4px, 4vw, 66.4px);
-    line-height: 1.02;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
 }
 
 .wagyu-marbling-content > p:not(.wagyu-kicker) {
@@ -704,11 +554,17 @@
     color: var(--wagyu-bronze);
     font-family: var(--wf-font-serif);
     font-size: 17.6px;
+    font-style: italic;
+    transition: color 0.25s ease;
+}
+
+.wagyu-marbling-notes article:hover > span {
+    color: var(--wagyu-bordeaux);
 }
 
 .wagyu-marbling-notes strong {
     color: var(--wagyu-ink);
-    font-size: 13.28px;
+    font-size: 14.4px;
 }
 
 .wagyu-marbling-notes p {
@@ -721,14 +577,6 @@
 /* =========================================================
    SENSORIAL PROFILE
 ========================================================= */
-
-.wagyu-sensory {
-    background:
-        linear-gradient(90deg, rgba(168, 129, 81, 0.04) 1px, transparent 1px),
-        var(--wagyu-ivory);
-    background-size: 110px 100%;
-}
-
 .wagyu-heading-row {
     margin-bottom: 48px;
     display: grid;
@@ -742,102 +590,6 @@
     font-size: 13.6px;
     line-height: 1.8;
 }
-
-.wagyu-sensory-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.wagyu-sensory-grid article {
-    position: relative;
-    min-height: 360px;
-    padding: 28px 30px 30px;
-    border: 1px solid var(--wagyu-line-dark);
-    background: rgba(255, 255, 255, 0.65);
-    overflow: hidden;
-    transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-}
-
-.wagyu-sensory-grid article::before {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border: 1px solid rgba(168, 129, 81, 0.17);
-    pointer-events: none;
-}
-
-.wagyu-sensory-grid article:hover {
-    transform: translateY(-5px);
-    background: #ffffff;
-    box-shadow: 0 22px 52px rgba(44, 34, 26, 0.08);
-}
-
-.wagyu-card-topline {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--wagyu-muted);
-    font-size: 9.12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.wagyu-card-topline span {
-    color: var(--wagyu-bronze);
-    font-family: var(--wf-font-serif);
-    font-size: 16px;
-}
-
-.wagyu-card-letter {
-    position: absolute;
-    right: 18px;
-    top: 34px;
-    color: rgba(146, 41, 36, 0.055);
-    font-family: var(--wf-font-serif);
-    font-size: 160px;
-    font-weight: 500;
-    line-height: 1;
-}
-
-.wagyu-sensory-grid h3 {
-    position: relative;
-    z-index: 2;
-    margin-top: 110px;
-    color: var(--wagyu-ink);
-    font-family: var(--wf-font-serif);
-    font-size: 36px;
-    font-weight: 500;
-}
-
-.wagyu-sensory-grid article > p {
-    position: relative;
-    z-index: 2;
-    margin-top: 12px;
-    color: var(--wagyu-copy);
-    font-size: 12.48px;
-    line-height: 1.72;
-}
-
-.wagyu-card-scale {
-    position: absolute;
-    z-index: 2;
-    left: 30px;
-    right: 30px;
-    bottom: 30px;
-    height: 2px;
-    background: #e1d8ce;
-}
-
-.wagyu-card-scale i {
-    display: block;
-    height: 100%;
-    background: linear-gradient(90deg, var(--wagyu-bordeaux), var(--wagyu-bronze-soft));
-}
-
 /* =========================================================
    CUTS
 ========================================================= */
@@ -1005,23 +757,15 @@
     gap: 58px;
 }
 
-.wagyu-cooking .wagyu-section-index {
-    color: rgba(255, 255, 255, 0.055);
-}
-
 .wagyu-cooking .wagyu-kicker {
     color: #d8b082;
-}
-
-.wagyu-cooking .wagyu-kicker::before {
-    background: #cda471;
 }
 
 .wagyu-cooking h2 {
     margin-top: 16px;
     color: #ffffff;
-    font-size: clamp(42.4px, 4vw, 67.2px);
-    line-height: 1;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
 }
 
 .wagyu-cooking h2 em {
@@ -1131,161 +875,9 @@
 /* =========================================================
    ORIGIN
 ========================================================= */
-
-.wagyu-origin {
-    background: #ffffff;
-}
-
-.wagyu-origin-card {
-    position: relative;
-    min-height: 300px;
-    padding: 60px 64px 58px 210px;
-    border: 1px solid var(--wagyu-line-dark);
-    background:
-        linear-gradient(90deg, rgba(168, 129, 81, 0.04) 1px, transparent 1px),
-        #faf7f2;
-    background-size: 78px 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 65px;
-}
-
-.wagyu-origin-card::before {
-    content: "";
-    position: absolute;
-    inset: 7px;
-    border: 1px solid rgba(168, 129, 81, 0.2);
-    pointer-events: none;
-}
-
-.wagyu-origin-monogram {
-    position: absolute;
-    left: 52px;
-    top: 50%;
-    width: 108px;
-    height: 108px;
-    transform: translateY(-50%);
-    border: 1px solid var(--wagyu-bronze);
-    outline: 1px solid rgba(168, 129, 81, 0.28);
-    outline-offset: 7px;
-    display: grid;
-    place-items: center;
-    color: var(--wagyu-bordeaux);
-    font-family: var(--wf-font-serif);
-    font-size: 41.6px;
-}
-
-.wagyu-origin-card h2 {
-    max-width: 730px;
-    margin-top: 13px;
-    color: var(--wagyu-ink);
-    font-size: clamp(39.2px, 3.5vw, 58.4px);
-    line-height: 1.02;
-}
-
-.wagyu-origin-card > div:nth-child(2) > p:not(.wagyu-kicker) {
-    max-width: 780px;
-    margin-top: 17px;
-    color: var(--wagyu-copy);
-    font-size: 13.12px;
-    line-height: 1.78;
-}
-
-.wagyu-origin-actions {
-    min-width: 250px;
-    display: grid;
-    gap: 16px;
-    justify-items: stretch;
-}
-
-.wagyu-origin-link {
-    justify-content: center;
-}
-
 /* =========================================================
    FINAL CTA
 ========================================================= */
-
-.wagyu-final-cta {
-    padding: 0 0 112px;
-    background: #ffffff;
-}
-
-.wagyu-final-card {
-    position: relative;
-    padding: 75px 55px 70px;
-    border-top: 1px solid var(--wagyu-line-dark);
-    border-bottom: 1px solid var(--wagyu-line-dark);
-    text-align: center;
-    overflow: hidden;
-}
-
-.wagyu-final-card::before,
-.wagyu-final-card::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 18%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wagyu-bronze-soft));
-}
-
-.wagyu-final-card::before {
-    left: 0;
-}
-
-.wagyu-final-card::after {
-    right: 0;
-    transform: scaleX(-1);
-}
-
-.wagyu-final-number {
-    position: absolute;
-    left: 50%;
-    top: 6px;
-    transform: translateX(-50%);
-    color: rgba(168, 129, 81, 0.08);
-    font-family: var(--wf-font-serif);
-    font-size: 144px;
-    line-height: 1;
-}
-
-.wagyu-final-card .wagyu-kicker {
-    position: relative;
-    z-index: 2;
-}
-
-.wagyu-final-card h2 {
-    position: relative;
-    z-index: 2;
-    max-width: 800px;
-    margin: 16px auto 0;
-    color: var(--wagyu-ink);
-    font-size: clamp(43.2px, 4.4vw, 70.4px);
-    line-height: 1;
-}
-
-.wagyu-final-card > p:not(.wagyu-kicker) {
-    position: relative;
-    z-index: 2;
-    max-width: 650px;
-    margin: 18px auto 0;
-    color: var(--wagyu-copy);
-    font-size: 13.44px;
-    line-height: 1.75;
-}
-
-.wagyu-final-card > div:last-child {
-    position: relative;
-    z-index: 2;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 11px;
-}
-
 /* =========================================================
    RESPONSIVE
 ========================================================= */
@@ -1295,12 +887,6 @@
         grid-template-columns: minmax(0, 0.9fr) minmax(430px, 1.1fr);
         gap: 54px;
     }
-
-    .wagyu-intro-grid {
-        grid-template-columns: 90px minmax(280px, 0.85fr) minmax(0, 1.15fr);
-        gap: 36px;
-    }
-
     .wagyu-marbling-grid {
         gap: 58px;
     }
@@ -1331,11 +917,6 @@
     .wagyu-section {
         padding: 88px 0;
     }
-
-    .wagyu-chapter-nav {
-        top: 102px;
-    }
-
     .wagyu-hero-grid {
         min-height: auto;
         grid-template-columns: 1fr;
@@ -1350,22 +931,13 @@
         min-height: 620px;
         margin-left: 42px;
     }
-
-    .wagyu-intro-grid {
-        grid-template-columns: 80px 1fr;
-    }
-
-    .wagyu-intro-copy {
-        grid-column: 2;
-    }
-
     .wagyu-marbling-grid {
         grid-template-columns: 1fr;
         gap: 64px;
     }
 
     .wagyu-marbling-visual {
-        min-height: 590px;
+        min-height: 460px;
     }
 
     .wagyu-marbling-content {
@@ -1381,35 +953,6 @@
 
     .wagyu-heading-row > p {
         max-width: 680px;
-    }
-
-    .wagyu-sensory-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .wagyu-sensory-grid article {
-        min-height: 285px;
-    }
-
-    .wagyu-sensory-grid h3 {
-        margin-top: 74px;
-    }
-
-    .wagyu-origin-card {
-        padding: 58px 48px 54px 180px;
-        grid-template-columns: 1fr;
-        gap: 28px;
-    }
-
-    .wagyu-origin-monogram {
-        left: 42px;
-        width: 96px;
-        height: 96px;
-    }
-
-    .wagyu-origin-actions {
-        min-width: 0;
-        justify-items: start;
     }
 }
 
@@ -1428,14 +971,13 @@
 
     .wagyu-section-heading h2,
     .wagyu-marbling-content h2,
-    .wagyu-cooking h2,
-    .wagyu-final-card h2 {
+    .wagyu-cooking h2 {
         font-size: clamp(37.6px, 10vw, 52px);
     }
 
     .wagyu-hero {
         padding: 45px 0 62px;
-        background-size: 48px 48px;
+        background-size: 54px 54px;
     }
 
     .wagyu-editorial-mark {
@@ -1446,23 +988,20 @@
         font-size: 14.08px;
         line-height: 1.78;
     }
-
-    .wagyu-hero-actions {
-        display: grid;
-    }
-
     .wagyu-button {
         width: 100%;
     }
-
     .wagyu-hero-facts {
         grid-template-columns: 1fr;
-        gap: 16px;
+    }
+    .wagyu-hero-facts div {
+        padding: 15px 0;
+        border-left: 0;
+        border-bottom: 1px solid var(--wagyu-line);
     }
 
-    .wagyu-hero-facts div {
-        padding: 0 0 15px 14px;
-        border-bottom: 1px solid var(--wagyu-line);
+    .wagyu-hero-facts div:first-child {
+        padding-top: 0;
     }
 
     .wagyu-hero-facts div:last-child {
@@ -1497,49 +1036,6 @@
     .wagyu-hero-visual figcaption strong {
         font-size: 24.8px;
     }
-
-    .wagyu-chapter-nav {
-        position: static;
-        overflow-x: auto;
-    }
-
-    .wagyu-chapter-nav .wagyu-shell {
-        width: max-content;
-        min-width: 100%;
-        grid-template-columns: repeat(5, minmax(128px, 1fr));
-    }
-
-    .wagyu-chapter-nav a {
-        min-height: 58px;
-        padding: 0 14px;
-    }
-
-    .wagyu-intro-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .wagyu-intro-grid > .wagyu-section-index {
-        display: none;
-    }
-
-    .wagyu-intro-copy {
-        grid-column: auto;
-    }
-
-    .wagyu-intro-columns {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .wagyu-lead-paragraph {
-        font-size: 23.2px;
-    }
-
-    .wagyu-intro blockquote {
-        padding: 22px 22px 22px 48px;
-    }
-
     .wagyu-marbling-visual {
         min-height: 450px;
         margin: 10px 0 10px 10px;
@@ -1551,19 +1047,9 @@
         bottom: 10px;
         left: -10px;
     }
-
-    .wagyu-marbling-content .wagyu-section-index {
-        display: none;
-    }
-
-    .wagyu-heading-row {
+.wagyu-heading-row {
         margin-bottom: 34px;
     }
-
-    .wagyu-sensory-grid article {
-        min-height: 300px;
-    }
-
     .wagyu-cuts-grid {
         grid-template-columns: 1fr;
     }
@@ -1576,11 +1062,6 @@
         grid-template-columns: 1fr;
         gap: 42px;
     }
-
-    .wagyu-cooking .wagyu-section-index {
-        display: none;
-    }
-
     .wagyu-cooking-visual {
         min-height: 440px;
     }
@@ -1594,44 +1075,6 @@
         padding: 20px 0;
         border-right: 0;
     }
-
-    .wagyu-origin-card {
-        padding: 142px 28px 34px;
-        background-size: 56px 100%;
-    }
-
-    .wagyu-origin-monogram {
-        left: 50%;
-        top: 28px;
-        width: 86px;
-        height: 86px;
-        transform: translateX(-50%);
-    }
-
-    .wagyu-origin-actions {
-        display: grid;
-    }
-
-    .wagyu-origin-link {
-        min-height: 40px;
-    }
-
-    .wagyu-final-cta {
-        padding-bottom: 70px;
-    }
-
-    .wagyu-final-card {
-        padding: 65px 12px 58px;
-    }
-
-    .wagyu-final-card::before,
-    .wagyu-final-card::after {
-        display: none;
-    }
-
-    .wagyu-final-card > div:last-child {
-        display: grid;
-    }
 }
 
 @media (max-width: 430px) {
@@ -1643,11 +1086,6 @@
         font-size: 9.6px;
         gap: 10px;
     }
-
-    .wagyu-kicker::before {
-        width: 24px;
-    }
-
     .wagyu-hero-visual {
         min-height: 410px;
         margin-left: 16px;
@@ -1662,23 +1100,507 @@
     .wagyu-marbling-visual {
         min-height: 400px;
     }
-
-    .wagyu-sensory-grid article {
-        padding: 24px;
-    }
-
-    .wagyu-card-scale {
-        left: 24px;
-        right: 24px;
-        bottom: 24px;
-    }
-
     .wagyu-cut-body {
         padding: 22px 18px 20px;
     }
+}
+/* =========================================================
+   RAIL DE CHAPITRES (fil dore + losanges)
+========================================================= */
 
+.wagyu-chapter-nav {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    z-index: 900;
+    transform: translateY(-50%);
+}
+
+.wagyu-chapter-nav .wagyu-shell {
+    position: relative;
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 4px 0;
+}
+
+.wagyu-chapter-nav .wagyu-shell::before {
+    content: "";
+    position: absolute;
+    left: 3.5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(168, 129, 81, 0.45) 12%, rgba(168, 129, 81, 0.45) 88%, transparent);
+}
+
+.wagyu-chapter-nav a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--wagyu-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.wagyu-chapter-nav a::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(168, 129, 81, 0.65);
+    background: #faf7f2;
+    transform: rotate(45deg);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wagyu-chapter-nav a span {
+    color: var(--wagyu-bronze);
+    font-family: var(--wf-font-serif);
+    font-size: 13.5px;
+    font-style: italic;
+    transition: color 0.25s ease;
+}
+
+.wagyu-chapter-nav a:hover,
+.wagyu-chapter-nav a.is-active {
+    color: var(--wagyu-bordeaux);
+    transform: translateX(3px);
+}
+
+.wagyu-chapter-nav a:hover::before,
+.wagyu-chapter-nav a.is-active::before {
+    background: var(--wagyu-bronze);
+    border-color: var(--wagyu-bronze);
+    box-shadow: 0 0 0 4px rgba(168, 129, 81, 0.18);
+}
+
+.wagyu-chapter-nav a.is-active span {
+    color: var(--wagyu-bordeaux);
+}
+
+@media (max-width: 1499px) {
+    .wagyu-chapter-nav {
+        display: none;
+    }
+}
+/* =========================================================
+   SECTION SINGULARITE : COMPOSITION EDITORIALE
+========================================================= */
+
+.wagyu-intro {
+    background: var(--wagyu-ivory);
+}
+
+.wagyu-intro-top {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.08fr);
+    gap: 74px;
+    align-items: end;
+}
+
+.wagyu-lead-paragraph {
+    color: var(--wagyu-ink);
+    font-family: var(--wf-font-serif);
+    font-size: clamp(20px, 1.7vw, 25px);
+    font-weight: 500;
+    line-height: 1.55;
+}
+
+.wagyu-intro-columns {
+    position: relative;
+    margin-top: 56px;
+    padding-top: 42px;
+    border-top: 1px solid var(--wagyu-line-dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 54px;
+}
+
+.wagyu-intro-columns::before {
+    content: "";
+    position: absolute;
+    top: -3.5px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    margin-left: -3.5px;
+    background: var(--wagyu-ivory);
+    border: 1px solid var(--wagyu-bronze);
+    transform: rotate(45deg);
+}
+
+.wagyu-intro-columns p {
+    color: var(--wagyu-copy);
+    font-size: 13.44px;
+    line-height: 1.85;
+}
+
+.wagyu-intro-columns p:last-child {
+    text-align: right;
+}
+
+.wagyu-page .wagyu-intro-quote {
+    max-width: 780px;
+    margin: 72px auto 0;
+    text-align: center;
+}
+
+.wagyu-intro-quote::before {
+    content: "\201C";
+    display: block;
+    margin-bottom: 8px;
+    color: var(--wagyu-bronze);
+    font-family: var(--wf-font-serif);
+    font-size: 58px;
+    line-height: 1;
+}
+
+.wagyu-intro-quote p {
+    color: #4e463f;
+    font-family: var(--wf-font-serif);
+    font-size: clamp(21px, 1.9vw, 26px);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.wagyu-intro-quote::after {
+    content: "";
+    display: block;
+    width: 54px;
+    height: 1px;
+    margin: 26px auto 0;
+    background: linear-gradient(90deg, transparent, var(--wagyu-bronze), transparent);
+}
+
+@media (max-width: 900px) {
+    .wagyu-intro-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: start;
+    }
+
+    .wagyu-intro-columns {
+        margin-top: 40px;
+        padding-top: 32px;
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .wagyu-page .wagyu-intro-quote {
+        margin-top: 46px;
+    }
+}
+/* =========================================================
+   SENSATIONS : L'INTERLUDE SOMBRE
+========================================================= */
+
+.wagyu-sensory {
+    position: relative;
+    color: #f4ecdf;
+    background:
+        radial-gradient(circle at 14% 0%, rgba(229, 201, 130, 0.07), transparent 42%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.016) 0, rgba(255, 255, 255, 0.016) 1px, transparent 1px, transparent 72px),
+        #241f1a;
+    border-top: 1px solid rgba(229, 201, 130, 0.25);
+    border-bottom: 1px solid rgba(229, 201, 130, 0.25);
+}
+
+.wagyu-sensory .wagyu-kicker {
+    color: rgba(229, 201, 130, 0.95);
+}
+
+.wagyu-sensory .wagyu-section-heading h2 {
+    color: #ffffff;
+}
+
+.wagyu-sensory .wagyu-heading-row > p {
+    color: rgba(244, 236, 223, 0.66);
+}
+
+.wagyu-sensory-grid {
+    margin-top: 58px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.wagyu-sensory-grid article {
+    position: relative;
+    padding: 44px 40px 48px;
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease;
+}
+
+.wagyu-sensory-grid.is-revealed article {
+    opacity: 1;
+    transform: none;
+}
+
+.wagyu-sensory-grid article:nth-child(1) { transition-delay: 0.15s, 0.15s, 0s; }
+.wagyu-sensory-grid article:nth-child(2) { transition-delay: 0.4s, 0.4s, 0s; }
+.wagyu-sensory-grid article:nth-child(3) { transition-delay: 0.65s, 0.65s, 0s; }
+
+.wagyu-sensory-grid article:nth-child(1) .wagyu-card-scale i { transition-delay: 0.35s; }
+.wagyu-sensory-grid article:nth-child(2) .wagyu-card-scale i { transition-delay: 0.6s; }
+.wagyu-sensory-grid article:nth-child(3) .wagyu-card-scale i { transition-delay: 0.85s; }
+
+.wagyu-sensory-grid article + article {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wagyu-sensory-grid article:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.wagyu-card-topline {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.wagyu-card-topline span {
+    color: var(--wf-gold-light);
+    font-family: var(--wf-font-serif);
+    font-size: 15.5px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.wagyu-card-topline small {
+    color: rgba(229, 201, 130, 0.72);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.wagyu-sensory-grid h3 {
+    margin-top: 30px;
+    color: #ffffff;
+    font-family: var(--wf-font-serif);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.wagyu-sensory-grid article > p {
+    margin-top: 14px;
+    color: rgba(244, 236, 223, 0.62);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.wagyu-card-scale-head {
+    margin-top: 34px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.wagyu-card-scale-head small {
+    color: rgba(229, 201, 130, 0.72);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.wagyu-card-scale-head span {
+    color: var(--wf-gold-light);
+    font-family: var(--wf-font-serif);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.wagyu-card-scale {
+    margin-top: 10px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.wagyu-card-scale i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--wf-gold), var(--wf-gold-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.1s cubic-bezier(0.3, 0, 0.2, 1);
+}
+
+.wagyu-sensory-grid.is-revealed .wagyu-card-scale i {
+    transform: scaleX(1);
+}
+
+@media (max-width: 900px) {
+    .wagyu-sensory-grid {
+        margin-top: 40px;
+        grid-template-columns: 1fr;
+    }
+
+    .wagyu-sensory-grid article {
+        padding: 30px 4px 34px;
+    }
+
+    .wagyu-sensory-grid article + article {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+.wagyu-chapter-nav {
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.wagyu-chapter-nav.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+/* =========================================================
+   ORIGINE & TRACABILITE : mise en page d'origine,
+   habillage bordeaux (pleine largeur)
+========================================================= */
+
+.wagyu-origin {
+    padding: 0;
+    background: #6f211d;
+}
+
+.wagyu-origin-card {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    padding: 60px 64px 58px 210px;
+    border: 0;
+    border-top: 1px solid rgba(229, 201, 130, 0.3);
+    border-bottom: 1px solid rgba(229, 201, 130, 0.3);
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 84% 14%, rgba(229, 201, 130, 0.12), transparent 44%),
+        #6f211d;
+    background-size: 78px 100%, auto, auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 65px;
+}
+
+.wagyu-origin-card::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(229, 201, 130, 0.22);
+    pointer-events: none;
+}
+
+.wagyu-origin-monogram {
+    position: absolute;
+    left: 52px;
+    top: 50%;
+    width: 108px;
+    height: 108px;
+    transform: translateY(-50%);
+    border: 1px solid var(--wf-gold-light);
+    outline: 1px solid rgba(229, 201, 130, 0.35);
+    outline-offset: 7px;
+    display: grid;
+    place-items: center;
+    color: var(--wf-gold-light);
+    font-family: var(--wf-font-serif);
+    font-size: 41.6px;
+}
+
+.wagyu-origin .wagyu-kicker {
+    color: rgba(229, 201, 130, 0.9);
+}
+
+.wagyu-origin-card h2 {
+    max-width: 730px;
+    margin-top: 13px;
+    color: #ffffff;
+    font-size: clamp(39.2px, 3.5vw, 58.4px);
+    line-height: 1.02;
+}
+
+.wagyu-origin-card > div:nth-child(2) > p:not(.wagyu-kicker) {
+    max-width: 780px;
+    margin-top: 17px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13.12px;
+    line-height: 1.78;
+}
+
+.wagyu-origin-actions {
+    min-width: 250px;
+    display: grid;
+    gap: 16px;
+    justify-items: stretch;
+}
+
+.wagyu-origin .wagyu-origin-link {
+    color: #ffffff;
+    justify-content: center;
+}
+
+.wagyu-button-light {
+    color: var(--wagyu-charcoal);
+    background: #ffffff;
+    border-color: #ffffff;
+}
+
+.wagyu-button-light::after {
+    border-color: rgba(39, 34, 30, 0.14);
+}
+
+@media (max-width: 980px) {
+    .wagyu-origin-card {
+        padding: 58px 48px 54px 180px;
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .wagyu-origin-monogram {
+        left: 42px;
+        width: 96px;
+        height: 96px;
+    }
+
+    .wagyu-origin-actions {
+        min-width: 0;
+        justify-items: start;
+    }
+}
+
+@media (max-width: 720px) {
+    .wagyu-origin-card {
+        padding: 142px 28px 34px;
+        background-size: 56px 100%, auto, auto;
+    }
+
+    .wagyu-origin-monogram {
+        left: 50%;
+        top: 28px;
+        width: 86px;
+        height: 86px;
+        transform: translateX(-50%);
+    }
+
+    .wagyu-origin-link {
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 430px) {
     .wagyu-origin-card {
         padding-left: 23px;
         padding-right: 23px;
     }
 }
+

@@ -200,12 +200,6 @@
     gap: 15px;
 }
 
-.story-kicker-line > span {
-    width: 42px;
-    height: 1px;
-    background: var(--story-bronze);
-}
-
 .story-hero h1 {
     max-width: 670px;
     margin-top: 27px;
@@ -418,45 +412,6 @@
 /* =========================================================
    CHAPTERS
 ========================================================= */
-
-.story-chapters {
-    background: var(--story-dark);
-}
-
-.story-chapters-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.story-chapters a {
-    min-height: 78px;
-    padding: 0 24px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 11.2px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.2s ease, background 0.2s ease;
-}
-
-.story-chapters a:last-child {
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.story-chapters a:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.045);
-}
-
-.story-chapters a span {
-    color: #c7958f;
-    font-family: var(--wf-font-serif);
-    font-size: 18.4px;
-}
-
 /* =========================================================
    MANIFESTO
 ========================================================= */
@@ -468,26 +423,17 @@
 
 .story-manifesto-grid {
     display: grid;
-    grid-template-columns: 90px minmax(310px, 0.82fr) minmax(0, 1.18fr);
+    grid-template-columns: minmax(310px, 0.82fr) minmax(0, 1.18fr);
     gap: 54px;
     align-items: start;
 }
 
-.story-section-index {
-    color: rgba(170, 130, 97, 0.28);
-    font-family: var(--wf-font-serif);
-    font-size: 76.8px;
-    line-height: 0.8;
-}
-
-.story-manifesto-title h2,
 .story-heading h2,
 .story-domain-copy h2,
-.story-transmission-copy h2,
 .story-final-copy h2 {
     margin-top: 14px;
-    font-size: clamp(42.4px, 4.5vw, 72px);
-    line-height: 0.98;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
     letter-spacing: -0.035em;
 }
 
@@ -531,78 +477,6 @@
     margin: 0 auto 52px;
     text-align: center;
 }
-
-.story-values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--story-line-strong);
-    border-bottom: 1px solid var(--story-line-strong);
-}
-
-.story-values-grid article {
-    position: relative;
-    min-height: 310px;
-    padding: 34px 28px 38px;
-    border-right: 1px solid var(--story-line);
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.28);
-    transition: background 0.25s ease, transform 0.25s ease;
-}
-
-.story-values-grid article:first-child {
-    border-left: 1px solid var(--story-line);
-}
-
-.story-values-grid article:hover {
-    z-index: 2;
-    background: var(--story-white);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 45px rgba(54, 42, 32, 0.08);
-}
-
-.story-value-number {
-    color: var(--story-bronze);
-    font-size: 9.92px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-}
-
-.story-value-mark {
-    position: absolute;
-    right: 18px;
-    top: 10px;
-    color: rgba(170, 130, 97, 0.1);
-    font-family: var(--wf-font-serif);
-    font-size: 128px;
-    font-style: italic;
-    line-height: 1;
-}
-
-.story-values-grid h3 {
-    position: relative;
-    margin-top: 76px;
-    font-family: var(--wf-font-serif);
-    font-size: 27.52px;
-    font-weight: 600;
-}
-
-.story-values-grid h3::after {
-    content: "";
-    display: block;
-    width: 34px;
-    height: 1px;
-    margin-top: 15px;
-    background: var(--story-red);
-}
-
-.story-values-grid p {
-    position: relative;
-    margin-top: 18px;
-    color: var(--story-copy);
-    font-size: 12.48px;
-    line-height: 1.75;
-}
-
 /* =========================================================
    DOMAIN
 ========================================================= */
@@ -1076,12 +950,13 @@
 ========================================================= */
 
 .story-final {
-    padding: 0 0 110px;
+    padding: 0;
     background: var(--story-ivory);
 }
 
 .story-final-card {
     position: relative;
+    width: 100%;
     min-height: 310px;
     padding: 58px 62px;
     overflow: hidden;
@@ -1233,7 +1108,7 @@
     }
 
     .story-manifesto-grid {
-        grid-template-columns: 70px 1fr;
+        grid-template-columns: 1fr;
         gap: 34px;
     }
 
@@ -1242,20 +1117,6 @@
         padding-left: 0;
         border-left: 0;
     }
-
-    .story-values-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .story-values-grid article:nth-child(2) {
-        border-right: 1px solid var(--story-line);
-    }
-
-    .story-values-grid article:nth-child(3),
-    .story-values-grid article:nth-child(4) {
-        border-top: 1px solid var(--story-line);
-    }
-
     .story-domain-grid {
         grid-template-columns: 1fr;
         gap: 62px;
@@ -1373,22 +1234,6 @@
     .story-hero-seal small {
         font-size: 5.76px;
     }
-
-    .story-chapters-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .story-chapters a {
-        min-height: 66px;
-        padding: 0 16px;
-        font-size: 9.92px;
-    }
-
-    .story-chapters a:nth-child(3),
-    .story-chapters a:nth-child(4) {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
     .story-manifesto,
     .story-values,
     .story-domain,
@@ -1401,45 +1246,19 @@
         grid-template-columns: 1fr;
         gap: 24px;
     }
-
-    .story-section-index {
-        font-size: 59.2px;
-    }
-
     .story-manifesto-copy {
         grid-column: auto;
     }
 
-    .story-manifesto-title h2,
     .story-heading h2,
     .story-domain-copy h2,
-    .story-transmission-copy h2,
     .story-final-copy h2 {
-        font-size: clamp(37.6px, 11vw, 52.8px);
+        font-size: clamp(32px, 9vw, 44px);
     }
 
     .story-heading-centered {
         margin-bottom: 36px;
     }
-
-    .story-values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .story-values-grid article {
-        min-height: 250px;
-        border-right: 1px solid var(--story-line);
-        border-top: 1px solid var(--story-line);
-    }
-
-    .story-values-grid article:first-child {
-        border-top: 0;
-    }
-
-    .story-values-grid h3 {
-        margin-top: 50px;
-    }
-
     .story-domain-media {
         min-height: 455px;
     }
@@ -1505,13 +1324,8 @@
     }
 
     .story-path {
-        min-height: 430px;
+        min-height: 340px;
     }
-
-    .story-final {
-        padding-bottom: 70px;
-    }
-
     .story-final-card {
         min-height: 0;
         padding: 46px 30px;
@@ -1561,17 +1375,6 @@
         width: 78px;
         height: 78px;
     }
-
-    .story-chapters a {
-        min-height: 60px;
-        gap: 8px;
-        font-size: 8.96px;
-    }
-
-    .story-chapters a span {
-        font-size: 15.2px;
-    }
-
     .story-domain-media {
         min-height: 395px;
     }
@@ -1582,5 +1385,410 @@
 
     .story-final-card {
         padding: 42px 25px;
+    }
+}
+/* =========================================================
+   RAIL DE CHAPITRES (fil dore + losanges)
+========================================================= */
+
+.story-chapters {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    z-index: 900;
+    transform: translateY(-50%);
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.story-chapters.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.story-chapters-grid {
+    position: relative;
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 4px 0;
+}
+
+.story-chapters-grid::before {
+    content: "";
+    position: absolute;
+    left: 3.5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(168, 129, 81, 0.45) 12%, rgba(168, 129, 81, 0.45) 88%, transparent);
+}
+
+.story-chapters a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #8a7f74;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.story-chapters a::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(168, 129, 81, 0.65);
+    background: var(--story-paper, #faf7f2);
+    transform: rotate(45deg);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.story-chapters a span {
+    color: var(--wagyu-bronze, #a88151);
+    font-family: var(--wf-font-serif);
+    font-size: 13.5px;
+    font-style: italic;
+    transition: color 0.25s ease;
+}
+
+.story-chapters a:hover,
+.story-chapters a.is-active {
+    color: #922a24;
+    transform: translateX(3px);
+}
+
+.story-chapters a:hover::before,
+.story-chapters a.is-active::before {
+    background: #a88151;
+    border-color: #a88151;
+    box-shadow: 0 0 0 4px rgba(168, 129, 81, 0.18);
+}
+
+.story-chapters a.is-active span {
+    color: #922a24;
+}
+
+#vision,
+#principes,
+#le-domaine,
+#notre-methode,
+#transmission {
+    scroll-margin-top: 118px;
+}
+
+@media (max-width: 1499px) {
+    .story-chapters {
+        display: none;
+    }
+}
+
+.story-manifesto-title h2 {
+    margin-top: 14px;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+}
+/* =========================================================
+   NOS PRINCIPES : ACCORDEON HORIZONTAL
+========================================================= */
+
+.story-values .story-heading h2 {
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
+}
+
+.story-transmission-copy h2 {
+    margin-top: 14px;
+    font-size: clamp(34px, 3.1vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+}
+@media (max-width: 900px) {
+}
+/* premier panneau ouvert par defaut */
+@media (max-width: 900px) {
+}
+/* =========================================================
+   NOS PRINCIPES : LE LIVRE DE LA MAISON
+========================================================= */
+
+.story-book {
+    position: relative;
+    max-width: 1020px;
+    margin: 54px auto 0;
+    min-height: 380px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid rgba(168, 129, 81, 0.45);
+    background: #f6efe3;
+    box-shadow:
+        0 0 0 10px #2c251f,
+        0 0 0 11px rgba(229, 201, 130, 0.55),
+        0 40px 90px rgba(44, 34, 26, 0.3);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.story-book.is-revealed {
+    opacity: 1;
+    transform: none;
+}
+
+.story-book::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 64px;
+    margin-left: -32px;
+    background: linear-gradient(90deg, transparent, rgba(44, 34, 26, 0.12) 50%, transparent);
+    pointer-events: none;
+}
+
+.story-book-left {
+    display: flex;
+    flex-direction: column;
+    padding: 46px 48px;
+    border-right: 1px solid rgba(168, 129, 81, 0.3);
+}
+
+.story-book-ornament {
+    color: rgba(168, 129, 81, 0.8);
+    font-size: 11px;
+}
+
+.story-book-index {
+    margin: 24px 0 0 !important;
+    padding: 0 !important;
+    list-style: none;
+    display: grid;
+    gap: 17px;
+}
+
+.story-book-index li {
+    display: flex;
+    align-items: baseline;
+    gap: 13px;
+    color: #a3947f;
+    font-family: var(--wf-font-serif);
+    font-size: 19px;
+    font-weight: 500;
+    transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.story-book-index li span {
+    color: rgba(168, 129, 81, 0.75);
+    font-size: 13px;
+    font-style: italic;
+    transition: color 0.35s ease;
+}
+
+.story-book-index li.is-current {
+    color: #241f1a;
+    transform: translateX(5px);
+}
+
+.story-book-index li.is-current span {
+    color: #922a24;
+}
+
+.story-book-hint {
+    margin-top: auto;
+    padding-top: 26px;
+    color: #a3947f;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+@media (max-width: 900px) {
+    .story-book {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .story-book-left {
+        padding: 34px 26px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(168, 129, 81, 0.3);
+    }
+
+    .story-book-hint,
+    .story-book::before {
+        display: none;
+    }
+}
+/* marque-page */
+.story-book::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 11%;
+    z-index: 5;
+    width: 26px;
+    height: 72px;
+    background: linear-gradient(180deg, #7c241f, #922a24);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+    box-shadow: 0 6px 14px rgba(44, 34, 26, 0.25);
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .story-book {
+        cursor: default;
+        box-shadow:
+            0 0 0 8px #2c251f,
+            0 0 0 9px rgba(229, 201, 130, 0.55),
+            0 24px 60px rgba(44, 34, 26, 0.25);
+    }
+
+    .story-book::after {
+        display: none;
+    }
+}
+/* ===== FEUILLES DU LIVRE (recto/verso) ===== */
+
+.story-book-leaves {
+    position: relative;
+    perspective: 2000px;
+}
+
+.story-leaf {
+    position: absolute;
+    inset: 0;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 1.05s cubic-bezier(0.7, 0, 0.3, 1);
+    will-change: transform;
+}
+
+.story-leaf:nth-child(1) { z-index: 3; }
+.story-leaf:nth-child(2) { z-index: 2; }
+.story-leaf:nth-child(3) { z-index: 1; }
+
+.story-leaf.is-turned {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+
+.story-leaf-face {
+    position: absolute;
+    inset: 0;
+    padding: 46px 48px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background:
+        linear-gradient(90deg, rgba(44, 34, 26, 0.06), transparent 14%),
+        #f9f3e8;
+}
+
+.story-leaf-back {
+    transform: rotateY(180deg);
+    background:
+        linear-gradient(270deg, rgba(44, 34, 26, 0.06), transparent 14%),
+        #f9f3e8;
+}
+
+.story-leaf-face > span {
+    color: #922a24;
+    font-family: var(--wf-font-serif);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.story-leaf-face h3 {
+    margin-top: 10px;
+    color: #241f1a;
+    font-family: var(--wf-font-serif);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.story-leaf-face h3::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 1px;
+    margin-top: 13px;
+    background: linear-gradient(90deg, rgba(168, 129, 81, 0.9), transparent);
+}
+
+.story-leaf-face p {
+    margin-top: 16px;
+    color: #6b6156;
+    font-size: 13.2px;
+    line-height: 1.85;
+}
+
+.story-leaf-colophon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.story-leaf-colophon > span {
+    color: rgba(168, 129, 81, 0.8);
+    font-size: 12px;
+    font-style: normal;
+}
+
+.story-leaf-colophon strong {
+    color: #241f1a;
+    font-family: var(--wf-font-serif);
+    font-size: 27px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.story-leaf-colophon small {
+    color: #a3947f;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+    .story-book-leaves {
+        perspective: none;
+    }
+
+    .story-leaf {
+        position: relative;
+        transform: none !important;
+    }
+
+    .story-leaf-face {
+        position: relative;
+        padding: 30px 26px;
+    }
+
+    .story-leaf-back {
+        transform: none;
+        border-top: 1px solid rgba(168, 129, 81, 0.25);
+    }
+
+    .story-leaf:nth-child(2) .story-leaf-front,
+    .story-leaf:nth-child(3) .story-leaf-front {
+        border-top: 1px solid rgba(168, 129, 81, 0.25);
+    }
+
+    .story-leaf:nth-child(3) .story-leaf-back {
+        display: none;
     }
 }

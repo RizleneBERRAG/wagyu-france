@@ -71,18 +71,18 @@
         </div>
     </section>
 
-    <nav class="story-chapters" aria-label="Sommaire de notre histoire">
+    <nav class="story-chapters" aria-label="Sommaire de notre histoire" data-section-nav>
         <div class="story-shell story-chapters-grid">
             <a href="#vision"><span>01</span>Notre vision</a>
-            <a href="#le-domaine"><span>02</span>Le domaine</a>
-            <a href="#notre-methode"><span>03</span>Notre méthode</a>
-            <a href="#transmission"><span>04</span>La transmission</a>
+            <a href="#principes"><span>02</span>Nos principes</a>
+            <a href="#le-domaine"><span>03</span>Le domaine</a>
+            <a href="#notre-methode"><span>04</span>Notre méthode</a>
+            <a href="#transmission"><span>05</span>La transmission</a>
         </div>
     </nav>
 
     <section class="story-manifesto" id="vision">
         <div class="story-shell story-manifesto-grid">
-            <div class="story-section-index" aria-hidden="true">01</div>
 
             <div class="story-manifesto-title">
                 <p class="story-kicker">Notre vision</p>
@@ -103,41 +103,61 @@
         </div>
     </section>
 
-    <section class="story-values">
+    <section class="story-values" id="principes">
         <div class="story-shell">
             <header class="story-heading story-heading-centered">
                 <p class="story-kicker">Ce qui nous guide</p>
                 <h2>Quatre principes. Une même exigence.</h2>
             </header>
 
-            <div class="story-values-grid">
-                <article>
-                    <span class="story-value-number">01</span>
-                    <div class="story-value-mark" aria-hidden="true">T</div>
-                    <h3>Le temps</h3>
-                    <p>Ne jamais précipiter ce qui doit mûrir. La qualité se construit dans la durée.</p>
-                </article>
+            <div class="story-book" data-reveal data-book>
+                <div class="story-book-left">
+                    <span class="story-book-ornament" aria-hidden="true">◆</span>
+                    <ul class="story-book-index">
+                        <li class="is-current"><span>01</span>Le temps</li>
+                        <li><span>02</span>L’origine</li>
+                        <li><span>03</span>La justesse</li>
+                        <li><span>04</span>La confiance</li>
+                    </ul>
+                    <small class="story-book-hint">Cliquer sur le livre pour tourner la page</small>
+                </div>
 
-                <article>
-                    <span class="story-value-number">02</span>
-                    <div class="story-value-mark" aria-hidden="true">O</div>
-                    <h3>L’origine</h3>
-                    <p>Connaître le lieu, l’histoire et le parcours qui donnent sa singularité au produit.</p>
-                </article>
+                <div class="story-book-leaves" aria-live="polite">
+                    <div class="story-leaf">
+                        <div class="story-leaf-face story-leaf-front">
+                            <span>01</span>
+                            <h3>Le temps</h3>
+                            <p>Ne jamais précipiter ce qui doit mûrir. La qualité se construit dans la durée&nbsp;: celle de l’élevage, conduit sans hâte, et celle de la maturation, qui révèle la profondeur du goût. Chaque étape prend le temps qu’elle mérite — c’est la première exigence de la maison.</p>
+                        </div>
+                        <div class="story-leaf-face story-leaf-back">
+                            <span>02</span>
+                            <h3>L’origine</h3>
+                            <p>Connaître le lieu, l’histoire et le parcours qui donnent sa singularité au produit. Un animal identifié, un élevage français que l’on peut situer, une traçabilité que l’on peut raconter&nbsp;: l’origine n’est pas un argument, c’est le socle de la confiance.</p>
+                        </div>
+                    </div>
 
-                <article>
-                    <span class="story-value-number">03</span>
-                    <div class="story-value-mark" aria-hidden="true">J</div>
-                    <h3>La justesse</h3>
-                    <p>Présenter chaque morceau selon son véritable caractère, son usage et sa cuisson.</p>
-                </article>
+                    <div class="story-leaf">
+                        <div class="story-leaf-face story-leaf-front">
+                            <span>03</span>
+                            <h3>La justesse</h3>
+                            <p>Présenter chaque morceau selon son véritable caractère, son usage et sa cuisson. Ni promesse exagérée, ni jargon inutile&nbsp;: une pièce bien décrite est une pièce bien choisie, et une dégustation réussie commence par un conseil juste.</p>
+                        </div>
+                        <div class="story-leaf-face story-leaf-back">
+                            <span>04</span>
+                            <h3>La confiance</h3>
+                            <p>Expliquer avec clarté, conseiller avec précision et construire une relation durable. De la première question jusqu’à la table, la maison accompagne chaque choix — parce qu’une viande d’exception se partage aussi par la parole donnée.</p>
+                        </div>
+                    </div>
 
-                <article>
-                    <span class="story-value-number">04</span>
-                    <div class="story-value-mark" aria-hidden="true">C</div>
-                    <h3>La confiance</h3>
-                    <p>Expliquer avec clarté, conseiller avec précision et construire une relation durable.</p>
-                </article>
+                    <div class="story-leaf">
+                        <div class="story-leaf-face story-leaf-front story-leaf-colophon">
+                            <span aria-hidden="true">◆</span>
+                            <strong>Une même exigence.</strong>
+                            <small>Wagyu France · Domaine du Tilleul</small>
+                        </div>
+                        <div class="story-leaf-face story-leaf-back"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -303,7 +323,7 @@
         </div>
     </section>
 
-    <section class="story-final">
+    <section data-nav-end class="story-final">
         <div class="story-shell story-final-card">
             <div class="story-final-mark" aria-hidden="true">
                 <img src="{{ asset('assets/images/logo/wagyufrance-logo.png') }}" alt="">
