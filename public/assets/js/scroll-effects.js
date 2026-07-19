@@ -52,7 +52,7 @@
                 obs.unobserve(e.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
 
     cibles.forEach(function (el) { obs.observe(el); });
 })();
@@ -74,7 +74,7 @@
                     obs.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
         obs.observe(el);
     }
 
@@ -84,6 +84,17 @@
             cover.addEventListener('click', function () {
                 carte.classList.add('is-revealed');
             }, { once: true });
+
+            if (window.matchMedia) {
+                var mq = window.matchMedia('(max-width: 980px)');
+                var bascule = function (e) {
+                    if (e.matches && !carte.classList.contains('is-revealed')) {
+                        revelerAuScroll(carte);
+                    }
+                };
+                if (mq.addEventListener) { mq.addEventListener('change', bascule); }
+                else if (mq.addListener) { mq.addListener(bascule); }
+            }
         } else {
             revelerAuScroll(carte);
         }

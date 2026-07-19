@@ -1052,7 +1052,7 @@
     }
 
     .story-final-card {
-        grid-template-columns: 80px minmax(0, 1fr);
+        grid-template-columns: 94px minmax(0, 1fr);
     }
 
     .story-final-actions {
@@ -1103,7 +1103,7 @@
     }
 
     .story-manifesto-copy {
-        grid-column: 2;
+        grid-column: auto;
         padding-left: 0;
         border-left: 0;
     }

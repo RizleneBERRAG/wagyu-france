@@ -1515,6 +1515,11 @@
         grid-template-columns: 1fr;
     }
 
+    .home-guide-steps::before,
+    .home-guide-steps::after {
+        display: none;
+    }
+
     .home-guide-steps article {
         min-height: 0;
         padding: 24px 0 24px 26px;
@@ -1572,4 +1577,14 @@
 .home-page h1 > span {
     display: block;
     white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+    .home-page h1 > span {
+        white-space: normal;
+    }
+
+    .home-trust article:nth-child(2) {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
 }

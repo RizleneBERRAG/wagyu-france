@@ -14,7 +14,6 @@
         <div class="story-shell story-hero-grid">
             <div class="story-hero-copy">
                 <div class="story-kicker-line">
-                    <span></span>
                     <p class="story-kicker">Maison française · Domaine du Tilleul</p>
                 </div>
 
