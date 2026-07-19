@@ -279,47 +279,6 @@
 }
 
 /* CHAPTERS */
-
-.cut-chapters {
-    border-top: 1px solid var(--cut-line);
-    border-bottom: 1px solid var(--cut-line);
-    background: #fffaf3;
-}
-
-.cut-chapters-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.cut-chapters a {
-    min-height: 78px;
-    padding: 0 24px;
-    border-right: 1px solid var(--cut-line);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #4d463f;
-    text-decoration: none;
-    font-size: 12.48px;
-    font-weight: 650;
-    transition: color 0.2s ease, background 0.2s ease;
-}
-
-.cut-chapters a:first-child {
-    border-left: 1px solid var(--cut-line);
-}
-
-.cut-chapters a span {
-    color: var(--cut-burgundy);
-    font-family: var(--wf-font-serif);
-    font-size: 18.4px;
-}
-
-.cut-chapters a:hover {
-    color: var(--cut-burgundy);
-    background: #f3ece2;
-}
-
 /* GENERAL SECTIONS */
 
 .cut-section {
@@ -341,7 +300,7 @@
 .cut-method-copy h2,
 .cut-contact-card h2 {
     margin-top: 12px;
-    font-size: clamp(48px, 5vw, 83.2px);
+    font-size: clamp(34px, 3.1vw, 46px);
     line-height: 0.94;
 }
 
@@ -826,7 +785,7 @@
 .cut-quote blockquote {
     margin: 28px 0 0;
     font-family: var(--wf-font-serif);
-    font-size: clamp(36.8px, 4.5vw, 70.4px);
+    font-size: clamp(28px, 2.6vw, 40px);
     font-weight: 500;
     line-height: 1.04;
     letter-spacing: -0.035em;
@@ -844,7 +803,7 @@
 /* CONTACT */
 
 .cut-contact {
-    background: var(--cut-paper);
+    background: var(--cut-burgundy);
 }
 
 .cut-contact-card {
@@ -1027,19 +986,6 @@
         width: 96px;
         height: 96px;
     }
-
-    .cut-chapters-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .cut-chapters a:nth-child(2) {
-        border-right: 0;
-    }
-
-    .cut-chapters a:nth-child(-n+2) {
-        border-bottom: 1px solid var(--cut-line);
-    }
-
     .cut-family-grid article {
         grid-template-columns: 52px 1fr;
         padding: 26px;
@@ -1078,7 +1024,7 @@
     }
 
     .cut-hero-copy h1 {
-        font-size: 44.8px;
+        font-size: clamp(36px, 10vw, 46px);
     }
 
     .cut-section-heading h2,
@@ -1087,25 +1033,14 @@
     .cut-estimate-heading h2,
     .cut-method-copy h2,
     .cut-contact-card h2 {
-        font-size: 45.6px;
+        font-size: clamp(32px, 9vw, 44px);
     }
 
-    .cut-chapters-grid {
-        grid-template-columns: 1fr;
+    .cut-hero-visual figcaption strong {
+        max-width: none;
+        font-size: 20px;
+        line-height: 1.15;
     }
-
-    .cut-chapters a,
-    .cut-chapters a:first-child,
-    .cut-chapters a:nth-child(2) {
-        border-left: 1px solid var(--cut-line);
-        border-right: 1px solid var(--cut-line);
-        border-bottom: 1px solid var(--cut-line);
-    }
-
-    .cut-chapters a:last-child {
-        border-bottom: 0;
-    }
-
     .cut-family-grid article {
         min-height: 0;
         grid-template-columns: 1fr;
@@ -1135,5 +1070,114 @@
 
     .cut-contact-link {
         white-space: normal;
+    }
+}
+/* =========================================================
+   RAIL DE CHAPITRES (fil dore + losanges)
+========================================================= */
+
+.cut-chapters {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    z-index: 900;
+    transform: translateY(-50%);
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.cut-chapters.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cut-chapters-grid {
+    position: relative;
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 4px 0;
+}
+
+.cut-chapters-grid::before {
+    content: "";
+    position: absolute;
+    left: 3.5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(168, 129, 81, 0.45) 12%, rgba(168, 129, 81, 0.45) 88%, transparent);
+}
+
+.cut-chapters a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #8a7f74;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.cut-chapters a::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(168, 129, 81, 0.65);
+    background: var(--cut-ivory, #f5f0e8);
+    transform: rotate(45deg);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cut-chapters a span {
+    color: rgba(168, 129, 81, 0.95);
+    font-family: var(--wf-font-serif);
+    font-size: 13.5px;
+    font-style: italic;
+    transition: color 0.25s ease;
+}
+
+.cut-chapters a:hover,
+.cut-chapters a.is-active {
+    color: var(--cut-burgundy, #8f211f);
+    transform: translateX(3px);
+}
+
+.cut-chapters a:hover::before,
+.cut-chapters a.is-active::before {
+    background: #a88151;
+    border-color: #a88151;
+    box-shadow: 0 0 0 4px rgba(168, 129, 81, 0.18);
+}
+
+.cut-chapters a.is-active span {
+    color: var(--cut-burgundy, #8f211f);
+}
+
+#lecture,
+#volumes,
+#metiers,
+#methode {
+    scroll-margin-top: 118px;
+}
+
+@media (max-width: 1499px) {
+    .cut-chapters {
+        display: none;
+    }
+}
+
+@media (max-width: 980px) {
+    #lecture,
+    #volumes,
+    #metiers,
+    #methode {
+        scroll-margin-top: 106px;
     }
 }

@@ -70,7 +70,7 @@
         </div>
     </section>
 
-    <nav class="cut-chapters" aria-label="Sommaire Découpe et volumes">
+    <nav class="cut-chapters" aria-label="Sommaire Découpe et volumes" data-section-nav>
         <div class="cut-shell cut-chapters-grid">
             <a href="#lecture"><span>01</span> Lire l’animal</a>
             <a href="#volumes"><span>02</span> Définir les volumes</a>
@@ -364,7 +364,7 @@
         </div>
     </section>
 
-    <section class="cut-section cut-contact">
+    <section data-nav-end class="cut-section cut-contact">
         <div class="cut-shell cut-contact-card">
             <div>
                 <p class="cut-kicker">Préparer votre prochaine sélection</p>

@@ -68,9 +68,6 @@
                     <a href="{{ route('tracabilite') }}" @class(['is-active' => request()->routeIs('tracabilite')])>
                         Traçabilité
                     </a>
-                    <a href="{{ route('contact') }}" @class(['is-active' => request()->routeIs('contact')])>
-                        Contact
-                    </a>
                 @else
                     <a href="{{ route('home') }}" @class(['is-active' => request()->routeIs('home')])>Accueil</a>
                     <a href="{{ route('boutique') }}" @class(['is-active' => request()->routeIs('boutique')])>La boutique</a>
@@ -158,7 +155,6 @@
             <a href="{{ route('reserve.pro') }}">Réserve professionnelle</a>
             <a href="{{ route('decoupe-volumes') }}">Découpe & volumes</a>
             <a href="{{ route('tracabilite') }}">Traçabilité</a>
-            <a href="{{ route('contact') }}">Nous contacter</a>
         @else
             <a href="{{ route('home') }}">Accueil</a>
             <a href="{{ route('boutique') }}">La boutique</a>

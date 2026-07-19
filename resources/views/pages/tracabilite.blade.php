@@ -70,7 +70,7 @@
         </div>
     </section>
 
-    <nav class="trace-chapters" aria-label="Sommaire Traçabilité">
+    <nav class="trace-chapters" aria-label="Sommaire Traçabilité" data-section-nav>
         <div class="trace-shell trace-chapters-grid">
             <a href="#principes"><span>01</span> Les principes</a>
             <a href="#parcours"><span>02</span> Le parcours</a>
@@ -349,7 +349,7 @@
         </div>
     </section>
 
-    <section class="trace-section trace-contact">
+    <section data-nav-end class="trace-section trace-contact">
         <div class="trace-shell trace-contact-card">
             <div>
                 <p class="trace-kicker">Votre dossier professionnel</p>

@@ -70,7 +70,7 @@
         </div>
     </section>
 
-    <nav class="pro-chapters" aria-label="Parcours professionnel">
+    <nav class="pro-chapters" aria-label="Parcours professionnel" data-section-nav>
         <div class="pro-shell pro-chapters-grid">
             <a href="#approche"><span>01</span> Notre approche</a>
             <a href="#services"><span>02</span> Les services</a>
@@ -344,7 +344,7 @@
         </div>
     </section>
 
-    <section class="pro-section pro-contact">
+    <section data-nav-end class="pro-section pro-contact">
         <div class="pro-shell pro-contact-card">
             <div>
                 <p class="pro-kicker">Votre prochaine sélection</p>

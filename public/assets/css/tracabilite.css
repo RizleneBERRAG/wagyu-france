@@ -301,51 +301,6 @@
 }
 
 /* CHAPTERS */
-
-.trace-chapters {
-    position: sticky;
-    top: 116px;
-    z-index: 80;
-    border-top: 1px solid var(--trace-line);
-    border-bottom: 1px solid var(--trace-line);
-    background: rgba(255, 253, 249, 0.95);
-    backdrop-filter: blur(12px);
-}
-
-.trace-chapters-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.trace-chapters a {
-    min-height: 66px;
-    padding: 0 22px;
-    border-right: 1px solid var(--trace-line);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--trace-text);
-    font-size: 11.84px;
-    font-weight: 650;
-    text-decoration: none;
-    transition: color 0.2s ease, background 0.2s ease;
-}
-
-.trace-chapters a:first-child {
-    border-left: 1px solid var(--trace-line);
-}
-
-.trace-chapters a span {
-    color: var(--trace-burgundy);
-    font-family: var(--wf-font-serif);
-    font-size: 18.4px;
-}
-
-.trace-chapters a:hover {
-    color: var(--trace-burgundy);
-    background: #f8f2ea;
-}
-
 /* SHARED SECTIONS */
 
 .trace-section {
@@ -369,7 +324,7 @@
     margin: 16px 0 0;
     color: var(--trace-ink);
     font-family: var(--wf-font-serif);
-    font-size: clamp(46.4px, 5vw, 83.2px);
+    font-size: clamp(34px, 3.1vw, 46px);
     font-weight: 500;
     line-height: 0.95;
     letter-spacing: -0.045em;
@@ -811,7 +766,7 @@
 .trace-quote blockquote {
     margin: 28px 0 0;
     font-family: var(--wf-font-serif);
-    font-size: clamp(41.6px, 4.7vw, 78.4px);
+    font-size: clamp(28px, 2.6vw, 40px);
     font-weight: 400;
     line-height: 0.98;
     letter-spacing: -0.035em;
@@ -829,7 +784,7 @@
 /* CONTACT */
 
 .trace-contact {
-    background: var(--trace-paper);
+    background: var(--trace-ink);
 }
 
 .trace-contact-card {
@@ -904,8 +859,7 @@
 
 .trace-button:focus-visible,
 .trace-text-link:focus-visible,
-.trace-contact-link:focus-visible,
-.trace-chapters a:focus-visible {
+.trace-contact-link:focus-visible {
     outline: 3px solid rgba(141, 32, 36, 0.28);
     outline-offset: 4px;
 }
@@ -970,21 +924,6 @@
         min-height: 610px;
         margin-inline: auto;
     }
-
-    .trace-chapters {
-        top: 102px;
-    }
-
-    .trace-chapters-grid {
-        overflow-x: auto;
-        grid-template-columns: repeat(4, minmax(190px, 1fr));
-        scrollbar-width: none;
-    }
-
-    .trace-chapters-grid::-webkit-scrollbar {
-        display: none;
-    }
-
     .trace-intro-copy {
         padding-left: 0;
         border-left: 0;
@@ -1080,11 +1019,6 @@
     .trace-hero-seal span {
         font-size: 28.8px;
     }
-
-    .trace-chapters {
-        top: 96px;
-    }
-
     .trace-section,
     .trace-journey,
     .trace-transmission {
@@ -1097,7 +1031,7 @@
     .trace-dossier-content h2,
     .trace-transmission-copy h2,
     .trace-contact-card h2 {
-        font-size: clamp(44px, 12vw, 64px);
+        font-size: clamp(32px, 9vw, 44px);
     }
 
     .trace-pillar-grid {
@@ -1199,7 +1133,7 @@
     }
 
     .trace-quote blockquote {
-        font-size: 40.8px;
+        font-size: clamp(26px, 7.5vw, 30px);
     }
 }
 
@@ -1211,5 +1145,126 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    }
+}
+/* =========================================================
+   RAIL DE CHAPITRES (fil dore + losanges)
+========================================================= */
+
+.trace-chapters {
+    position: fixed;
+    left: 24px;
+    top: 50%;
+    z-index: 900;
+    transform: translateY(-50%);
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.trace-chapters.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.trace-chapters-grid {
+    position: relative;
+    width: auto;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 4px 0;
+}
+
+.trace-chapters-grid::before {
+    content: "";
+    position: absolute;
+    left: 3.5px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(168, 129, 81, 0.45) 12%, rgba(168, 129, 81, 0.45) 88%, transparent);
+}
+
+.trace-chapters a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: #8a7f74;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.trace-chapters a::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(168, 129, 81, 0.65);
+    background: var(--trace-paper, #f7f2ea);
+    transform: rotate(45deg);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trace-chapters a span {
+    color: rgba(168, 129, 81, 0.95);
+    font-family: var(--wf-font-serif);
+    font-size: 13.5px;
+    font-style: italic;
+    transition: color 0.25s ease;
+}
+
+.trace-chapters a:hover,
+.trace-chapters a.is-active {
+    color: var(--trace-burgundy, #8f211f);
+    transform: translateX(3px);
+}
+
+.trace-chapters a:hover::before,
+.trace-chapters a.is-active::before {
+    background: #a88151;
+    border-color: #a88151;
+    box-shadow: 0 0 0 4px rgba(168, 129, 81, 0.18);
+}
+
+.trace-chapters a.is-active span {
+    color: var(--trace-burgundy, #8f211f);
+}
+
+#principes,
+#parcours,
+#informations,
+#transmission {
+    scroll-margin-top: 118px;
+}
+
+@media (max-width: 1499px) {
+    .trace-chapters {
+        display: none;
+    }
+}
+/* correction : .tracabilite-page a { color: inherit } ecrasait les boutons */
+.tracabilite-page .trace-button-primary {
+    color: #ffffff;
+}
+
+.tracabilite-page .trace-button-light {
+    color: var(--trace-ink);
+}
+
+.tracabilite-page .trace-button-light:hover {
+    color: var(--trace-burgundy);
+}
+
+@media (max-width: 980px) {
+    #principes,
+    #parcours,
+    #informations,
+    #transmission {
+        scroll-margin-top: 106px;
     }
 }
