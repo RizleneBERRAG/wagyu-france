@@ -13,10 +13,6 @@
     <section class="journal-hero">
         <div class="journal-shell journal-hero-grid">
             <div class="journal-hero-copy">
-                <div class="journal-edition-line">
-                    <span>Le carnet de la maison</span>
-                    <small>Édition n° 01</small>
-                </div>
 
                 <p class="journal-kicker">Conseils & savoir-faire</p>
 
@@ -60,12 +56,12 @@
         </div>
     </section>
 
-    <nav class="journal-chapters" aria-label="Sommaire des conseils">
+    <nav class="journal-chapters" aria-label="Sommaire des conseils" data-section-nav>
         <div class="journal-shell journal-chapters-grid">
-            <a href="#selection"><span>Chapitre 01</span><strong>Bien choisir sa pièce</strong></a>
-            <a href="#cuisson"><span>Chapitre 02</span><strong>Maîtriser la cuisson</strong></a>
-            <a href="#portions"><span>Chapitre 03</span><strong>Prévoir les portions</strong></a>
-            <a href="#carnet"><span>Chapitre 04</span><strong>Lire le carnet</strong></a>
+            <a href="#selection"><span>01</span>Bien choisir sa pièce</a>
+            <a href="#cuisson"><span>02</span>Maîtriser la cuisson</a>
+            <a href="#portions"><span>03</span>Prévoir les portions</a>
+            <a href="#carnet"><span>04</span>Lire le carnet</a>
         </div>
     </nav>
 
@@ -120,10 +116,9 @@
                 </p>
             </header>
 
-            <div class="journal-method-grid">
+            <div class="journal-gestes" data-reveal>
                 <article>
                     <span>01</span>
-                    <div class="journal-method-mark">T</div>
                     <h3>Tempérer</h3>
                     <p>Sortez la pièce avant cuisson afin que la chaleur se diffuse plus régulièrement.</p>
                     <small>Avant cuisson</small>
@@ -131,7 +126,6 @@
 
                 <article>
                     <span>02</span>
-                    <div class="journal-method-mark">S</div>
                     <h3>Saisir</h3>
                     <p>Utilisez une poêle bien chaude et laissez le persillage nourrir naturellement la cuisson.</p>
                     <small>Cuisson courte</small>
@@ -139,7 +133,6 @@
 
                 <article>
                     <span>03</span>
-                    <div class="journal-method-mark">R</div>
                     <h3>Reposer</h3>
                     <p>Accordez quelques minutes à la viande pour que les jus se répartissent dans la pièce.</p>
                     <small>2 à 4 minutes</small>
@@ -147,7 +140,6 @@
 
                 <article>
                     <span>04</span>
-                    <div class="journal-method-mark">D</div>
                     <h3>Découper</h3>
                     <p>Servez en tranches fines, dans le sens opposé aux fibres, avec un assaisonnement discret.</p>
                     <small>Au dernier moment</small>
@@ -168,7 +160,7 @@
                 <a href="{{ route('boutique') }}" class="journal-arrow-link">Voir les pièces disponibles <span>→</span></a>
             </div>
 
-            <div class="journal-portions-values">
+            <div class="journal-portions-values" data-reveal>
                 <article>
                     <small>Dégustation</small>
                     <strong>80–120 <span>g</span></strong>
@@ -262,7 +254,7 @@
         </div>
     </section>
 
-    <section class="journal-note">
+    <section data-nav-end class="journal-note">
         <div class="journal-shell journal-note-grid">
             <div class="journal-note-monogram" aria-hidden="true">WF</div>
 
@@ -271,24 +263,9 @@
                 <p>«&nbsp;La meilleure préparation est celle qui accompagne la viande sans jamais chercher à prendre sa place.&nbsp;»</p>
             </blockquote>
 
-            <div class="journal-note-signature">
-                <strong>Wagyu France</strong>
-                <small>Domaine du Tilleul</small>
-            </div>
-        </div>
-    </section>
-
-    <section class="journal-cta">
-        <div class="journal-shell journal-cta-card">
-            <div>
-                <p class="journal-kicker">Passer de la lecture à la dégustation</p>
-                <h2>Choisissez la pièce qui correspond <em>à votre moment.</em></h2>
-                <p>Notre sélection rassemble des pièces à saisir, à partager ou à laisser cuire doucement.</p>
-            </div>
-
-            <div class="journal-cta-actions">
+            <div class="journal-note-actions">
                 <a href="{{ route('boutique') }}" class="journal-button journal-button-light">Découvrir la boutique</a>
-                <a href="{{ route('contact') }}" class="journal-cta-link">Demander conseil <span>→</span></a>
+                <a href="{{ route('contact') }}" class="journal-note-link">Demander conseil <span>→</span></a>
             </div>
         </div>
     </section>

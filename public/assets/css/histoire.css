@@ -170,16 +170,6 @@
     border-bottom: 1px solid var(--story-line);
 }
 
-.story-hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 38%;
-    height: 1px;
-    background: linear-gradient(90deg, var(--story-red), transparent);
-}
-
 .story-hero-grid {
     min-height: 620px;
     display: grid;
