@@ -86,7 +86,6 @@ class ExportGithubPages extends Command
                         $outputPath.'/'.$filename,
                         $this->rewriteHtml($html, $basePath),
                     );
-
                     $this->line(sprintf('  <info>✓</info> %-36s %s', $route, $filename));
                 } finally {
                     $kernel->terminate($request, $response);
@@ -132,6 +131,18 @@ class ExportGithubPages extends Command
             'http://localhost',
             'https://localhost',
         ], '', $html);
+
+        // Une URL absolue vers la racine devient href="" après la suppression
+        // du domaine local. Sur une page professionnelle, cela rechargeait donc
+        // la même page au lieu de revenir vers l'univers particulier.
+        $homeTarget = $basePath.'/index.html';
+        foreach (['"', "'"] as $quote) {
+            $html = str_replace(
+                'href='.$quote.$quote,
+                'href='.$quote.$homeTarget.$quote,
+                $html,
+            );
+        }
 
         $routes = $this->pages;
         uksort($routes, static fn (string $left, string $right): int => strlen($right) <=> strlen($left));
