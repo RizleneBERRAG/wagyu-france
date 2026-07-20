@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
 
     @stack('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/section-nav.css') }}">
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 
