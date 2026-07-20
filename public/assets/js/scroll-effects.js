@@ -110,12 +110,39 @@
     var sections = liens
         .map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
         .filter(Boolean);
-    if (!sections.length || !('IntersectionObserver' in window)) { return; }
+    if (!sections.length) { return; }
+
+    var premiereSection = sections[0];
+    var visibiliteTicking = false;
 
     function activer(id) {
         liens.forEach(function (a) {
             a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
         });
+    }
+
+    function actualiserVisibiliteDebut() {
+        var ligneActivation = Math.min(window.innerHeight * 0.46, 440);
+        var avantPremierChapitre = premiereSection.getBoundingClientRect().top > ligneActivation;
+
+        nav.classList.toggle('is-before-content', avantPremierChapitre);
+        visibiliteTicking = false;
+    }
+
+    function demanderVisibiliteDebut() {
+        if (!visibiliteTicking) {
+            visibiliteTicking = true;
+            window.requestAnimationFrame(actualiserVisibiliteDebut);
+        }
+    }
+
+    window.addEventListener('scroll', demanderVisibiliteDebut, { passive: true });
+    window.addEventListener('resize', demanderVisibiliteDebut, { passive: true });
+    actualiserVisibiliteDebut();
+
+    if (!('IntersectionObserver' in window)) {
+        activer(premiereSection.id);
+        return;
     }
 
     var obs = new IntersectionObserver(function (entrees) {
