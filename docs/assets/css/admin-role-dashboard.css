@@ -1,0 +1,14 @@
+.admin-dashboard-grid.is-notifications-only {
+    grid-template-columns: 1fr;
+}
+
+.admin-dashboard-grid.is-notifications-only .admin-notification-panel {
+    min-height: 260px;
+}
+
+@media (max-width: 900px) {
+    .admin-dashboard-grid,
+    .admin-dashboard-grid.is-notifications-only {
+        grid-template-columns: 1fr;
+    }
+}

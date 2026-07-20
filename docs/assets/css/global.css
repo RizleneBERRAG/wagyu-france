@@ -16,6 +16,9 @@
     --radius-xl: 34px;
     --radius-lg: 26px;
     --radius-md: 18px;
+
+    --wf-font-serif: "Cormorant Garamond", Georgia, serif;
+    --wf-font-sans: "Montserrat", "Segoe UI", Arial, sans-serif;
 }
 
 * {
@@ -35,13 +38,39 @@ body {
         radial-gradient(circle at top right, rgba(111, 23, 18, 0.18), transparent 30%),
         var(--wf-black);
     color: var(--wf-cream);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--wf-font-sans);
     overflow-x: hidden;
+}
+
+h1,
+h2 {
+    font-family: var(--wf-font-serif);
+    font-weight: 500;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.wf-scroll-progress {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    width: 5px;
+    background: rgba(111, 23, 18, 0.08);
+    pointer-events: none;
+}
+
+.wf-scroll-progress i {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--wf-red), var(--wf-gold));
+    transform: scaleY(0);
+    transform-origin: top;
 }
 
 button,
@@ -68,7 +97,7 @@ main {
     color: var(--wf-gold-light);
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    font-size: 0.74rem;
+    font-size: 11.84px;
     font-weight: 700;
 }
 
@@ -136,13 +165,13 @@ main {
     border-radius: 50%;
     background: transparent;
     color: var(--wf-cream);
-    font-size: 1.5rem;
+    font-size: 24px;
     margin-left: auto;
     display: block;
 }
 
 .cart-panel h2 {
-    font-size: 2.2rem;
+    font-size: 35.2px;
     margin: 12px 0 28px;
 }
 

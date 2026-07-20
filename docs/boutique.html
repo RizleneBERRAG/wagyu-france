@@ -3,743 +3,649 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="lIv81JNCGReOzggcmaThbzvJOcSS3wJWagUJJvQl">
+    <meta name="csrf-token" content="LV1P51ZScuS9ypeQdUsyhrhl6LTkW7QZaeCurk4i">
 
-    <title>Boutique — Wagyu France</title>
+    <title>Boutique Wagyu français — Wagyu France</title>
+    <meta name="description" content="Découvrez les pièces de Wagyu français proposées par Wagyu France : entrecôte, filet, faux-filet, rumsteak et morceaux à cuisson lente.">
 
-    <meta name="description" content="Wagyu France, expÃ©rience premium autour du Wagyu franÃ§ais, boutique, histoire du domaine et rÃ©serve professionnelle.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/wagyu-france/assets/css/global.css">
-
-    
     <link rel="stylesheet" href="/wagyu-france/assets/css/site-header.css">
-
-    
     <link rel="stylesheet" href="/wagyu-france/assets/css/footer.css">
-    <link rel="stylesheet" href="/wagyu-france/assets/css/theme-toggle.css">
 
         <link rel="stylesheet" href="/wagyu-france/assets/css/boutique.css">
+    <meta name="robots" content="noindex,nofollow">
 </head>
-
 <body class="boutique-page">
 
-<header class="wf-site-header" data-site-header>
-    <div class="wf-header-shell">
+<div class="wf-scroll-progress" aria-hidden="true">
+    <i data-scroll-progress></i>
+</div>
 
-        <a href="/wagyu-france/index.html" class="wf-header-brand" aria-label="Retour à l'accueil Wagyu France">
-            <img src="/wagyu-france/assets/images/logo/wagyufrance-logo.png" alt="Wagyu France">
-            <span>
-                <strong>Wagyu France</strong>
-                <small data-universe-subtitle>Maison d’exception</small>
-            </span>
-        </a>
+<header class="wf-site-header is-private-universe" data-site-header>
+    <div class="wf-topbar">
+        <div class="wf-header-container wf-topbar-inner">
+            <p>
+                <span class="wf-topbar-dot" aria-hidden="true"></span>
+                                    Livraison réfrigérée en France métropolitaine
+                            </p>
 
-        <nav class="wf-header-nav" aria-label="Navigation principale">
-            <div class="wf-nav-set is-active" data-nav-set="particulier">
-                <a href="/wagyu-france/index.html?univers=particulier">Accueil</a>
-                <a href="/wagyu-france/boutique.html">Boutique</a>
-                <a href="/wagyu-france/le-wagyu.html">Le Wagyu</a>
-                <a href="/wagyu-france/histoire.html">Maison</a>
-                <a href="/wagyu-france/contact.html">Contact</a>
+            <div class="wf-topbar-links">
+                <a href="/wagyu-france/contact.html">Nous contacter</a>
+                <a href="/wagyu-france/professionnels.html">
+                    Espace professionnels
+                </a>
             </div>
+        </div>
+    </div>
 
-            <div class="wf-nav-set" data-nav-set="pro">
-                <a href="/wagyu-france/index.html?univers=pro">Accueil pro</a>
-                <a href="/wagyu-france/reserve-professionnelle.html">Réserve pro</a>
-                <a href="/wagyu-france/decoupe-volumes.html">Découpe & volumes</a>
-                <a href="/wagyu-france/tracabilite.html">Traçabilité</a>
-                <a href="/wagyu-france/contact.html">Contact pro</a>
-            </div>
-        </nav>
-
-        <div class="wf-header-actions">
-
-            <div class="wf-universe-switch" data-universe-switch>
-                <button type="button" class="is-active" data-universe-choice="particulier">
-                    Particulier
-                </button>
-
-                <button type="button" data-universe-choice="pro">
-                    Pro
-                </button>
-
-                <span class="wf-switch-indicator"></span>
-            </div>
-
-            <a href="/wagyu-france/boutique.html" class="wf-header-cta" data-main-cta>
-                Commander
-            </a>
-
-            <button class="wf-menu-button" type="button" data-menu-open aria-label="Ouvrir le menu">
+    <div class="wf-mainbar">
+        <div class="wf-header-container wf-mainbar-inner">
+            <button
+                class="wf-menu-button"
+                type="button"
+                data-menu-open
+                aria-label="Ouvrir le menu"
+                aria-expanded="false"
+            >
+                <span></span>
                 <span></span>
                 <span></span>
             </button>
-        </div>
 
+            <a
+                href=""
+                class="wf-header-brand"
+                aria-label="Retour à l’accueil Wagyu France"
+            >
+                <img src="/wagyu-france/assets/images/logo/wagyufrance-logo.png" alt="Wagyu France">
+                <span>
+                    <strong>Wagyu France</strong>
+                    <small>Élevage &amp; viande d’exception</small>
+                </span>
+            </a>
+
+            <nav class="wf-header-nav" aria-label="Navigation principale">
+                                    <a href="" class="">Accueil</a>
+                    <a href="/wagyu-france/boutique.html" class="is-active">La boutique</a>
+                    <a href="/wagyu-france/le-wagyu.html" class="">Le Wagyu</a>
+                    <a href="/wagyu-france/histoire.html" class="">Notre histoire</a>
+                    <a href="/wagyu-france/blog.html" class="">Conseils</a>
+                            </nav>
+
+            <div class="wf-header-actions">
+                <div class="wf-universe-switch" aria-label="Changer d’univers">
+                    <a
+                        href=""
+                        class="is-active"
+                         aria-current="page"                     >
+                        Particuliers
+                    </a>
+                    <a
+                        href="/wagyu-france/professionnels.html"
+                        class=""
+                                            >
+                        Professionnels
+                    </a>
+                </div>
+
+                                    <button class="wf-cart-button" type="button" data-shop-cart-open aria-label="Ouvrir le panier de la boutique">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 4h2l1.7 9.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20 7H6.1M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+                        </svg>
+                        <span>Panier</span>
+                    </button>
+                            </div>
+        </div>
     </div>
 </header>
 
-<div class="wf-universe-wipe" data-universe-wipe>
-    <span></span>
-    <strong data-wipe-label>Particulier</strong>
-</div>
+<div class="wf-menu-overlay" data-menu-backdrop aria-hidden="true"></div>
 
-<div class="wf-menu-overlay" data-menu-overlay></div>
-
-<aside class="wf-menu-drawer" data-menu-drawer aria-hidden="true">
+<aside class="wf-menu-drawer is-private-universe" data-menu-drawer aria-hidden="true">
     <div class="wf-menu-head">
-        <div>
-            <p class="eyebrow">Navigation</p>
-            <h2 data-menu-title>Univers particulier</h2>
-        </div>
+        <a href="" class="wf-menu-brand">
+            <img src="/wagyu-france/assets/images/logo/wagyufrance-logo.png" alt="Wagyu France">
+            <span>
+                <strong>Wagyu France</strong>
+                <small>Élevage &amp; viande d’exception</small>
+            </span>
+        </a>
 
-        <button type="button" data-menu-close aria-label="Fermer le menu">
-            ×
-        </button>
+        <button type="button" data-menu-close aria-label="Fermer le menu">×</button>
     </div>
 
-    <div class="wf-mobile-universe-tabs">
-        <button type="button" class="is-active" data-universe-choice="particulier">
-            Particulier
-        </button>
-
-        <button type="button" data-universe-choice="pro">
-            Professionnel
-        </button>
+    <div class="wf-mobile-universe-switch" aria-label="Changer d’univers">
+        <a href="" class="is-active">Particuliers</a>
+        <a href="/wagyu-france/professionnels.html" class="">Professionnels</a>
     </div>
 
-    <div class="wf-menu-body">
+    <nav class="wf-mobile-nav" aria-label="Navigation mobile">
+                    <a href="">Accueil</a>
+            <a href="/wagyu-france/boutique.html">La boutique</a>
+            <a href="/wagyu-france/le-wagyu.html">Découvrir le Wagyu</a>
+            <a href="/wagyu-france/histoire.html">Notre histoire</a>
+            <a href="/wagyu-france/blog.html">Conseils & actualités</a>
+            <a href="/wagyu-france/contact.html">Nous contacter</a>
+            </nav>
 
-        <div class="wf-menu-column is-active" data-menu-panel="particulier">
-            <a href="/wagyu-france/index.html">
-                <span>01</span>
-                <strong>Accueil</strong>
-                <small>Entrer dans l’univers Wagyu France.</small>
-            </a>
-
-            <a href="/wagyu-france/boutique.html">
-                <span>02</span>
-                <strong>Boutique</strong>
-                <small>Découvrir les pièces disponibles pour particuliers.</small>
-            </a>
-
-            <a href="/wagyu-france/le-wagyu.html">
-                <span>03</span>
-                <strong>Le goût du Wagyu</strong>
-                <small>Comprendre le persillage, la tendreté et l’expérience en bouche.</small>
-            </a>
-
-            <a href="/wagyu-france/histoire.html">
-                <span>04</span>
-                <strong>Maison Wagyu France</strong>
-                <small>Origine, terroir, patience et exigence.</small>
-            </a>
-
-            <a href="/wagyu-france/contact.html">
-                <span>05</span>
-                <strong>Contact</strong>
-                <small>Échanger avec la maison.</small>
-            </a>
-        </div>
-
-        <div class="wf-menu-column" data-menu-panel="pro">
-            <a href="/wagyu-france/professionnels.html">
-                <span>01</span>
-                <strong>Univers professionnel</strong>
-                <small>Un parcours pensé pour chefs, restaurants et boucheries.</small>
-            </a>
-
-            <a href="/wagyu-france/reserve-professionnelle.html">
-                <span>02</span>
-                <strong>Réserve professionnelle</strong>
-                <small>Pré-réserver les pièces directement sur l’animal.</small>
-            </a>
-
-            <a href="/wagyu-france/decoupe-volumes.html">
-                <span>03</span>
-                <strong>Découpe & volumes</strong>
-                <small>Organiser les besoins avant mise en préparation.</small>
-            </a>
-
-            <a href="/wagyu-france/tracabilite.html">
-                <span>04</span>
-                <strong>Traçabilité</strong>
-                <small>Origine, suivi, sélection et informations produit.</small>
-            </a>
-
-            <a href="/wagyu-france/contact.html">
-                <span>05</span>
-                <strong>Contact pro</strong>
-                <small>Demander un échange ou un accès professionnel.</small>
-            </a>
-        </div>
-
-        <div class="wf-menu-universe-card">
-            <p class="eyebrow" data-menu-card-eyebrow>Univers particulier</p>
-
-            <h3 data-menu-card-title>
-                Une expérience pensée pour découvrir, choisir et savourer.
-            </h3>
-
-            <p data-menu-card-text>
-                Un parcours plus chaleureux, plus sensoriel, orienté dégustation,
-                boutique et découverte de la maison.
-            </p>
-
-            <a href="/wagyu-france/boutique.html" data-menu-card-link>
-                Découvrir la boutique
-            </a>
-        </div>
-
-    </div>
+    <div class="wf-mobile-pro-card">
+                    <p>Vous êtes restaurateur, boucher ou chef&nbsp;?</p>
+            <strong>Un espace professionnel vous est dédié.</strong>
+            <a href="/wagyu-france/professionnels.html">Accéder à l’espace pro</a>
+            </div>
 </aside>
-
 <main>
-    
-    <section class="shop-hero">
-        <div class="shop-glow shop-glow-left"></div>
-        <div class="shop-glow shop-glow-right"></div>
+        <section class="shop-hero">
+        <div class="shop-shell shop-hero-grid">
+            <div class="shop-hero-copy">
+                <div class="shop-hero-edition" aria-hidden="true">
+                    <span>Collection particulière</span>
+                </div>
 
-        <div class="shop-hero-inner">
-            <div class="shop-hero-content">
-                <p class="eyebrow">Boutique particulier</p>
-
-                <h1>
-                    Choisir une pièce rare,
-                    <span>pour une dégustation d’exception.</span>
-                </h1>
-
-                <p>
-                    Une sélection pensée pour les amateurs qui veulent découvrir le Wagyu
-                    dans sa forme la plus élégante : pièces nobles, morceaux de caractère
-                    et formats adaptés à une dégustation premium.
+                <p class="shop-kicker">La boutique Wagyu France</p>
+                <h1>Des pièces choisies pour <em>une dégustation juste.</em></h1>
+                <p class="shop-hero-text">
+                    Entrecôte, filet, faux-filet ou morceaux à cuisson lente : choisissez votre pièce
+                    selon son caractère, sa tendreté et la manière dont vous souhaitez la préparer.
                 </p>
 
                 <div class="shop-hero-actions">
-                    <a href="#selection" class="shop-primary-button">
-                        Voir la sélection
-                    </a>
-
-                    <a href="/wagyu-france/le-wagyu.html" class="shop-secondary-button">
-                        Comprendre le Wagyu
-                    </a>
+                    <a href="#selection" class="shop-button shop-button-primary"><span>Découvrir les pièces</span></a>
+                    <a href="/wagyu-france/le-wagyu.html" class="shop-button shop-button-secondary"><span>Bien choisir son Wagyu</span></a>
                 </div>
+
+                <dl class="shop-hero-facts">
+                    <div><dt>Origine</dt><dd>Élevé en France</dd></div>
+                    <div><dt>Préparation</dt><dd>Découpe soignée</dd></div>
+                    <div><dt>Livraison</dt><dd>Chaîne du froid</dd></div>
+                </dl>
             </div>
 
-            <div class="shop-hero-card">
-                <img
-                    src="/wagyu-france/assets/images/wagyu/marbrage-showcase.jpg"
-                    alt="Pièce de Wagyu marbrée Wagyu France"
-                >
-
-                <div class="shop-hero-card-content">
-                    <span>Collection</span>
-
-                    <h2>Wagyu France</h2>
-
-                    <p>
-                        Persillage, fondant, intensité et traçabilité dans une expérience
-                        pensée pour la dégustation à domicile.
-                    </p>
-
-                    <div class="shop-hero-tags">
-                        <strong>Pièces nobles</strong>
-                        <strong>Découpe premium</strong>
-                        <strong>Froid maîtrisé</strong>
-                    </div>
-                </div>
-            </div>
+            <figure class="shop-hero-visual">
+                <span class="shop-visual-index">Sélection de la maison · 2026</span>
+                <img src="/wagyu-france/assets/images/wagyu/marbrage-showcase.jpg" alt="Pièce de Wagyu français finement persillée">
+                <div class="shop-hero-seal" aria-hidden="true"><span>WF</span><small>Sélection</small></div>
+                <figcaption><span>Le persillage Wagyu</span><strong>Fondant, équilibre et longueur en bouche.</strong></figcaption>
+            </figure>
         </div>
     </section>
 
-    <section class="shop-intro-section">
-        <div class="shop-intro-card">
-            <div>
-                <p class="eyebrow">Sélection maison</p>
-
-                <h2>
-                    Une boutique claire, premium et pensée pour bien choisir.
-                </h2>
-            </div>
-
-            <div>
-                <p>
-                    Le Wagyu ne s’achète pas comme une viande classique. Chaque morceau
-                    possède une intensité, une texture et un usage différent.
-                </p>
-
-                <p>
-                    La boutique guide le choix entre pièces à saisir, morceaux à partager,
-                    formats dégustation et sélections plus confidentielles.
-                </p>
-            </div>
+    <section class="shop-service-strip" aria-label="Engagements de la boutique">
+        <div class="shop-shell shop-service-grid">
+            <article><span>01</span><div><strong>Origine connue</strong><p>Un élevage français et une histoire identifiable.</p></div></article>
+            <article><span>02</span><div><strong>Pièces sélectionnées</strong><p>Chaque morceau est présenté selon son véritable usage.</p></div></article>
+            <article><span>03</span><div><strong>Froid maîtrisé</strong><p>Une préparation pensée pour préserver la viande.</p></div></article>
+            <article><span>04</span><div><strong>Conseils inclus</strong><p>Quantité et cuisson expliquées simplement.</p></div></article>
         </div>
     </section>
 
     <section class="shop-products-section" id="selection">
-        <div class="shop-section-heading">
-            <p class="eyebrow">Produits</p>
+        <div class="shop-shell">
+            <header class="shop-products-heading">
+                <div class="shop-heading-title">
+                    <div><p class="shop-kicker">Notre sélection</p><h2>Choisissez votre <em>pièce.</em></h2></div>
+                </div>
+                <div class="shop-products-intro">
+                    <span>Collection du domaine</span>
+                    <p>Les prix sont indiqués au kilogramme. La disponibilité et le poids exact sont confirmés après votre demande.</p>
+                </div>
+            </header>
 
-            <h2>
-                La sélection Wagyu France.
-            </h2>
+            <div class="shop-toolbar">
+                <div class="shop-filters" data-shop-filters aria-label="Filtrer les produits">
+                    <button type="button" class="is-active" data-filter="all">Toute la sélection</button>
+                    <button type="button" data-filter="noble">Pièces nobles</button>
+                    <button type="button" data-filter="grill">À saisir</button>
+                    <button type="button" data-filter="caractere">De caractère</button>
+                    <button type="button" data-filter="lent">Cuisson lente</button>
+                </div>
 
-            <p>
-                Les prix affichés sont indicatifs pour la maquette. Ils pourront ensuite être
-                connectés à une vraie gestion produit Laravel.
-            </p>
-        </div>
-
-        <div class="shop-toolbar">
-            <div class="shop-filters" data-shop-filters>
-                <button type="button" class="is-active" data-filter="all">Tout</button>
-                <button type="button" data-filter="noble">Pièces nobles</button>
-                <button type="button" data-filter="grill">À saisir</button>
-                <button type="button" data-filter="caractere">Caractère</button>
-                <button type="button" data-filter="lent">Cuisson lente</button>
+                <button type="button" class="shop-cart-button" data-shop-cart-open>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l1.7 9.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20 7H6.1M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+                    <span>Voir mon panier</span>
+                    <strong data-shop-cart-count>0</strong>
+                </button>
             </div>
 
-            <button type="button" class="shop-cart-button" data-shop-cart-open>
-                <span>Panier</span>
-                <strong data-shop-cart-count>0</strong>
-            </button>
-        </div>
-
-        <div class="shop-product-grid" data-shop-grid>
-
-            <article class="shop-product-card" data-category="noble grill" data-product-id="entrecote" data-name="Entrecôte Wagyu" data-price="174">
-                <div class="shop-product-visual is-entrecote">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/entrecote-wagyu.jpg"
-                        alt="Entrecôte Wagyu marbrée"
+            <div class="shop-product-grid" data-shop-grid>
+                                    <article
+                        class="shop-product-card"
+                        data-category="noble grill"
+                        data-product-id="entrecote"
+                        data-name="Entrecôte Wagyu"
+                        data-price="174"
+                        data-stock="8.5"
                     >
-                    <span>Signature</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/entrecote-wagyu.jpg" alt="Entrecôte Wagyu">
+                            <span>La signature</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Pièce noble</p>
-                    <h3>Entrecôte Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 01 · Collection signature</small>
+                            <p class="shop-product-category">Pièce noble · À saisir</p>
+                            <h3>Entrecôte Wagyu</h3>
+                            <p class="shop-product-description">Généreuse et intensément persillée, avec une texture fondante et un goût profond.</p>
 
-                    <span>
-                        Généreuse, persillée et intense. La pièce idéale pour découvrir
-                        la puissance aromatique du Wagyu.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Saisie vive</strong></li>
+                                <li><span>Caractère</span><strong>Intense</strong></li>
+                                <li><span>Disponibilité</span><strong>8,5 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>174 €/kg</strong>
-                        <small>À saisir</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>174 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="8"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="shop-product-card" data-category="noble grill" data-product-id="filet" data-name="Filet Wagyu" data-price="198">
-                <div class="shop-product-visual is-filet">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/filet-wagyu.jpg"
-                        alt="Filet Wagyu premium"
+                    </article>
+                                    <article
+                        class="shop-product-card"
+                        data-category="noble grill"
+                        data-product-id="filet"
+                        data-name="Filet Wagyu"
+                        data-price="198"
+                        data-stock="4.2"
                     >
-                    <span>Rare</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/filet-wagyu.jpg" alt="Filet Wagyu">
+                            <span>Très tendre</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Grande tendreté</p>
-                    <h3>Filet Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 02 · Collection délicate</small>
+                            <p class="shop-product-category">Pièce premium · Délicate</p>
+                            <h3>Filet Wagyu</h3>
+                            <p class="shop-product-description">Une pièce fine et particulièrement fondante, idéale pour une cuisson courte et précise.</p>
 
-                    <span>
-                        Une pièce délicate et très fondante, parfaite pour une dégustation
-                        raffinée et précise.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Courte</strong></li>
+                                <li><span>Caractère</span><strong>Délicat</strong></li>
+                                <li><span>Disponibilité</span><strong>4,2 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>198 €/kg</strong>
-                        <small>Pièce premium</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>198 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="4"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="shop-product-card" data-category="noble grill" data-product-id="fauxfilet" data-name="Faux-filet Wagyu" data-price="174">
-                <div class="shop-product-visual is-fauxfilet">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/faux-filet-wagyu.jpg"
-                        alt="Faux-filet Wagyu marbré"
+                    </article>
+                                    <article
+                        class="shop-product-card"
+                        data-category="noble grill"
+                        data-product-id="fauxfilet"
+                        data-name="Faux-filet Wagyu"
+                        data-price="174"
+                        data-stock="7.1"
                     >
-                    <span>Équilibre</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/faux-filet-wagyu.jpg" alt="Faux-filet Wagyu">
+                            <span>Équilibré</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Équilibre</p>
-                    <h3>Faux-filet Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 03 · Collection équilibre</small>
+                            <p class="shop-product-category">Persillé · À partager</p>
+                            <h3>Faux-filet Wagyu</h3>
+                            <p class="shop-product-description">Un bel équilibre entre tendreté, persillage et tenue à la cuisson.</p>
 
-                    <span>
-                        Une pièce équilibrée entre tendreté, persillage et tenue à la cuisson.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Poêle ou grill</strong></li>
+                                <li><span>Caractère</span><strong>Équilibré</strong></li>
+                                <li><span>Disponibilité</span><strong>7,1 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>174 €/kg</strong>
-                        <small>À saisir</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>174 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="7"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="shop-product-card" data-category="caractere grill" data-product-id="rumsteak" data-name="Rumsteak Wagyu" data-price="137">
-                <div class="shop-product-visual is-rumsteak">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/rumsteak-wagyu.jpg"
-                        alt="Rumsteak Wagyu de caractère"
+                    </article>
+                                    <article
+                        class="shop-product-card"
+                        data-category="caractere grill"
+                        data-product-id="rumsteak"
+                        data-name="Rumsteak Wagyu"
+                        data-price="137"
+                        data-stock="6.4"
                     >
-                    <span>Caractère</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/rumsteak-wagyu.jpg" alt="Rumsteak Wagyu">
+                            <span>De caractère</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Goût franc</p>
-                    <h3>Rumsteak Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 04 · Collection caractère</small>
+                            <p class="shop-product-category">Goût franc · Belle mâche</p>
+                            <h3>Rumsteak Wagyu</h3>
+                            <p class="shop-product-description">Une pièce expressive et régulière, à servir simplement pour préserver son caractère.</p>
 
-                    <span>
-                        Un morceau plus direct, avec une belle mâche et une expression
-                        marquée du produit.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Saisie</strong></li>
+                                <li><span>Caractère</span><strong>Franc</strong></li>
+                                <li><span>Disponibilité</span><strong>6,4 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>137 €/kg</strong>
-                        <small>Caractère</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>137 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="6"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="shop-product-card" data-category="lent caractere" data-product-id="paleron" data-name="Paleron Wagyu" data-price="143">
-                <div class="shop-product-visual is-paleron">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/paleron-wagyu.jpg"
-                        alt="Paleron Wagyu pour cuisson lente"
+                    </article>
+                                    <article
+                        class="shop-product-card"
+                        data-category="lent caractere"
+                        data-product-id="paleron"
+                        data-name="Paleron Wagyu"
+                        data-price="143"
+                        data-stock="5.8"
                     >
-                    <span>Bistronomie</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/paleron-wagyu.jpg" alt="Paleron Wagyu">
+                            <span>À mijoter</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Cuisson lente</p>
-                    <h3>Paleron Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 05 · Collection bistronomie</small>
+                            <p class="shop-product-category">Cuisson lente · Savoureux</p>
+                            <h3>Paleron Wagyu</h3>
+                            <p class="shop-product-description">Riche et généreux, il devient particulièrement fondant après une cuisson douce et longue.</p>
 
-                    <span>
-                        Riche, savoureux et parfait pour une cuisson lente ou une préparation
-                        gastronomique fondante.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Lente</strong></li>
+                                <li><span>Caractère</span><strong>Profond</strong></li>
+                                <li><span>Disponibilité</span><strong>5,8 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>143 €/kg</strong>
-                        <small>Cuisson lente</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>143 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="5"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <article class="shop-product-card" data-category="lent caractere" data-product-id="jarret" data-name="Jarret Wagyu" data-price="92">
-                <div class="shop-product-visual is-jarret">
-                    <img
-                        src="/wagyu-france/assets/images/boutique/jarret-wagyu.jpg"
-                        alt="Jarret Wagyu pour préparation longue"
+                    </article>
+                                    <article
+                        class="shop-product-card"
+                        data-category="lent caractere"
+                        data-product-id="jarret"
+                        data-name="Jarret Wagyu"
+                        data-price="92"
+                        data-stock="4.9"
                     >
-                    <span>Tradition</span>
-                </div>
+                        <div class="shop-product-visual">
+                            <img src="/wagyu-france/assets/images/boutique/jarret-wagyu.jpg" alt="Jarret Wagyu">
+                            <span>Tradition</span>                        </div>
 
-                <div class="shop-product-content">
-                    <p>Préparation longue</p>
-                    <h3>Jarret Wagyu</h3>
+                        <div class="shop-product-content">
+                            <small class="shop-product-reference">Pièce 06 · Collection tradition</small>
+                            <p class="shop-product-category">Préparation longue · Jus</p>
+                            <h3>Jarret Wagyu</h3>
+                            <p class="shop-product-description">Idéal pour les bouillons, les jus et les plats mijotés aux saveurs profondes.</p>
 
-                    <span>
-                        Idéal pour jus, bouillons, plats mijotés et recettes profondes
-                        à cuisson lente.
-                    </span>
+                            <ul class="shop-product-details">
+                                <li><span>Cuisson</span><strong>Très lente</strong></li>
+                                <li><span>Caractère</span><strong>Généreux</strong></li>
+                                <li><span>Disponibilité</span><strong>4,9 kg</strong></li>
+                            </ul>
 
-                    <div class="shop-product-meta">
-                        <strong>92 €/kg</strong>
-                        <small>Mijoté</small>
-                    </div>
+                            <div class="shop-product-purchase">
+                                <div class="shop-product-price">
+                                    <strong>92 €</strong>
+                                    <span>/ kg</span>
+                                </div>
 
-                    <div class="shop-product-actions">
-                        <div class="shop-qty">
-                            <button type="button" data-product-minus>-</button>
-                            <input type="number" min="1" value="1" data-product-qty>
-                            <button type="button" data-product-plus>+</button>
+                                <div class="shop-product-actions">
+                                    <div class="shop-qty" aria-label="Quantité en kilogrammes">
+                                        <button type="button" data-product-minus aria-label="Réduire la quantité">−</button>
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            max="4"
+                                            value="1"
+                                            data-product-qty
+                                            aria-label="Quantité"
+                                        >
+                                        <button type="button" data-product-plus aria-label="Augmenter la quantité">+</button>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="shop-add-button"
+                                        data-add-product
+                                                                            >
+                                        Ajouter
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-
-                        <button type="button" class="shop-add-button" data-add-product>
-                            Ajouter
-                        </button>
-                    </div>
-                </div>
-            </article>
-
+                    </article>
+                            </div>
         </div>
     </section>
 
-    <section class="shop-experience-section">
-        <div class="shop-experience-card">
+    <section class="shop-guide-section">
+        <div class="shop-shell">
+            <div class="shop-duo" data-open-card>
+                <span class="shop-duo-label">Le conseil de la maison</span>
+
+                <span class="shop-duo-tease shop-duo-tease-left" aria-hidden="true">Les justes quantités</span>
+                <span class="shop-duo-tease shop-duo-tease-right" aria-hidden="true">Une commande soignée</span>
+
+                <button type="button" class="shop-duo-cover" aria-label="Ouvrir la carte du conseil de la maison">
+                    <span class="shop-duo-cover-frame"></span>
+                    <img src="/wagyu-france/assets/images/logo/wagyufrance-logo.png" alt="" class="shop-duo-cover-logo">
+                    <em>Le conseil de la maison</em>
+                    <small>Wagyu France · Domaine du Tilleul</small>
+                </button>
+
+                <div class="shop-duo-panel shop-duo-left">
+                    <p class="shop-kicker">Bien choisir</p>
+                    <h2>Quelle quantité <em>prévoir&nbsp;?</em></h2>
+                    <p class="shop-duo-intro">Le Wagyu se déguste en portions mesurées. Son persillage permet une expérience généreuse sans quantité excessive.</p>
+
+                    <ul class="shop-duo-doses">
+                        <li><strong>120 à 150 g</strong><small>par personne</small><p>Pour une dégustation ou un menu en plusieurs services.</p></li>
+                        <li><strong>180 à 220 g</strong><small>par personne</small><p>Pour faire de la pièce le cœur du repas.</p></li>
+                        <li><strong>2 à 4 min</strong><small>de repos</small><p>Après cuisson, pour laisser les jus se répartir.</p></li>
+                    </ul>
+                </div>
+
+                <div class="shop-duo-panel shop-duo-right">
+                    <p class="shop-kicker">Votre commande</p>
+                    <h2>Soignée jusqu’à <em>votre table.</em></h2>
+
+                    <ol class="shop-duo-steps">
+                        <li><span>01</span><div><strong>Vous sélectionnez</strong><p>La pièce et la quantité souhaitées sont ajoutées à votre demande.</p></div></li>
+                        <li><span>02</span><div><strong>Nous confirmons</strong><p>La disponibilité, le poids exact et le montant final sont vérifiés.</p></div></li>
+                        <li><span>03</span><div><strong>Nous préparons</strong><p>Votre commande est découpée et conditionnée avec attention.</p></div></li>
+                        <li><span>04</span><div><strong>Vous dégustez</strong><p>Nos recommandations vous accompagnent jusqu’à la cuisson.</p></div></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="shop-contact-cta">
+        <div class="shop-shell shop-contact-card">
+            <span class="shop-contact-monogram" aria-hidden="true">WF</span>
             <div>
-                <p class="eyebrow">Expérience particulier</p>
-
-                <h2>
-                    Une commande pensée comme une dégustation.
-                </h2>
-
-                <p>
-                    Le parcours particulier doit rester simple, clair et élégant :
-                    choisir une pièce, comprendre son usage, ajouter une quantité et préparer
-                    une dégustation premium.
-                </p>
+                <p class="shop-kicker">Une question sur une pièce&nbsp;?</p>
+                <h2>Nous vous aidons <em>à choisir.</em></h2>
+                <p>Nombre de convives, cuisson souhaitée ou morceau à privilégier : échangez avec Wagyu France.</p>
             </div>
-
-            <div class="shop-experience-list">
-                <article>
-                    <span>01</span>
-                    <strong>Sélection</strong>
-                    <small>Choisir une pièce selon le goût recherché.</small>
-                </article>
-
-                <article>
-                    <span>02</span>
-                    <strong>Quantité</strong>
-                    <small>Adapter le format à la dégustation.</small>
-                </article>
-
-                <article>
-                    <span>03</span>
-                    <strong>Préparation</strong>
-                    <small>Recevoir des conseils de cuisson simples.</small>
-                </article>
-            </div>
+            <a href="/wagyu-france/contact.html" class="shop-button shop-button-light"><span>Nous contacter</span></a>
         </div>
     </section>
 
-    <section class="shop-cta-section">
-        <div class="shop-cta-card">
-            <p class="eyebrow">Wagyu France</p>
-
-            <h2>
-                Le plaisir d’une pièce rare, choisie avec précision.
-            </h2>
-
-            <p>
-                Explorez la sélection ou découvrez l’histoire de Wagyu France pour mieux
-                comprendre l’origine de cette expérience.
-            </p>
-
-            <div>
-                <a href="#selection" class="shop-primary-button">
-                    Voir les produits
-                </a>
-
-                <a href="/wagyu-france/histoire.html" class="shop-secondary-button">
-                    Notre histoire
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <button class="shop-floating-cart" type="button" data-shop-cart-open>
-        <span>Panier</span>
-        <strong data-shop-cart-count>0</strong>
+    <button class="shop-floating-cart" type="button" data-shop-cart-open aria-label="Ouvrir le panier">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l1.7 9.1a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L20 7H6.1M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span>Panier</span><strong data-shop-cart-count>0</strong>
     </button>
 
     <div class="shop-cart-overlay" data-shop-cart-overlay></div>
-
     <aside class="shop-cart-drawer" data-shop-cart-drawer aria-hidden="true">
         <div class="shop-cart-head">
-            <div>
-                <p class="eyebrow">Votre sélection</p>
-                <h2>Panier particulier</h2>
-            </div>
-
-            <button type="button" data-shop-cart-close aria-label="Fermer le panier">
-                ×
-            </button>
+            <div><p class="shop-kicker">Votre sélection</p><h2>Mon panier</h2></div>
+            <button type="button" data-shop-cart-close aria-label="Fermer le panier">×</button>
         </div>
 
         <div class="shop-cart-body">
-            <div class="shop-cart-empty" data-shop-cart-empty>
-                <span>✦</span>
-                <h3>Votre panier est vide</h3>
-                <p>
-                    Ajoutez une pièce de Wagyu à votre sélection pour préparer votre commande.
-                </p>
-            </div>
-
+            <div class="shop-cart-empty" data-shop-cart-empty><span>01</span><h3>Votre panier est vide</h3><p>Ajoutez une pièce à votre sélection pour préparer votre demande.</p></div>
             <div class="shop-cart-items" data-shop-cart-items></div>
 
-            <form
-                class="shop-checkout-form is-hidden"
-                data-shop-checkout-form
-                data-order-url="http://127.0.0.1:8000/boutique/demande"
-            >
-                <input type="hidden" name="_token" value="lIv81JNCGReOzggcmaThbzvJOcSS3wJWagUJJvQl" autocomplete="off">
-                <div class="shop-checkout-intro">
-                    <p class="eyebrow">Finalisation</p>
-                    <h3>Vos informations</h3>
-                    <p>
-                        Ces informations permettront de préparer votre demande de commande
-                        et de vous recontacter pour confirmer la disponibilité.
-                    </p>
+            <form class="shop-checkout-form is-hidden" data-shop-checkout-form data-order-url="#">
+                <input type="hidden" name="_token" value="LV1P51ZScuS9ypeQdUsyhrhl6LTkW7QZaeCurk4i" autocomplete="off">                <div class="shop-checkout-intro">
+                    <p class="shop-kicker">Finalisation</p><h3>Vos coordonnées</h3>
+                    <p>Nous vous recontacterons pour confirmer la disponibilité, le poids exact et les modalités de préparation.</p>
                 </div>
-
                 <div class="shop-checkout-grid">
-                    <label>
-                        <span>Nom complet *</span>
-                        <input type="text" name="fullname" required placeholder="Votre nom">
-                    </label>
-
-                    <label>
-                        <span>Email *</span>
-                        <input type="email" name="email" required placeholder="votre@email.fr">
-                    </label>
-
-                    <label>
-                        <span>Téléphone *</span>
-                        <input type="tel" name="phone" required placeholder="06 00 00 00 00">
-                    </label>
-
-                    <label>
-                        <span>Ville *</span>
-                        <input type="text" name="city" required placeholder="Votre ville">
-                    </label>
-
-                    <label class="shop-checkout-full">
-                        <span>Message</span>
-                        <textarea name="message" rows="4" placeholder="Précisez vos préférences, date souhaitée, questions..."></textarea>
-                    </label>
+                    <label><span>Nom complet *</span><input type="text" name="fullname" required placeholder="Votre nom"></label>
+                    <label><span>Email *</span><input type="email" name="email" required placeholder="votre@email.fr"></label>
+                    <label><span>Téléphone *</span><input type="tel" name="phone" required placeholder="06 00 00 00 00"></label>
+                    <label><span>Ville *</span><input type="text" name="city" required placeholder="Votre ville"></label>
+                    <label class="shop-checkout-full"><span>Message</span><textarea name="message" rows="4" placeholder="Date souhaitée, préférences ou questions..."></textarea></label>
                 </div>
-
                 <div class="shop-checkout-actions">
-                    <button type="button" class="shop-checkout-back" data-shop-checkout-back>
-                        Retour au panier
-                    </button>
-
-                    <button type="submit" class="shop-checkout-submit">
-                        Valider ma demande
-                    </button>
+                    <button type="button" class="shop-checkout-back" data-shop-checkout-back>Retour</button>
+                    <button type="submit" class="shop-checkout-submit">Valider ma demande</button>
                 </div>
             </form>
 
             <div class="shop-order-confirmation is-hidden" data-shop-confirmation>
-                <span>✓</span>
-
-                <h3>Demande enregistrée</h3>
-
-                <p>
-                    Votre demande de commande a bien été enregistrée.
-                    Wagyu France pourra vous recontacter pour confirmer les disponibilités,
-                    les quantités et les modalités de préparation.
-                </p>
-
+                <span>✓</span><h3>Demande enregistrée</h3>
+                <p>Votre sélection a bien été transmise. Wagyu France vous recontactera pour confirmer les disponibilités.</p>
                 <div class="shop-confirmation-summary" data-shop-confirmation-summary></div>
-
-                <button type="button" data-shop-cart-close>
-                    Fermer
-                </button>
+                <button type="button" data-shop-cart-close>Fermer</button>
             </div>
         </div>
 
         <div class="shop-cart-summary">
-            <div>
-                <span>Total estimatif</span>
-                <strong data-shop-cart-total>0 €</strong>
-            </div>
-
-            <p>
-                Votre demande sera ensuite confirmée selon les disponibilités,
-                les quantités et les modalités de préparation.
-            </p>
-
-            <button type="button" data-shop-checkout>
-                Finaliser ma demande
-            </button>
-
-            <button type="button" data-shop-cart-clear>
-                Vider le panier
-            </button>
+            <div><span>Total estimatif</span><strong data-shop-cart-total>0 €</strong></div>
+            <p>Le poids et le montant définitifs seront confirmés avant préparation.</p>
+            <button type="button" class="shop-cart-checkout" data-shop-checkout>Finaliser ma demande</button>
+            <button type="button" class="shop-cart-clear" data-shop-cart-clear>Vider le panier</button>
         </div>
     </aside>
-
 </main>
 
 
-<aside class="cart-drawer" data-cart-drawer>
-    <div class="cart-panel">
-        <button class="cart-close" type="button" data-cart-close>×</button>
-
-        <p class="eyebrow">Votre sélection</p>
-        <h2>Panier</h2>
-
-        <div class="cart-empty">
-            <p>Aucun produit ajouté pour le moment.</p>
-            <a href="/wagyu-france/boutique.html">Découvrir la boutique</a>
-        </div>
-    </div>
-</aside>
-
-
-<button class="theme-floating-toggle" type="button" data-theme-toggle aria-label="Changer le thème clair ou sombre">
-    <span class="theme-icon theme-moon">☾</span>
-    <span class="theme-icon theme-sun">☀</span>
-    <span class="theme-toggle-dot"></span>
-</button>
 <footer class="site-footer">
     <div class="footer-brand">
         <span class="footer-logo-wrap">
@@ -781,10 +687,11 @@
         <div>
             <h3>Contact</h3>
 
-            <p>Ferme du Bois des Huttes</p>
-            <p>02140 Landouzy-la-Ville</p>
-            <p>France</p>
-        </div>
+                            <p>Ferme du Bois des Huttes, 02140 Landouzy-la-Ville, France</p>
+            
+                            <a href="mailto:contact@wagyufrance.fr">contact@wagyufrance.fr</a>
+            
+                    </div>
     </div>
 
     <div class="footer-bottom">
@@ -799,19 +706,14 @@
         </div>
     </div>
 </footer>
-
-
-<script src="/wagyu-france/assets/js/universe-switch.js" defer></script>
-
-
-<script src="/wagyu-france/assets/js/cart-preview.js" defer></script>
-
-
-<script src="/wagyu-france/assets/js/theme-toggle.js" defer></script>
-
-<script src="/wagyu-france/assets/js/site-header-menu.js"></script>
+<script src="/wagyu-france/assets/js/site-header-menu.js" defer></script>
+<script src="/wagyu-france/assets/js/scroll-effects.js" defer></script>
     <script src="/wagyu-france/assets/js/boutique.js" defer></script>
+<script data-preview-static>
+document.addEventListener('submit', function (event) {
+    event.preventDefault();
+    window.alert('Version de démonstration : les formulaires ne sont pas envoyés.');
+});
+</script>
 </body>
 </html>
-
-

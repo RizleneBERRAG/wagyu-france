@@ -1,0 +1,60 @@
+.admin-crm-heading-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.admin-customer-create-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+    gap: 20px;
+    margin-top: 22px;
+}
+
+.admin-customer-create-help {
+    align-self: start;
+    padding: 28px;
+    border-top: 4px solid #b58b4c;
+}
+
+.admin-customer-create-help h3 {
+    margin: 8px 0 16px;
+    color: #312820;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 32px;
+    line-height: 1.05;
+}
+
+.admin-customer-create-help p,
+.admin-customer-create-help li {
+    color: #75695e;
+    font-size: 12.8px;
+    line-height: 1.7;
+}
+
+.admin-customer-create-help ul {
+    margin: 20px 0 0;
+    padding-left: 18px;
+}
+
+.admin-customer-create-help li + li {
+    margin-top: 8px;
+}
+
+@media (max-width: 980px) {
+    .admin-customer-create-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .admin-crm-heading-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .admin-crm-heading-actions a {
+        flex: 1 1 180px;
+    }
+}

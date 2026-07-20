@@ -41,7 +41,7 @@
 .admin-login-card h1 {
     margin-top: 12px;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(48px, 12vw, 80px);
     line-height: 0.9;
     letter-spacing: -0.07em;
     font-weight: 400;
@@ -67,7 +67,7 @@
 
 .admin-login-card label span {
     color: var(--wf-muted);
-    font-size: 0.78rem;
+    font-size: 12.48px;
     font-weight: 950;
     text-transform: uppercase;
     letter-spacing: 0.08em;
