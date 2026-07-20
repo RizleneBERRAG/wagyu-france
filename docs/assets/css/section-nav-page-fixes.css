@@ -34,7 +34,7 @@
 
 .wagyu-page .wagyu-origin {
     position: relative !important;
-    margin: 0 !important;
+    margin: 32px 0 0 !important;
     padding: 64px 0 !important;
     overflow: hidden !important;
     color: #ffffff !important;
@@ -43,7 +43,7 @@
         linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
         linear-gradient(115deg, #6d211d 0%, #7f3028 55%, #74402f 100%) !important;
     background-size: 96px 96px, 96px 96px, auto !important;
-    border-top: 4px solid #8f2d27 !important;
+    border-top: 1px solid rgba(202, 164, 112, 0.52) !important;
     border-bottom: 1px solid rgba(202, 164, 112, 0.42) !important;
 }
 
@@ -165,6 +165,10 @@
 }
 
 @media (max-width: 1120px) {
+    .wagyu-page .wagyu-origin {
+        margin-top: 24px !important;
+    }
+
     .wagyu-page .wagyu-origin-card {
         grid-template-columns: 90px minmax(0, 1fr) !important;
         gap: 30px 34px !important;
@@ -191,6 +195,7 @@
 
 @media (max-width: 720px) {
     .wagyu-page .wagyu-origin {
+        margin-top: 18px !important;
         padding: 36px 0 !important;
     }
 
