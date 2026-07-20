@@ -107,6 +107,13 @@
     });
 })();
 
+/*
+ * NAVIGATION DE SECTIONS — CODE CONSERVÉ POUR REPRISE FUTURE
+ *
+ * Ce bloc est volontairement commenté : il ne s’exécute plus tant que la
+ * navigation n’a pas été redessinée. Les éléments data-section-nav restent
+ * présents dans les vues Blade et sont masqués dans section-nav.css.
+ *
 (function () {
     'use strict';
 
@@ -219,6 +226,7 @@
 
     updateNavigation();
 })();
+ */
 
 (function () {
     'use strict';

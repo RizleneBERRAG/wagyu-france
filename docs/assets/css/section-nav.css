@@ -1,4 +1,15 @@
-/* Navigation de sections désactivée. */
+/*
+ * NAVIGATION DE SECTIONS — DÉSACTIVÉE TEMPORAIREMENT
+ *
+ * Les balises <nav data-section-nav> sont toujours présentes dans les vues Blade.
+ * La version responsive complète de cette feuille est conservée dans Git au commit :
+ * 00da7e17a219ef07d4c62e509e235ef243501419
+ *
+ * Pour afficher son contenu sans modifier la branche :
+ * git show 00da7e17a219ef07d4c62e509e235ef243501419:public/assets/css/section-nav.css
+ *
+ * Ce bloc de masquage peut être retiré lorsque la navigation aura été redessinée.
+ */
 [data-section-nav] {
     display: none !important;
 }

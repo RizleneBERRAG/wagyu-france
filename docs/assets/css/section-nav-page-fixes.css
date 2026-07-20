@@ -1,8 +1,8 @@
-/* Correctifs d'intégration du composant de navigation de sections. */
+/* Correctifs d'intégration communs aux pages éditoriales. */
 
 /*
  * overflow:hidden sur <main> créait un conteneur de défilement et
- * empêchait la navigation sticky de rester visible sur cette page.
+ * empêchait certains comportements sticky de fonctionner correctement.
  * overflow-x:clip conserve le masquage horizontal des décors sans
  * modifier le contexte de défilement vertical.
  */
@@ -14,5 +14,27 @@
 @supports not (overflow: clip) {
     .decoupe-page main {
         overflow: visible !important;
+    }
+}
+
+/*
+ * La section cuisson héritait du padding vertical générique de 112 px.
+ * En fin de page, cela créait une grande bande sombre vide avant le CTA
+ * Origine & traçabilité. On conserve de l'air, mais avec une transition
+ * beaucoup plus courte et plus naturelle.
+ */
+.wagyu-page .wagyu-cooking {
+    padding-bottom: 48px !important;
+}
+
+@media (max-width: 980px) {
+    .wagyu-page .wagyu-cooking {
+        padding-bottom: 38px !important;
+    }
+}
+
+@media (max-width: 720px) {
+    .wagyu-page .wagyu-cooking {
+        padding-bottom: 30px !important;
     }
 }
