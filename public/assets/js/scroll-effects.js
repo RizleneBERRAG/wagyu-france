@@ -126,6 +126,17 @@
         var avantPremierChapitre = premiereSection.getBoundingClientRect().top > ligneActivation;
 
         nav.classList.toggle('is-before-content', avantPremierChapitre);
+
+        if (avantPremierChapitre) {
+            nav.style.setProperty('opacity', '0', 'important');
+            nav.style.setProperty('visibility', 'hidden', 'important');
+            nav.style.setProperty('pointer-events', 'none', 'important');
+        } else {
+            nav.style.removeProperty('opacity');
+            nav.style.removeProperty('visibility');
+            nav.style.removeProperty('pointer-events');
+        }
+
         visibiliteTicking = false;
     }
 
