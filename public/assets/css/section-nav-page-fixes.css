@@ -1,0 +1,18 @@
+/* Correctifs d'intégration du composant de navigation de sections. */
+
+/*
+ * overflow:hidden sur <main> créait un conteneur de défilement et
+ * empêchait la navigation sticky de rester visible sur cette page.
+ * overflow-x:clip conserve le masquage horizontal des décors sans
+ * modifier le contexte de défilement vertical.
+ */
+.decoupe-page main {
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+}
+
+@supports not (overflow: clip) {
+    .decoupe-page main {
+        overflow: visible !important;
+    }
+}
