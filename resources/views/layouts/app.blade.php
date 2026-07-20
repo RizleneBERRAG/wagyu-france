@@ -18,6 +18,7 @@
 
     @stack('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/section-nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/section-nav-page-fixes.css') }}">
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 
