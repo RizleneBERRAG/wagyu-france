@@ -199,3 +199,72 @@
         }
     });
 })();
+(function () {
+    'use strict';
+
+    var nav = document.querySelector('[data-section-nav]');
+    if (!nav) { return; }
+
+    var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var contentShells = document.querySelectorAll(
+        '.wagyu-page [data-section-nav] ~ section:not([data-nav-end]) > .wagyu-shell,' +
+        '.histoire-page [data-section-nav] ~ section:not([data-nav-end]) > .story-shell,' +
+        '.blog-page [data-section-nav] ~ section:not([data-nav-end]) > .journal-shell,' +
+        '.professionnels-page [data-section-nav] ~ section:not([data-nav-end]) > .pro-shell,' +
+        '.decoupe-page [data-section-nav] ~ section:not([data-nav-end]) > .cut-shell,' +
+        '.tracabilite-page [data-section-nav] ~ section:not([data-nav-end]) > .trace-shell'
+    );
+
+    function setImportant(element, property, value) {
+        element.style.setProperty(property, value, 'important');
+    }
+
+    function clearProperty(element, property) {
+        element.style.removeProperty(property);
+    }
+
+    function updateCompactRail() {
+        var compact = window.innerWidth >= 1500 && window.innerWidth <= 1899;
+
+        if (compact) {
+            setImportant(nav, 'left', '18px');
+            setImportant(nav, 'width', '76px');
+            setImportant(nav, 'max-width', '76px');
+
+            links.forEach(function (link) {
+                setImportant(link, 'gap', '9px');
+                setImportant(link, 'width', '64px');
+                setImportant(link, 'overflow', 'hidden');
+                setImportant(link, 'white-space', 'nowrap');
+                setImportant(link, 'font-size', '0');
+
+                var number = link.querySelector('span');
+                if (number) { setImportant(number, 'font-size', '13.5px'); }
+            });
+
+            contentShells.forEach(function (shell) {
+                setImportant(shell, 'padding-left', '0');
+            });
+        } else {
+            ['left', 'width', 'max-width'].forEach(function (property) {
+                clearProperty(nav, property);
+            });
+
+            links.forEach(function (link) {
+                ['gap', 'width', 'overflow', 'white-space', 'font-size'].forEach(function (property) {
+                    clearProperty(link, property);
+                });
+
+                var number = link.querySelector('span');
+                if (number) { clearProperty(number, 'font-size'); }
+            });
+
+            contentShells.forEach(function (shell) {
+                clearProperty(shell, 'padding-left');
+            });
+        }
+    }
+
+    window.addEventListener('resize', updateCompactRail, { passive: true });
+    updateCompactRail();
+})();
