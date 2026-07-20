@@ -108,7 +108,7 @@
 })();
 
 /*
- * NAVIGATION DE SECTIONS — CODE CONSERVÉ POUR REPRISE FUTURE
+ * NAVIGATION DE SECTIONS
  *
  * Ce bloc est volontairement commenté : il ne s’exécute plus tant que la
  * navigation n’a pas été redessinée. Les éléments data-section-nav restent
