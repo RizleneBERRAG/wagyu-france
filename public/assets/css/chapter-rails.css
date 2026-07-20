@@ -1,0 +1,52 @@
+/* =========================================================
+   WAGYU FRANCE — RAILS DE CHAPITRES RESPONSIFS
+
+   Les libelles complets des rails fixes occupent jusqu'a 270 px.
+   Sur les ecrans desktop intermediaires, ils sont remplaces par une
+   version compacte afin de ne jamais recouvrir les titres, textes ou
+   visuels. Les grands ecrans conservent les libelles complets.
+========================================================= */
+
+@media (min-width: 1500px) and (max-width: 1899px) {
+    .wagyu-chapter-nav,
+    .story-chapters,
+    .journal-chapters,
+    .pro-chapters,
+    .cut-chapters,
+    .trace-chapters {
+        left: 18px !important;
+        width: 76px !important;
+        max-width: 76px !important;
+    }
+
+    .wagyu-chapter-nav a,
+    .story-chapters a,
+    .journal-chapters a,
+    .pro-chapters a,
+    .cut-chapters a,
+    .trace-chapters a {
+        gap: 9px !important;
+        width: 64px !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        font-size: 0 !important;
+    }
+
+    .wagyu-chapter-nav a span,
+    .story-chapters a span,
+    .journal-chapters a span,
+    .pro-chapters a span,
+    .cut-chapters a span,
+    .trace-chapters a span {
+        font-size: 13.5px !important;
+    }
+
+    .wagyu-page [data-section-nav] ~ section:not([data-nav-end]) > .wagyu-shell,
+    .histoire-page [data-section-nav] ~ section:not([data-nav-end]) > .story-shell,
+    .blog-page [data-section-nav] ~ section:not([data-nav-end]) > .journal-shell,
+    .professionnels-page [data-section-nav] ~ section:not([data-nav-end]) > .pro-shell,
+    .decoupe-page [data-section-nav] ~ section:not([data-nav-end]) > .cut-shell,
+    .tracabilite-page [data-section-nav] ~ section:not([data-nav-end]) > .trace-shell {
+        padding-left: 0 !important;
+    }
+}
